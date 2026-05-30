@@ -160,8 +160,10 @@ specification creation, and prompt engineering throughout the SDLC.
 ## GitHub Issue Generator Mode
 
 The **📋 GitHub Issue Generator** mode converts todo lists, review findings,
-and SDD requirements into structured GitHub issues through the configured
-GitHub MCP server.
+and SDD requirements into structured GitHub issues. Use the Python scripts in
+`.bob/scripts/` for batch operations. The repository also contains a legacy
+GitHub MCP configuration for interactive use; its configured package is
+deprecated and should be replaced before production use.
 
 ### Key Capabilities
 - Analyze tasks and preserve their context

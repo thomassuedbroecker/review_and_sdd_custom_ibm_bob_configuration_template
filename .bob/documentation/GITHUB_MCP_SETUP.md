@@ -1,12 +1,21 @@
 # GitHub MCP Server Setup Guide
 
-This guide explains how to set up the GitHub MCP (Model Context Protocol) server for this project, enabling GitHub issue creation and management capabilities.
+This guide documents the legacy GitHub MCP (Model Context Protocol) server
+configuration currently included in this project.
+
+> **Maintenance warning:** The configured
+> `@modelcontextprotocol/server-github` package is deprecated. It remains
+> documented so that the repository matches the current implementation.
+> Replace it with the maintained
+> [GitHub MCP server](https://github.com/github/github-mcp-server) before
+> production use, then update `.bob/settings.json` and regenerate the
+> third-party dependency snapshot.
 
 ## Prerequisites
 
 - Node.js and npm installed on your system
 - A GitHub account
-- Bob (Roo-Cline fork) installed in VS Code
+- IBM Bob installed
 
 ## Setup Steps
 
@@ -16,10 +25,13 @@ This guide explains how to set up the GitHub MCP (Model Context Protocol) server
 2. Click "Generate new token" → "Generate new token (classic)"
 3. Give your token a descriptive name (e.g., "Bob MCP Server")
 4. Set an expiration date (recommended: 90 days or custom)
-5. Select the following scopes:
-   - `repo` - Full control of private repositories (includes issue creation)
-   - `public_repo` - Access to public repositories (if you only work with public repos)
-   - `workflow` - Update GitHub Action workflows (optional, if needed)
+5. Select the least privilege required for the target repository:
+   - `public_repo` - Use this for public repositories only
+   - `repo` - Use this when private repository access is required
+
+   Do not add the `workflow` scope for issue creation. That scope permits
+   updates to GitHub Actions workflow files and is not required by the
+   issue-management workflows documented in this repository.
 
 6. Click "Generate token"
 7. **Important**: Copy the token immediately - you won't be able to see it again!
@@ -40,7 +52,7 @@ This guide explains how to set up the GitHub MCP (Model Context Protocol) server
 
 ### 3. Verify Configuration
 
-The GitHub MCP server has been configured in `.bob/settings.json` with the following settings:
+The legacy GitHub MCP server has been configured in `.bob/settings.json` with the following settings:
 
 ```json
 {
@@ -61,7 +73,8 @@ The GitHub MCP server has been configured in `.bob/settings.json` with the follo
 
 ### 4. Restart IBM Bob
 
-After setting up the `.env` file, restart Visual Studio Code to ensure the environment variables are loaded properly and Bob can access the GitHub MCP server.
+After setting up the `.env` file, restart IBM Bob so that the environment
+variables are loaded and Bob can access the GitHub MCP server.
 
 ## Usage
 
@@ -113,10 +126,10 @@ You can ask Bob to:
 
 ## Additional Resources
 
-- [GitHub MCP Server Documentation](https://github.com/modelcontextprotocol/servers/tree/main/src/github)
+- [Maintained GitHub MCP Server](https://github.com/github/github-mcp-server)
+- [Archived MCP GitHub Server Notice](https://github.com/modelcontextprotocol/servers-archived/tree/main/src/github)
 - [GitHub Personal Access Tokens Guide](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token)
 - [Model Context Protocol (MCP) Overview](https://modelcontextprotocol.io/)
-- [Bob (Roo-Cline Fork)](https://github.com/RooVetGit/Roo-Cline)
 
 ## Support
 

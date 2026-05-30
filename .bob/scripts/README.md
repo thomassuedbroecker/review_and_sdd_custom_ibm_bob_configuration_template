@@ -31,7 +31,8 @@ Three main capabilities:
 - Python 3.6+
 - `requests` library: `pip install requests`
 - (Optional) `pyyaml` library for YAML support: `pip install pyyaml`
-- GitHub Personal Access Token with `repo` scope
+- GitHub Personal Access Token with `public_repo` scope for public
+  repositories or `repo` scope when private repository access is required
 
 ## Setup
 
@@ -46,6 +47,12 @@ Three main capabilities:
    ```
 
 ## Usage
+
+The commands in this section run from the `.bob/scripts/` directory:
+
+```bash
+cd .bob/scripts
+```
 
 ### 1. Issue Creation
 
@@ -279,7 +286,8 @@ The GitHub Issue Generator mode can use all these scripts for comprehensive issu
 ### Authentication Errors
 
 - Verify `GITHUB_PERSONAL_ACCESS_TOKEN` in `.env` file
-- Check token has `repo` scope
+- Check that the token has `public_repo` scope for public repositories or
+  `repo` scope when private repository access is required
 - Ensure token hasn't expired
 
 ### Rate Limiting

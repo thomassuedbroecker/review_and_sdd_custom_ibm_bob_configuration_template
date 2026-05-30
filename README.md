@@ -6,7 +6,10 @@ IBM Bob offers powerful out-of-the-box modes tailored to support the entire soft
 
 The **Review & SDD Expert Bob Configuration** transforms IBM Bob into a specialized assistant for architecture reviews and requirements management. By providing custom-tailored modes and reusable skills, this template enables teams to conduct thorough technical evaluations and implement robust, spec-driven development practices. **The modes included in this repository template** are specifically tuned to bridge the gap between initial system architecture design and precise, specification-compliant code generation.
 
-Additionally, the **GitHub MCP integration** is preconfigured to automatically generate GitHub issues directly from the to-do lists created by these custom modes, seamlessly connecting your analysis to your team's project tracking.
+Additionally, the optional **GitHub issue generator** can convert to-do lists into
+GitHub issues when you explicitly request it. The repository includes Python scripts
+for batch operations and a legacy GitHub MCP configuration for interactive use.
+The legacy MCP package is deprecated and should be replaced before production use.
 This repository is intended to be used as a template. Create your own GitHub repository from this template, then clone your repository and open its root folder in IBM Bob. This gives you an independent workspace that you can customize and version-control for your own use.
 
 📚 **[View Full Documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)**
@@ -37,6 +40,8 @@ This repository is intended to be used as a template. Create your own GitHub rep
 - IBM Bob installed
 - Git installed for the recommended GitHub repository workflow
 - Node.js and npm installed only when using the optional GitHub MCP integration
+- Python 3 and the `requests` package installed only when using the optional
+  GitHub issue-management scripts
 - A GitHub token configured only when generating GitHub issues
 
 ### Recommended: Create Your Own GitHub Repository
@@ -83,6 +88,8 @@ Review the available modes and skills to understand capabilities:
 - Browse the [8 specialized skills](./.bob/skills/README.md) for different review areas
 - Study the [Architecture Review documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)
 - Review [Spec-Driven Development guide](./.bob/documentation/SDD-README.md)
+- Review the [GitHub issue-management scripts](./.bob/scripts/README.md) when
+  generating or synchronizing issues
 
 ---
 
@@ -278,7 +285,8 @@ Output: List of created GitHub issues with numbers and links
 
 3. **Update mode configuration**
 
-   The Architecture Review mode automatically uses any skill files in `.bob/skills/`, so no mode changes needed!
+   Update `.bob/custom_modes.yaml` so that the relevant mode explicitly
+   references the new skill when it should be part of a standard workflow.
 
 ### Skill Structure Template
 
@@ -325,6 +333,7 @@ Output: List of created GitHub issues with numbers and links
 | **[.bob/documentation/guides/QUICK-START.md](./.bob/documentation/guides/QUICK-START.md)** | Quick start guide |
 | **[.bob/documentation/SDD-README.md](./.bob/documentation/SDD-README.md)** | Spec-driven development |
 | **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |
+| **[.bob/scripts/README.md](./.bob/scripts/README.md)** | GitHub issue-management scripts |
 | **[GITHUB_MCP_SETUP.md](./.bob/documentation/GITHUB_MCP_SETUP.md)** | GitHub MCP server setup |
 
 ## License and Third-Party Notices

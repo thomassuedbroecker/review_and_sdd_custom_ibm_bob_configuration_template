@@ -25,7 +25,9 @@ resolved transitive dependencies is recorded in
 
 The configuration currently does not pin a package version. The dependency
 snapshot is therefore evidence of a point-in-time review, not a guarantee that
-future installations resolve the same package versions.
+future installations resolve the same package versions. The configured package
+is deprecated. Replace it with a maintained integration and regenerate the
+dependency snapshot before the next release.
 
 ## Content Provenance
 

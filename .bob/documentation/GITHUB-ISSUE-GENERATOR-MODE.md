@@ -4,10 +4,13 @@
 
 The **GitHub Issue Generator** mode transforms todo lists and task breakdowns from any Bob mode into well-structured GitHub issues. It provides two powerful approaches:
 
-1. **GitHub MCP Server**: Interactive, real-time issue creation via Model Context Protocol
+1. **GitHub MCP Server**: Interactive, real-time issue creation via the legacy
+   Model Context Protocol configuration
 2. **Python Scripts**: Flexible batch operations for creating, updating, and syncing issues
 
-Both approaches integrate seamlessly to provide comprehensive GitHub issue management.
+Use either approach explicitly when GitHub issue management is needed. The
+configured MCP package is deprecated; see
+[GITHUB_MCP_SETUP.md](./GITHUB_MCP_SETUP.md) before enabling it.
 
 ## Purpose
 
@@ -27,7 +30,8 @@ This mode bridges the gap between planning/review activities and issue tracking 
    - GitHub MCP server must be configured in `.bob/settings.json`
 
 2. **GitHub Personal Access Token**
-   - Create a token with `repo` scope
+   - Use `public_repo` for public repositories only or `repo` when private
+     repository access is required
    - Add to `.env` file as `GITHUB_PERSONAL_ACCESS_TOKEN`
    - Token must have write access to the target repository
 
@@ -49,7 +53,7 @@ This mode bridges the gap between planning/review activities and issue tracking 
 3. **Scripts Available**
    - Located in `.bob/scripts/` directory
    - All scripts have executable permissions
-   - Complete documentation in `.bob/scripts/README.md`
+   - Complete documentation in [`.bob/scripts/README.md`](../scripts/README.md)
 
 ## When to Use
 
@@ -87,27 +91,27 @@ This mode bridges the gap between planning/review activities and issue tracking 
 - Groups related tasks logically
 - Extracts technical details and acceptance criteria
 
-### 2. Smart Issue Creation
+#### 2. Smart Issue Creation
 - Generates clear, action-oriented issue titles
 - Creates detailed descriptions with context
 - Includes acceptance criteria for each issue
 - Adds technical implementation notes
 - Applies appropriate labels automatically
 
-### 3. Duplicate Prevention
+#### 3. Duplicate Prevention
 - Searches existing issues before creating new ones
 - Avoids creating duplicate issues
 - References existing issues when appropriate
 - Updates existing issues if they cover the same scope
 
-### 4. Issue Organization
+#### 4. Issue Organization
 - Applies type labels (bug, enhancement, feature, documentation)
 - Sets priority labels (critical, high, medium, low)
 - Adds area labels (frontend, backend, infrastructure, security)
 - Establishes issue relationships and dependencies
 - Groups issues by milestone or epic when appropriate
 
-### 5. Batch Operations
+#### 5. Batch Operations
 - Efficiently creates multiple issues at once
 - Provides progress updates for large batches
 - Handles failures gracefully
@@ -280,7 +284,8 @@ Each generated issue follows this template:
 **Solution**:
 1. Verify token in `.env` file is correct
 2. Check token hasn't expired
-3. Ensure token has `repo` scope
+3. Ensure the token has `public_repo` scope for public repositories or `repo`
+   scope when private repository access is required
 4. Regenerate token if necessary
 
 ### Permission Denied
@@ -408,6 +413,7 @@ The mode is configured in `.bob/custom_modes.yaml`:
 ## Related Documentation
 
 - [GitHub MCP Setup Guide](./GITHUB_MCP_SETUP.md)
+- [GitHub Issue-Management Scripts](../scripts/README.md)
 - [Architecture Review Mode](./README-ARCHITECTURE-REVIEW.md)
 - [Spec-Driven Development Mode](./SDD-README.md)
 - [Main README](../../README.md)
@@ -424,7 +430,7 @@ For issues or questions:
 
 - **v1.0.0** (2026-05-30) - Initial release
   - Todo list to GitHub issues conversion
-  - GitHub MCP integration
+  - Legacy GitHub MCP integration and Python issue-management scripts
   - Duplicate detection
   - Label and priority management
   - Batch issue creation
