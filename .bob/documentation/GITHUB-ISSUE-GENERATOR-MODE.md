@@ -2,7 +2,12 @@
 
 ## Overview
 
-The **GitHub Issue Generator** mode transforms todo lists and task breakdowns from any Bob mode into well-structured GitHub issues. It leverages the GitHub MCP (Model Context Protocol) server to create, organize, and manage issues directly in your repository.
+The **GitHub Issue Generator** mode transforms todo lists and task breakdowns from any Bob mode into well-structured GitHub issues. It provides two powerful approaches:
+
+1. **GitHub MCP Server**: Interactive, real-time issue creation via Model Context Protocol
+2. **Python Scripts**: Flexible batch operations for creating, updating, and syncing issues
+
+Both approaches integrate seamlessly to provide comprehensive GitHub issue management.
 
 ## Purpose
 
@@ -15,7 +20,7 @@ This mode bridges the gap between planning/review activities and issue tracking 
 
 ## Prerequisites
 
-Before using this mode, ensure you have:
+### For GitHub MCP Server (Method 1)
 
 1. **GitHub MCP Server Configured**
    - See [GITHUB_MCP_SETUP.md](./GITHUB_MCP_SETUP.md) for setup instructions
@@ -30,21 +35,53 @@ Before using this mode, ensure you have:
    - Must be working within a Git repository
    - Repository must be accessible with your GitHub token
 
+### For Python Scripts (Method 2)
+
+1. **Python Environment**
+   - Python 3.6 or higher
+   - `requests` library: `pip install requests`
+   - (Optional) `pyyaml` library: `pip install pyyaml`
+
+2. **GitHub Personal Access Token**
+   - Same as MCP method above
+   - Add to `.env` file as `GITHUB_PERSONAL_ACCESS_TOKEN`
+
+3. **Scripts Available**
+   - Located in `.bob/scripts/` directory
+   - All scripts have executable permissions
+   - Complete documentation in `.bob/scripts/README.md`
+
 ## When to Use
 
-Use the GitHub Issue Generator mode when you need to:
+### Use GitHub MCP Server When:
+- Creating 1-20 issues interactively
+- Need real-time feedback and validation
+- Working with simple, straightforward issue structures
+- Want immediate issue creation without configuration files
 
-- ✅ Convert a todo list from Plan mode into GitHub issues
+### Use Python Scripts When:
+- Creating 20+ issues in batch
+- Need complex issue templates with custom fields
+- Want to update or sync existing issues
+- Require programmatic control over issue management
+- Need to track repository state across many issues
+- Want to export/import issue configurations
+
+### Common Use Cases:
+- ✅ Convert todo lists from any Bob mode into GitHub issues
 - ✅ Create issues from Architecture Review findings
 - ✅ Generate issues from Spec-Driven Development requirements
 - ✅ Transform code review findings into trackable issues
-- ✅ Batch create issues for a project plan
+- ✅ Batch create issues for project plans
+- ✅ Update issue status based on repository state
+- ✅ Sync all issues with current implementation progress
 - ✅ Migrate tasks from other modes into GitHub issue tracking
-- ✅ Create structured issue backlogs from task breakdowns
 
 ## Key Features
 
-### 1. Intelligent Todo List Analysis
+### Method 1: GitHub MCP Server
+
+#### 1. Intelligent Todo List Analysis
 - Reads todo lists from current task context
 - Understands task priorities and dependencies
 - Groups related tasks logically

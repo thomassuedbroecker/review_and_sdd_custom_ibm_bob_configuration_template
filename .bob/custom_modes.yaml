@@ -683,6 +683,47 @@ customModes:
     customInstructions: >-
       GitHub Issue Generation Process:
 
+      APPROACH SELECTION:
+      You have TWO methods for creating GitHub issues:
+      
+      METHOD 1: GitHub MCP Server (Recommended for interactive, small batches)
+      - Use MCP tools for real-time issue creation
+      - Best for: Converting todo lists, creating 1-20 issues interactively
+      - Requires: GitHub MCP server configured, GITHUB_PERSONAL_ACCESS_TOKEN in .env
+      
+      METHOD 2: Python Scripts (Recommended for large batches, complex workflows)
+      - Use the flexible scripts in .bob/scripts/ for comprehensive issue management
+      - Best for: Creating 20+ issues, batch updates, repository state sync
+      - Three main capabilities:
+        
+        A. Issue Creation (create_github_issues.py, run_issue_creator.sh)
+           • Create issues from JSON/YAML templates
+           • Built-in example template available
+           • Dry-run mode for preview
+           • Batch creation with rate limiting
+        
+        B. Issue Updates (update_issue_status.py, run_update_issues.sh)
+           • Add comments to issues
+           • Update issue status
+           • Close multiple issues
+           • Batch updates from JSON/YAML
+        
+        C. Issue Sync (sync_all_issues.py, run_sync_all_issues.sh)
+           • Sync all issues with repository state
+           • Update status labels (completed, ready, blocked, pending)
+           • Add status comments automatically
+           • Track dependencies and blockers
+      
+      - Documentation: .bob/scripts/README.md
+      - Requires: Python 3, requests library, GITHUB_PERSONAL_ACCESS_TOKEN in .env
+      - Supports: Custom JSON/YAML templates OR built-in examples
+
+      Choose the method based on:
+      - Number of issues (MCP for <20, Script for 20+)
+      - Complexity of issue templates (Script for complex templates)
+      - User preference (ask if unclear)
+      - Existing issue structure (Script has predefined templates for epics, features, tests)
+
       1. UNDERSTAND THE SOURCE
          - Identify where the todo list comes from (current task, file, or user input)
          - Read the todo list using available tools (read_file, environment_details)
@@ -702,7 +743,7 @@ customModes:
          - Reference existing issues when appropriate
          - Update existing issues if they cover the same scope
 
-      4. CREATE ISSUES WITH GITHUB MCP
+      4A. CREATE ISSUES WITH GITHUB MCP (Method 1)
          - Use the GitHub MCP server tools to create issues
          - Follow this issue structure:
            
@@ -737,7 +778,47 @@ customModes:
            • Area: frontend, backend, infrastructure, security, performance
            • Status: ready, blocked, in-progress (if applicable)
 
-      5. ESTABLISH RELATIONSHIPS
+     4B. CREATE ISSUES WITH PYTHON SCRIPT (Method 2)
+        The script supports two approaches:
+        
+        APPROACH A: Custom Template (Recommended for new projects)
+        1. Export example template to customize:
+           ```bash
+           .bob/scripts/run_issue_creator.sh --export-example my-issues.json
+           ```
+        
+        2. Edit the JSON/YAML file with your project's issues:
+           - Customize titles, descriptions, labels
+           - Define issue relationships and dependencies
+           - Set priorities and assignees
+           - See .bob/scripts/README.md for template format
+        
+        3. Dry run to preview:
+           ```bash
+           .bob/scripts/run_issue_creator.sh --repo owner/repo --template my-issues.json --dry-run
+           ```
+        
+        4. Create issues:
+           ```bash
+           .bob/scripts/run_issue_creator.sh --repo owner/repo --template my-issues.json
+           ```
+        
+        APPROACH B: Built-in Example (Holiday Planner template)
+        Use the pre-defined example template:
+        ```bash
+        .bob/scripts/run_issue_creator.sh --repo owner/repo --use-example [--dry-run]
+        ```
+        
+        Script features:
+        • Flexible JSON/YAML template support
+        • Built-in example template for reference
+        • Batch creation with rate limiting
+        • Dry-run mode for preview
+        • Automatic issue numbering and references
+        • Customizable labels, priorities, and assignees
+        • Export functionality to create custom templates
+
+     5. ESTABLISH RELATIONSHIPS
          - Link related issues using GitHub's issue reference syntax (#123)
          - Note dependencies in issue descriptions
          - Create parent/child relationships for complex tasks
@@ -750,8 +831,62 @@ customModes:
          - Note any issues that couldn't be created and why
          - Suggest next steps for issue management
 
-      GITHUB MCP INTEGRATION:
-      - Always use MCP tools for GitHub operations (use_mcp_tool)
+     SCRIPT INTEGRATION GUIDELINES:
+     When using the Python script approach:
+     
+     1. UNDERSTAND USER'S NEEDS
+        - Analyze the todo list or requirements
+        - Determine if custom template or example template is appropriate
+        - Identify issue types, priorities, and relationships
+     
+     2. CHOOSE TEMPLATE APPROACH
+        
+        For Custom Projects:
+        a. Export example template:
+           execute_command(".bob/scripts/run_issue_creator.sh --export-example issues.json")
+        
+        b. Read and understand template format:
+           read_file(".bob/scripts/README.md")
+           read_file("issues.json")
+        
+        c. Create custom template based on user's todo list:
+           - Convert each todo item to an issue definition
+           - Structure as JSON/YAML with required fields
+           - Add appropriate labels and priorities
+        
+        d. Write custom template:
+           write_to_file("issues.json", custom_template_content)
+        
+        For Example/Reference:
+        - Use built-in example template with --use-example flag
+        - Good for demonstrating functionality or testing
+     
+     3. DRY RUN FIRST
+        - Always recommend dry-run before creating issues:
+          execute_command(".bob/scripts/run_issue_creator.sh --repo owner/repo --template issues.json --dry-run")
+        - Review output with user
+        - Confirm issues look correct before proceeding
+     
+     4. CREATE ISSUES
+        - Execute script to create issues:
+          execute_command(".bob/scripts/run_issue_creator.sh --repo owner/repo --template issues.json")
+        - Monitor output for errors or rate limiting
+        - Provide clear feedback on created issues
+     
+     5. VERIFY RESULTS
+        - Summarize created issues with numbers and links
+        - Note any issues that failed to create
+        - Suggest next steps (assign, prioritize, add to project board)
+     
+     TEMPLATE FORMAT REFERENCE:
+     See .bob/scripts/README.md for complete documentation including:
+     - JSON and YAML template formats
+     - Required and optional fields
+     - Example templates for different issue types
+     - Best practices for template creation
+
+     GITHUB MCP INTEGRATION:
+      - Always use MCP tools for GitHub operations when using Method 1 (use_mcp_tool)
       - Handle authentication errors gracefully
       - Provide clear error messages if GitHub access fails
       - Verify repository context before creating issues
@@ -785,13 +920,41 @@ customModes:
       - "Generate issues for all tasks in the SDD specification"
       - "Turn this plan into a GitHub issue backlog"
       - "Create issues from the code review findings with appropriate labels"
+      - "Export an issue template and help me customize it for my project"
+      - "Create a JSON template from my todo list and batch create issues"
+      - "Use the Python script to batch create 50 issues from this specification"
 
-      CONFIGURATION REQUIREMENTS:
+     CONFIGURATION REQUIREMENTS:
       This mode requires:
+      
+      For MCP Method:
       1. GitHub MCP server configured in .bob/settings.json
       2. GITHUB_PERSONAL_ACCESS_TOKEN set in .env file
       3. Appropriate repository permissions (repo scope)
       
+      For Script Method:
+      1. Python 3 installed
+      2. requests library installed (pip install requests)
+      3. GITHUB_PERSONAL_ACCESS_TOKEN set in .env file
+      4. Appropriate repository permissions (repo scope)
+      
       If configuration is missing, provide clear setup instructions referencing GITHUB_MCP_SETUP.md.
+      
+     SCRIPT REFERENCE:
+     - Script location: .bob/scripts/create_github_issues.py
+     - Shell wrapper: .bob/scripts/run_issue_creator.sh
+     - Documentation: .bob/scripts/README.md
+     - The script supports:
+       • Custom JSON/YAML templates for any project
+       • Built-in Holiday Planner example template (--use-example)
+       • Template export functionality (--export-example)
+       • Dry-run mode for previewing issues
+       • Flexible issue types: epics, features, bugs, tasks, tests, etc.
+     - Template format includes:
+       • Issue titles and descriptions
+       • Labels for categorization
+       • Priorities and assignees
+       • Milestones and relationships
+     - See .bob/scripts/README.md for complete documentation and examples
 
 # Made with Bob
