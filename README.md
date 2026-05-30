@@ -1,1 +1,337 @@
-# review_and_sdd_custom_ibm_bob_configuration_template
+# Review & SDD Expert Bob Configuration
+
+## Overview
+
+IBM Bob offers powerful out-of-the-box modes tailored to support the entire software development lifecycle. These modes demonstrate how easily you can specialize and optimize IBM Bob for your specific engineering workflows. In this configuration, the setup is optimized from my perspective for architecture review and spec-driven development (SDD).
+
+The **Review & SDD Expert Bob Configuration** transforms IBM Bob into a specialized assistant for architecture reviews and requirements management. By providing custom-tailored modes and reusable skills, this template enables teams to conduct thorough technical evaluations and implement robust, spec-driven development practices. **The modes included in this repository template** are specifically tuned to bridge the gap between initial system architecture design and precise, specification-compliant code generation.
+
+Additionally, the **GitHub MCP integration** is preconfigured to automatically generate GitHub issues directly from the to-do lists created by these custom modes, seamlessly connecting your analysis to your team's project tracking.
+This repository is intended to be used as a template. Create your own GitHub repository from this template, then clone your repository and open its root folder in IBM Bob. This gives you an independent workspace that you can customize and version-control for your own use.
+
+📚 **[View Full Documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)**
+
+## What It Does
+
+- **11 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, and GitHub issue generator
+- **8 Reusable Skills**: Comprehensive coverage of architecture review domains and requirements management
+- **Comprehensive Architecture Reviews**: Conduct multi-dimensional reviews using specialized skills covering security, scalability, patterns, maintainability, and more
+- **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle
+- **Adaptive Configuration**: Automatically detect gaps and propose new capabilities based on emerging requirements
+- **Modular Skills**: Use individual skills independently or combine them for comprehensive reviews
+
+## Why Use It?
+
+- ✅ Ensure consistent, repeatable review methodology across projects
+- ✅ Reduce time spent on manual architecture reviews and documentation
+- ✅ Catch issues early with comprehensive coverage of architecture concerns
+- ✅ Customize easily for organization-specific requirements and standards
+- ✅ Integrate seamlessly with existing SDLC processes
+- ✅ Scale expertise across teams with reusable skills
+
+
+## Setup & Installation
+
+### Prerequisites
+
+- IBM Bob installed
+- Git installed for the recommended GitHub repository workflow
+- Node.js and npm installed only when using the optional GitHub MCP integration
+- A GitHub token configured only when generating GitHub issues
+
+### Recommended: Create Your Own GitHub Repository
+
+1. Select **Use this template** on GitHub and create your own repository.
+2. Clone your new repository to your local machine.
+3. Open the cloned repository root folder in IBM Bob.
+4. The preconfigured modes and skills will appear in IBM Bob's mode selector.
+
+### Alternative: Use a Local Copy
+
+1. Download this repository as a ZIP file.
+2. Extract the ZIP file. The extracted folder name depends on the repository
+   name and selected branch.
+3. Open the extracted repository root folder in IBM Bob.
+
+## Add Repositories for Inspection or Usage
+
+The provided IBM Bob modes are currently configured at project scope. To make
+another local repository available to these modes, clone or copy it into the
+[`repos/`](./repos/) folder:
+
+```bash
+git clone <repository-url> repos/<repository-name>
+```
+
+```text
+<template-repository-name>/
+├── .bob/
+├── repos/
+│   ├── your-application/
+│   └── another-repository/
+└── README.md
+```
+
+Keep the template repository as the IBM Bob workspace root. Add the
+repositories that you want to inspect, review, or use as nested folders under
+`repos/`.
+
+## How to Use
+
+### 1. Explore Pre-existing Configuration
+Review the available modes and skills to understand capabilities:
+- Browse the [8 specialized skills](./.bob/skills/README.md) for different review areas
+- Study the [Architecture Review documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)
+- Review [Spec-Driven Development guide](./.bob/documentation/SDD-README.md)
+
+---
+
+## 🎯 Available Modes
+
+| Mode | Purpose |
+| --- | --- |
+| 🏛️ Architecture Review | Orchestrates comprehensive and focused reviews |
+| 🔒 Security & Threat Modeling | Reviews security architecture and threats |
+| 📈 Scalability & Performance | Assesses capacity, bottlenecks, and performance |
+| 🎨 Architecture Patterns | Reviews architectural patterns and design choices |
+| 🔧 Maintainability & Technical Debt | Identifies maintainability risks and technical debt |
+| 📚 Documentation Review | Reviews documentation completeness and quality |
+| ☁️ 12-Factor Compliance | Assesses cloud-native readiness |
+| 🎯 Business Alignment | Connects architecture decisions to business goals |
+| 🧭 Spec-Driven Development | Structures requirements, specifications, and prompts |
+| 🔍 Configuration Gap Detector | Proposes missing capabilities when the current setup is insufficient |
+| 📋 GitHub Issue Generator | Converts todo lists and findings into GitHub issues |
+
+The configuration also includes **8 reusable skills**: seven architecture
+review skills and one requirements-management skill. See the
+[skills documentation](./.bob/skills/README.md) for detailed descriptions,
+usage guidance, customization options, and examples.
+
+## Configuration Visuals
+
+![architecture-review](./.bob/images/architecture-review.png)
+
+![configuration-gap-detector](./.bob/images/configuration-gap-detector.png)
+
+![skills-review](./.bob/images/skills-review.png)
+
+![spec-driven-development-overview](./.bob/images/spec-driven-development-overview.png)
+
+---
+
+## 💡 Usage Examples
+
+Add code or a repository to your IBM Bob IDE, then follow the examples.
+
+For this template, add the repository that you want to inspect or use under
+[`repos/`](./repos/). The nested repository layout is required because the
+provided modes are currently configured at IBM Bob project scope.
+
+### Example 1: Pre-Production Review
+
+```
+User: "Review security, scalability, and 12-factor compliance before production"
+
+Bob will:
+1. Read 3 relevant skill files
+2. Apply each skill's methodology
+3. Analyze codebase against checklists
+4. Provide prioritized findings
+5. Recommend critical fixes
+
+Output:
+✅ Achieved: OAuth2 implemented, auto-scaling configured
+⚠️ Concerns: No rate limiting, logs not centralized
+❌ Not Achieved: Missing circuit breakers
+💡 Recommendations: [Prioritized action items]
+```
+
+### Example 2: Technical Debt Assessment
+
+```
+User: "Analyze technical debt and maintainability"
+
+Bob will:
+1. Read maintainability-technical-debt-skill.md
+2. Analyze code complexity and coupling
+3. Detect code duplication
+4. Assess test coverage
+5. Quantify technical debt
+6. Provide refactoring roadmap
+
+Output: Prioritized technical debt backlog with effort estimates
+```
+
+### Example 3: Security Audit
+
+```
+User: "Perform STRIDE threat modeling and check OWASP Top 10"
+
+Bob will:
+1. Read security-threat-modeling-skill.md
+2. Identify security gaps and attack vectors
+3. Check for OWASP Top 10 vulnerabilities
+4. Assess authentication/authorization
+5. Provide risk ratings and remediation steps
+
+Output: Security assessment report with prioritized fixes
+```
+
+### Example 4: Convert Todo List to GitHub Issues
+
+```
+User: "Convert my current todo list into GitHub issues"
+
+Bob will:
+1. Read the active todo list from current task
+2. Analyze each task for context and requirements
+3. Check for existing similar issues in GitHub
+4. Create well-structured GitHub issues with:
+   - Clear, action-oriented titles
+   - Detailed descriptions with context
+   - Acceptance criteria
+   - Appropriate labels (type, priority, area)
+5. Establish issue relationships and dependencies
+6. Provide summary with issue links
+
+Output: List of created GitHub issues with numbers and links
+```
+
+---
+
+## 🎓 Best Practices
+
+### Mode Selection Strategy
+
+1. **Start with Plan mode** for new projects
+   - Create detailed implementation plan
+   - Break down into clear steps
+   - Get user approval
+
+2. **Switch to Code/Advanced mode** for implementation
+   - Execute approved plan
+   - Make code changes
+   - Run tests
+
+3. **Use Architecture Review mode** for validation
+   - Review completed work
+   - Identify issues early
+   - Ensure quality standards
+
+4. **Use Ask mode** for explanations
+   - Understand concepts
+   - Get recommendations
+   - Learn technologies
+
+### Effective Review Requests
+
+#### ✅ Good Examples
+
+**Specific and focused**:
+```
+"Review security for a healthcare application that needs HIPAA compliance"
+```
+
+**With context**:
+```
+"Analyze scalability for an e-commerce platform expecting 10x growth"
+```
+
+**Prioritized**:
+```
+"Focus on security and 12-factor compliance first, then performance"
+```
+
+#### ❌ Avoid These
+
+- "Review the system" (too vague)
+- "Check everything" (no context)
+- "Do all reviews at once and fix all issues" (unrealistic scope)
+
+---
+
+## 🔧 Customization
+
+### Adding Organization-Specific Requirements
+
+1. **Modify existing skills**
+
+   Edit skill files in `.bob/skills/` to add:
+   - Internal compliance requirements
+   - Company-specific patterns
+   - Custom quality attributes
+   - Organization standards
+
+2. **Create new skills**
+
+   ```bash
+   # Copy an existing skill as template
+   cp .bob/skills/security-threat-modeling-skill.md \
+      .bob/skills/custom-compliance-skill.md
+   ```
+
+   Then customize:
+   - Purpose and expertise areas
+   - Review process and checklists
+   - Output format
+   - Key questions and best practices
+
+3. **Update mode configuration**
+
+   The Architecture Review mode automatically uses any skill files in `.bob/skills/`, so no mode changes needed!
+
+### Skill Structure Template
+
+```markdown
+# [Skill Name]
+
+## Purpose
+[What this skill evaluates]
+
+## Expertise Areas
+- [Area 1]
+- [Area 2]
+
+## Review Process
+### 1. [Step Name]
+- [Checklist item]
+- [Question to ask]
+
+## Output Format
+### ✅ Achieved
+[What's working well]
+
+### ⚠️ Concerns
+[Areas needing attention]
+
+### ❌ Not Achieved
+[Critical gaps]
+
+### 💡 Recommendations
+[Actionable improvements]
+```
+
+---
+
+## 📖 Documentation
+
+### Quick References
+
+| Document | Purpose |
+|----------|---------|
+| **README.md** | Main documentation (this file) |
+| **[.bob/skills/README.md](./.bob/skills/README.md)** | Skills documentation |
+| **[.bob/documentation/README-ARCHITECTURE-REVIEW.md](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)** | Architecture review details |
+| **[.bob/documentation/guides/QUICK-START.md](./.bob/documentation/guides/QUICK-START.md)** | Quick start guide |
+| **[.bob/documentation/SDD-README.md](./.bob/documentation/SDD-README.md)** | Spec-driven development |
+| **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |
+| **[GITHUB_MCP_SETUP.md](./.bob/documentation/GITHUB_MCP_SETUP.md)** | GitHub MCP server setup |
+
+## License and Third-Party Notices
+
+This repository is distributed under the Apache License, Version 2.0. See
+[LICENSE](./LICENSE) for the full license text.
+
+- [License documentation](./LICENSE_DOCUMENTATION.md)
+- [Third-party dependency notices](./THIRD_PARTY_NOTICES.md)
+- [Content provenance register](./CONTENT_PROVENANCE.md)

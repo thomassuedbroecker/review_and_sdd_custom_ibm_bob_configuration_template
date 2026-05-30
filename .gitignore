@@ -216,3 +216,8 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# Custom
+.bob/.DS_Store
+.bob/notes/.DS_Store
+review-sdlc-expert-bob-configuration-public.code-workspace
