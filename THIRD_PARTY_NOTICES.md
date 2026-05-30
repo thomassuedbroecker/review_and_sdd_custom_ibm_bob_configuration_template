@@ -17,6 +17,17 @@ The reviewed dependency tree contained 46 packages: 42 MIT-licensed packages
 and 4 ISC-licensed packages. The configured package is currently unpinned, so
 future installations may resolve a different tree.
 
+## Python Runtime Dependencies
+
+The optional issue-management scripts in [`.bob/scripts/`](./.bob/scripts/)
+import `requests`. YAML template support also imports `PyYAML` when requested.
+The setup instructions install these packages separately at runtime without
+version pins. They are not vendored into this repository, and their resolved
+dependency trees are not included in the npm snapshot below.
+
+Before distributing a bundled Python environment, generate a Python dependency
+inventory, review the resolved licenses, and preserve any required notices.
+
 ## Dependency Snapshot
 
 | Package | Version | License |
@@ -80,3 +91,7 @@ license texts and preserve required notices.
 The npm registry reports `@modelcontextprotocol/server-github@2025.4.8` as
 deprecated. Replace it with a maintained integration and regenerate this
 snapshot before the next release.
+
+The direct package metadata was rechecked against the npm registry on
+2026-05-31. The latest reported version remains `2025.4.8`, its reported
+license remains MIT, and the package remains deprecated.

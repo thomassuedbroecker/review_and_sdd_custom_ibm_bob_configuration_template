@@ -150,7 +150,9 @@ Detects missing capabilities and proposes new modes or skills.
 
 ### 11. 📋 GitHub Issue Generator (`github-issue-generator`)
 Converts todo lists, review findings, and SDD requirements into structured
-GitHub issues through the configured GitHub MCP server.
+GitHub issues. Use the Python scripts in `../scripts/` for batch operations.
+The configured GitHub MCP server is a legacy interactive option whose npm
+package is deprecated and should be replaced before production use.
 
 ## 📚 Available Skills
 
@@ -289,6 +291,12 @@ For questions or issues:
 
 ## 🔄 Version History
 
+- **v3.2** (2026-05-31) - Aligned documentation with implemented workflows
+  - Corrected the Architecture Review skill path to `.bob/skills/`
+  - Corrected the Configuration Gap Detector skill path to `.bob/skills/`
+  - Documented Python scripts as the batch GitHub issue-management path
+  - Clarified that the configured GitHub MCP package is deprecated
+
 - **v3.1** (2026-05-30) - Added GitHub issue generator documentation
   - Documented GitHub issue generation workflow
   - Updated mode inventory to 11 modes
@@ -305,8 +313,8 @@ For questions or issues:
 ---
 
 **Created**: 2026-03-31
-**Last Updated**: 2026-05-30
-**Version**: 3.1
+**Last Updated**: 2026-05-31
+**Version**: 3.2
 **Modes**: 11
 **Skills**: 8
 

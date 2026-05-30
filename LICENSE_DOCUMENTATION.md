@@ -5,11 +5,12 @@
 This repository is distributed under the Apache License, Version 2.0. See
 [LICENSE](./LICENSE) for the complete license text.
 
-The repository contains IBM Bob configuration files, Markdown documentation,
-Draw.io source diagrams, and PNG images. The Apache License 2.0 applies to the
-repository content unless a file or a third-party notice states otherwise.
+The repository contains IBM Bob configuration files, Python and shell scripts,
+Markdown documentation, Draw.io source diagrams, and PNG images. The Apache
+License 2.0 applies to the repository content unless a file or a third-party
+notice states otherwise.
 
-## Third-Party Runtime Component
+## Third-Party Runtime Components
 
 The optional GitHub MCP integration configured in
 [`.bob/settings.json`](./.bob/settings.json) invokes:
@@ -28,6 +29,13 @@ snapshot is therefore evidence of a point-in-time review, not a guarantee that
 future installations resolve the same package versions. The configured package
 is deprecated. Replace it with a maintained integration and regenerate the
 dependency snapshot before the next release.
+
+The optional Python issue-management scripts import `requests` and support
+YAML templates through an optional `PyYAML` import. These packages are also
+installed separately at runtime and are not vendored into this repository.
+Their versions are currently unpinned, and their resolved dependency trees are
+not covered by the npm snapshot. Generate and review a Python dependency
+inventory before distributing a bundled Python environment.
 
 ## Content Provenance
 
