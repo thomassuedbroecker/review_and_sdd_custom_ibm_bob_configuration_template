@@ -28,6 +28,14 @@ dependency trees are not included in the npm snapshot below.
 Before distributing a bundled Python environment, generate a Python dependency
 inventory, review the resolved licenses, and preserve any required notices.
 
+## Adapted Repository Template Content
+
+The repository `.gitignore` file is adapted from GitHub's
+[`Python.gitignore`](https://github.com/github/gitignore/blob/main/Python.gitignore)
+template with repository-specific entries appended. The upstream
+[`github/gitignore`](https://github.com/github/gitignore) repository is
+distributed under CC0-1.0.
+
 ## Dependency Snapshot
 
 | Package | Version | License |

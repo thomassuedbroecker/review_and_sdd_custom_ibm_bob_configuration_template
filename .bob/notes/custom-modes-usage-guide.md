@@ -428,6 +428,22 @@ software requirements.
 
 ---
 
+### Skill 9: Requirements Traceability Analysis
+
+**File**: `.bob/skills/requirements-traceability-skill.md`
+
+**Purpose**: Validate traceability chains from requirements through design,
+implementation, and tests.
+
+**Key Review Areas**:
+1. Forward and backward traceability
+2. Bidirectional validation
+3. Orphaned artifact detection
+4. Coverage metrics and reporting
+5. Git-based traceability workflows
+
+---
+
 ## Trusted AI Alignment Analysis
 
 ### IBM Trusted AI Building Block
@@ -697,9 +713,9 @@ This custom modes configuration provides a **robust, modular framework** for arc
 
 ---
 
-**Document Version**: 1.0  
+**Document Version**: 1.1
 **Created**: 2026-04-13  
-**Last Updated**: 2026-05-30
+**Last Updated**: 2026-05-31
 **Modes Documented**: 11
-**Skills Referenced**: 8
+**Skills Referenced**: 9
 **Trusted AI Alignment**: ⭐⭐⭐⭐☆ (4/5 Stars - 80%)

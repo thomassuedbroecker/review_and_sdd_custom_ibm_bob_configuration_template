@@ -32,8 +32,7 @@ fi
 echo "✅ GitHub token loaded successfully"
 echo ""
 
-# Run the Python script with all arguments passed to this script
-cd "$SCRIPT_DIR"
-python3 update_issue_status.py "$@"
+# Run the Python script while preserving caller-relative update paths
+python3 "$SCRIPT_DIR/update_issue_status.py" "$@"
 
 # Made with Bob

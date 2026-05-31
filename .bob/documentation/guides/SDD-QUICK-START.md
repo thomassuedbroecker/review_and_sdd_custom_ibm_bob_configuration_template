@@ -48,7 +48,7 @@ Select the scenario that best matches your current need:
 3. Apply [Prioritization Frameworks](../../skills/requirements-management-skill.md#6-requirements-prioritization)
 4. Update using [Change Management Process](../../skills/requirements-management-skill.md#9-requirements-change-management)
 
-**Checklist to Use**: [Validation Checklist](../../skills/requirements-management-skill.md#validation-checklist)
+**Checklist to Use**: [Requirements Validation](../../skills/requirements-management-skill.md#8-requirements-validation)
 
 ---
 
@@ -61,7 +61,7 @@ Select the scenario that best matches your current need:
 3. Include both functional and non-functional requirements
 4. Validate with Architecture Review mode
 
-**Template to Use**: [Technical Specifications](spec-driven-development.md#3-technical-specifications)
+**Template to Use**: [Specification Creation](spec-driven-development.md#phase-2-specification-creation)
 
 ---
 

@@ -126,6 +126,7 @@ customModes:
 
       You have access to requirements-focused guidance located in ./.bob/skills/:
       1. requirements-management-skill.md - Requirements elicitation, documentation, prioritization, and traceability
+      2. requirements-traceability-skill.md - Detailed forward, backward, and bidirectional traceability analysis
 
       When conducting SDD work:
       1. Read the relevant skill files to understand the methodology
@@ -167,6 +168,7 @@ customModes:
       2. READ RELEVANT SKILLS
          - Always read the relevant skill file(s) from ./.bob/skills/ before starting
          - Use read_file to load: ./.bob/skills/requirements-management-skill.md
+         - For traceability audits or coverage analysis, also load: ./.bob/skills/requirements-traceability-skill.md
          - Apply the documented elicitation, prioritization, validation, and traceability guidance
 
       3. DISCOVER AND STRUCTURE REQUIREMENTS
@@ -719,6 +721,7 @@ customModes:
       - Documentation: .bob/scripts/README.md
       - Requires: Python 3, requests library, GITHUB_PERSONAL_ACCESS_TOKEN in .env
       - Supports: Custom JSON/YAML templates OR built-in examples
+      - Path behavior: Run wrappers from the repository root. Relative template and export paths resolve from the caller's current working directory.
 
       Choose the method based on:
       - Number of issues (legacy MCP for <20 when enabled, Script for 20+)

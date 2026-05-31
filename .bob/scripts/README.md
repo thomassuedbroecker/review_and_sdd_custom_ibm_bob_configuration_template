@@ -25,6 +25,7 @@ Three main capabilities:
 
 ### Documentation
 - `README.md` - This file
+- `check_markdown_links.py` - Validate local Markdown links and heading anchors
 
 ## Prerequisites
 
@@ -48,46 +49,43 @@ Three main capabilities:
 
 ## Usage
 
-The commands in this section run from the `.bob/scripts/` directory:
-
-```bash
-cd .bob/scripts
-```
+Run the commands in this section from the repository root. Relative template,
+update, sync, and export paths are resolved from your current working directory.
 
 ### 1. Issue Creation
 
 #### Export Example Template
 
 ```bash
-./run_issue_creator.sh --export-example my-issues.json
+.bob/scripts/run_issue_creator.sh --export-example my-issues.json
 ```
 
 #### Create Issues from Template
 
 ```bash
 # Using shell wrapper (recommended)
-./run_issue_creator.sh --repo owner/repo --template my-issues.json
+.bob/scripts/run_issue_creator.sh --repo owner/repo --template my-issues.json
 
 # Direct Python execution
-python3 create_github_issues.py --repo owner/repo --template my-issues.json --token YOUR_TOKEN
+python3 .bob/scripts/create_github_issues.py --repo owner/repo --template my-issues.json --token YOUR_TOKEN
 ```
 
 #### Use Built-in Example
 
 ```bash
-./run_issue_creator.sh --repo owner/repo --use-example
+.bob/scripts/run_issue_creator.sh --repo owner/repo --use-example
 ```
 
 #### Dry Run (Preview Without Creating)
 
 ```bash
-./run_issue_creator.sh --repo owner/repo --template my-issues.json --dry-run
+.bob/scripts/run_issue_creator.sh --repo owner/repo --template my-issues.json --dry-run
 ```
 
 #### Batch Size Control
 
 ```bash
-./run_issue_creator.sh --repo owner/repo --template my-issues.json --batch-size 5
+.bob/scripts/run_issue_creator.sh --repo owner/repo --template my-issues.json --batch-size 5
 ```
 
 ### 2. Issue Updates
@@ -95,25 +93,25 @@ python3 create_github_issues.py --repo owner/repo --template my-issues.json --to
 #### Update from JSON File
 
 ```bash
-./run_update_issues.sh --repo owner/repo --updates updates.json
+.bob/scripts/run_update_issues.sh --repo owner/repo --updates updates.json
 ```
 
 #### Update Single Issue
 
 ```bash
-./run_update_issues.sh --repo owner/repo --issue 123 --comment "Work completed"
+.bob/scripts/run_update_issues.sh --repo owner/repo --issue 123 --comment "Work completed"
 ```
 
 #### Close Multiple Issues
 
 ```bash
-./run_update_issues.sh --repo owner/repo --close 123,124,125
+.bob/scripts/run_update_issues.sh --repo owner/repo --close 123,124,125
 ```
 
 #### Add Comment and Close
 
 ```bash
-./run_update_issues.sh --repo owner/repo --issue 123 --comment "Done" --close-issue
+.bob/scripts/run_update_issues.sh --repo owner/repo --issue 123 --comment "Done" --close-issue
 ```
 
 ### 3. Issue Sync
@@ -121,19 +119,19 @@ python3 create_github_issues.py --repo owner/repo --template my-issues.json --to
 #### Export Example Sync Configuration
 
 ```bash
-./run_sync_all_issues.sh --export-example sync-config.json
+.bob/scripts/run_sync_all_issues.sh --export-example sync-config.json
 ```
 
 #### Sync from Configuration File
 
 ```bash
-./run_sync_all_issues.sh --repo owner/repo --sync sync-config.json
+.bob/scripts/run_sync_all_issues.sh --repo owner/repo --sync sync-config.json
 ```
 
 #### Use Built-in Example
 
 ```bash
-./run_sync_all_issues.sh --repo owner/repo --use-example
+.bob/scripts/run_sync_all_issues.sh --repo owner/repo --use-example
 ```
 
 ## Configuration Formats
@@ -281,6 +279,18 @@ The GitHub Issue Generator mode can use all these scripts for comprehensive issu
 5. **Check for duplicates** before running the script
 6. **Use batch-size** to avoid rate limiting on large issue sets
 
+## Documentation Link Check
+
+Run the dependency-free checker from the repository root after editing
+documentation:
+
+```bash
+python3 .bob/scripts/check_markdown_links.py
+```
+
+The checker validates local Markdown link targets and heading anchors. It skips
+external URLs because they require network access and may change independently.
+
 ## Troubleshooting
 
 ### Authentication Errors
@@ -334,7 +344,7 @@ The GitHub Issue Generator mode can use all these scripts for comprehensive issu
 
 **Command:**
 ```bash
-./run_issue_creator.sh --repo myorg/myproject --template issues.json
+.bob/scripts/run_issue_creator.sh --repo myorg/myproject --template issues.json
 ```
 
 ### Example 2: Update Issue Status
@@ -359,7 +369,7 @@ The GitHub Issue Generator mode can use all these scripts for comprehensive issu
 
 **Command:**
 ```bash
-./run_update_issues.sh --repo myorg/myproject --updates updates.json
+.bob/scripts/run_update_issues.sh --repo myorg/myproject --updates updates.json
 ```
 
 ### Example 3: Sync Repository State
@@ -407,7 +417,7 @@ The GitHub Issue Generator mode can use all these scripts for comprehensive issu
 
 **Command:**
 ```bash
-./run_sync_all_issues.sh --repo myorg/myproject --sync sync-config.json
+.bob/scripts/run_sync_all_issues.sh --repo myorg/myproject --sync sync-config.json
 ```
 
 ## Made with Bob

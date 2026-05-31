@@ -14,9 +14,10 @@ This `.bob` configuration provides:
   - 1 specification-driven development mode
   - 1 configuration gap detection mode
   - 1 GitHub issue generator mode
-- **8 Reusable Skills**
+- **9 Reusable Skills**
   - 7 architecture review skills
   - 1 requirements management skill
+  - 1 requirements traceability analysis skill
 
 This modular approach provides:
 - ✅ **Flexibility**: Use broad orchestration or focused modes
@@ -57,6 +58,7 @@ This modular approach provides:
 │ 6. Documentation Review                                      │
 │ 7. 12-Factor Compliance                                      │
 │ 8. Requirements Management                                   │
+│ 9. Requirements Traceability Analysis                        │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -196,6 +198,13 @@ Evaluates compliance with 12-factor app methodology and provides cloud-native re
 
 Supports elicitation, documentation, prioritization, validation, and traceability of requirements.
 
+### 9. 🔗 Requirements Traceability Analysis
+**File**: `../skills/requirements-traceability-skill.md`
+
+Validates forward and backward traceability, detects orphaned artifacts, and
+supports coverage reporting across requirements, design, implementation, and
+tests.
+
 ## 💡 Usage Examples
 
 ### Example 1: Complete Architecture Review
@@ -291,6 +300,10 @@ For questions or issues:
 
 ## 🔄 Version History
 
+- **v3.3** (2026-05-31) - Aligned traceability and documentation maintenance
+  - Added the requirements traceability analysis skill to the inventory
+  - Added a local Markdown link checker
+
 - **v3.2** (2026-05-31) - Aligned documentation with implemented workflows
   - Corrected the Architecture Review skill path to `.bob/skills/`
   - Corrected the Configuration Gap Detector skill path to `.bob/skills/`
@@ -314,8 +327,8 @@ For questions or issues:
 
 **Created**: 2026-03-31
 **Last Updated**: 2026-05-31
-**Version**: 3.2
+**Version**: 3.3
 **Modes**: 11
-**Skills**: 8
+**Skills**: 9
 
 For the latest updates, check `.bob/custom_modes.yaml` and the documentation directory regularly.

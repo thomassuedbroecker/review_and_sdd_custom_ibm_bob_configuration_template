@@ -108,7 +108,18 @@ A specialized skill that covers:
 
 **When to use**: When you need deep expertise in requirements engineering
 
-### 3. Interactive Guide (`sdd-interactive-guide.md`)
+### 3. Requirements Traceability Analysis Skill (`requirements-traceability-skill.md`)
+
+A specialized skill for deeper traceability audits:
+- Forward and backward traceability validation
+- Orphaned artifact detection
+- Coverage metrics and reporting
+- Git-based traceability workflows
+
+**When to use**: When basic traceability notes are not enough and you need a
+traceability audit or coverage analysis
+
+### 4. Interactive Guide (`sdd-interactive-guide.md`)
 
 A step-by-step guide for crafting effective prompts:
 - 5-step prompt crafting framework
@@ -366,6 +377,7 @@ See [Real-World Examples](./guides/sdd-interactive-guide.md#real-world-examples)
 
 - **Main SDD Mode Guide**: [`./guides/spec-driven-development.md`](./guides/spec-driven-development.md)
 - **Requirements Skill**: [`../skills/requirements-management-skill.md`](../skills/requirements-management-skill.md)
+- **Requirements Traceability Skill**: [`../skills/requirements-traceability-skill.md`](../skills/requirements-traceability-skill.md)
 - **Interactive Guide**: [`./guides/sdd-interactive-guide.md`](./guides/sdd-interactive-guide.md)
 - **Skills Overview**: [`../skills/README.md`](../skills/README.md)
 - **Mode Configuration**: [`../custom_modes.yaml`](../custom_modes.yaml)

@@ -15,8 +15,7 @@ PROJECT_ROOT="$( cd "$SCRIPT_DIR/../.." && pwd )"
 
 # Check if we're just exporting an example (doesn't need .env)
 if [[ "$*" == *"--export-example"* ]]; then
-    cd "$SCRIPT_DIR"
-    python3 sync_all_issues.py "$@"
+    python3 "$SCRIPT_DIR/sync_all_issues.py" "$@"
     exit 0
 fi
 
@@ -39,8 +38,7 @@ fi
 echo "✅ GitHub token loaded successfully"
 echo ""
 
-# Run the Python script with all arguments passed to this script
-cd "$SCRIPT_DIR"
-python3 sync_all_issues.py "$@"
+# Run the Python script while preserving caller-relative sync paths
+python3 "$SCRIPT_DIR/sync_all_issues.py" "$@"
 
 # Made with Bob

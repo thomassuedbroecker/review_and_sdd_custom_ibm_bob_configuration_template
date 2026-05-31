@@ -40,9 +40,9 @@ inventory before distributing a bundled Python environment.
 ## Content Provenance
 
 The repository includes documentation templates, Bob skills, diagrams, and
-images. The current repository history does not record a source or author for
-each artifact. [CONTENT_PROVENANCE.md](./CONTENT_PROVENANCE.md) records the
-known status and the confirmations still required from the maintainer.
+images. [CONTENT_PROVENANCE.md](./CONTENT_PROVENANCE.md) records the confirmed
+origin and licensing status for each artifact group, including the adapted
+GitHub `.gitignore` template and rendered image mappings.
 
 ## Distribution Checklist
 
@@ -51,15 +51,16 @@ Before publishing a release:
 1. Include [LICENSE](./LICENSE).
 2. Review and update [THIRD_PARTY_NOTICES.md](./THIRD_PARTY_NOTICES.md) if the
    MCP package or its dependency tree changes.
-3. Confirm the unresolved entries in
-   [CONTENT_PROVENANCE.md](./CONTENT_PROVENANCE.md).
+3. Review [CONTENT_PROVENANCE.md](./CONTENT_PROVENANCE.md) for new or changed
+   artifact groups and update their provenance records.
 4. Preserve third-party copyright and attribution notices when required.
 5. Record prominent notices in modified files when redistributing modified
    third-party Apache-licensed material.
 
 ## Review Scope
 
-The third-party dependency snapshot was generated on 2026-05-30. The license
-and content-provenance review was supported by AI tooling and requires human
-verification and acceptance. This documentation is a repository-maintenance
+The third-party dependency snapshot was generated on 2026-05-30. The
+content-provenance confirmations were completed on 2026-05-31. The license and
+content-provenance review was supported by AI tooling and requires maintainer
+acceptance for future changes. This documentation is a repository-maintenance
 aid and not legal advice.

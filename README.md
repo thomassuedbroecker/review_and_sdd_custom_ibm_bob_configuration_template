@@ -336,6 +336,14 @@ Output: List of created GitHub issues with numbers and links
 | **[.bob/scripts/README.md](./.bob/scripts/README.md)** | GitHub issue-management scripts |
 | **[GITHUB_MCP_SETUP.md](./.bob/documentation/GITHUB_MCP_SETUP.md)** | GitHub MCP server setup |
 
+## Documentation Validation
+
+After changing Markdown documentation, validate local links and heading anchors:
+
+```bash
+python3 .bob/scripts/check_markdown_links.py
+```
+
 ## License and Third-Party Notices
 
 This repository is distributed under the Apache License, Version 2.0. See

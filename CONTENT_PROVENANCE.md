@@ -13,16 +13,25 @@ applicable license or ownership statement.
 | --- | --- | --- | --- |
 | IBM Bob custom mode configuration | `.bob/custom_modes.yaml` | Created with assistance from IBM Bob and authored by Thomas Suedbroecker | Confirmed by maintainer: AI-assisted mode configuration authored, reviewed, and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
 | Reusable skill documents | `.bob/skills/` | Created with assistance from IBM Bob and authored by Thomas Suedbroecker | Confirmed by maintainer: AI-assisted skill documents authored, reviewed, and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
-| GitHub issue-management scripts | `.bob/scripts/` | Script files identify that they were made with Bob, but no artifact-level author confirmation is recorded | Maintainer confirmation required: record the author, AI-assistance review and acceptance process, and whether any third-party source was incorporated |
-| Guides and documentation | `.bob/documentation/`, `.bob/notes/` | Some documents cite external reference links, but no artifact-level origin record exists | Maintainer confirmation required: record author and origin for each document or document group, including source URLs and applicable licenses for adapted material |
+| GitHub issue-management scripts | `.bob/scripts/` | Created for this repository with AI assistance and maintained by Thomas Suedbroecker | Confirmed by maintainer: AI-assisted scripts authored, reviewed, and accepted by Thomas Suedbroecker; no third-party source incorporated; licensed under Apache-2.0 |
+| Guides and documentation | `.bob/documentation/`, `.bob/notes/` | Created for this repository with AI assistance and maintained by Thomas Suedbroecker; external links are references rather than incorporated material | Confirmed by maintainer: AI-assisted documentation authored, reviewed, and accepted by Thomas Suedbroecker; no third-party source incorporated except where separately recorded; licensed under Apache-2.0 |
 | Draw.io source diagrams | `.bob/documentation/diagramms/*.drawio` | Created with assistance from IBM Bob and optimized by Thomas Suedbroecker | Confirmed by maintainer: AI-assisted diagram sources optimized and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
-| Rendered PNG images | `.bob/images/*.png` | Rendered from diagram material created with assistance from IBM Bob and optimized by Thomas Suedbroecker | AI-assisted origin recorded. Maintainer confirmation required: map each PNG to its editable source or document its rendering method |
-| Python-oriented `.gitignore` template | `.gitignore` | File comments reference GitHub-maintained templates | Confirm source URL and applicable license |
+| Rendered PNG images | `.bob/images/*.png` | Rendered from AI-assisted diagram material and accepted by Thomas Suedbroecker; mappings are recorded below | Confirmed by maintainer: rendered diagram assets reviewed and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
+| Python-oriented `.gitignore` template | `.gitignore` | Adapted from GitHub's `Python.gitignore` template with repository-specific entries appended | Confirmed: adapted from `https://github.com/github/gitignore/blob/main/Python.gitignore`; upstream license: CC0-1.0; repository-specific additions licensed under Apache-2.0 |
 | GitHub MCP npm dependency | `.bob/settings.json` | Runtime dependency reviewed in `THIRD_PARTY_NOTICES.md` | Recorded |
+
+## Rendered Image Map
+
+| Rendered PNG | Editable Source or Design Definition | Maintenance Note |
+| --- | --- | --- |
+| `.bob/images/architecture-review.png` | `.bob/documentation/diagramms/architecture-review-system.drawio` | Export the Draw.io source after architecture-review diagram changes |
+| `.bob/images/configuration-gap-detector.png` | `.bob/documentation/diagramms/configuration-gap-detector-usage.drawio` | Export the Draw.io source after configuration-gap workflow changes |
+| `.bob/images/skills-review.png` | `.bob/documentation/diagramms/custom-modes-overview.drawio` | Export the Draw.io source after mode or review-skill diagram changes |
+| `.bob/images/spec-driven-development-overview.png` | `.bob/documentation/diagramms/spec-driven-development-overview.md` | The repository does not contain an editable Draw.io source. Treat the PNG as a maintainer-accepted standalone rendered asset and use the Markdown design definition when regenerating it. |
 
 ## Maintainer Confirmation Checklist
 
-For each unresolved row:
+For future additions or provenance changes:
 
 1. Record whether the material was created for this repository, adapted from
    another source, or generated with an AI-assisted tool.

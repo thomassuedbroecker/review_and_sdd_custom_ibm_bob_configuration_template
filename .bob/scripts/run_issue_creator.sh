@@ -15,8 +15,7 @@ PROJECT_ROOT="$( cd "$SCRIPT_DIR/../.." && pwd )"
 
 # Check if we're just exporting an example (doesn't need .env)
 if [[ "$*" == *"--export-example"* ]]; then
-    cd "$SCRIPT_DIR"
-    python3 create_github_issues.py "$@"
+    python3 "$SCRIPT_DIR/create_github_issues.py" "$@"
     exit 0
 fi
 
@@ -47,8 +46,7 @@ if [ -n "$GITHUB_PERSONAL_ACCESS_TOKEN" ]; then
 fi
 echo ""
 
-# Run the Python script with all arguments passed to this script
-cd "$SCRIPT_DIR"
-python3 create_github_issues.py "$@"
+# Run the Python script while preserving caller-relative template paths
+python3 "$SCRIPT_DIR/create_github_issues.py" "$@"
 
 # Made with Bob
