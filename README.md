@@ -17,7 +17,7 @@ This repository is intended to be used as a template. Create your own GitHub rep
 ## What It Does
 
 - **11 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, and GitHub issue generator
-- **8 Reusable Skills**: Comprehensive coverage of architecture review domains and requirements management
+- **9 Reusable Skills**: Comprehensive coverage of architecture review domains, requirements management, and requirements traceability analysis
 - **Comprehensive Architecture Reviews**: Conduct multi-dimensional reviews using specialized skills covering security, scalability, patterns, maintainability, and more
 - **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle
 - **Adaptive Configuration**: Automatically detect gaps and propose new capabilities based on emerging requirements
@@ -85,7 +85,7 @@ repositories that you want to inspect, review, or use as nested folders under
 
 ### 1. Explore Pre-existing Configuration
 Review the available modes and skills to understand capabilities:
-- Browse the [8 specialized skills](./.bob/skills/README.md) for different review areas
+- Browse the [9 specialized skills](./.bob/skills/README.md) for different review areas
 - Study the [Architecture Review documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)
 - Review [Spec-Driven Development guide](./.bob/documentation/SDD-README.md)
 - Review the [GitHub issue-management scripts](./.bob/scripts/README.md) when
@@ -109,10 +109,10 @@ Review the available modes and skills to understand capabilities:
 | 🔍 Configuration Gap Detector | Proposes missing capabilities when the current setup is insufficient |
 | 📋 GitHub Issue Generator | Converts todo lists and findings into GitHub issues |
 
-The configuration also includes **8 reusable skills**: seven architecture
-review skills and one requirements-management skill. See the
-[skills documentation](./.bob/skills/README.md) for detailed descriptions,
-usage guidance, customization options, and examples.
+The configuration also includes **9 reusable skills**: seven architecture
+review skills, one requirements-management skill, and one requirements-traceability
+analysis skill. See the [skills documentation](./.bob/skills/README.md) for
+detailed descriptions, usage guidance, customization options, and examples.
 
 ## Configuration Visuals
 

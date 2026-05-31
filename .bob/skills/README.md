@@ -110,11 +110,29 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 - Requirements documentation standards
 - Requirements analysis and modeling
 - Requirements prioritization (MoSCoW, Kano, WSJF)
-- Requirements traceability
+- Basic requirements traceability
 - Stakeholder management
 - User story writing and acceptance criteria
 
 **When to Use**: Project planning, requirements gathering, specification creation, stakeholder analysis, requirements validation
+
+---
+
+### 9. Requirements Traceability Analysis (`requirements-traceability-skill.md`)
+**Purpose**: Provide comprehensive requirements traceability analysis using open-source tools and git integration, enabling complete, validated traceability chains from requirements through design to implementation.
+
+**Key Areas**:
+- Forward traceability (requirements → design → implementation → tests)
+- Backward traceability (tests → implementation → design → requirements)
+- Bidirectional traceability validation
+- Orphan detection (requirements, design, implementation)
+- Coverage metrics and reporting
+- Git-based traceability workflows
+- Traceability gap detection
+- Automated parsing and validation
+- Open-source traceability tooling
+
+**When to Use**: Traceability audits, coverage analysis, gap detection, git workflow integration, pull request validation, compliance reporting, requirements tracking across branches
 
 ---
 
@@ -267,6 +285,6 @@ Keep skills up-to-date:
 
 ---
 
-**Last Updated**: 2026-05-29
-**Version**: 1.2
-**Skills Count**: 8
+**Last Updated**: 2026-05-31
+**Version**: 1.3
+**Skills Count**: 9
