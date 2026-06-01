@@ -12,7 +12,11 @@ for batch operations and a legacy GitHub MCP configuration for interactive use.
 The legacy MCP package is deprecated and should be replaced before production use.
 This repository is intended to be used as a template. Create your own GitHub repository from this template, then clone your repository and open its root folder in IBM Bob. This gives you an independent workspace that you can customize and version-control for your own use.
 
+The custom SDD workflow:
+
 ![](./images/custom_sdd_workflow_in_bob.jpg)
+
+Usage example on YouTube:
 
 [![Use IBM Bob with custom Specification Driven Development (SDD) Modes and GitHub Integration](https://img.youtube.com/vi/33zFrqwhKOI/0.jpg)](https://www.youtube.com/watch?v=33zFrqwhKOI)
 
