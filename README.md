@@ -14,6 +14,9 @@ This repository is intended to be used as a template. Create your own GitHub rep
 
 ![](./images/custom_sdd_workflow_in_bob.jpg)
 
+[![Use IBM Bob with custom Specification Driven Development (SDD) Modes and GitHub Integration](https://img.youtube.com/vi/33zFrqwhKOI/0.jpg)](https://www.youtube.com/watch?v=33zFrqwhKOI)
+
+
 📚 **[View Full Documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)**
 
 ## What It Does
