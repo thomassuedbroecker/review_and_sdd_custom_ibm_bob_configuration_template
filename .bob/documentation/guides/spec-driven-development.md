@@ -32,7 +32,15 @@ Spec-Driven Development emphasizes that **specifications are the foundation** of
 - Validate prompt quality and completeness
 - Suggest improvements based on best practices
 
-### 4. SDLC Integration
+### 4. AI Integration and Usage
+- Identify where AI tools, models, agents, MCP servers, and coding assistants
+  participate in the SDLC
+- Document prompt assets, generated-code provenance, human review checkpoints,
+  data-use constraints, and validation evidence
+- Treat AI usage as requirements, architecture decisions, operational controls,
+  or traceability artifacts when it materially affects delivery or risk
+
+### 5. SDLC Integration
 - Connect specifications to all SDLC phases:
   - **Planning**: Define project scope and objectives
   - **Analysis**: Gather and analyze requirements
@@ -41,6 +49,8 @@ Spec-Driven Development emphasizes that **specifications are the foundation** of
   - **Testing**: Derive test cases from specifications
   - **Deployment**: Ensure deployment meets specifications
   - **Maintenance**: Track changes against original specs
+  - **AI Integration and Usage**: Govern AI-assisted workflows, prompts,
+    model/tool choices, generated-code provenance, and human review checkpoints
 
 ## When to Use This Mode
 
@@ -48,6 +58,7 @@ Use SDD mode when you need to:
 - **Start a new project** and need to define requirements and specifications
 - **Clarify requirements** for an existing project
 - **Create effective prompts** for AI-assisted development
+- **Integrate AI usage** into SDLC artifacts, guardrails, validation, and review
 - **Review specifications** for completeness and quality
 - **Bridge the gap** between business needs and technical implementation
 - **Improve communication** between stakeholders and developers
@@ -368,6 +379,18 @@ Track the effectiveness of SDD practices:
 - NIST Secure Software Development Framework (SSDF)
 - OWASP ASVS and OWASP Top 10
 - The Twelve-Factor App
+
+### AI Integration and Usage
+- Source basis:
+  [`../KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis`](../KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis)
+- IBM Bob documentation and IBM spec-driven development guidance for
+  AI-assisted SDLC framing
+- NIST AI Risk Management Framework and NIST Generative AI Profile for AI
+  governance, trustworthiness, human oversight, and validation framing
+- OWASP Top 10 for Large Language Model Applications for LLM, agent, prompt,
+  data exposure, and generated-output risk checks
+- NIST Secure Software Development Framework (SSDF) for secure development
+  practice alignment
 
 ### Specification Techniques
 - User Stories and Use Cases

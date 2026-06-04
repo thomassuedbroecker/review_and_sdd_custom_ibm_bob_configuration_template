@@ -123,12 +123,18 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 **Key Areas**:
 - SDLC phase classification
+- AI integration and usage classification
 - Targeted stakeholder questioning
 - Mode and skill selection
 - SDD and architecture-review gap detection
 - Handoff to Configuration Gap Detector
 
 **When to Use**: Ambiguous user requests, early SDD conversations, architecture-review scoping, missing-capability checks, mode/skill selection
+
+**Source Basis**: AI Integration and Usage is grounded in IBM Bob, IBM SDD,
+NIST AI RMF, NIST Generative AI Profile, OWASP LLM Top 10, and NIST SSDF
+references documented in
+[`../documentation/KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis`](../documentation/KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis).
 
 ---
 

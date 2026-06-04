@@ -171,10 +171,12 @@ customModes:
       Spec-Driven Development Process:
 
       1. UNDERSTAND THE REQUEST
-         - What SDLC phase is involved? (planning, analysis, design, implementation, testing, deployment, maintenance)
+         - What SDLC phase is involved? (planning, analysis, design, implementation, testing, deployment, maintenance, AI integration and usage)
          - Is the user creating new specifications or reviewing existing ones?
          - What business objective, stakeholder need, or delivery constraint drives the request?
          - What artifacts already exist? (requirements docs, user stories, ADRs, prompts, tickets, code, tests)
+         - Does the workflow include AI tools, models, agents, MCP servers, prompt assets,
+           generated-code provenance, human review, or AI usage guardrails?
          - If any of these are unclear, read ./.bob/skills/sdlc-discovery-gap-analysis-skill.md
            and use its Grill Me pattern to ask targeted questions or state safe assumptions.
 

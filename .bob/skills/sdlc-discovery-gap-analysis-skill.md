@@ -33,6 +33,7 @@ Identify the strongest SDLC phase signal:
 | Testing / Validation | test cases, coverage, verification, traceability | Requirements Traceability, GitHub Issue Traceability |
 | Deployment / Operations | 12-factor, config, logs, runbooks, cloud readiness | 12-Factor Compliance, Documentation Review |
 | Maintenance | technical debt, migration, refactoring, supportability | Maintainability & Technical Debt |
+| AI Integration and Usage | AI-assisted coding, model/tool selection, prompt workflows, guardrails, human review, generated-code provenance | SDD, Documentation Review, Security & Threat Modeling, Configuration Gap Detector |
 
 If multiple phases apply, name the primary phase and secondary phases before
 choosing skills.
@@ -60,6 +61,14 @@ Use these question groups:
   ADRs, diagrams, issues, tests, deployment config, or runbooks?
 - Are there source-of-truth documents or constraints that must not be changed?
 
+**AI Integration and Usage**
+- Which AI tools, models, agents, MCP servers, or coding assistants are part
+  of the workflow?
+- What guardrails, human review, generated-code provenance, and validation
+  evidence are required?
+- Should AI usage be documented as requirements, architecture decisions,
+  prompts, test evidence, or operational controls?
+
 **Constraints and Quality Attributes**
 - Which constraints matter most: security, performance, scalability,
   compliance, cost, timeline, maintainability, or operations?
@@ -85,6 +94,9 @@ Map the clarified request to the smallest useful skill set:
 - Use Requirements Traceability when the work depends on forward or backward
   links across requirements, design, implementation, issues, and tests.
 - Use GitHub Issue Traceability when output must become GitHub issues.
+- Use Security & Threat Modeling and Documentation Review when AI integration
+  introduces tool access, data exposure, generated-code provenance, prompt
+  governance, or human approval requirements.
 
 State the selected phase, mode, and skill set before doing substantial work.
 
@@ -96,6 +108,9 @@ covers the request. A gap exists when:
   medical devices, automotive safety, financial compliance, AI governance,
   data architecture, privacy engineering, accessibility, platform engineering,
   or product management.
+- The task requires AI governance, model evaluation, prompt lifecycle
+  management, agent safety, data-use controls, or generated-code compliance
+  beyond the current SDD and architecture-review guidance.
 - The work requires a lifecycle stage not covered well enough by current SDD
   or architecture-review guidance.
 - The task requires an authoritative standard or framework that is not listed
@@ -161,7 +176,17 @@ Use these resources when a task requires stronger grounding:
 - OWASP ASVS and OWASP Top 10: Application security requirements and review.
 - NIST Secure Software Development Framework (SSDF): Secure development
   practices.
+- IBM Bob documentation and IBM spec-driven development guidance: product and
+  SDD framing for AI-assisted lifecycle work.
+- NIST AI Risk Management Framework and NIST Generative AI Profile: AI
+  governance, trustworthiness, human oversight, and validation framing.
+- OWASP Top 10 for Large Language Model Applications: LLM, agent, prompt,
+  data exposure, and generated-output risk baseline.
 - The Twelve-Factor App: Cloud-native operational design principles.
+
+For the full source map, including why AI Integration and Usage was added as
+an SDLC topic, see
+[`../documentation/KNOWLEDGE_SOURCES.md`](../documentation/KNOWLEDGE_SOURCES.md).
 
 ## Related Skills
 - requirements-management-skill.md

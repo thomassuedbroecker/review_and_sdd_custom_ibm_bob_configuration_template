@@ -66,7 +66,7 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
 ## Key Features
 
 ### Comprehensive Coverage
-- All 7 SDLC phases (Planning, Requirements, Design, Implementation, Testing, Deployment, Maintenance)
+- All 8 SDLC topics (Planning, Requirements, Design, Implementation, Testing, Deployment, Maintenance, AI Integration and Usage)
 - Multiple use cases (New projects, prompt crafting, requirements review, technical specs)
 - Complete workflows with step-by-step guidance
 - 15+ real-world examples and transformations
@@ -149,12 +149,13 @@ All requested resources have been integrated:
 - Vibes, Specs, Skills, Agents article
 - IBM Requirements Management guide
 - SDLC Discovery and Gap Analysis skill
+- AI Integration and Usage source basis in [`../KNOWLEDGE_SOURCES.md`](../KNOWLEDGE_SOURCES.md)
 - Architecture Review Mode and Skills
 
 ## Quality Metrics
 
 - **Total Lines**: 3,053+ lines of documentation
-- **Coverage**: All 7 SDLC phases
+- **Coverage**: All 8 SDLC topics
 - **Examples**: 15+ real-world examples
 - **Templates**: 10+ ready-to-use templates
 - **Checklists**: 8+ validation checklists

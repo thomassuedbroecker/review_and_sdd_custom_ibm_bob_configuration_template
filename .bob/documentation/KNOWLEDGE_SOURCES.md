@@ -56,7 +56,7 @@ standards-based guidance.
 | Mode | Local Knowledge Source | External / Conceptual Sources | Notes |
 | --- | --- | --- | --- |
 | Architecture Review (`arch-review`) | `sdlc-discovery-gap-analysis-skill.md`, seven architecture review skills, `README-ARCHITECTURE-REVIEW.md`, architecture review guides | C4 Model, arc42, ADR practice, OWASP, NIST SSDF, Twelve-Factor App, DDD, SOLID, cloud architecture patterns | Orchestrates local skills. It should classify SDLC phase and review scope before findings. |
-| Spec-Driven Development (`sdd`) | `sdlc-discovery-gap-analysis-skill.md`, `requirements-management-skill.md`, `requirements-traceability-skill.md`, `SDD-README.md`, SDD guides | IBM Bob docs, IBM spec-driven development article, ISO/IEC/IEEE 29148, IREB CPRE, SWEBOK, BDD, DDD, TDD | Uses local requirements and traceability skills before implementation prompts or issue preparation. Traceability matrices are limited to GitHub issues, Markdown documents, and code entries. |
+| Spec-Driven Development (`sdd`) | `sdlc-discovery-gap-analysis-skill.md`, `requirements-management-skill.md`, `requirements-traceability-skill.md`, `SDD-README.md`, SDD guides | IBM Bob docs, IBM spec-driven development article, ISO/IEC/IEEE 29148, IREB CPRE, SWEBOK, BDD, DDD, TDD, NIST AI RMF, NIST Generative AI Profile, OWASP LLM Top 10, NIST SSDF | Uses local requirements and traceability skills before implementation prompts or issue preparation. AI Integration and Usage is treated as an SDLC concern when AI tools, models, agents, MCP servers, prompts, or generated-code provenance affect delivery risk. Traceability matrices are limited to GitHub issues, Markdown documents, and code entries. |
 | Security & Threat Modeling (`security-review`) | `security-threat-modeling-skill.md` | OWASP Top 10, OWASP ASVS, OWASP threat modeling guidance, STRIDE, ISO 27001, GDPR, HIPAA, PCI DSS, SOC 2 | Standards are conceptual anchors. Exact compliance requirements must be verified for the target jurisdiction and version. |
 | Scalability & Performance (`scalability-review`) | `scalability-performance-skill.md` | SRE capacity planning concepts, caching, load balancing, queueing, database performance, autoscaling patterns | Uses engineering patterns and measurable NFRs from the repository context. |
 | Architecture Patterns (`patterns-review`) | `architecture-patterns-skill.md` | DDD, CQRS, Event Sourcing, SOLID, GoF patterns, enterprise integration patterns, API design practices, hexagonal and clean architecture | Evaluates fit, not pattern adoption for its own sake. |
@@ -71,7 +71,7 @@ standards-based guidance.
 
 | Skill | Local Purpose | Primary Knowledge Sources | Source Type |
 | --- | --- | --- | --- |
-| `sdlc-discovery-gap-analysis-skill.md` | Clarify user intent, classify SDLC phase, select modes and skills, detect gaps | ISO/IEC/IEEE 29148, SWEBOK, IREB CPRE, C4 Model, arc42, ADRs, OWASP, NIST SSDF, Twelve-Factor App | Standards, frameworks, official guidance, local workflow design |
+| `sdlc-discovery-gap-analysis-skill.md` | Clarify user intent, classify SDLC phase including AI integration and usage, select modes and skills, detect gaps | ISO/IEC/IEEE 29148, SWEBOK, IREB CPRE, C4 Model, arc42, ADRs, OWASP, NIST SSDF, Twelve-Factor App, IBM Bob docs, IBM spec-driven development guidance, NIST AI RMF, NIST Generative AI Profile, OWASP LLM Top 10 | Standards, frameworks, official guidance, local workflow design |
 | `requirements-management-skill.md` | Elicit, document, prioritize, validate, and trace requirements | ISO/IEC/IEEE 29148, IBM Requirements Management, IREB CPRE, IEEE 830 history, MoSCoW, Kano, WSJF, BDD | Standards, vendor guidance, established methods |
 | `requirements-traceability-skill.md` | Validate forward, backward, and bidirectional traceability | Markdown traceability matrices, GitHub issue workflow, code-entry references, coverage metrics, SDLC audit practice | Established engineering practice and local workflow design with explicit carrier restriction |
 | `github-issue-traceability-skill.md` | Map requirements to GitHub issue hierarchy and implementation/test links | GitHub issue conventions, SDLC traceability, requirement ID practices, commit reference conventions, code comments | Tool practice and local workflow design with GitHub as the only supported issue carrier |
@@ -94,6 +94,9 @@ configuration:
 | IBM Bob introduction | [IBM Bob getting started introduction](https://bob.ibm.com/docs/ide/getting-started/tutorials/introduction) | Product-level lifecycle positioning |
 | IBM Bob launch | [IBM announcement for Bob](https://newsroom.ibm.com/2026-04-28-introducing-ibm-bob-ai-development-partner-that-takes-enterprises-from-ai-assisted-coding-to-production-ready-software) | Public IBM positioning and production-ready SDLC framing |
 | Spec-driven development | [IBM Think: Spec-driven development](https://www.ibm.com/think/topics/spec-driven-development) | SDD framing and AI-assisted development context |
+| AI risk management | [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) | Governance, risk, and trustworthiness framing for AI-assisted workflows |
+| Generative AI risk profile | [NIST Generative AI Profile](https://www.nist.gov/itl/ai-risk-management-framework/generative-artificial-intelligence-profile) | Generative-AI-specific risk management and control considerations |
+| LLM application risks | [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | LLM, agent, prompt, data exposure, and generated-output risk baseline |
 | Requirements engineering | [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) | Requirements engineering standard |
 | Requirements practice | [IBM Requirements Management](https://www.ibm.com/think/topics/what-is-requirements-management) | Vendor guidance for requirements management |
 | Requirements certification | [IREB CPRE](https://www.ireb.org/en/cpre/) | Requirements engineering professional body |
@@ -108,6 +111,32 @@ configuration:
 | Cloud-native operations | [The Twelve-Factor App](https://12factor.net/) | Cloud-native app methodology |
 | GitHub issue automation | [GitHub REST issues API](https://docs.github.com/en/rest/issues/issues) | Issue creation and update behavior for scripts |
 | GitHub MCP | [GitHub MCP server](https://github.com/github/github-mcp-server) | Maintained GitHub MCP reference for future migration |
+
+## AI Integration and Usage Source Basis
+
+AI Integration and Usage was added as an SDLC topic to make AI-assisted
+development explicit instead of hiding it inside implementation or tooling
+tasks. Use this topic when the workflow includes AI coding assistants, models,
+agents, MCP servers, prompt assets, generated-code provenance, human review
+checkpoints, data-use restrictions, or validation evidence for AI-assisted
+outputs.
+
+The topic is grounded in these source groups:
+
+| Source Group | References | How It Informs the SDLC Topic |
+| --- | --- | --- |
+| IBM Bob and SDD product framing | IBM Bob documentation, IBM Bob introduction, IBM Bob launch announcement, IBM Think spec-driven development article | Positions AI assistance as lifecycle work that spans requirements, design, coding, validation, and production readiness. |
+| AI governance and risk | NIST AI RMF, NIST Generative AI Profile | Provides the risk-management basis for guardrails, human oversight, data-use limits, and validation evidence. |
+| LLM and agent application security | OWASP Top 10 for Large Language Model Applications, OWASP ASVS, OWASP Top 10 | Provides security-risk prompts for tool access, prompt injection, data leakage, excessive agency, insecure output handling, and supply-chain exposure. |
+| Secure software development | NIST SSDF | Keeps AI-assisted implementation aligned with secure SDLC practices, review evidence, and provenance expectations. |
+| Local traceability practice | Requirements Traceability skill, GitHub Issue Traceability skill, Markdown and code-entry conventions | Restricts traceability matrices to GitHub issues, Markdown documents, and code entries in this configuration. |
+
+When adding AI-specific skill behavior, first check whether the existing SDD,
+Documentation Review, Security & Threat Modeling, Requirements Traceability,
+and Configuration Gap Detector skills cover the request. Introduce a new skill
+only when the user needs repeatable work for model evaluation, AI governance,
+prompt lifecycle management, agent safety, privacy engineering, or AI supply
+chain compliance that cannot be handled by those existing skills.
 
 ## Source Trust and Maintenance Rules
 

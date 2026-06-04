@@ -34,6 +34,8 @@ Before writing a prompt, answer these questions:
 - [ ] **Testing**: Validating functionality
 - [ ] **Deployment**: Releasing to production
 - [ ] **Maintenance**: Fixing bugs and adding features
+- [ ] **AI Integration and Usage**: Governing AI tools, prompts, agents,
+  generated-code provenance, review checkpoints, and validation evidence
 
 #### 1.2 What Is Your Specific Goal?
 Write a one-sentence goal statement:
@@ -561,6 +563,49 @@ Identify and fix the slow database queries to achieve page load times under
 - [ ] Performance improvements documented
 ```
 
+#### AI Integration and Usage Prompts
+
+**Focus on:**
+- Approved AI tools, models, agents, and MCP servers
+- Prompt assets and prompt-change expectations
+- Generated-code provenance and human review checkpoints
+- Data-use, privacy, security, and access-control constraints
+- Validation evidence for AI-assisted outputs
+
+**Example Prompt:**
+```markdown
+# AI Integration and Usage: Development Workflow
+
+## Context
+The team uses AI-assisted development across requirements, design,
+implementation, testing, and documentation.
+
+## Objective
+Define clear AI usage requirements and guardrails so AI-assisted work remains
+traceable, reviewable, and safe for the project.
+
+## Requirements
+- Document approved AI tools, models, agents, and MCP servers
+- Define what data may and may not be shared with AI tools
+- Record prompt assets that are part of repeatable workflows
+- Require human review for AI-generated code and specifications
+- Capture generated-code provenance in Markdown documentation
+- Link AI-assisted implementation work to GitHub issues and code entries
+
+## Expected Output
+- AI usage requirements
+- Guardrail checklist
+- Human review process
+- Generated-code provenance notes
+- Validation evidence requirements
+
+## Success Criteria
+- [ ] AI tools and usage boundaries are documented
+- [ ] Human review checkpoints are clear
+- [ ] Generated-code provenance is recorded
+- [ ] Validation evidence is linked to requirements or issues
+```
+
 ---
 
 ### Step 4: Validate Your Prompt ✅
@@ -937,6 +982,36 @@ under normal load (1000 concurrent users).
 
 ## Implementation Plan
 [How to implement]
+```
+
+### Template 4: AI Integration and Usage
+```markdown
+# AI Integration and Usage: [Workflow or Feature]
+
+## Context
+[Where AI tools, models, agents, MCP servers, or coding assistants are used]
+
+## Objective
+[What AI-assisted workflow should accomplish]
+
+## Approved AI Usage
+- Tools/models/agents: [List]
+- Allowed data: [What can be shared]
+- Restricted data: [What must not be shared]
+
+## Guardrails
+- Human review: [Required checkpoints]
+- Provenance: [How generated content is recorded]
+- Validation: [Tests, reviews, or evidence required]
+
+## Expected Output
+- [Policy, requirements, prompts, ADR, review checklist, or issue-ready tasks]
+
+## Success Criteria
+- [ ] AI usage is documented
+- [ ] Data and access boundaries are clear
+- [ ] Human review is defined
+- [ ] Validation evidence is traceable
 ```
 
 ---

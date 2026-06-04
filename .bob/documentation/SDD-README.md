@@ -257,6 +257,25 @@ SDD mode integrates with all SDLC phases:
 
 **Example Prompt**: See [Implementation Phase Prompts](./guides/sdd-interactive-guide.md#implementation-phase-prompts)
 
+### AI Integration and Usage
+**Focus**: Govern how AI tools are used across requirements, design,
+implementation, testing, deployment, and maintenance
+**SDD Activities**:
+- Document approved AI tools, models, agents, and MCP servers
+- Define prompt assets, prompt ownership, and prompt-change expectations
+- Capture generated-code provenance and human review checkpoints
+- Specify data-use, privacy, security, and access-control constraints
+- Define validation evidence for AI-assisted outputs
+
+**Example Prompt**: "Create AI integration and usage requirements for this
+project, including approved tools, guardrails, generated-code provenance,
+human review, and validation evidence."
+
+**Source Basis**: See
+[`KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis`](KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis)
+for the IBM Bob, IBM SDD, NIST AI RMF, NIST Generative AI Profile, OWASP LLM
+Top 10, and NIST SSDF resources used to introduce this SDLC topic.
+
 ### Testing Phase
 **Focus**: Quality assurance and validation
 **SDD Activities**:
