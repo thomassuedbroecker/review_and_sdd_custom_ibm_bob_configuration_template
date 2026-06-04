@@ -26,7 +26,7 @@ This guide provides comprehensive documentation for the custom modes configured 
 This project includes **11 custom modes** organized into five categories:
 
 ### 1. Comprehensive Review Mode
-- **🏛️ Architecture Review** - Orchestrates comprehensive reviews using 7 specialized skills
+- **🏛️ Architecture Review** - Orchestrates comprehensive reviews using 7 specialized review skills plus SDLC discovery when scope is unclear
 
 ### 2. Specialized Review Modes (7)
 - **🔒 Security & Threat Modeling** - Security architecture and threat analysis
@@ -55,6 +55,8 @@ The **🏛️ Architecture Review** mode is the primary orchestrator that conduc
 
 ### Key Features
 - **Skill-Based Architecture**: Uses 7 modular review skills from `.bob/skills/`
+  and the SDLC discovery skill when intent, lifecycle phase, artifacts, or
+  expected output need clarification
 - **Flexible Scope**: Conduct complete or focused reviews
 - **Consistent Methodology**: Same approach across all reviews
 - **Extensible**: Easy to add new skills
@@ -68,13 +70,14 @@ The **🏛️ Architecture Review** mode is the primary orchestrator that conduc
 - Compliance checks
 
 ### Available Skills
-1. **business-alignment-skill.md** - Business goals and quality attributes
-2. **security-threat-modeling-skill.md** - Security gaps and threat analysis
-3. **scalability-performance-skill.md** - System capacity and performance
-4. **architecture-patterns-skill.md** - Patterns and best practices
-5. **maintainability-technical-debt-skill.md** - Code quality and technical debt
-6. **documentation-review-skill.md** - Documentation completeness
-7. **twelve-factor-compliance-skill.md** - Cloud-native readiness
+1. **sdlc-discovery-gap-analysis-skill.md** - Grill Me discovery, SDLC phase classification, and missing-capability checks
+2. **business-alignment-skill.md** - Business goals and quality attributes
+3. **security-threat-modeling-skill.md** - Security gaps and threat analysis
+4. **scalability-performance-skill.md** - System capacity and performance
+5. **architecture-patterns-skill.md** - Patterns and best practices
+6. **maintainability-technical-debt-skill.md** - Code quality and technical debt
+7. **documentation-review-skill.md** - Documentation completeness
+8. **twelve-factor-compliance-skill.md** - Cloud-native readiness
 
 ---
 
@@ -428,7 +431,24 @@ software requirements.
 
 ---
 
-### Skill 9: Requirements Traceability Analysis
+### Skill 9: SDLC Discovery and Gap Analysis
+
+**File**: `.bob/skills/sdlc-discovery-gap-analysis-skill.md`
+
+**Purpose**: Clarify the user's SDLC phase, expected outcome, artifacts,
+constraints, and missing skill or resource needs before SDD or architecture
+review work begins.
+
+**Key Review Areas**:
+1. Grill Me discovery questions
+2. SDLC phase classification
+3. Mode and skill selection
+4. SDD and architecture-review gap detection
+5. Handoff to Configuration Gap Detector
+
+---
+
+### Skill 10: Requirements Traceability Analysis
 
 **File**: `.bob/skills/requirements-traceability-skill.md`
 
@@ -441,6 +461,22 @@ implementation, and tests.
 3. Orphaned artifact detection
 4. Coverage metrics and reporting
 5. Git-based traceability workflows
+
+---
+
+### Skill 11: GitHub Issue Traceability
+
+**File**: `.bob/skills/github-issue-traceability-skill.md`
+
+**Purpose**: Structure GitHub issues with SDLC traceability metadata,
+requirement links, implementation references, and test validation links.
+
+**Key Review Areas**:
+1. Issue hierarchy design (Epic → Feature → Task → Test)
+2. Requirement-to-issue mapping
+3. Traceability metadata
+4. Git commit and code comment conventions
+5. Test-to-requirement linking
 
 ---
 

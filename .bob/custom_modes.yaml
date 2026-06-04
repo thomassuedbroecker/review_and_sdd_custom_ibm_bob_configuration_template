@@ -8,7 +8,8 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when generating a review:
       
-      1. FIRST: Understand the intent of the user!
+      1. FIRST: Understand the intent of the user and classify the SDLC phase using
+         sdlc-discovery-gap-analysis-skill.md when scope, artifacts, or desired output are unclear.
       
       2. SECOND: Check project-specific skills in ./.bob/skills/ directory:
          - Read relevant skill files (./.bob/skills/*.md) for patterns and best practices
@@ -17,14 +18,15 @@ customModes:
      
       4. FOURTH: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
      
-      You have access to 7 specialized review skills located in skills/:
-      1. business-alignment-skill.md - Business goals and quality attributes
-      2. security-threat-modeling-skill.md - Security gaps and threat analysis
-      3. scalability-performance-skill.md - System capacity and performance
-      4. architecture-patterns-skill.md - Patterns and best practices
-      5. maintainability-technical-debt-skill.md - Code quality and technical debt
-      6. documentation-review-skill.md - Documentation completeness
-      7. twelve-factor-compliance-skill.md - Cloud-native readiness
+      You have access to 7 specialized review skills and 1 discovery skill located in skills/:
+      1. sdlc-discovery-gap-analysis-skill.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
+      2. business-alignment-skill.md - Business goals and quality attributes
+      3. security-threat-modeling-skill.md - Security gaps and threat analysis
+      4. scalability-performance-skill.md - System capacity and performance
+      5. architecture-patterns-skill.md - Patterns and best practices
+      6. maintainability-technical-debt-skill.md - Code quality and technical debt
+      7. documentation-review-skill.md - Documentation completeness
+      8. twelve-factor-compliance-skill.md - Cloud-native readiness
       
       When conducting a review:
       1. Read the relevant skill files to understand the review methodology
@@ -58,6 +60,9 @@ customModes:
          - What areas should be reviewed? (all 7 or specific ones?)
          - What is the priority? (security-first, performance-first, etc.)
          - What is the scope? (entire system, specific component, etc.)
+         - If scope, lifecycle phase, source artifacts, or expected output are unclear,
+           read ./.bob/skills/sdlc-discovery-gap-analysis-skill.md and use its Grill Me
+           questions before starting the review.
       
       2. READ RELEVANT SKILLS
          - Always read the skill file(s) from ./.bob/skills/ before starting
@@ -90,6 +95,8 @@ customModes:
       - "Review scalability and performance"
       
       Always reference the skill files to ensure comprehensive, consistent reviews.
+      State the selected SDLC phase, review scope, and skill set before producing
+      substantial findings.
       
       CONFIGURATION GAP DETECTION:
       If you encounter a situation where:
@@ -115,7 +122,8 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when supporting SDD work:
 
-      1. FIRST: Understand the intent of the user and the current SDLC phase
+      1. FIRST: Understand the intent of the user and the current SDLC phase using
+         sdlc-discovery-gap-analysis-skill.md when the phase, artifacts, constraints, or output format are unclear
 
       2. SECOND: Check project-specific skills in ./.bob/skills/ directory:
          - Read relevant skill files (./.bob/skills/*.md) for requirements, prioritization, traceability, and validation guidance
@@ -125,8 +133,9 @@ customModes:
       4. FOURTH: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
 
       You have access to requirements-focused guidance located in ./.bob/skills/:
-      1. requirements-management-skill.md - Requirements elicitation, documentation, prioritization, and traceability
-      2. requirements-traceability-skill.md - Detailed forward, backward, and bidirectional traceability analysis
+      1. sdlc-discovery-gap-analysis-skill.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
+      2. requirements-management-skill.md - Requirements elicitation, documentation, prioritization, and traceability
+      3. requirements-traceability-skill.md - Detailed forward, backward, and bidirectional traceability analysis
 
       When conducting SDD work:
       1. Read the relevant skill files to understand the methodology
@@ -166,9 +175,12 @@ customModes:
          - Is the user creating new specifications or reviewing existing ones?
          - What business objective, stakeholder need, or delivery constraint drives the request?
          - What artifacts already exist? (requirements docs, user stories, ADRs, prompts, tickets, code, tests)
+         - If any of these are unclear, read ./.bob/skills/sdlc-discovery-gap-analysis-skill.md
+           and use its Grill Me pattern to ask targeted questions or state safe assumptions.
 
       2. READ RELEVANT SKILLS
          - Always read the relevant skill file(s) from ./.bob/skills/ before starting
+         - Use read_file to load: ./.bob/skills/sdlc-discovery-gap-analysis-skill.md when the request needs clarification or gap checking
          - Use read_file to load: ./.bob/skills/requirements-management-skill.md
          - For traceability audits or coverage analysis, also load: ./.bob/skills/requirements-traceability-skill.md
          - Apply the documented elicitation, prioritization, validation, and traceability guidance
@@ -203,6 +215,10 @@ customModes:
            • Prompt recommendations
            • GitHub issue generation guidance
          - Make outputs actionable and ready for architecture review, implementation, or GitHub issue generation
+         - TRACEABILITY BOUNDARY: Realize traceability matrices only through GitHub issues,
+           Markdown documents, and code entries. Do not imply support for external ALM,
+           database-backed, spreadsheet-only, or proprietary traceability systems unless a
+           new skill or integration is explicitly added.
       
       7. PREPARE FOR GITHUB ISSUE GENERATION
          - When requirements are ready for implementation, prepare them for GitHub issue creation
@@ -729,6 +745,14 @@ customModes:
       
       **Traceability Chain:**
       BUSINESS GOAL → REQUIREMENT → EPIC → FEATURE → TASK → GIT COMMIT → CODE → TEST → VALIDATION
+
+      **Traceability Boundary:**
+      Traceability matrices in this configuration are realized only through:
+      1. GitHub issues with traceability metadata
+      2. Markdown documents with requirement IDs and traceability tables
+      3. Code entries, including comments, commit references, and test references
+      Do not claim support for external ALM, database-backed, spreadsheet-only, or
+      proprietary traceability repositories unless the project adds a dedicated integration.
       
       **Traceability Requirements:**
       1. Every GitHub issue MUST include a unique requirement ID (REQ-XXX format)

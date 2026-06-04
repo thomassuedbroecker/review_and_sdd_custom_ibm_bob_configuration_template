@@ -14,8 +14,9 @@ This `.bob` configuration provides:
   - 1 specification-driven development mode
   - 1 configuration gap detection mode
   - 1 GitHub issue generator mode
-- **10 Reusable Skills**
+- **11 Reusable Skills**
   - 7 architecture review skills
+  - 1 SDLC discovery and gap-analysis skill
   - 1 requirements management skill
   - 1 requirements traceability analysis skill
   - 1 GitHub issue traceability skill
@@ -58,9 +59,10 @@ This modular approach provides:
 │ 5. Maintainability & Technical Debt                          │
 │ 6. Documentation Review                                      │
 │ 7. 12-Factor Compliance                                      │
-│ 8. Requirements Management                                   │
-│ 9. Requirements Traceability Analysis                        │
-│ 10. GitHub Issue Traceability                                │
+│ 8. SDLC Discovery and Gap Analysis                           │
+│ 9. Requirements Management                                   │
+│ 10. Requirements Traceability Analysis                       │
+│ 11. GitHub Issue Traceability                                │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -200,14 +202,21 @@ Evaluates compliance with 12-factor app methodology and provides cloud-native re
 
 Supports elicitation, documentation, prioritization, validation, and traceability of requirements.
 
-### 9. 🔗 Requirements Traceability Analysis
+### 9. 🔎 SDLC Discovery and Gap Analysis
+**File**: `../skills/sdlc-discovery-gap-analysis-skill.md`
+
+Uses the Grill Me discovery pattern to classify the SDLC phase, clarify user
+intent, select modes and skills, and detect missing SDD or architecture-review
+capabilities.
+
+### 10. 🔗 Requirements Traceability Analysis
 **File**: `../skills/requirements-traceability-skill.md`
 
 Validates forward and backward traceability, detects orphaned artifacts, and
 supports coverage reporting across requirements, design, implementation, and
 tests.
 
-### 10. 📋 GitHub Issue Traceability
+### 11. 📋 GitHub Issue Traceability
 **File**: `../skills/github-issue-traceability-skill.md`
 
 Structures GitHub issues with SDLC traceability metadata, issue hierarchy, and
@@ -293,6 +302,7 @@ Update `.bob/custom_modes.yaml` when a new role, workflow, or behavior style is 
 ## 📖 Documentation
 
 - **[Skills README](../skills/README.md)** - Detailed skill documentation
+- **[Knowledge Sources](KNOWLEDGE_SOURCES.md)** - Where mode and skill guidance comes from
 - **[Architecture Review Quick Start](guides/QUICK-START.md)** - Review-oriented quick start
 - **[Architecture Review Guide](guides/architecture-review-guide.md)** - Detailed review guidance
 - **[SDD Guide](SDD-README.md)** - Spec-driven development documentation

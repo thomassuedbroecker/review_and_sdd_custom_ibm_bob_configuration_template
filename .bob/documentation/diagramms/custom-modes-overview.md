@@ -10,6 +10,7 @@ The diagram provides a comprehensive visual representation of:
 - The main Architecture Review mode (orchestrator)
 - All 7 specialized review modes
 - The 7 review skill files they utilize
+- The SDLC discovery and gap-analysis skill used before reviews when scope or lifecycle phase is unclear
 - The relationships between modes and skills
 
 ## Target Audience
@@ -28,7 +29,9 @@ The diagram provides a comprehensive visual representation of:
 ### Main Orchestrator Mode
 
 **Architecture Review (arch-review)**
-- Central orchestrator that can use all 7 specialized skills
+- Central orchestrator that can use all 7 specialized review skills
+- Uses SDLC discovery and gap analysis before the review when the user intent,
+  lifecycle phase, source artifacts, or output expectations are unclear
 - Conducts comprehensive reviews across all areas
 - Supports focused reviews using specific skills
 - Enables iterative reviews, one skill at a time
@@ -76,13 +79,14 @@ The diagram shows 7 specialized modes, each focusing on a specific aspect:
 
 All skills are located in [`skills/`](../../skills/README.md) directory:
 
-1. [`business-alignment-skill.md`](../../skills/business-alignment-skill.md)
-2. [`security-threat-modeling-skill.md`](../../skills/security-threat-modeling-skill.md)
-3. [`scalability-performance-skill.md`](../../skills/scalability-performance-skill.md)
-4. [`architecture-patterns-skill.md`](../../skills/architecture-patterns-skill.md)
-5. [`maintainability-technical-debt-skill.md`](../../skills/maintainability-technical-debt-skill.md)
-6. [`documentation-review-skill.md`](../../skills/documentation-review-skill.md)
-7. [`twelve-factor-compliance-skill.md`](../../skills/twelve-factor-compliance-skill.md)
+1. [`sdlc-discovery-gap-analysis-skill.md`](../../skills/sdlc-discovery-gap-analysis-skill.md)
+2. [`business-alignment-skill.md`](../../skills/business-alignment-skill.md)
+3. [`security-threat-modeling-skill.md`](../../skills/security-threat-modeling-skill.md)
+4. [`scalability-performance-skill.md`](../../skills/scalability-performance-skill.md)
+5. [`architecture-patterns-skill.md`](../../skills/architecture-patterns-skill.md)
+6. [`maintainability-technical-debt-skill.md`](../../skills/maintainability-technical-debt-skill.md)
+7. [`documentation-review-skill.md`](../../skills/documentation-review-skill.md)
+8. [`twelve-factor-compliance-skill.md`](../../skills/twelve-factor-compliance-skill.md)
 
 ## Visual Elements
 

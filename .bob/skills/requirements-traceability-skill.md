@@ -116,6 +116,11 @@ ability matrix
 8. **CI/CD Compatible**: Automatable validation
 9. **Human-Readable**: No special tools needed to read
 10. **Incremental**: Gradual adoption supported
+11. **Carrier Restriction**: Traceability matrices are realized only through
+    GitHub issues, Markdown documents, and code entries. Do not use external
+    ALM systems, databases, spreadsheet-only trackers, or proprietary
+    traceability repositories as the source of truth unless a dedicated
+    integration is added.
 
 ### Quality Requirements
 - Traceability analysis must complete in <5 minutes
@@ -144,10 +149,10 @@ ability matrix
 ### Open-Source Alternatives to Enterprise Tools
 Instead of IBM DOORS, Jama, or commercial ALM platforms, use:
 - Git + Markdown for requirement documentation
-- YAML for structured requirement data
 - Python/Shell scripts for automated analysis
-- GitHub/GitLab for workflow integration
+- GitHub issues for workflow integration and work-item traceability
 - Markdown tables for traceability matrices
+- Code entries for implementation, commit, and test references
 - Git hooks for validation
 - CI/CD pipelines for continuous checks
 

@@ -221,6 +221,12 @@ WSJF = (Business Value + Time Criticality + Risk Reduction) / Job Size
 | FR-002 | Goal-1 | Component-B | Module-Y | TC-002 | 🔄 |
 | NFR-001 | Goal-2 | Architecture | Config | TC-003 | ⏳ |
 
+**Traceability Boundary:**
+In this Bob configuration, traceability matrices must be realized only through
+GitHub issues, Markdown documents, and code entries. Use Markdown tables for
+the matrix view, GitHub issues for executable work tracking, and code entries
+for implementation, commit, and test references.
+
 **Traceability Links:**
 - **Forward Traceability**: Requirements → Design → Implementation → Tests
 - **Backward Traceability**: Tests → Implementation → Design → Requirements
@@ -431,7 +437,7 @@ WSJF = (Business Value + Time Criticality + Risk Reduction) / Job Size
 ## 8. Appendices
 
 ### Appendix A: Traceability Matrix
-[Requirements traceability]
+[Requirements traceability as Markdown tables linked to GitHub issues and code entries]
 
 ### Appendix B: Glossary
 [Terms and definitions]
@@ -538,11 +544,12 @@ Acceptance Criteria:
 ## Tools and Techniques
 
 ### Requirements Management Tools
-- JIRA / Azure DevOps
-- IBM DOORS
-- Confluence
-- Notion
-- Miro / Mural (for workshops)
+- GitHub issues for issue-based traceability
+- Markdown documents for requirements and traceability matrices
+- Code entries for implementation, commit, and test references
+- External tools such as Jira, Azure DevOps, IBM DOORS, Confluence, Notion,
+  Miro, or Mural may be source inputs or workshop aids, but they are not
+  supported traceability sources of truth in this configuration.
 
 ### Modeling Techniques
 - Use Case Diagrams (UML)

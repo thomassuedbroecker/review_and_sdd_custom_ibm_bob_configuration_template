@@ -57,7 +57,9 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
 │       ├── SDD-QUICK-START.md              # Quick start
 │       └── SDD-SUMMARY.md                  # This file
 └── skills/
+    ├── sdlc-discovery-gap-analysis-skill.md # SDLC discovery and gap analysis
     ├── requirements-management-skill.md    # Requirements skill
+    ├── requirements-traceability-skill.md  # Traceability skill
     └── README.md                           # Skills overview
 ```
 
@@ -84,6 +86,7 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
 ### Integration
 - Clear guidance on mode integration
 - Links to related skills
+- Grill Me discovery pattern for SDLC phase and skill selection
 - SDLC phase integration
 - Tool references
 
@@ -145,6 +148,7 @@ All requested resources have been integrated:
 - Spec-Driven Development with Bob article
 - Vibes, Specs, Skills, Agents article
 - IBM Requirements Management guide
+- SDLC Discovery and Gap Analysis skill
 - Architecture Review Mode and Skills
 
 ## Quality Metrics
@@ -162,10 +166,12 @@ All requested resources have been integrated:
 - **Main Mode**: [spec-driven-development.md](spec-driven-development.md)
 - **Interactive Guide**: [sdd-interactive-guide.md](sdd-interactive-guide.md)
 - **Requirements Skill**: [../../skills/requirements-management-skill.md](../../skills/requirements-management-skill.md)
+- **SDLC Discovery Skill**: [../../skills/sdlc-discovery-gap-analysis-skill.md](../../skills/sdlc-discovery-gap-analysis-skill.md)
+- **Requirements Traceability Skill**: [../../skills/requirements-traceability-skill.md](../../skills/requirements-traceability-skill.md)
 
 ---
 
 **Created**: 2026-05-26
-**Last Updated**: 2026-05-29
-**Version**: 1.1
+**Last Updated**: 2026-06-04
+**Version**: 1.2
 **Status**: Complete and ready for use

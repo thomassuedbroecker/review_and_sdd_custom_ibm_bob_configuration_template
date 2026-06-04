@@ -2,7 +2,19 @@
 
 ## Overview
 
-This guide documents the complete Software Development Life Cycle (SDLC) traceability framework implemented in this Bob configuration. It ensures every line of code is justified by a requirement, tracked through GitHub issues, and validated by tests.
+This guide documents the complete Software Development Life Cycle (SDLC) traceability framework implemented in this Bob configuration. It ensures every line of code is justified by a requirement, tracked through GitHub issues, documented in Markdown, and validated by tests.
+
+## Traceability Boundary
+
+Traceability matrices in this configuration are realized only through:
+
+1. **GitHub issues**: epics, features, tasks, tests, labels, relationships, and traceability metadata.
+2. **Markdown documents**: requirements specifications, traceability tables, review findings, and validation reports.
+3. **Code entries**: requirement comments, commit references, affected files, and tests that reference requirement IDs.
+
+Do not treat external ALM systems, databases, spreadsheet-only trackers, or
+proprietary traceability repositories as supported sources of truth unless a
+dedicated integration is added.
 
 ## Traceability Chain
 
@@ -234,6 +246,9 @@ Use this checklist before merging code:
 
 ## Traceability Matrix Example
 
+The matrix below is a Markdown view over GitHub issue references and code
+entries. It is not a separate system of record.
+
 | Req ID | Business Goal | Epic | Feature | Task | Commit | Code File | Test | Status |
 |--------|---------------|------|---------|------|--------|-----------|------|--------|
 | REQ-AUTH-001 | Improve security | #1 | #2, #4 | #3, #6 | abc123 | auth/oauth.py | #5, #7 | ✅ |
@@ -400,6 +415,7 @@ Validation: All acceptance criteria met ✅
 ### DO:
 ✅ Always assign unique requirement IDs
 ✅ Include complete traceability metadata in issues
+✅ Keep traceability matrix views in Markdown documents
 ✅ Reference issue numbers in commit messages
 ✅ Add requirement ID comments in code
 ✅ Link tests to requirements
@@ -412,6 +428,7 @@ Validation: All acceptance criteria met ✅
 ### DON'T:
 ❌ Create issues without requirement IDs
 ❌ Skip traceability metadata
+❌ Treat spreadsheets, databases, or external ALM systems as supported traceability sources of truth
 ❌ Commit without issue references
 ❌ Write code without requirement comments
 ❌ Create tests without requirement links

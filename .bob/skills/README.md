@@ -118,8 +118,22 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ---
 
-### 9. Requirements Traceability Analysis (`requirements-traceability-skill.md`)
-**Purpose**: Provide comprehensive requirements traceability analysis using open-source tools and git integration, enabling complete, validated traceability chains from requirements through design to implementation.
+### 9. SDLC Discovery and Gap Analysis (`sdlc-discovery-gap-analysis-skill.md`)
+**Purpose**: Use the Grill Me discovery pattern to clarify the user's SDLC phase, desired outcome, source artifacts, constraints, and missing skill or resource needs before starting SDD or architecture-review work.
+
+**Key Areas**:
+- SDLC phase classification
+- Targeted stakeholder questioning
+- Mode and skill selection
+- SDD and architecture-review gap detection
+- Handoff to Configuration Gap Detector
+
+**When to Use**: Ambiguous user requests, early SDD conversations, architecture-review scoping, missing-capability checks, mode/skill selection
+
+---
+
+### 10. Requirements Traceability Analysis (`requirements-traceability-skill.md`)
+**Purpose**: Provide comprehensive requirements traceability analysis using GitHub issues, Markdown documents, and code entries, enabling complete, validated traceability chains from requirements through design to implementation.
 
 **Key Areas**:
 - Forward traceability (requirements → design → implementation → tests)
@@ -130,14 +144,18 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 - Git-based traceability workflows
 - Traceability gap detection
 - Automated parsing and validation
-- Open-source traceability tooling
+- Markdown matrix views over GitHub issue and code-entry references
 
 **When to Use**: Traceability audits, coverage analysis, gap detection, git workflow integration, pull request validation, compliance reporting, requirements tracking across branches
 
+**Boundary**: External ALM systems, databases, spreadsheet-only trackers, and
+proprietary traceability repositories are not supported sources of truth unless
+a dedicated integration is added.
+
 ---
 
-### 10. GitHub Issue Traceability (`github-issue-traceability-skill.md`)
-**Purpose**: Structure GitHub issues with complete SDLC traceability from business goals through requirements, implementation, tests, and validation.
+### 11. GitHub Issue Traceability (`github-issue-traceability-skill.md`)
+**Purpose**: Structure GitHub issues with complete SDLC traceability from business goals through requirements, Markdown specifications, code entries, tests, and validation.
 
 **Key Areas**:
 - GitHub issue hierarchy design (Epic → Feature → Task → Test)
@@ -156,19 +174,21 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 When using the 🏛️ Architecture Review mode, Bob will automatically:
 
-1. **Read the relevant skill file(s)** based on your request
-2. **Apply the skill's methodology** to your codebase
-3. **Follow the skill's checklist** and review process
-4. **Provide structured output** using the skill's format
+1. **Use SDLC discovery** when the review scope, lifecycle phase, source artifacts, or output format are unclear
+2. **Read the relevant skill file(s)** based on your request
+3. **Apply the skill's methodology** to your codebase
+4. **Follow the skill's checklist** and review process
+5. **Provide structured output** using the skill's format
 
 ### In Spec-Driven Development Mode
 
 When using the 🧭 Spec-Driven Development mode, Bob will automatically:
 
-1. **Read the requirements-management skill** when requirements expertise is needed
-2. **Apply requirements elicitation, prioritization, validation, and traceability guidance**
-3. **Help structure specifications and prompts**
-4. **Provide actionable outputs for planning, design, implementation, and validation**
+1. **Use the Grill Me discovery pattern** when the SDLC phase, artifacts, constraints, or desired output are unclear
+2. **Read the requirements-management skill** when requirements expertise is needed
+3. **Apply requirements elicitation, prioritization, validation, and traceability guidance**
+4. **Help structure specifications and prompts**
+5. **Provide actionable outputs for planning, design, implementation, and validation**
 
 ### Example Requests
 
@@ -200,6 +220,7 @@ When using the 🧭 Spec-Driven Development mode, Bob will automatically:
 "Help me define requirements for a new project"
 "Review this specification for completeness and testability"
 "Turn these notes into structured functional and non-functional requirements"
+"Grill me to figure out which SDLC phase and skills apply"
 ```
 
 ## Skill Structure
@@ -301,4 +322,4 @@ Keep skills up-to-date:
 
 **Last Updated**: 2026-05-31
 **Version**: 1.3
-**Skills Count**: 10
+**Skills Count**: 11

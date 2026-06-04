@@ -69,6 +69,11 @@ The license and content-provenance review documented in this repository was
 supported by AI tooling. The resulting documentation is a maintainer review
 aid and requires human verification and acceptance.
 
+The conceptual knowledge sources used by the Bob modes and skills are mapped
+in [`.bob/documentation/KNOWLEDGE_SOURCES.md`](./.bob/documentation/KNOWLEDGE_SOURCES.md).
+That file records standards, frameworks, product documentation, and local
+workflow sources separately from artifact authorship and license provenance.
+
 If AI-assisted tools contributed substantial content, record the tool, the
 human review and acceptance process, any relevant public-code match or
 similarity scan, and the resulting ownership or license review decision.

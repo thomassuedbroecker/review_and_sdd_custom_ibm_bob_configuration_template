@@ -354,9 +354,20 @@ Track the effectiveness of SDD practices:
 ## Resources and References
 
 ### Requirements Management
+- ISO/IEC/IEEE 29148: Requirements engineering and requirements specification guidance
 - IEEE 830: Recommended Practice for Software Requirements Specifications
 - IREB (International Requirements Engineering Board) standards
 - IBM Requirements Management best practices
+- SWEBOK Guide for SDLC and software engineering knowledge-area framing
+
+### SDLC Discovery and Gap Analysis
+- Grill Me discovery pattern from `../../skills/sdlc-discovery-gap-analysis-skill.md`
+- C4 Model for architecture scope and communication
+- arc42 architecture documentation template
+- Architecture Decision Records (ADRs)
+- NIST Secure Software Development Framework (SSDF)
+- OWASP ASVS and OWASP Top 10
+- The Twelve-Factor App
 
 ### Specification Techniques
 - User Stories and Use Cases

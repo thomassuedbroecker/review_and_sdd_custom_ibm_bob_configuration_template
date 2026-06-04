@@ -26,11 +26,19 @@ Usage example on YouTube:
 ## What It Does
 
 - **11 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, and GitHub issue generator
-- **10 Reusable Skills**: Comprehensive coverage of architecture review domains, requirements management, requirements traceability analysis, and GitHub issue traceability
+- **11 Reusable Skills**: Comprehensive coverage of architecture review domains, SDLC discovery and gap analysis, requirements management, requirements traceability analysis, and GitHub issue traceability
 - **Comprehensive Architecture Reviews**: Conduct multi-dimensional reviews using specialized skills covering security, scalability, patterns, maintainability, and more
 - **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle
-- **Adaptive Configuration**: Automatically detect gaps and propose new capabilities based on emerging requirements
+- **Adaptive Configuration**: Use the Grill Me discovery pattern to clarify SDLC intent, detect gaps, and propose new capabilities based on emerging requirements
 - **Modular Skills**: Use individual skills independently or combine them for comprehensive reviews
+
+## Traceability Boundary
+
+Traceability matrices in this template are realized only through GitHub issues,
+Markdown documents, and code entries such as requirement comments, commit
+references, affected files, and tests. External ALM systems, databases,
+spreadsheet-only trackers, or proprietary traceability repositories are not
+supported sources of truth unless you add a dedicated integration.
 
 ## Why Use It?
 
@@ -94,9 +102,11 @@ repositories that you want to inspect, review, or use as nested folders under
 
 ### 1. Explore Pre-existing Configuration
 Review the available modes and skills to understand capabilities:
-- Browse the [10 specialized skills](./.bob/skills/README.md) for different review areas
+- Browse the [11 specialized skills](./.bob/skills/README.md) for different review areas
 - Study the [Architecture Review documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)
 - Review [Spec-Driven Development guide](./.bob/documentation/SDD-README.md)
+- Review the [knowledge source map](./.bob/documentation/KNOWLEDGE_SOURCES.md)
+  to understand where mode and skill guidance comes from
 - Review the [GitHub issue-management scripts](./.bob/scripts/README.md) when
   generating or synchronizing issues
 
@@ -118,11 +128,16 @@ Review the available modes and skills to understand capabilities:
 | 🔍 Configuration Gap Detector | Proposes missing capabilities when the current setup is insufficient |
 | 📋 GitHub Issue Generator | Converts todo lists and findings into GitHub issues |
 
-The configuration also includes **10 reusable skills**: seven architecture
-review skills, one requirements-management skill, one requirements-traceability
-analysis skill, and one GitHub issue traceability skill. See the
+The configuration also includes **11 reusable skills**: seven architecture
+review skills, one SDLC discovery and gap-analysis skill, one
+requirements-management skill, one requirements-traceability analysis skill,
+and one GitHub issue traceability skill. See the
 [skills documentation](./.bob/skills/README.md) for detailed descriptions,
 usage guidance, customization options, and examples.
+
+Traceability matrices are intentionally limited to GitHub issues, Markdown
+documents, and code entries. See the [SDLC traceability guide](./SDLC_TRACEABILITY_GUIDE.md)
+for the supported traceability carriers and matrix format.
 
 ## Configuration Visuals
 
@@ -340,6 +355,7 @@ Output: List of created GitHub issues with numbers and links
 | **README.md** | Main documentation (this file) |
 | **[.bob/skills/README.md](./.bob/skills/README.md)** | Skills documentation |
 | **[.bob/documentation/README-ARCHITECTURE-REVIEW.md](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)** | Architecture review details |
+| **[.bob/documentation/KNOWLEDGE_SOURCES.md](./.bob/documentation/KNOWLEDGE_SOURCES.md)** | Mode and skill knowledge-source map |
 | **[.bob/documentation/guides/QUICK-START.md](./.bob/documentation/guides/QUICK-START.md)** | Quick start guide |
 | **[.bob/documentation/SDD-README.md](./.bob/documentation/SDD-README.md)** | Spec-driven development |
 | **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |

@@ -21,6 +21,21 @@ The complete traceability chain this skill supports:
 BUSINESS GOAL → REQUIREMENT → EPIC → FEATURE → TASK → GIT COMMIT → CODE → TEST → VALIDATION
 ```
 
+## Traceability Boundary
+
+This configuration realizes traceability matrices only through:
+
+1. **GitHub issues**: epics, features, tasks, tests, labels, relationships, and
+   traceability metadata.
+2. **Markdown documents**: requirement specifications, traceability tables,
+   review findings, and validation reports.
+3. **Code entries**: requirement comments, commit references, affected files,
+   and tests that reference requirement IDs.
+
+Do not represent the traceability matrix as an external ALM system, database,
+spreadsheet-only tracker, or proprietary repository unless a dedicated
+integration is explicitly added.
+
 ### Chain Components
 
 1. **BUSINESS GOAL**: Strategic objective or business capability
@@ -393,6 +408,10 @@ class TestJWTValidator:
 - [ ] Traceability chain is complete and bidirectional
 
 ### Traceability Matrix Example
+
+This matrix is a Markdown view over GitHub issue references and code entries.
+GitHub issues, Markdown documents, and code entries are the only supported
+traceability carriers in this configuration.
 
 | Req ID | Epic | Feature | Task | Commit | Code File | Test | Status |
 |--------|------|---------|------|--------|-----------|------|--------|

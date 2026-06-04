@@ -152,9 +152,10 @@ For each review, Bob provides:
 | 5 | 🔧 Maintainability & Tech Debt | Code Quality & Debt | `maintainability-technical-debt-skill.md` |
 | 6 | 📚 Documentation | Docs & Diagrams | `documentation-review-skill.md` |
 | 7 | ☁️ 12-Factor Compliance | Cloud-Native Readiness | `twelve-factor-compliance-skill.md` |
-| 8 | 🧭 Requirements Management | Requirements & Specifications | `requirements-management-skill.md` |
-| 9 | 🔗 Requirements Traceability | Traceability Analysis | `requirements-traceability-skill.md` |
-| 10 | 📋 GitHub Issue Traceability | Issue Hierarchy & SDLC Links | `github-issue-traceability-skill.md` |
+| 8 | 🔎 SDLC Discovery & Gap Analysis | Grill Me Discovery & Skill Gap Checks | `sdlc-discovery-gap-analysis-skill.md` |
+| 9 | 🧭 Requirements Management | Requirements & Specifications | `requirements-management-skill.md` |
+| 10 | 🔗 Requirements Traceability | Traceability Analysis | `requirements-traceability-skill.md` |
+| 11 | 📋 GitHub Issue Traceability | Issue Hierarchy & SDLC Links | `github-issue-traceability-skill.md` |
 
 ---
 

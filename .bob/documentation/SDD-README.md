@@ -119,6 +119,11 @@ A specialized skill for deeper traceability audits:
 **When to use**: When basic traceability notes are not enough and you need a
 traceability audit or coverage analysis
 
+**Traceability boundary**: Traceability matrices are realized only through
+GitHub issues, Markdown documents, and code entries. External ALM systems,
+databases, spreadsheet-only trackers, and proprietary traceability repositories
+are out of scope unless a dedicated integration is added.
+
 ### 4. Interactive Guide (`sdd-interactive-guide.md`)
 
 A step-by-step guide for crafting effective prompts:
@@ -377,6 +382,7 @@ See [Real-World Examples](./guides/sdd-interactive-guide.md#real-world-examples)
 
 - **Main SDD Mode Guide**: [`./guides/spec-driven-development.md`](./guides/spec-driven-development.md)
 - **Requirements Skill**: [`../skills/requirements-management-skill.md`](../skills/requirements-management-skill.md)
+- **SDLC Discovery and Gap Analysis Skill**: [`../skills/sdlc-discovery-gap-analysis-skill.md`](../skills/sdlc-discovery-gap-analysis-skill.md)
 - **Requirements Traceability Skill**: [`../skills/requirements-traceability-skill.md`](../skills/requirements-traceability-skill.md)
 - **Interactive Guide**: [`./guides/sdd-interactive-guide.md`](./guides/sdd-interactive-guide.md)
 - **Skills Overview**: [`../skills/README.md`](../skills/README.md)
@@ -386,8 +392,18 @@ See [Real-World Examples](./guides/sdd-interactive-guide.md#real-world-examples)
 
 #### Requirements Management
 - [IBM Requirements Management](https://www.ibm.com/think/topics/what-is-requirements-management)
+- ISO/IEC/IEEE 29148: Requirements engineering and requirements specification guidance
 - IEEE 830: Software Requirements Specifications
 - IREB (International Requirements Engineering Board)
+- SWEBOK Guide: Software engineering lifecycle and knowledge-area framing
+
+#### Architecture and Lifecycle Discovery
+- C4 Model for architecture communication
+- arc42 architecture documentation template
+- Architecture Decision Records (ADRs)
+- NIST Secure Software Development Framework (SSDF)
+- OWASP ASVS and OWASP Top 10
+- The Twelve-Factor App
 
 #### Spec-Driven Development
 - [Spec-Driven Development with IBM Bob](https://alain-airom.medium.com/spec-driven-development-with-ibm-bob-sdlc-01594799e38d)
