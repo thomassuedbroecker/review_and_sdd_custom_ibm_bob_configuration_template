@@ -8,7 +8,7 @@ configuration currently included in this project.
 > documented so that the repository matches the current implementation.
 > Replace it with the maintained
 > [GitHub MCP server](https://github.com/github/github-mcp-server) before
-> production use, then update `.bob/settings.json` and regenerate the
+> production use, then update `.bob/mcp.json` and regenerate the
 > third-party dependency snapshot.
 
 ## Prerequisites
@@ -52,7 +52,7 @@ configuration currently included in this project.
 
 ### 3. Verify Configuration
 
-The legacy GitHub MCP server has been configured in `.bob/settings.json` with the following settings:
+The legacy GitHub MCP server has been configured in `.bob/mcp.json` with the following settings:
 
 ```json
 {
@@ -106,7 +106,7 @@ You can ask Bob to:
 ### MCP Server Not Loading
 
 - Ensure Node.js and npm are installed: `node --version` and `npm --version`
-- Check that the `.bob/settings.json` file is properly formatted
+- Check that the `.bob/mcp.json` file is properly formatted
 - Look for error messages in the VS Code Output panel (View > Output > Bob)
 
 ### Permission Errors

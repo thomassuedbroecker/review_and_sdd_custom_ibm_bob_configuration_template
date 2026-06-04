@@ -14,10 +14,11 @@ This `.bob` configuration provides:
   - 1 specification-driven development mode
   - 1 configuration gap detection mode
   - 1 GitHub issue generator mode
-- **9 Reusable Skills**
+- **10 Reusable Skills**
   - 7 architecture review skills
   - 1 requirements management skill
   - 1 requirements traceability analysis skill
+  - 1 GitHub issue traceability skill
 
 This modular approach provides:
 - ✅ **Flexibility**: Use broad orchestration or focused modes
@@ -59,6 +60,7 @@ This modular approach provides:
 │ 7. 12-Factor Compliance                                      │
 │ 8. Requirements Management                                   │
 │ 9. Requirements Traceability Analysis                        │
+│ 10. GitHub Issue Traceability                                │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -204,6 +206,12 @@ Supports elicitation, documentation, prioritization, validation, and traceabilit
 Validates forward and backward traceability, detects orphaned artifacts, and
 supports coverage reporting across requirements, design, implementation, and
 tests.
+
+### 10. 📋 GitHub Issue Traceability
+**File**: `../skills/github-issue-traceability-skill.md`
+
+Structures GitHub issues with SDLC traceability metadata, issue hierarchy, and
+requirement-to-implementation links.
 
 ## 💡 Usage Examples
 

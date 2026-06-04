@@ -18,7 +18,7 @@ applicable license or ownership statement.
 | Draw.io source diagrams | `.bob/documentation/diagramms/*.drawio` | Created with assistance from IBM Bob and optimized by Thomas Suedbroecker | Confirmed by maintainer: AI-assisted diagram sources optimized and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
 | Rendered PNG images | `.bob/images/*.png` | Rendered from AI-assisted diagram material and accepted by Thomas Suedbroecker; mappings are recorded below | Confirmed by maintainer: rendered diagram assets reviewed and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
 | Python-oriented `.gitignore` template | `.gitignore` | Adapted from GitHub's `Python.gitignore` template with repository-specific entries appended | Confirmed: adapted from `https://github.com/github/gitignore/blob/main/Python.gitignore`; upstream license: CC0-1.0; repository-specific additions licensed under Apache-2.0 |
-| GitHub MCP npm dependency | `.bob/settings.json` | Runtime dependency reviewed in `THIRD_PARTY_NOTICES.md` | Recorded |
+| GitHub MCP npm dependency | `.bob/mcp.json` | Runtime dependency reviewed in `THIRD_PARTY_NOTICES.md` | Recorded |
 
 ## Rendered Image Map
 

@@ -136,6 +136,20 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ---
 
+### 10. GitHub Issue Traceability (`github-issue-traceability-skill.md`)
+**Purpose**: Structure GitHub issues with complete SDLC traceability from business goals through requirements, implementation, tests, and validation.
+
+**Key Areas**:
+- GitHub issue hierarchy design (Epic → Feature → Task → Test)
+- Requirement-to-issue mapping
+- Traceability metadata management
+- Git commit and code comment traceability conventions
+- Test-to-requirement linking
+
+**When to Use**: GitHub issue generation, issue backlog structuring, requirement-to-issue mapping, SDLC traceability enforcement
+
+---
+
 ## How to Use Skills
 
 ### In Architecture Review Mode
@@ -287,4 +301,4 @@ Keep skills up-to-date:
 
 **Last Updated**: 2026-05-31
 **Version**: 1.3
-**Skills Count**: 9
+**Skills Count**: 10

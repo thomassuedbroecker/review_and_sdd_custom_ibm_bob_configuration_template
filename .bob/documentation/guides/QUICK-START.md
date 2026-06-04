@@ -153,6 +153,8 @@ For each review, Bob provides:
 | 6 | 📚 Documentation | Docs & Diagrams | `documentation-review-skill.md` |
 | 7 | ☁️ 12-Factor Compliance | Cloud-Native Readiness | `twelve-factor-compliance-skill.md` |
 | 8 | 🧭 Requirements Management | Requirements & Specifications | `requirements-management-skill.md` |
+| 9 | 🔗 Requirements Traceability | Traceability Analysis | `requirements-traceability-skill.md` |
+| 10 | 📋 GitHub Issue Traceability | Issue Hierarchy & SDLC Links | `github-issue-traceability-skill.md` |
 
 ---
 

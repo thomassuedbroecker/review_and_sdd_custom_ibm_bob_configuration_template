@@ -27,7 +27,7 @@ This mode bridges the gap between planning/review activities and issue tracking 
 
 1. **GitHub MCP Server Configured**
    - See [GITHUB_MCP_SETUP.md](./GITHUB_MCP_SETUP.md) for setup instructions
-   - GitHub MCP server must be configured in `.bob/settings.json`
+   - GitHub MCP server must be configured in `.bob/mcp.json`
 
 2. **GitHub Personal Access Token**
    - Use `public_repo` for public repositories only or `repo` when private
@@ -272,7 +272,7 @@ Each generated issue follows this template:
 **Error**: "GitHub MCP server not available"
 
 **Solution**:
-1. Check `.bob/settings.json` for GitHub MCP configuration
+1. Check `.bob/mcp.json` for GitHub MCP configuration
 2. Verify `GITHUB_PERSONAL_ACCESS_TOKEN` in `.env` file
 3. Restart VS Code to load environment variables
 4. See [GITHUB_MCP_SETUP.md](./GITHUB_MCP_SETUP.md) for detailed setup

@@ -13,7 +13,7 @@ notice states otherwise.
 ## Third-Party Runtime Components
 
 The optional GitHub MCP integration configured in
-[`.bob/settings.json`](./.bob/settings.json) invokes:
+[`.bob/mcp.json`](./.bob/mcp.json) invokes:
 
 ```text
 @modelcontextprotocol/server-github

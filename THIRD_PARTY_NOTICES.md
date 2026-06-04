@@ -3,7 +3,7 @@
 ## Scope
 
 The repository does not vendor third-party packages. The optional GitHub MCP
-integration in [`.bob/settings.json`](./.bob/settings.json) downloads
+integration in [`.bob/mcp.json`](./.bob/mcp.json) downloads
 `@modelcontextprotocol/server-github` at runtime with `npx`.
 
 The table below records a point-in-time license snapshot generated on

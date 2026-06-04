@@ -1047,7 +1047,7 @@ customModes:
       This mode requires:
       
       For MCP Method:
-      1. GitHub MCP server configured in .bob/settings.json
+      1. GitHub MCP server configured in .bob/mcp.json
       2. GITHUB_PERSONAL_ACCESS_TOKEN set in .env file
       3. Appropriate repository permissions (repo scope)
       
