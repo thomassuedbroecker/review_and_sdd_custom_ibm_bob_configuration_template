@@ -15,7 +15,9 @@ The mode and skill files in this repository are maintainer-authored,
 AI-assisted configuration artifacts. They are not copied from the referenced
 standards or websites. External sources are used as conceptual references and
 should be consulted directly when exact wording, certification requirements,
-or current version details matter.
+current version details, or license terms matter. License and terms handling
+for these resources is tracked separately in
+[`RESOURCE_LICENSES.md`](RESOURCE_LICENSES.md).
 
 ## Repository Content Provenance
 
@@ -149,6 +151,16 @@ chain compliance that cannot be handled by those existing skills.
 | AI-generated or AI-assisted text | Requires maintainer review | Keep in provenance register and validate against source artifacts |
 | General model knowledge | Lowest | Use only when local and authoritative sources do not cover the task |
 
+## License and Terms Boundary
+
+The external references in this document are knowledge sources, not vendored
+repository content. They do not change the Apache-2.0 license for repository
+files unless material is copied, adapted, translated, or embedded. Before using
+external source text beyond citation or short paraphrase, check
+[`RESOURCE_LICENSES.md`](RESOURCE_LICENSES.md), update
+[`../../CONTENT_PROVENANCE.md`](../../CONTENT_PROVENANCE.md), and preserve any
+required attribution or notices.
+
 ## Review Findings
 
 ### Strengths
@@ -168,6 +180,7 @@ chain compliance that cannot be handled by those existing skills.
 | --- | --- | --- |
 | Individual skill files do not all include explicit "Knowledge Sources" sections | Reviewers must infer sources from scattered docs | Keep this file as the central source map and link to it from skill inventories |
 | Some framework names are conceptual references without exact version/date | Compliance interpretation may become stale | Verify exact versions before regulated or audit-facing use |
+| External resource licenses were previously not mapped next to the mode resources | Reviewers could miss attribution, share-alike, or proprietary-standard boundaries | Use `RESOURCE_LICENSES.md` as the license and terms map for external mode resources |
 | The diagram source may not visually show the discovery skill | Visual architecture may lag textual documentation | Update Draw.io and exported PNG when the visual inventory is refreshed |
 | Runtime dependency knowledge is separate from mode knowledge | Reviewers need to check multiple docs | Keep `THIRD_PARTY_NOTICES.md` for dependency licenses and this file for conceptual knowledge |
 
@@ -180,8 +193,10 @@ When adding or changing a mode or skill:
    provenance category changes.
 3. Add a row in the Mode Knowledge Map or Skill Knowledge Map.
 4. Add any new authoritative references to the External Reference Register.
-5. Link the new skill from `../skills/README.md` and relevant user guides.
-6. Run the Markdown link checker:
+5. Add or update license and terms notes in `RESOURCE_LICENSES.md` for any new
+   external resource.
+6. Link the new skill from `../skills/README.md` and relevant user guides.
+7. Run the Markdown link checker:
 
 ```bash
 python3 .bob/scripts/check_markdown_links.py .

@@ -73,6 +73,8 @@ The conceptual knowledge sources used by the Bob modes and skills are mapped
 in [`.bob/documentation/KNOWLEDGE_SOURCES.md`](./.bob/documentation/KNOWLEDGE_SOURCES.md).
 That file records standards, frameworks, product documentation, and local
 workflow sources separately from artifact authorship and license provenance.
+External resource license and terms boundaries are mapped in
+[`.bob/documentation/RESOURCE_LICENSES.md`](./.bob/documentation/RESOURCE_LICENSES.md).
 
 If AI-assisted tools contributed substantial content, record the tool, the
 human review and acceptance process, any relevant public-code match or

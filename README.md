@@ -356,6 +356,7 @@ Output: List of created GitHub issues with numbers and links
 | **[.bob/skills/README.md](./.bob/skills/README.md)** | Skills documentation |
 | **[.bob/documentation/README-ARCHITECTURE-REVIEW.md](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)** | Architecture review details |
 | **[.bob/documentation/KNOWLEDGE_SOURCES.md](./.bob/documentation/KNOWLEDGE_SOURCES.md)** | Mode and skill knowledge-source map |
+| **[.bob/documentation/RESOURCE_LICENSES.md](./.bob/documentation/RESOURCE_LICENSES.md)** | License and terms map for external mode resources |
 | **[.bob/documentation/guides/QUICK-START.md](./.bob/documentation/guides/QUICK-START.md)** | Quick start guide |
 | **[.bob/documentation/SDD-README.md](./.bob/documentation/SDD-README.md)** | Spec-driven development |
 | **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |
@@ -378,3 +379,4 @@ This repository is distributed under the Apache License, Version 2.0. See
 - [License documentation](./LICENSE_DOCUMENTATION.md)
 - [Third-party dependency notices](./THIRD_PARTY_NOTICES.md)
 - [Content provenance register](./CONTENT_PROVENANCE.md)
+- [Mode resource license map](./.bob/documentation/RESOURCE_LICENSES.md)

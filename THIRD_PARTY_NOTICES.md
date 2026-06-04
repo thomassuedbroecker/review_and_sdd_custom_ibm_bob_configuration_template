@@ -4,7 +4,7 @@
 
 The repository does not vendor third-party packages. The optional GitHub MCP
 integration in [`.bob/mcp.json`](./.bob/mcp.json) downloads
-`@modelcontextprotocol/server-github` at runtime with `npx`.
+`@modelcontextprotocol/server-github@2025.4.8` at runtime with `npx`.
 
 The table below records a point-in-time license snapshot generated on
 2026-05-30 by resolving:
@@ -14,8 +14,8 @@ The table below records a point-in-time license snapshot generated on
 ```
 
 The reviewed dependency tree contained 46 packages: 42 MIT-licensed packages
-and 4 ISC-licensed packages. The configured package is currently unpinned, so
-future installations may resolve a different tree.
+and 4 ISC-licensed packages. The configured package version is pinned in
+`.bob/mcp.json` so the runtime command matches this reviewed snapshot.
 
 ## Python Runtime Dependencies
 
@@ -101,5 +101,5 @@ deprecated. Replace it with a maintained integration and regenerate this
 snapshot before the next release.
 
 The direct package metadata was rechecked against the npm registry on
-2026-05-31. The latest reported version remains `2025.4.8`, its reported
+2026-06-04. The latest reported version remains `2025.4.8`, its reported
 license remains MIT, and the package remains deprecated.
