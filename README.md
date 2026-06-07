@@ -1,5 +1,7 @@
 # Review & SDD Expert Bob Configuration
 
+Experimental template / personal reference implementation for IBM Bob SDLC workflow configuration.
+
 ## Overview
 
 IBM Bob offers powerful out-of-the-box modes tailored to support the entire software development lifecycle. These modes demonstrate how easily you can specialize and optimize IBM Bob for your specific engineering workflows. In this configuration, the setup is optimized from my perspective for architecture review and spec-driven development (SDD).
