@@ -64,6 +64,7 @@ The diagram shows 7 specialized modes, each focusing on a specific aspect:
    - Architecture Decision Records (ADRs)
    - C4 Model and UML diagrams
    - API documentation and runbooks
+   - License notices and content provenance evidence
 
 6. **12-Factor Compliance (twelve-factor-review)**
    - Cloud-native principles (all 12 factors)

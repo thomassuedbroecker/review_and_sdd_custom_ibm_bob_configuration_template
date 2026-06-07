@@ -76,7 +76,7 @@ The **🏛️ Architecture Review** mode is the primary orchestrator that conduc
 4. **scalability-performance-skill.md** - System capacity and performance
 5. **architecture-patterns-skill.md** - Patterns and best practices
 6. **maintainability-technical-debt-skill.md** - Code quality and technical debt
-7. **documentation-review-skill.md** - Documentation completeness
+7. **documentation-review-skill.md** - Documentation, license notices, and provenance evidence
 8. **twelve-factor-compliance-skill.md** - Cloud-native readiness
 
 ---
@@ -593,7 +593,7 @@ Bob will:
 4. Analyze model serving infrastructure
 5. Identify security vulnerabilities
 6. Assess performance and scalability
-7. Review model documentation
+7. Review model documentation, license notices, and provenance evidence
 8. Provide prioritized recommendations
 ```
 

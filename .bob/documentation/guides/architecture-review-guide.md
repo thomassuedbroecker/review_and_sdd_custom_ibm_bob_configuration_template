@@ -8,7 +8,7 @@ The Architecture Review mode (🏛️) is designed to conduct comprehensive arch
 - Technical debt assessment
 - Security and compliance reviews
 - Scalability and performance analysis
-- Documentation completeness checks
+- Documentation, license notice, and provenance evidence checks
 - 12-factor app methodology compliance
 - Preparing materials for architecture review boards
 
@@ -59,11 +59,12 @@ Identifies issues that make future changes expensive.
 - Technical debt tracking
 
 ### 6. Documentation Review
-Ensures key decisions and diagrams are clear and documented.
+Ensures key decisions, diagrams, license notices, and provenance evidence are clear and documented.
 - Architecture Decision Records (ADRs)
 - C4 Model diagrams (Context, Container, Component, Code)
 - Sequence and flow diagrams
 - API documentation
+- License notices and content provenance
 - Deployment architecture
 - Runbooks and operational guides
 

@@ -25,7 +25,7 @@ customModes:
       4. scalability-performance-skill.md - System capacity and performance
       5. architecture-patterns-skill.md - Patterns and best practices
       6. maintainability-technical-debt-skill.md - Code quality and technical debt
-      7. documentation-review-skill.md - Documentation completeness
+      7. documentation-review-skill.md - Documentation, license notices, and provenance evidence
       8. twelve-factor-compliance-skill.md - Cloud-native readiness
       
       When conducting a review:
@@ -434,7 +434,7 @@ customModes:
       - Documentation-as-code practices
       - Diagram generation tools (PlantUML, Mermaid)
       
-      You evaluate documentation completeness, clarity, and currency, ensuring architectural decisions are well-documented.
+      You evaluate documentation completeness, clarity, currency, license notice coverage, and content-provenance evidence.
     whenToUse: >-
       Use this mode for documentation quality reviews, ADR validation, diagram completeness checks,
       license/provenance documentation checks, or when preparing documentation for architecture review boards.

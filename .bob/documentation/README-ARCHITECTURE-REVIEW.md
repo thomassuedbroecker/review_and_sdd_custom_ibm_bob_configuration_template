@@ -40,7 +40,7 @@ This modular approach provides:
 │ 📈 Scalability Review       - Focused performance analysis   │
 │ 🎨 Patterns Review          - Focused pattern analysis       │
 │ 🔧 Maintainability Review   - Focused code quality review    │
-│ 📚 Documentation Review     - Focused documentation review   │
+│ 📚 Documentation Review     - Docs, notices, provenance      │
 │ ☁️ 12-Factor Review         - Focused cloud-native review    │
 │ 🎯 Business Alignment       - Focused business alignment     │
 │ 🔍 Config Gap Detector      - Detects missing capabilities   │

@@ -18,7 +18,7 @@ graph TB
         S3[📈 Scalability & Performance<br/>Capacity & Optimization]
         S4[🎨 Architecture Patterns<br/>Design Principles & Patterns]
         S5[🔧 Maintainability & Tech Debt<br/>Code Quality & Refactoring]
-        S6[📚 Documentation Review<br/>ADRs, Diagrams, APIs]
+        S6[📚 Documentation Review<br/>Docs, Notices, Provenance]
         S7[☁️ 12-Factor Compliance<br/>Cloud-Native Readiness]
     end
     
@@ -106,6 +106,8 @@ graph LR
         DR3[UML Diagrams]
         DR4[API Documentation]
         DR5[Runbooks]
+        DR6[License Notices]
+        DR7[Content Provenance]
     end
     
     subgraph "☁️ 12-Factor Compliance"
