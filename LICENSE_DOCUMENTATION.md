@@ -32,9 +32,12 @@ the next release.
 The optional Python issue-management scripts import `requests` and support
 YAML templates through an optional `PyYAML` import. These packages are also
 installed separately at runtime and are not vendored into this repository.
-Their versions are currently unpinned, and their resolved dependency trees are
-not covered by the npm snapshot. Generate and review a Python dependency
-inventory before distributing a bundled Python environment.
+Their install instructions are currently unpinned. Direct package metadata was
+checked against PyPI on 2026-06-07: `requests` latest version `2.34.2` reports
+Apache-2.0, and `PyYAML` latest version `6.0.3` reports MIT. Their resolved
+transitive dependency trees are not covered by the npm snapshot. Generate and
+review a Python dependency inventory before distributing a bundled Python
+environment.
 
 ## Content Provenance
 
@@ -70,7 +73,9 @@ Before publishing a release:
 ## Review Scope
 
 The third-party dependency snapshot was generated on 2026-05-30. The
-content-provenance confirmations were completed on 2026-05-31. The license and
-content-provenance review was supported by AI tooling and requires maintainer
-acceptance for future changes. This documentation is a repository-maintenance
-aid and not legal advice.
+content-provenance confirmations were completed on 2026-05-31 and updated for
+the README workflow JPEG on 2026-06-07. Direct npm and PyPI runtime package
+metadata was rechecked on 2026-06-07. The license and content-provenance review
+was supported by AI tooling and requires maintainer acceptance for future
+changes. This documentation is a repository-maintenance aid and not legal
+advice.

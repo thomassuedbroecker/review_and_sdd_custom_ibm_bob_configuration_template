@@ -1,7 +1,7 @@
 # Documentation Review Skill
 
 ## Purpose
-Evaluate documentation completeness, clarity, and currency, ensuring architectural decisions are well-documented.
+Evaluate documentation completeness, clarity, currency, license notice coverage, and content-provenance evidence, ensuring architectural decisions and release-facing documentation are well-documented.
 
 ## Expertise Areas
 - Architecture Decision Records (ADRs)
@@ -9,6 +9,7 @@ Evaluate documentation completeness, clarity, and currency, ensuring architectur
 - UML diagrams (sequence, class, deployment, activity)
 - API documentation (OpenAPI, AsyncAPI)
 - Runbooks and operational guides
+- License and content-provenance documentation
 - System context and constraints
 - Documentation-as-code practices
 - Diagram generation tools (PlantUML, Mermaid, Draw.io)
@@ -261,6 +262,28 @@ Evaluate documentation completeness, clarity, and currency, ensuring architectur
 - Is it searchable?
 - Is it accessible to all stakeholders?
 
+### 11. License, Notices, and Provenance Documentation
+
+**Repository License Evidence**
+- Is a root `LICENSE` file present and referenced from the README?
+- Does `LICENSE_DOCUMENTATION.md` summarize the repository license scope?
+- Are exceptions, separately licensed artifacts, and runtime-only dependencies clearly identified?
+
+**Third-Party Notices**
+- Does `THIRD_PARTY_NOTICES.md` list vendored or runtime dependencies that require review?
+- Are version snapshots dated and tied to the configured dependency versions?
+- Are unpinned or runtime-installed dependencies called out with instructions to regenerate an inventory before bundling or release?
+
+**Content Provenance**
+- Does `CONTENT_PROVENANCE.md` cover documentation, scripts, diagrams, images, templates, generated content, and AI-assisted material?
+- Are rendered images mapped to editable sources or documented as standalone maintained assets?
+- Are copied or adapted templates linked to their source and license?
+
+**External Resource Boundaries**
+- Does `.bob/documentation/RESOURCE_LICENSES.md` distinguish conceptual references from copied repository content?
+- Are standards, vendor documentation, Creative Commons resources, and package dependencies handled with clear copy/adapt/link rules?
+- Are AI-assisted artifacts documented with human review and acceptance evidence where relevant?
+
 ## Output Format
 
 ### ✅ Achieved
@@ -293,6 +316,10 @@ Evaluate documentation completeness, clarity, and currency, ensuring architectur
 | Deployment Diagram | ✅/⚠️/❌ | [date] | ⭐⭐⭐☆☆ | High |
 | Runbooks | ✅/⚠️/❌ | [date] | ⭐⭐☆☆☆ | High |
 | README | ✅/⚠️/❌ | [date] | ⭐⭐⭐⭐☆ | High |
+| License Documentation | ✅/⚠️/❌ | [date] | ⭐⭐⭐⭐☆ | High |
+| Third-Party Notices | ✅/⚠️/❌ | [date] | ⭐⭐⭐⭐☆ | High |
+| Content Provenance | ✅/⚠️/❌ | [date] | ⭐⭐⭐⭐☆ | High |
+| Resource License Map | ✅/⚠️/❌ | [date] | ⭐⭐⭐☆☆ | Medium |
 | Data Models | ✅/⚠️/❌ | [date] | ⭐⭐⭐☆☆ | Medium |
 
 ### 💡 Recommendations
@@ -314,6 +341,8 @@ For each documentation gap:
 6. Is documentation maintained regularly?
 7. Is documentation accessible to stakeholders?
 8. Are there documentation standards?
+9. Are license, third-party notice, and content-provenance documents complete enough for release review?
+10. Are external resources linked or cited instead of copied without license review?
 
 ## Documentation Best Practices
 - ✅ **Documentation as Code**: Store in version control
@@ -324,6 +353,7 @@ For each documentation gap:
 - ✅ **Versioned**: Track changes over time
 - ✅ **Reviewed**: Include in code reviews
 - ✅ **Accessible**: Available to all stakeholders
+- ✅ **Provenance Aware**: Record ownership, license scope, and source evidence for distributable assets
 
 ## Documentation Tools
 - **Diagrams**: PlantUML, Mermaid, Draw.io, Lucidchart
@@ -342,3 +372,4 @@ For each documentation gap:
 - ❌ **Code Comments as Documentation**: Should be supplementary
 - ❌ **No Documentation Standards**: Inconsistent format
 - ❌ **Documentation Debt**: Accumulating gaps
+- ❌ **Missing Provenance**: Assets, generated material, or adapted templates lack source and license evidence

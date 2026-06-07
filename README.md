@@ -121,7 +121,7 @@ Review the available modes and skills to understand capabilities:
 | 📈 Scalability & Performance | Assesses capacity, bottlenecks, and performance |
 | 🎨 Architecture Patterns | Reviews architectural patterns and design choices |
 | 🔧 Maintainability & Technical Debt | Identifies maintainability risks and technical debt |
-| 📚 Documentation Review | Reviews documentation completeness and quality |
+| 📚 Documentation Review | Reviews documentation, license notices, and provenance evidence |
 | ☁️ 12-Factor Compliance | Assesses cloud-native readiness |
 | 🎯 Business Alignment | Connects architecture decisions to business goals |
 | 🧭 Spec-Driven Development | Structures requirements, specifications, and prompts |
@@ -293,6 +293,7 @@ Output: List of created GitHub issues with numbers and links
    - Company-specific patterns
    - Custom quality attributes
    - Organization standards
+   - License notice and content-provenance requirements
 
 2. **Create new skills**
 
@@ -312,6 +313,9 @@ Output: List of created GitHub issues with numbers and links
 
    Update `.bob/custom_modes.yaml` so that the relevant mode explicitly
    references the new skill when it should be part of a standard workflow.
+   For license notice or provenance checks, prefer extending the existing
+   Documentation Review skill unless a dedicated legal/compliance workflow is
+   required.
 
 ### Skill Structure Template
 

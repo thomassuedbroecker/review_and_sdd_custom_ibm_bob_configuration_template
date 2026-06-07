@@ -77,6 +77,8 @@ Bob will read the relevant skills, apply the methodology, and provide structured
 "Review documentation completeness"
 "Check for ADRs and C4 diagrams"
 "Assess API documentation quality"
+"Review license notices and content provenance"
+"Check that Bob modes and skills are aligned with the license evidence resources"
 ```
 
 **Pattern Review**
@@ -150,7 +152,7 @@ For each review, Bob provides:
 | 3 | 📈 Scalability & Performance | Capacity & Performance | `scalability-performance-skill.md` |
 | 4 | 🎨 Architecture Patterns | Patterns & Best Practices | `architecture-patterns-skill.md` |
 | 5 | 🔧 Maintainability & Tech Debt | Code Quality & Debt | `maintainability-technical-debt-skill.md` |
-| 6 | 📚 Documentation | Docs & Diagrams | `documentation-review-skill.md` |
+| 6 | 📚 Documentation | Docs, Diagrams & Provenance | `documentation-review-skill.md` |
 | 7 | ☁️ 12-Factor Compliance | Cloud-Native Readiness | `twelve-factor-compliance-skill.md` |
 | 8 | 🔎 SDLC Discovery & Gap Analysis | Grill Me Discovery & Skill Gap Checks | `sdlc-discovery-gap-analysis-skill.md` |
 | 9 | 🧭 Requirements Management | Requirements & Specifications | `requirements-management-skill.md` |
@@ -183,6 +185,7 @@ Try: "Start with security, then we'll do performance"
 ```
 "Use the security-threat-modeling skill to review authentication"
 "Apply the twelve-factor-compliance skill to check our deployment"
+"Use the documentation-review skill to check license notices, provenance, and mode/skill evidence resources"
 ```
 
 ---

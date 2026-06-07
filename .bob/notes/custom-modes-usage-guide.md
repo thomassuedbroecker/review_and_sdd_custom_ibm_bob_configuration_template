@@ -33,7 +33,7 @@ This project includes **11 custom modes** organized into five categories:
 - **📈 Scalability & Performance** - System scalability and performance analysis
 - **🎨 Architecture Patterns** - Architecture patterns and best practices
 - **🔧 Maintainability & Technical Debt** - Code maintainability and technical debt
-- **📚 Documentation Review** - Architecture documentation and diagrams
+- **📚 Documentation Review** - Architecture documentation, diagrams, license notices, and provenance evidence
 - **☁️ 12-Factor Compliance** - Cloud-native 12-factor app compliance
 - **🎯 Business Alignment** - Business goals and quality attributes
 
@@ -334,7 +334,7 @@ deprecated and should be replaced before production use.
 
 **File**: `.bob/skills/documentation-review-skill.md`
 
-**Purpose**: Evaluate documentation completeness, clarity, and currency.
+**Purpose**: Evaluate documentation completeness, clarity, currency, license notice coverage, and content-provenance evidence.
 
 **Key Review Areas**:
 1. **Architecture Decision Records (ADRs)**:
@@ -358,6 +358,9 @@ deprecated and should be replaced before production use.
 7. **Developer Documentation**: Setup guides, coding standards, testing docs
 8. **Data Documentation**: ERD, schema, data dictionary, data flow
 9. **Security Documentation**: Security architecture, procedures
+10. **License and Provenance Documentation**: `LICENSE_DOCUMENTATION.md`,
+    `THIRD_PARTY_NOTICES.md`, `CONTENT_PROVENANCE.md`,
+    `RESOURCE_LICENSES.md`, and mode/skill evidence resources
 
 **Documentation Best Practices**:
 - Documentation as Code
@@ -370,6 +373,10 @@ deprecated and should be replaced before production use.
 - Documentation checklist table
 - Gap identification
 - Recommendations with templates
+
+**Evidence Resources**: See
+`.bob/documentation/KNOWLEDGE_SOURCES.md#license-and-provenance-evidence-source-basis`
+for the mode and skill evidence source groups.
 
 ---
 

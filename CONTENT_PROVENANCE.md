@@ -17,6 +17,7 @@ applicable license or ownership statement.
 | Guides and documentation | `.bob/documentation/`, `.bob/notes/` | Created for this repository with AI assistance and maintained by Thomas Suedbroecker; external links are references rather than incorporated material | Confirmed by maintainer: AI-assisted documentation authored, reviewed, and accepted by Thomas Suedbroecker; no third-party source incorporated except where separately recorded; licensed under Apache-2.0 |
 | Draw.io source diagrams | `.bob/documentation/diagramms/*.drawio` | Created with assistance from IBM Bob and optimized by Thomas Suedbroecker | Confirmed by maintainer: AI-assisted diagram sources optimized and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
 | Rendered PNG images | `.bob/images/*.png` | Rendered from AI-assisted diagram material and accepted by Thomas Suedbroecker; mappings are recorded below | Confirmed by maintainer: rendered diagram assets reviewed and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
+| README workflow JPEG | `images/custom_sdd_workflow_in_bob.jpg` | Repository image used by `README.md`; no separate editable source file is present in the repository | Confirmed by maintainer: AI-assisted workflow visual reviewed and accepted by Thomas Suedbroecker; licensed under Apache-2.0 |
 | Python-oriented `.gitignore` template | `.gitignore` | Adapted from GitHub's `Python.gitignore` template with repository-specific entries appended | Confirmed: adapted from `https://github.com/github/gitignore/blob/main/Python.gitignore`; upstream license: CC0-1.0; repository-specific additions licensed under Apache-2.0 |
 | GitHub MCP npm dependency | `.bob/mcp.json` | Runtime dependency reviewed in `THIRD_PARTY_NOTICES.md` | Recorded |
 
@@ -28,6 +29,7 @@ applicable license or ownership statement.
 | `.bob/images/configuration-gap-detector.png` | `.bob/documentation/diagramms/configuration-gap-detector-usage.drawio` | Export the Draw.io source after configuration-gap workflow changes |
 | `.bob/images/skills-review.png` | `.bob/documentation/diagramms/custom-modes-overview.drawio` | Export the Draw.io source after mode or review-skill diagram changes |
 | `.bob/images/spec-driven-development-overview.png` | `.bob/documentation/diagramms/spec-driven-development-overview.md` | The repository does not contain an editable Draw.io source. Treat the PNG as a maintainer-accepted standalone rendered asset and use the Markdown design definition when regenerating it. |
+| `images/custom_sdd_workflow_in_bob.jpg` | No editable source file present in this repository | Treat the JPEG as a maintainer-accepted standalone workflow visual. Replace or add an editable source if the workflow image is regenerated. |
 
 ## Maintainer Confirmation Checklist
 

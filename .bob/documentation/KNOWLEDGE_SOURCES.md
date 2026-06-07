@@ -63,10 +63,10 @@ standards-based guidance.
 | Scalability & Performance (`scalability-review`) | `scalability-performance-skill.md` | SRE capacity planning concepts, caching, load balancing, queueing, database performance, autoscaling patterns | Uses engineering patterns and measurable NFRs from the repository context. |
 | Architecture Patterns (`patterns-review`) | `architecture-patterns-skill.md` | DDD, CQRS, Event Sourcing, SOLID, GoF patterns, enterprise integration patterns, API design practices, hexagonal and clean architecture | Evaluates fit, not pattern adoption for its own sake. |
 | Maintainability & Technical Debt (`maintainability-review`) | `maintainability-technical-debt-skill.md` | Maintainability metrics, refactoring practice, code complexity, testability, modularity, technical-debt management | Findings should be evidence-based from code and docs. |
-| Documentation Review (`documentation-review`) | `documentation-review-skill.md` | ADRs, C4 Model, UML, OpenAPI, AsyncAPI, runbooks, documentation-as-code practice | Reviews completeness, currency, and usability of project documentation. |
+| Documentation Review (`documentation-review`) | `documentation-review-skill.md`, `LICENSE_DOCUMENTATION.md`, `THIRD_PARTY_NOTICES.md`, `CONTENT_PROVENANCE.md`, `RESOURCE_LICENSES.md`, this knowledge-source map | ADRs, C4 Model, UML, OpenAPI, AsyncAPI, runbooks, documentation-as-code practice, SPDX, CycloneDX, GitHub dependency graph/SBOM, npm registry metadata, PyPI metadata | Reviews completeness, currency, usability, license notice coverage, and content-provenance evidence for project documentation. |
 | 12-Factor Compliance (`twelve-factor-review`) | `twelve-factor-compliance-skill.md` | The Twelve-Factor App methodology, cloud-native configuration and operational practices | Applies the twelve factors as a cloud-readiness checklist. |
 | Business Alignment (`business-alignment-review`) | `business-alignment-skill.md` | Business capability mapping, quality attributes, stakeholder analysis, ROI/TCO, value and risk analysis | Connects technical choices to stakeholder outcomes and business constraints. |
-| Configuration Gap Detector (`config-gap-detector`) | `custom_modes.yaml`, skill inventory, configuration-gap workflow, this knowledge-source map | Official docs, standards bodies, framework docs, product docs, vendor docs | Researches missing modes, skills, or resources before proposing additions. |
+| Configuration Gap Detector (`config-gap-detector`) | `custom_modes.yaml`, skill inventory, configuration-gap workflow, this knowledge-source map, `RESOURCE_LICENSES.md` when new sources are proposed | Official docs, standards bodies, framework docs, product docs, vendor docs | Researches missing modes, skills, or resources before proposing additions, including evidence-resource and license-boundary updates for new mode or skill sources. |
 | GitHub Issue Generator (`github-issue-generator`) | `github-issue-traceability-skill.md`, `requirements-management-skill.md`, `requirements-traceability-skill.md`, `../scripts/README.md`, GitHub issue scripts | GitHub issue and label conventions, GitHub REST API, GitHub MCP documentation, SDLC traceability practice | Uses Python scripts for batch workflows and legacy MCP for optional interactive use. GitHub issues are the only supported work-item traceability carrier. |
 
 ## Skill Knowledge Map
@@ -82,7 +82,7 @@ standards-based guidance.
 | `scalability-performance-skill.md` | Review capacity, performance, bottlenecks, and resource efficiency | Performance engineering, SRE capacity planning, caching, load balancing, database tuning, asynchronous processing | Established engineering practice |
 | `architecture-patterns-skill.md` | Review architecture style, design patterns, integration, and data patterns | DDD, CQRS, Event Sourcing, SOLID, GoF patterns, enterprise integration patterns, REST, GraphQL, gRPC, hexagonal architecture, clean architecture | Established architecture patterns and API practices |
 | `maintainability-technical-debt-skill.md` | Review complexity, coupling, duplication, testability, and debt | Refactoring practice, code quality metrics, modularity, technical debt management, test coverage analysis | Established engineering practice |
-| `documentation-review-skill.md` | Review project and architecture documentation quality | ADRs, C4 Model, UML, OpenAPI, AsyncAPI, runbooks, documentation-as-code | Documentation frameworks and tool practices |
+| `documentation-review-skill.md` | Review project and architecture documentation quality, license notice coverage, and content-provenance evidence | ADRs, C4 Model, UML, OpenAPI, AsyncAPI, runbooks, documentation-as-code, SPDX, CycloneDX, GitHub dependency graph/SBOM, npm registry metadata, PyPI metadata, repository-local license and provenance files | Documentation frameworks, supply-chain evidence sources, package registries, and local governance artifacts |
 | `twelve-factor-compliance-skill.md` | Review cloud-native 12-factor readiness | The Twelve-Factor App, cloud-native configuration, logging, process, disposability, environment parity practices | Official methodology and cloud-native practice |
 
 ## External Reference Register
@@ -112,6 +112,11 @@ configuration:
 | Architecture decisions | [Architecture Decision Records](https://adr.github.io/) | Lightweight architecture decision capture |
 | Cloud-native operations | [The Twelve-Factor App](https://12factor.net/) | Cloud-native app methodology |
 | GitHub issue automation | [GitHub REST issues API](https://docs.github.com/en/rest/issues/issues) | Issue creation and update behavior for scripts |
+| GitHub dependency graph and SBOM export | [GitHub dependency graph SBOM export](https://docs.github.com/en/code-security/supply-chain-security/understanding-your-software-supply-chain/exporting-a-software-bill-of-materials-for-your-repository) | Release and dependency evidence for repository license, dependency, and provenance reviews |
+| SPDX | [SPDX specifications](https://spdx.dev/specifications/) | SBOM and license-expression evidence model for release and compliance documentation |
+| CycloneDX | [CycloneDX specifications](https://cyclonedx.org/specification/overview/) | SBOM evidence model for dependency and supply-chain documentation |
+| npm registry metadata | [npm package metadata and registry docs](https://docs.npmjs.com/about-packages-and-modules) | Runtime package version, license, and deprecation evidence for Node/npm dependencies |
+| PyPI project metadata | [PyPI project metadata](https://docs.pypi.org/project_metadata/) | Runtime package version and license evidence for Python dependencies |
 | GitHub MCP | [GitHub MCP server](https://github.com/github/github-mcp-server) | Maintained GitHub MCP reference for future migration |
 
 ## AI Integration and Usage Source Basis
@@ -139,6 +144,19 @@ and Configuration Gap Detector skills cover the request. Introduce a new skill
 only when the user needs repeatable work for model evaluation, AI governance,
 prompt lifecycle management, agent safety, privacy engineering, or AI supply
 chain compliance that cannot be handled by those existing skills.
+
+## License and Provenance Evidence Source Basis
+
+License and provenance review was added to Documentation Review so Bob can keep
+release-facing documentation, modes, and skills aligned when repository license
+or source-evidence files change.
+
+| Source Group | References | How It Informs Modes and Skills |
+| --- | --- | --- |
+| Repository-local evidence | `LICENSE`, `LICENSE_DOCUMENTATION.md`, `THIRD_PARTY_NOTICES.md`, `CONTENT_PROVENANCE.md`, `.bob/documentation/RESOURCE_LICENSES.md`, this file | Defines the current repository license scope, dependency notices, artifact provenance, and mode/skill source boundaries. |
+| Supply-chain evidence standards | SPDX specifications, CycloneDX specifications, GitHub dependency graph SBOM export | Provides evidence models for SBOM, license-expression, dependency, and release-readiness checks. |
+| Package registry evidence | npm registry/package metadata, PyPI project metadata | Provides direct runtime package version, license, and deprecation evidence for packages referenced by Bob scripts and MCP configuration. |
+| Bob configuration evidence | `.bob/custom_modes.yaml`, `.bob/skills/README.md`, individual `.bob/skills/*-skill.md`, quick-start guides, root README | Keeps user-facing mode and skill behavior synchronized with license/provenance review capabilities. |
 
 ## Source Trust and Maintenance Rules
 

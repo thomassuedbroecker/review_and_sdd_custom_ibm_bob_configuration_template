@@ -143,7 +143,8 @@ Focused architecture pattern and design review.
 Focused maintainability and technical debt analysis.
 
 ### 7. 📚 Documentation Review (`documentation-review`)
-Focused architecture documentation and diagram review.
+Focused architecture documentation, diagram, license notice, and
+content-provenance review.
 
 ### 8. ☁️ 12-Factor Compliance (`twelve-factor-review`)
 Focused cloud-native and 12-factor compliance review.
@@ -190,7 +191,8 @@ Identifies maintainability issues, quantifies technical debt, and provides refac
 ### 6. 📚 Documentation Review
 **File**: `../skills/documentation-review-skill.md`
 
-Evaluates documentation completeness, clarity, and currency.
+Evaluates documentation completeness, clarity, currency, license notice
+coverage, content-provenance evidence, and mode/skill source alignment.
 
 ### 7. ☁️ 12-Factor Compliance
 **File**: `../skills/twelve-factor-compliance-skill.md`

@@ -75,7 +75,7 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 ---
 
 ### 6. Documentation Review (`documentation-review-skill.md`)
-**Purpose**: Evaluate documentation completeness, clarity, and currency.
+**Purpose**: Evaluate documentation completeness, clarity, currency, license notice coverage, and content-provenance evidence.
 
 **Key Areas**:
 - Architecture Decision Records (ADRs)
@@ -83,8 +83,15 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 - UML diagrams
 - API documentation
 - Runbooks and operational guides
+- Repository license documentation, third-party notices, resource-license maps, and content provenance
 
-**When to Use**: Documentation quality reviews, ADR validation, diagram completeness checks
+**When to Use**: Documentation quality reviews, ADR validation, diagram completeness checks, release documentation checks, license/provenance evidence reviews
+
+**Source Basis**: Documentation and provenance review is grounded in local
+repository evidence (`LICENSE_DOCUMENTATION.md`, `THIRD_PARTY_NOTICES.md`,
+`CONTENT_PROVENANCE.md`, `../documentation/RESOURCE_LICENSES.md`), plus the
+mode and skill evidence map in
+[`../documentation/KNOWLEDGE_SOURCES.md#license-and-provenance-evidence-source-basis`](../documentation/KNOWLEDGE_SOURCES.md#license-and-provenance-evidence-source-basis).
 
 ---
 

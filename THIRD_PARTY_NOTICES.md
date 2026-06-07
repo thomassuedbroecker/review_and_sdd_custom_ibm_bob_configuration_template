@@ -25,8 +25,16 @@ The setup instructions install these packages separately at runtime without
 version pins. They are not vendored into this repository, and their resolved
 dependency trees are not included in the npm snapshot below.
 
+Direct package metadata was checked against PyPI on 2026-06-07:
+
+| Package | Latest Version Checked | Reported License | Scope |
+| --- | --- | --- | --- |
+| `requests` | `2.34.2` | Apache-2.0 | Direct optional runtime dependency |
+| `PyYAML` | `6.0.3` | MIT | Direct optional runtime dependency for YAML templates |
+
 Before distributing a bundled Python environment, generate a Python dependency
-inventory, review the resolved licenses, and preserve any required notices.
+inventory for the exact installed versions, review transitive dependency
+licenses, and preserve any required notices.
 
 ## Adapted Repository Template Content
 
@@ -101,5 +109,5 @@ deprecated. Replace it with a maintained integration and regenerate this
 snapshot before the next release.
 
 The direct package metadata was rechecked against the npm registry on
-2026-06-04. The latest reported version remains `2025.4.8`, its reported
-license remains MIT, and the package remains deprecated.
+2026-06-07. The latest reported version remains `2025.4.8`, its reported
+license remains MIT, and npm reports the package as no longer supported.
