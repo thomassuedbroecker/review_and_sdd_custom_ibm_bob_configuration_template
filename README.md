@@ -390,6 +390,10 @@ After changing Markdown documentation, validate local links and heading anchors:
 python3 .bob/scripts/check_markdown_links.py
 ```
 
+## Limitations
+
+This template does not replace architecture review boards, security review, legal review, or formal ALM tooling. It provides a Git-native, Markdown-based structure for improving consistency, traceability, and review preparation when working with IBM Bob.
+
 ## License and Third-Party Notices
 
 This repository is distributed under the Apache License, Version 2.0. See
