@@ -151,6 +151,21 @@ for the supported traceability carriers and matrix format.
 
 ---
 
+## Demo Workflow
+
+1. Clone this template.
+2. Add a sample repo under /repos.
+3. Start IBM Bob.
+4. Select Architecture Review mode.
+5. Run this prompt:
+   "Review security, maintainability, and 12-factor compliance for repos/example-app."
+6. Expected output:
+   - achieved / concerns / not achieved
+   - prioritized findings
+   - GitHub issue candidates
+
+---
+
 ## 💡 Usage Examples
 
 Add code or a repository to your IBM Bob IDE, then follow the examples.
