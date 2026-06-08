@@ -379,6 +379,7 @@ Output: List of created GitHub issues with numbers and links
 | **[.bob/documentation/KNOWLEDGE_SOURCES.md](./.bob/documentation/KNOWLEDGE_SOURCES.md)** | Mode and skill knowledge-source map |
 | **[.bob/documentation/RESOURCE_LICENSES.md](./.bob/documentation/RESOURCE_LICENSES.md)** | License and terms map for external mode resources |
 | **[.bob/documentation/guides/QUICK-START.md](./.bob/documentation/guides/QUICK-START.md)** | Quick start guide |
+| **[.bob/documentation/guides/CREATING-AGENTS-MD.md](./.bob/documentation/guides/CREATING-AGENTS-MD.md)** | Guide for creating agents.md files |
 | **[.bob/documentation/SDD-README.md](./.bob/documentation/SDD-README.md)** | Spec-driven development |
 | **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |
 | **[.bob/scripts/README.md](./.bob/scripts/README.md)** | GitHub issue-management scripts |
