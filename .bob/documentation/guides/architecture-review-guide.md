@@ -184,7 +184,7 @@ The review document includes:
 ## Resources
 
 ### Templates
-- `prompts/architecture-review-template.md` - Complete review document template
+- [`architecture-review-template.md`](architecture-review-template.md) - Complete review document template
 
 ### Standards and Frameworks
 - [12-Factor App](https://12factor.net/)

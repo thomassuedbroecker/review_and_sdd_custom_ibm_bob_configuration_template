@@ -349,6 +349,6 @@ For questions or issues:
 **Last Updated**: 2026-05-31
 **Version**: 3.3
 **Modes**: 11
-**Skills**: 9
+**Skills**: 11
 
 For the latest updates, check `.bob/custom_modes.yaml` and the documentation directory regularly.

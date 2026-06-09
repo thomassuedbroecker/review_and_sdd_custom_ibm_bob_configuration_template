@@ -37,10 +37,10 @@ BUSINESS GOAL → REQUIREMENT → EPIC → FEATURE → TASK → GIT COMMIT → C
 
 ### Phase 1: Requirements Definition (SDD Mode)
 
-**Mode**: [`sdd`](.bob/custom_modes.yaml#L108-L223)  
-**Skills**: 
-- [`requirements-management-skill.md`](.bob/skills/requirements-management-skill.md)
-- [`requirements-traceability-skill.md`](.bob/skills/requirements-traceability-skill.md)
+**Mode**: [`sdd`](../../custom_modes.yaml)
+**Skills**:
+- [`requirements-management-skill.md`](../../skills/requirements-management-skill.md)
+- [`requirements-traceability-skill.md`](../../skills/requirements-traceability-skill.md)
 
 **Process**:
 1. Elicit requirements from stakeholders
@@ -76,9 +76,9 @@ BUSINESS GOAL → REQUIREMENT → EPIC → FEATURE → TASK → GIT COMMIT → C
 
 ### Phase 2: Issue Generation (GitHub Issue Generator Mode)
 
-**Mode**: [`github-issue-generator`](.bob/custom_modes.yaml#L652-L1079)
-**Skills**: 
-- [`github-issue-traceability-skill.md`](.bob/skills/github-issue-traceability-skill.md)
+**Mode**: [`github-issue-generator`](../../custom_modes.yaml)
+**Skills**:
+- [`github-issue-traceability-skill.md`](../../skills/github-issue-traceability-skill.md)
 
 **Process**:
 1. Read requirements from SDD output
@@ -220,7 +220,7 @@ class TestJWTValidator:
 
 ### Phase 5: Validation (Architecture Review Mode)
 
-**Mode**: [`arch-review`](.bob/custom_modes.yaml#L2-L106)
+**Mode**: [`arch-review`](../../custom_modes.yaml)
 
 **Process**:
 1. Verify traceability chain completeness
@@ -259,7 +259,7 @@ entries. It is not a separate system of record.
 
 ### Python Scripts for Issue Management
 
-Located in [`.bob/scripts/`](.bob/scripts/):
+Located in [`.bob/scripts/`](../../scripts/):
 
 1. **Issue Creation**: `create_github_issues.py`
    - Create issues from JSON/YAML templates
@@ -278,7 +278,7 @@ Located in [`.bob/scripts/`](.bob/scripts/):
    - Update status labels
    - Track dependencies and blockers
 
-See [`.bob/scripts/README.md`](.bob/scripts/README.md) for detailed usage.
+See [`.bob/scripts/README.md`](../../scripts/README.md) for detailed usage.
 
 ### Shell Wrappers
 
@@ -471,11 +471,11 @@ Track these metrics to ensure traceability effectiveness:
 
 ## Related Documentation
 
-- [Custom Modes Configuration](.bob/custom_modes.yaml)
-- [Requirements Management Skill](.bob/skills/requirements-management-skill.md)
-- [Requirements Traceability Skill](.bob/skills/requirements-traceability-skill.md)
-- [GitHub Issue Traceability Skill](.bob/skills/github-issue-traceability-skill.md)
-- [GitHub Scripts README](.bob/scripts/README.md)
+- [Custom Modes Configuration](../../custom_modes.yaml)
+- [Requirements Management Skill](../../skills/requirements-management-skill.md)
+- [Requirements Traceability Skill](../../skills/requirements-traceability-skill.md)
+- [GitHub Issue Traceability Skill](../../skills/github-issue-traceability-skill.md)
+- [GitHub Scripts README](../../scripts/README.md)
 
 ## Support
 

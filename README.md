@@ -138,7 +138,7 @@ and one GitHub issue traceability skill. See the
 usage guidance, customization options, and examples.
 
 Traceability matrices are intentionally limited to GitHub issues, Markdown
-documents, and code entries. See the [SDLC traceability guide](./SDLC_TRACEABILITY_GUIDE.md)
+documents, and code entries. See the [SDLC traceability guide](./.bob/documentation/guides/SDLC_TRACEABILITY_GUIDE.md)
 for the supported traceability carriers and matrix format.
 
 ## Configuration Visuals
