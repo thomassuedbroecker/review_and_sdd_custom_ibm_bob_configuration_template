@@ -9,7 +9,7 @@ diagram that visualizes the architecture-review subset of the modes defined in
 The diagram provides a comprehensive visual representation of:
 - The main Architecture Review mode (orchestrator)
 - All 7 specialized review modes
-- The 7 review skill files they utilize
+- The 7 focused review skill files they utilize
 - The SDLC discovery and gap-analysis skill used before reviews when scope or lifecycle phase is unclear
 - The relationships between modes and skills
 
@@ -29,7 +29,7 @@ The diagram provides a comprehensive visual representation of:
 ### Main Orchestrator Mode
 
 **Architecture Review (arch-review)**
-- Central orchestrator that can use all 7 specialized review skills
+- Central orchestrator that can use all 7 focused review skills
 - Uses SDLC discovery and gap analysis before the review when the user intent,
   lifecycle phase, source artifacts, or output expectations are unclear
 - Conducts comprehensive reviews across all areas
@@ -78,7 +78,8 @@ The diagram shows 7 specialized modes, each focusing on a specific aspect:
 
 ### Review Skills
 
-All skills are located in [`skills/`](../../skills/README.md) directory:
+The architecture-review subset uses these skills from the
+[`.bob/skills/`](../../skills/README.md) directory:
 
 1. [`sdlc-discovery-gap-analysis-skill.md`](../../skills/sdlc-discovery-gap-analysis-skill.md)
 2. [`business-alignment-skill.md`](../../skills/business-alignment-skill.md)
@@ -111,6 +112,13 @@ All modes share these capabilities:
 - **Priority Levels**: Critical, High, Medium, Low
 - **Evidence-Based**: Specific examples and code references
 
+Documentation Review also checks repository license and provenance evidence:
+[`LICENSE_DOCUMENTATION.md`](../../../LICENSE_DOCUMENTATION.md),
+[`THIRD_PARTY_NOTICES.md`](../../../THIRD_PARTY_NOTICES.md),
+[`CONTENT_PROVENANCE.md`](../../../CONTENT_PROVENANCE.md),
+[`RESOURCE_LICENSES.md`](../RESOURCE_LICENSES.md), and
+[`KNOWLEDGE_SOURCES.md`](../KNOWLEDGE_SOURCES.md).
+
 ## Usage Patterns
 
 ### Complete Review
@@ -141,6 +149,6 @@ When updating [`.bob/custom_modes.yaml`](../../custom_modes.yaml):
 ## Related Files
 
 - Configuration: [`.bob/custom_modes.yaml`](../../custom_modes.yaml)
-- Skills Directory: [`skills/`](../../skills/README.md)
+- Skills Directory: [`.bob/skills/`](../../skills/README.md)
 - Architecture Review Guide: [`documentation/guides/architecture-review-guide.md`](../guides/architecture-review-guide.md)
 - System Diagram: [`architecture-review-system.drawio`](architecture-review-system.drawio)

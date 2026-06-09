@@ -268,6 +268,9 @@ Evaluate documentation completeness, clarity, currency, license notice coverage,
 - Is a root `LICENSE` file present and referenced from the README?
 - Does `LICENSE_DOCUMENTATION.md` summarize the repository license scope?
 - Are exceptions, separately licensed artifacts, and runtime-only dependencies clearly identified?
+- Does `.bob/custom_modes.yaml` route license, notice, provenance, and
+  resource-license checks through Documentation Review or Configuration Gap
+  Detector when the current workflow is insufficient?
 
 **Third-Party Notices**
 - Does `THIRD_PARTY_NOTICES.md` list vendored or runtime dependencies that require review?
@@ -283,6 +286,8 @@ Evaluate documentation completeness, clarity, currency, license notice coverage,
 - Does `.bob/documentation/RESOURCE_LICENSES.md` distinguish conceptual references from copied repository content?
 - Are standards, vendor documentation, Creative Commons resources, and package dependencies handled with clear copy/adapt/link rules?
 - Are AI-assisted artifacts documented with human review and acceptance evidence where relevant?
+- Does `.bob/documentation/KNOWLEDGE_SOURCES.md` keep mode and skill source
+  claims synchronized with `.bob/custom_modes.yaml` and `.bob/skills/README.md`?
 
 ## Output Format
 

@@ -10,6 +10,7 @@ graph TB
     
     subgraph "Architecture Review Mode"
         Mode[🏛️ Architecture Review Mode<br/>Orchestrator]
+        Discovery[🔎 SDLC Discovery<br/>Scope & Gap Analysis]
     end
     
     subgraph "Reusable Review Skills"
@@ -27,6 +28,7 @@ graph TB
     end
     
     User -->|Request Review| Mode
+    Mode -->|Clarify scope if unclear| Discovery
     Mode -->|Uses| S1
     Mode -->|Uses| S2
     Mode -->|Uses| S3
@@ -42,10 +44,12 @@ graph TB
     S5 --> Output
     S6 --> Output
     S7 --> Output
+    Discovery --> Mode
     
     Output -->|Presents| User
     
     style Mode fill:#e1f5ff,stroke:#0288d1,stroke-width:3px
+    style Discovery fill:#ede7f6,stroke:#5e35b1,stroke-width:2px
     style S1 fill:#fff3e0,stroke:#f57c00,stroke-width:2px
     style S2 fill:#fce4ec,stroke:#c2185b,stroke-width:2px
     style S3 fill:#e8f5e9,stroke:#388e3c,stroke-width:2px
@@ -60,6 +64,13 @@ graph TB
 
 ```mermaid
 graph LR
+    subgraph "🔎 SDLC Discovery and Gap Analysis"
+        DG1[SDLC Phase Classification]
+        DG2[Grill Me Questions]
+        DG3[Mode and Skill Selection]
+        DG4[Missing Capability Detection]
+    end
+
     subgraph "🎯 Business Alignment"
         BA1[Strategic Planning]
         BA2[Quality Attributes]
@@ -108,6 +119,7 @@ graph LR
         DR5[Runbooks]
         DR6[License Notices]
         DR7[Content Provenance]
+        DR8[Resource License Map]
     end
     
     subgraph "☁️ 12-Factor Compliance"
@@ -118,6 +130,11 @@ graph LR
         TF5[Logs & Admin Processes]
     end
     
+    style DG1 fill:#ede7f6
+    style DG2 fill:#ede7f6
+    style DG3 fill:#ede7f6
+    style DG4 fill:#ede7f6
+
     style BA1 fill:#fff3e0
     style BA2 fill:#fff3e0
     style BA3 fill:#fff3e0
@@ -153,6 +170,9 @@ graph LR
     style DR3 fill:#e0f2f1
     style DR4 fill:#e0f2f1
     style DR5 fill:#e0f2f1
+    style DR6 fill:#e0f2f1
+    style DR7 fill:#e0f2f1
+    style DR8 fill:#e0f2f1
     
     style TF1 fill:#e3f2fd
     style TF2 fill:#e3f2fd
@@ -172,6 +192,10 @@ sequenceDiagram
     participant Report as 📊 Report
     
     User->>Mode: Request Review<br/>(Complete or Focused)
+    opt Scope, lifecycle phase, artifacts, or output are unclear
+        Mode->>Skills: Read SDLC Discovery and Gap Analysis skill
+        Skills-->>Mode: Grill Me questions and skill selection guidance
+    end
     Mode->>Skills: Read Relevant Skill(s)
     Skills-->>Mode: Skill Methodology & Checklist
     
@@ -202,7 +226,7 @@ graph TD
     
     Start --> Choice{Review Type?}
     
-    Choice -->|Complete| All[Use All 7 Skills]
+    Choice -->|Complete| All[Use All 7 Focused Review Skills]
     Choice -->|Focused| Select[Select Specific Skills]
     Choice -->|Pre-Production| PreProd[Security + Scalability<br/>+ 12-Factor]
     Choice -->|Tech Debt| TechDebt[Maintainability<br/>+ Documentation]
@@ -235,24 +259,32 @@ graph TD
 📁 Project Root
 │
 ├── 📁 .bob/
-│   └── 📄 custom_modes.yaml          # Architecture Review Mode Definition
+│   ├── 📄 custom_modes.yaml          # 11 custom mode definitions
+│   ├── 📁 skills/                    # Reusable Bob skills
+│   │   ├── 📄 README.md
+│   │   ├── 🔎 sdlc-discovery-gap-analysis-skill.md
+│   │   ├── 🎯 business-alignment-skill.md
+│   │   ├── 🔒 security-threat-modeling-skill.md
+│   │   ├── 📈 scalability-performance-skill.md
+│   │   ├── 🎨 architecture-patterns-skill.md
+│   │   ├── 🔧 maintainability-technical-debt-skill.md
+│   │   ├── 📚 documentation-review-skill.md
+│   │   ├── ☁️ twelve-factor-compliance-skill.md
+│   │   ├── 🧭 requirements-management-skill.md
+│   │   ├── 🔗 requirements-traceability-skill.md
+│   │   └── 📋 github-issue-traceability-skill.md
+│   └── 📁 documentation/
+│       ├── 📄 README-ARCHITECTURE-REVIEW.md
+│       ├── 📄 SDD-README.md
+│       ├── 📄 KNOWLEDGE_SOURCES.md
+│       ├── 📄 RESOURCE_LICENSES.md
+│       └── 📁 guides/
+│           ├── 📄 architecture-review-template.md
+│           └── 📄 architecture-review-guide.md
 │
-├── 📁 skills/                         # Reusable Review Skills
-│   ├── 📄 README.md
-│   ├── 🎯 business-alignment-skill.md
-│   ├── 🔒 security-threat-modeling-skill.md
-│   ├── 📈 scalability-performance-skill.md
-│   ├── 🎨 architecture-patterns-skill.md
-│   ├── 🔧 maintainability-technical-debt-skill.md
-│   ├── 📚 documentation-review-skill.md
-│   └── ☁️ twelve-factor-compliance-skill.md
-│
-└── 📁 documentation/
-    ├── 📄 README-ARCHITECTURE-REVIEW.md
-    ├── 📄 SDD-README.md
-    └── 📁 guides/
-        ├── 📄 architecture-review-template.md
-        └── 📄 architecture-review-guide.md
+├── 📄 LICENSE_DOCUMENTATION.md
+├── 📄 THIRD_PARTY_NOTICES.md
+└── 📄 CONTENT_PROVENANCE.md
 ```
 
 ## Key Benefits
