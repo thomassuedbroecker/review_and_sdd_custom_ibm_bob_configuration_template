@@ -374,6 +374,7 @@ Output: List of created GitHub issues with numbers and links
 | Document | Purpose |
 |----------|---------|
 | **README.md** | Main documentation (this file) |
+| **[agents.md](./agents.md)** | Agent routing rules and hard constraints for IBM Bob |
 | **[.bob/skills/README.md](./.bob/skills/README.md)** | Skills documentation |
 | **[.bob/documentation/README-ARCHITECTURE-REVIEW.md](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)** | Architecture review details |
 | **[.bob/documentation/KNOWLEDGE_SOURCES.md](./.bob/documentation/KNOWLEDGE_SOURCES.md)** | Mode and skill knowledge-source map |
@@ -384,6 +385,21 @@ Output: List of created GitHub issues with numbers and links
 | **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |
 | **[.bob/scripts/README.md](./.bob/scripts/README.md)** | GitHub issue-management scripts |
 | **[GITHUB_MCP_SETUP.md](./.bob/documentation/GITHUB_MCP_SETUP.md)** | GitHub MCP server setup |
+
+## agents.md
+
+The [`agents.md`](./agents.md) file is read by IBM Bob at task start. It contains only the
+information the agent cannot infer from mode definitions or skill files:
+
+- **Workspace constraint** — repositories to review must be placed under `repos/`
+- **Mode routing table** — maps a user's intent to the correct mode slug
+- **Hard rules** — three cross-cutting constraints that apply in every mode:
+  1. Always read the skill file before producing findings
+  2. Traceability runs through GitHub issues, Markdown, and code only
+  3. Unknown domain → escalate to `config-gap-detector` before proceeding
+
+Keep `agents.md` short. Mode-specific behaviour belongs in `.bob/custom_modes.yaml`;
+skill-specific methodology belongs in `.bob/skills/`. Do not duplicate that content here.
 
 ## Documentation Validation
 
