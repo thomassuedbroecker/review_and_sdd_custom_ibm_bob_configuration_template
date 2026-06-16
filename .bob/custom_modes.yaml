@@ -53,6 +53,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Review Process:
       
@@ -167,6 +168,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Spec-Driven Development Process:
 
@@ -303,6 +305,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Security Review Process:
       
@@ -379,6 +382,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Scalability and Performance Review Process:
       
@@ -455,6 +459,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Architecture Pattern Review Process:
       
@@ -531,6 +536,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Maintainability and Technical Debt Review Process:
       
@@ -608,6 +614,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Documentation Review Process:
       
@@ -694,6 +701,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       12-Factor Compliance Review Process:
       
@@ -770,6 +778,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       Business Alignment Review Process:
       
@@ -859,6 +868,7 @@ customModes:
       - command
       - mcp
       - browser
+      - modes
     customInstructions: >-
       Configuration Gap Detection Process:
       
@@ -1026,6 +1036,7 @@ customModes:
       - edit
       - command
       - mcp
+      - modes
     customInstructions: >-
       GitHub Issue Generation Process:
 
