@@ -188,6 +188,22 @@ Try: "Start with security, then we'll do performance"
 "Use the documentation-review skill to check license notices, provenance, and mode/skill evidence resources"
 ```
 
+### Tip 6: Run Reviews from the CLI (no IDE needed)
+```bash
+# Full architecture review — output to terminal
+automations/run_arch_review.sh --repo <name>
+
+# Focused security review saved to a Markdown file
+automations/run_arch_review.sh --repo <name> \
+  --mode security-review \
+  --out reviews/<name>-security-$(date +%Y%m%d).md
+
+# CI mode — auto-approve, JSON output, token budget cap
+automations/run_arch_review.sh --repo <name> \
+  --yolo --output json --max-coins 500 --out /tmp/review.json
+```
+See [`automations/README.md`](../../automations/README.md) for full options and troubleshooting.
+
 ---
 
 ## 🔄 Typical Workflow

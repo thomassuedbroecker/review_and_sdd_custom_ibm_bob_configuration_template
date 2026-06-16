@@ -30,6 +30,8 @@ The distributable content is recorded in
 | Bob skills | `../skills/` | AI-assisted, authored, reviewed, and accepted by Thomas Suedbroecker |
 | Bob documentation and notes | `./`, `../notes/` | AI-assisted, maintained by Thomas Suedbroecker |
 | GitHub issue scripts | `../scripts/` | AI-assisted scripts maintained by Thomas Suedbroecker |
+| CLI automation scripts | `../../automations/` | AI-assisted scripts maintained by Thomas Suedbroecker |
+| Agent routing configuration | `../../agents.md` | AI-assisted, authored, reviewed, and accepted by Thomas Suedbroecker |
 | Diagrams and images | `diagramms/`, `../images/` | AI-assisted diagram material accepted by Thomas Suedbroecker |
 | GitHub MCP dependency | `../mcp.json` | Runtime npm dependency documented in `../../THIRD_PARTY_NOTICES.md` |
 

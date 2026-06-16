@@ -33,6 +33,7 @@ Usage example on YouTube:
 - **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle
 - **Adaptive Configuration**: Use the Grill Me discovery pattern to clarify SDLC intent, detect gaps, and propose new capabilities based on emerging requirements
 - **Modular Skills**: Use individual skills independently or combine them for comprehensive reviews
+- **CLI Automation**: Run any review mode non-interactively from a terminal or CI pipeline using the scripts in [`automations/`](./automations/)
 
 ## Traceability Boundary
 
@@ -58,7 +59,10 @@ supported sources of truth unless you add a dedicated integration.
 
 - IBM Bob installed
 - Git installed for the recommended GitHub repository workflow
-- Node.js and npm installed only when using the optional GitHub MCP integration
+- Node.js ≥ 18 and npm installed only when using the optional GitHub MCP integration
+  or the `automations/` scripts (`nvm` recommended for managing Node.js versions)
+- `bob` CLI installed as a Node.js global (`npm install -g @ibm/bob`) only when
+  running the `automations/` scripts from the command line or a CI pipeline
 - Python 3 and the `requests` package installed only when using the optional
   GitHub issue-management scripts
 - A GitHub token configured only when generating GitHub issues
@@ -99,6 +103,38 @@ git clone <repository-url> repos/<repository-name>
 Keep the template repository as the IBM Bob workspace root. Add the
 repositories that you want to inspect, review, or use as nested folders under
 `repos/`.
+
+## Automations
+
+The [`automations/`](./automations/) folder contains Bash scripts that invoke
+IBM Bob non-interactively from a terminal or CI pipeline — no IDE required.
+
+| Script | Purpose |
+|---|---|
+| [`run_arch_review.sh`](./automations/run_arch_review.sh) | Run any review mode against a repo in `repos/` and optionally save the output to a Markdown file |
+
+**Quick start**:
+
+```bash
+# 1. Clone the repo you want to review
+git clone <repository-url> repos/<repository-name>
+
+# 2. Run a full architecture review (output to terminal)
+automations/run_arch_review.sh --repo <repository-name>
+
+# 3. Save a focused security review to a dated file
+automations/run_arch_review.sh --repo <repository-name> \
+  --mode security-review \
+  --out reviews/<repository-name>-security-$(date +%Y%m%d).md
+
+# 4. CI mode — auto-approve, JSON output, token budget cap
+automations/run_arch_review.sh --repo <repository-name> \
+  --yolo --output json --max-coins 500 --out /tmp/review.json
+```
+
+Scripts must be run from the **workspace root** (the folder containing `.bob/`).
+See [`automations/README.md`](./automations/README.md) for full options, available
+modes, path resolution details, and troubleshooting.
 
 ## How to Use
 
@@ -380,6 +416,7 @@ Output: List of created GitHub issues with numbers and links
 | **[.bob/documentation/KNOWLEDGE_SOURCES.md](./.bob/documentation/KNOWLEDGE_SOURCES.md)** | Mode and skill knowledge-source map |
 | **[.bob/documentation/RESOURCE_LICENSES.md](./.bob/documentation/RESOURCE_LICENSES.md)** | License and terms map for external mode resources |
 | **[.bob/documentation/guides/QUICK-START.md](./.bob/documentation/guides/QUICK-START.md)** | Quick start guide |
+| **[automations/README.md](./automations/README.md)** | CLI automation scripts for non-interactive reviews |
 | **[.bob/documentation/guides/CREATING-AGENTS-MD.md](./.bob/documentation/guides/CREATING-AGENTS-MD.md)** | Guide for creating agents.md files |
 | **[.bob/documentation/SDD-README.md](./.bob/documentation/SDD-README.md)** | Spec-driven development |
 | **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |
