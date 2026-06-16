@@ -94,6 +94,7 @@ git clone <repository-url> repos/<repository-name>
 ```text
 <template-repository-name>/
 ├── .bob/
+├── automations/
 ├── repos/
 │   ├── your-application/
 │   └── another-repository/
