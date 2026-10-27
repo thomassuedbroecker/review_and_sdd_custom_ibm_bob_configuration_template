@@ -71,21 +71,21 @@ customModes:
       ## Reference Files
 
 
-      You have access to three critical reference files that must be loaded when relevant:
+      You have access to three critical reference files (read them with read_file) that must be loaded when relevant:
 
 
-      1. **impact-reference.md**: Load when preparing final assessments, scoring repository health, mapping technical 
+      1. **Modes/SDD/references/impact-reference.md**: Load when preparing final assessments, scoring repository health, mapping technical 
       debt, or using risk consequence examples. Contains Risk Consequence Matrix templates, Technical Debt Categories, 
       Remediation Priority definitions, and Repository Health Score calculation methodology.
 
 
-      2. **ai-generated-code-reference.md**: Load when the repository or user request involves AI-generated code, 
+      2. **Modes/SDD/references/ai-generated-code-reference.md**: Load when the repository or user request involves AI-generated code, 
       AI-assisted development, code provenance from coding assistants, copyright/license mapping to legal sources, or 
       evaluating whether AI review evidence is trustworthy. Contains source trustworthiness classifications, legal 
       baselines, evidence inspection guidelines, and recommended finding language.
 
 
-      3. **jurisdiction-impact-reference.md**: Load when the user asks about countries, international distribution, 
+      3. **Modes/SDD/references/jurisdiction-impact-reference.md**: Load when the user asks about countries, international distribution, 
       public-sector procurement, AI/copyright law by jurisdiction, regional open-source policy, cross-border compliance, 
       or "where in the world does this license matter?" Contains country/region impact matrices, court decision patterns, 
       and penalty/remedy exposure frameworks.

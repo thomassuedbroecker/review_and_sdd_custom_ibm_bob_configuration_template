@@ -125,7 +125,7 @@ SKILLS/
 
 ## Mode Changes — split from `specifiction-driven-development-mode.yaml`
 
-All 11 custom modes updated.
+All 12 custom modes updated.
 
 | Mode | Slug | Change |
 |---|---|---|

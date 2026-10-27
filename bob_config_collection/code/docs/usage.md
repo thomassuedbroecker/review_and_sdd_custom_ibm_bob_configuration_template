@@ -23,16 +23,27 @@ Every mode and skill can be read before anything is written to your workspace:
 
 | Documentation of a… | Shows |
 |---|---|
-| Mode | Name, slug, group, description, *when to use*, tool groups, the skills it uses (with their purpose), role definition, `<slug>-mode.md` from the collection if present, and the exact mode definition as it will be written to `.bob/custom_modes.yaml` |
+| Mode | Name, slug, group, description, *when to use*, tool groups, the skills it uses (with their purpose), role definition, `<slug>-mode.md` from the collection if present, a **Related documentation** list (mode guide, the reference files the mode loads, the group overview, and the guides, each opening in the Markdown preview), and the exact mode definition as it will be written to `.bob/custom_modes.yaml` |
 | Skill | Install target, files, which modes use it, its `README.md`, and the full `SKILL.md` |
+
+In the sidebar, every mode card has a **Documentation (n)** list with the same
+links, so a mode's intent and its documents are one click away without
+installing anything. Click the mode name or **Docs** for the overview.
 
 The preview is generated from the selected source (GitHub, bundled, or local),
 so you read exactly what would be installed.
 
 ## Import into a workspace
 
-Open the Bob workspace folder, then run a command from the Command Palette
-(category **Bob Config**). Everything is written below `.bob/` in that folder.
+Open the Bob workspace folder, then start a command in one of two ways:
+
+- **Sidebar panel**: click the **Bob Config Importer** icon in the activity bar
+  (left-hand icon strip) to open the catalog panel; click **Install** on any
+  mode or skill card, or use the toolbar buttons for other actions.
+- **Command Palette**: press `Cmd+Shift+P` / `Ctrl+Shift+P` and search in the
+  **Bob Config** category.
+
+Everything is written below `.bob/` in that folder.
 With several workspace folders open, you are asked which one to use.
 
 | Command | What you select | What is written |

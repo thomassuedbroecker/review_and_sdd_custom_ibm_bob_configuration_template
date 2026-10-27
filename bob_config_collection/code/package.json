@@ -5,7 +5,7 @@
   "version": "0.1.0",
   "publisher": "thomassuedbroecker",
   "license": "Apache-2.0",
-  "icon": "images/icon.png",
+  "icon": "images/icon-color.png",
   "galleryBanner": {
     "color": "#0d3b3f",
     "theme": "dark"
@@ -33,6 +33,25 @@
   "main": "./src/extension.js",
   "activationEvents": [],
   "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "bob-config-importer",
+          "title": "Bob Config Importer",
+          "icon": "images/icon.png"
+        }
+      ]
+    },
+    "views": {
+      "bob-config-importer": [
+        {
+          "id": "bobConfigImporter.mainView",
+          "name": "Bob Config Importer",
+          "type": "webview",
+          "icon": "images/icon.png"
+        }
+      ]
+    },
     "commands": [
       {
         "command": "bobConfigImporter.browseDocs",

@@ -23,7 +23,7 @@ This guide provides comprehensive documentation for the custom modes configured 
 
 ## Custom Modes Overview
 
-This project includes **11 custom modes** organized into five categories:
+This project includes **12 custom modes** organized into six categories:
 
 ### 1. Comprehensive Review Mode
 - **🏛️ Architecture Review** - Orchestrates comprehensive reviews using 7 specialized review skills plus SDLC discovery when scope is unclear
@@ -45,6 +45,9 @@ This project includes **11 custom modes** organized into five categories:
 
 ### 5. GitHub Issue Management Mode
 - **📋 GitHub Issue Generator** - Converts todo lists, review findings, and requirements into structured GitHub issues
+
+### 6. License Compliance Mode
+- **🔍 License Impact Analysis** - Assesses license posture, dependency and SBOM evidence, AI-generated code provenance, jurisdiction-specific impact, and repository health score (not legal advice)
 
 ---
 

@@ -2,11 +2,275 @@
 
 const fs = require('fs');
 const path = require('path');
+const crypto = require('crypto');
 const vscode = require('vscode');
 const { loadCatalog } = require('./lib/catalog');
 const install = require('./lib/install');
 const { downloadCollection, readCachedSource } = require('./lib/github');
-const { modeDocumentation, skillDocumentation } = require('./lib/docs');
+const { modeDocumentation, skillDocumentation, modeDocuments, DOC_KIND_LABEL } = require('./lib/docs');
+
+// --- sidebar webview ------------------------------------------------------------
+
+// Builds the full HTML catalog panel (groups → mode cards with tag pills and
+// Install buttons, plus Skills and Other Configurations sections).
+function buildWebviewHtml(catalog, installedSlugs, nonce) {
+  const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+
+  // tag pill colours (group label → hue)
+  const groupHues = {};
+  let hueStep = 0;
+  const HUES = [200, 160, 270, 30, 340, 90, 0];
+  const groupHue = (label) => {
+    if (!groupHues[label]) groupHues[label] = HUES[hueStep++ % HUES.length];
+    return groupHues[label];
+  };
+
+  const pill = (text, hue) =>
+    `<span class="pill" style="--h:${hue}">${esc(text)}</span>`;
+
+  let modeCount = 0;
+  const groupSections = catalog.groups.map((g) => {
+    const hue = groupHue(g.label);
+    const cards = g.modes.map((m) => {
+      modeCount++;
+      const installed = installedSlugs.includes(m.slug);
+      const btnLabel = installed ? 'Update' : 'Install';
+      const desc = m.description || '';
+      const truncated = desc.length > 110 ? desc.slice(0, 107) + '…' : desc;
+      const related = modeDocuments(catalog, m);
+      const docList = `
+          <details class="docs">
+            <summary>Documentation (${related.length + 1})</summary>
+            <ul>
+              <li><a class="doc-link" href="#" data-cmd="bobConfigImporter.showModeDoc" data-slug="${esc(m.slug)}">Mode overview: intent, when to use, skills, definition</a></li>
+              ${related.map((d) => `<li><a class="doc-link" href="#" title="${esc(DOC_KIND_LABEL[d.kind])}: ${esc(d.rel)}" data-cmd="bobConfigImporter.openDocFile" data-group="${esc(g.id)}" data-rel="${esc(d.rel)}">${esc(d.label)}</a><span class="doc-kind">${esc(DOC_KIND_LABEL[d.kind])}</span></li>`).join('')}
+            </ul>
+          </details>`;
+      return `
+      <div class="card">
+        <div class="card-body">
+          <div class="card-name"><a class="doc-link" href="#" title="Read documentation" data-cmd="bobConfigImporter.showModeDoc" data-slug="${esc(m.slug)}">${esc(m.name || m.slug)}</a></div>
+          <div class="card-desc">${esc(truncated)}</div>${docList}
+          <div class="card-footer">
+            <div class="pills">${pill(g.label, hue)}${pill(installed ? 'Installed' : 'Custom Mode', installed ? 120 : 270)}</div>
+            <div class="actions">
+              <button class="btn-docs" data-cmd="bobConfigImporter.showModeDoc" data-slug="${esc(m.slug)}">Docs</button>
+              <button class="btn-install" data-cmd="bobConfigImporter.importModes" data-slug="${esc(m.slug)}">${btnLabel}</button>
+            </div>
+          </div>
+        </div>
+      </div>`;
+    }).join('');
+    return `
+    <details open>
+      <summary><span class="group-icon">⊞</span>${esc(g.label)}<span class="group-count">${g.modes.length}</span></summary>
+      ${cards}
+    </details>`;
+  }).join('');
+
+  const skillCards = catalog.skills.map((s) => {
+    const desc = s.description || '';
+    const truncated = desc.length > 110 ? desc.slice(0, 107) + '…' : desc;
+    return `
+    <div class="card">
+      <div class="card-body">
+        <div class="card-name"><a class="doc-link" href="#" title="Read documentation" data-cmd="bobConfigImporter.showSkillDoc" data-slug="${esc(s.id)}">${esc(s.id)}</a></div>
+        <div class="card-desc">${esc(truncated)}</div>
+        <div class="card-footer">
+          <div class="pills">${pill('Skill', 200)}</div>
+          <div class="actions">
+            <button class="btn-docs" data-cmd="bobConfigImporter.showSkillDoc" data-slug="${esc(s.id)}">Docs</button>
+            <button class="btn-install" data-cmd="bobConfigImporter.importSkills">Install</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const totalSkills = catalog.skills.length;
+
+  return `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'nonce-${nonce}'; script-src 'nonce-${nonce}';">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bob Config Importer</title>
+<style nonce="${nonce}">
+  :root {
+    --bg: var(--vscode-sideBar-background, #1e1e1e);
+    --surface: var(--vscode-editor-background, #252526);
+    --border: var(--vscode-widget-border, #3c3c3c);
+    --fg: var(--vscode-foreground, #ccc);
+    --fg-muted: var(--vscode-descriptionForeground, #999);
+    --accent: var(--vscode-button-background, #0e639c);
+    --accent-fg: var(--vscode-button-foreground, #fff);
+    --accent-hover: var(--vscode-button-hoverBackground, #1177bb);
+    --radius: 6px;
+    font-family: var(--vscode-font-family, system-ui, sans-serif);
+    font-size: var(--vscode-font-size, 13px);
+    color: var(--fg);
+    background: var(--bg);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { padding: 8px; }
+
+  /* toolbar */
+  .toolbar { display:flex; gap:6px; margin-bottom:10px; flex-wrap:wrap; }
+  .toolbar button {
+    background: var(--vscode-button-secondaryBackground, #3a3d41);
+    color: var(--vscode-button-secondaryForeground, #ccc);
+    border: none; border-radius: var(--radius);
+    padding: 4px 10px; cursor: pointer; font-size: 12px;
+  }
+  .toolbar button:hover { background: var(--vscode-button-secondaryHoverBackground, #45494e); }
+
+  /* summary bar */
+  .summary-bar { font-size: 12px; color: var(--fg-muted); margin-bottom: 10px; }
+
+  /* section headers */
+  details { margin-bottom: 6px; }
+  summary {
+    display: flex; align-items: center; gap: 6px;
+    cursor: pointer; padding: 6px 4px;
+    font-weight: 600; font-size: 13px;
+    border-bottom: 1px solid var(--border);
+    list-style: none; user-select: none;
+  }
+  summary::-webkit-details-marker { display:none; }
+  details[open] summary::before { content: '▼'; font-size: 10px; color: var(--fg-muted); }
+  details:not([open]) summary::before { content: '▶'; font-size: 10px; color: var(--fg-muted); }
+  .group-icon { font-size: 14px; }
+  .group-count {
+    margin-left: auto; background: var(--vscode-badge-background, #4d4d4d);
+    color: var(--vscode-badge-foreground, #fff);
+    border-radius: 10px; padding: 1px 7px; font-size: 11px; font-weight: 400;
+  }
+
+  /* cards */
+  .card {
+    border-bottom: 1px solid var(--border);
+    padding: 10px 4px 10px 4px;
+  }
+  .card:last-child { border-bottom: none; }
+  .card-name { font-weight: 600; margin-bottom: 4px; }
+  .card-desc { font-size: 12px; color: var(--fg-muted); line-height: 1.5; margin-bottom: 8px; }
+  .card-footer { display:flex; align-items:center; justify-content:space-between; gap:6px; flex-wrap:wrap; }
+  .pills { display:flex; gap:4px; flex-wrap:wrap; }
+  .pill {
+    font-size: 11px; padding: 2px 8px; border-radius: 12px;
+    border: 1px solid hsl(var(--h), 40%, 50%);
+    color: hsl(var(--h), 55%, 70%);
+    background: transparent;
+  }
+
+  /* install button */
+  .btn-install {
+    background: var(--accent); color: var(--accent-fg);
+    border: none; border-radius: var(--radius);
+    padding: 4px 14px; cursor: pointer; font-size: 12px; white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .btn-install:hover { background: var(--accent-hover); }
+
+  /* docs button and link */
+  .actions { display:flex; gap:6px; flex-shrink:0; }
+  .btn-docs {
+    background: var(--vscode-button-secondaryBackground, #3a3d41);
+    color: var(--vscode-button-secondaryForeground, #ccc);
+    border: none; border-radius: var(--radius);
+    padding: 4px 14px; cursor: pointer; font-size: 12px; white-space: nowrap;
+  }
+  .btn-docs:hover { background: var(--vscode-button-secondaryHoverBackground, #45494e); }
+  .doc-link { color: var(--vscode-textLink-foreground, #3794ff); text-decoration: none; }
+  .doc-link:hover { text-decoration: underline; }
+  details.docs { margin: 0 0 8px 0; }
+  details.docs summary { border-bottom: none; padding: 2px 0; font-weight: 400; font-size: 12px; color: var(--fg-muted); }
+  details.docs ul { list-style: none; padding: 4px 0 0 14px; }
+  details.docs li { font-size: 12px; line-height: 1.7; }
+  .doc-kind { margin-left: 6px; font-size: 11px; color: var(--fg-muted); }
+</style>
+</head>
+<body>
+<div class="toolbar">
+  <button data-cmd="bobConfigImporter.browseDocs">📖 Docs</button>
+  <button data-cmd="bobConfigImporter.importGroup">⊞ Full Group</button>
+  <button data-cmd="bobConfigImporter.importOther">📦 Other</button>
+  <button data-cmd="bobConfigImporter.selectSource">⚙ Source</button>
+  <button data-cmd="bobConfigImporter.refreshCollection">↺ Refresh</button>
+</div>
+<div class="summary-bar">${modeCount} modes · ${totalSkills} skills</div>
+<details open>
+  <summary><span class="group-icon">≡</span>Modes<span class="group-count">${modeCount}</span></summary>
+  ${groupSections}
+</details>
+<details>
+  <summary><span class="group-icon">📚</span>Skills<span class="group-count">${totalSkills}</span></summary>
+  ${skillCards}
+</details>
+<script nonce="${nonce}">
+  const vscode = acquireVsCodeApi();
+  document.addEventListener('click', (e) => {
+    const btn = e.target.closest('[data-cmd]');
+    if (!btn) return;
+    e.preventDefault();
+    const msg = { command: btn.dataset.cmd };
+    if (btn.dataset.slug) msg.slug = btn.dataset.slug;
+    if (btn.dataset.rel) { msg.group = btn.dataset.group; msg.rel = btn.dataset.rel; }
+    vscode.postMessage(msg);
+  });
+</script>
+</body>
+</html>`;
+}
+
+class BobConfigWebviewProvider {
+  constructor(context) {
+    this._context = context;
+    this._view = undefined;
+    this._disposed = false;
+  }
+
+  resolveWebviewView(webviewView) {
+    this._view = webviewView;
+    webviewView.webview.options = { enableScripts: true };
+    webviewView.webview.onDidReceiveMessage(
+      (msg) => {
+        if (this._disposed) return;
+        const args = msg.rel ? [msg.group, msg.rel] : msg.slug ? [msg.slug] : [];
+        vscode.commands.executeCommand(msg.command, ...args);
+      },
+      undefined,
+      this._context.subscriptions,
+    );
+    // Mark disposed when the view is permanently removed (e.g. on extension uninstall).
+    webviewView.onDidDispose(() => { this._disposed = true; this._view = undefined; });
+    this._refresh();
+  }
+
+  // Called after a successful import to update installed badges.
+  refresh() { this._refresh(); }
+
+  dispose() { this._disposed = true; this._view = undefined; }
+
+  async _refresh() {
+    if (this._disposed || !this._view) return;
+    const nonce = crypto.randomBytes(16).toString('base64');
+    try {
+      const source = await resolveCollection(this._context);
+      // Guard again after the async gap — the view may have been disposed while we waited.
+      if (this._disposed || !this._view) return;
+      const catalog = loadCatalog(source.dir);
+      const folders = vscode.workspace.workspaceFolders || [];
+      const targetRoot = folders[0]?.uri.fsPath ?? '';
+      const installedSlugs = targetRoot ? install.existingModeSlugs(catalog, targetRoot) : [];
+      this._view.webview.html = buildWebviewHtml(catalog, installedSlugs, nonce);
+    } catch (err) {
+      if (this._disposed || !this._view) return;
+      this._view.webview.html = `<body style="padding:12px;font-family:sans-serif;color:#c00">Error loading collection:<br>${err.message}</body>`;
+    }
+  }
+}
 
 const CONFIG = 'bobConfigImporter';
 const CACHE_MAX_AGE_MS = 60 * 60 * 1000;
@@ -180,7 +444,7 @@ async function confirmAndApply(targetRoot, plan, what) {
 
 // --- pickers ----------------------------------------------------------------------
 
-function modeItems(catalog, installedSlugs = []) {
+function modeItems(catalog, installedSlugs = [], preselect = []) {
   return catalog.groups.flatMap((g) => [
     { label: g.label, kind: vscode.QuickPickItemKind.Separator },
     ...g.modes.map((m) => ({
@@ -188,6 +452,7 @@ function modeItems(catalog, installedSlugs = []) {
       description: `${m.slug}${installedSlugs.includes(m.slug) ? ' · installed' : ''}`,
       detail: [m.description, m.skills.length ? `Skills: ${m.skills.join(', ')}` : ''].filter(Boolean).join(' — '),
       slug: m.slug,
+      picked: preselect.includes(m.slug),
     })),
   ]);
 }
@@ -206,9 +471,9 @@ function skillItems(catalog, preselect = []) {
   }));
 }
 
-async function pickModes(catalog, sourceLabel, installedSlugs) {
+async function pickModes(catalog, sourceLabel, installedSlugs, preselect = []) {
   const picks = await pickWithDocs(catalog, {
-    title: `Import Bob modes — source: ${sourceLabel}`, items: modeItems(catalog, installedSlugs),
+    title: `Import Bob modes — source: ${sourceLabel}`, items: modeItems(catalog, installedSlugs, preselect),
   });
   return picks?.map((p) => p.slug);
 }
@@ -231,21 +496,22 @@ async function pickGroup(catalog) {
 // --- commands -------------------------------------------------------------------
 
 function command(context, fn) {
-  return async () => {
+  return async (...args) => {
     try {
       const loaded = await getCatalog(context);
       if (!loaded) return;
       const targetRoot = await pickTargetRoot();
       if (!targetRoot) return;
-      await fn(loaded.catalog, loaded.sourceLabel, targetRoot);
+      await fn(loaded.catalog, loaded.sourceLabel, targetRoot, ...args);
     } catch (err) {
       vscode.window.showErrorMessage(`Bob Config Importer: ${err.message}`);
     }
   };
 }
 
-async function importModes(catalog, sourceLabel, targetRoot) {
-  const slugs = await pickModes(catalog, sourceLabel, install.existingModeSlugs(catalog, targetRoot));
+async function importModes(catalog, sourceLabel, targetRoot, preselectedSlug) {
+  const preselect = preselectedSlug ? [preselectedSlug] : [];
+  const slugs = await pickModes(catalog, sourceLabel, install.existingModeSlugs(catalog, targetRoot), preselect);
   if (!slugs?.length) return;
   const needed = install.skillsForModes(catalog, slugs);
   let skills = [];
@@ -317,6 +583,34 @@ async function browseDocs(context) {
   }
 }
 
+// Opens the documentation of one mode or skill directly (used by the sidebar webview).
+async function openDoc(context, kind, key) {
+  try {
+    const loaded = await getCatalog(context);
+    if (!loaded) return;
+    const item = kind === 'mode' ? { slug: key } : { id: key };
+    await showDocs(loaded.catalog, item);
+  } catch (err) {
+    vscode.window.showErrorMessage(`Bob Config Importer: ${err.message}`);
+  }
+}
+
+// Opens one documentation file of a mode group in the Markdown preview.
+async function openDocFile(context, groupId, rel) {
+  try {
+    const loaded = await getCatalog(context);
+    if (!loaded) return;
+    const group = loaded.catalog.groups.find((g) => g.id === groupId);
+    const file = group && path.resolve(group.dir, rel);
+    if (!file || path.relative(group.dir, file).startsWith('..') || !fs.existsSync(file)) {
+      throw new Error(`documentation file not found: ${groupId}/${rel}`);
+    }
+    await vscode.commands.executeCommand('markdown.showPreview', vscode.Uri.file(file));
+  } catch (err) {
+    vscode.window.showErrorMessage(`Bob Config Importer: ${err.message}`);
+  }
+}
+
 async function selectSource() {
   const current = settings().source;
   const pick = await vscode.window.showQuickPick([
@@ -340,22 +634,48 @@ async function selectSource() {
 function activate(context) {
   const register = (id, handler) => context.subscriptions.push(vscode.commands.registerCommand(`${CONFIG}.${id}`, handler));
   context.subscriptions.push(vscode.workspace.registerTextDocumentContentProvider(DOC_SCHEME, docProvider));
+
+  // Sidebar webview panel
+  const webviewProvider = new BobConfigWebviewProvider(context);
+  context.subscriptions.push(webviewProvider);
+  context.subscriptions.push(
+    vscode.window.registerWebviewViewProvider('bobConfigImporter.mainView', webviewProvider),
+  );
+
   register('browseDocs', () => browseDocs(context));
-  register('importModes', command(context, importModes));
-  register('importSkills', command(context, importSkills));
+  register('showModeDoc', (slug) => openDoc(context, 'mode', slug));
+  register('showSkillDoc', (id) => openDoc(context, 'skill', id));
+  register('openDocFile', (groupId, rel) => openDocFile(context, groupId, rel));
+  register('importModes', command(context, async (catalog, sourceLabel, targetRoot, preselectedSlug) => {
+    await importModes(catalog, sourceLabel, targetRoot, preselectedSlug);
+    webviewProvider.refresh();
+  }));
+  register('importSkills', command(context, async (catalog, sourceLabel, targetRoot) => {
+    await importSkills(catalog, sourceLabel, targetRoot);
+    webviewProvider.refresh();
+  }));
   register('importOther', command(context, importOther));
-  register('importGroup', command(context, importGroup));
+  register('importGroup', command(context, async (catalog, sourceLabel, targetRoot) => {
+    await importGroup(catalog, sourceLabel, targetRoot);
+    webviewProvider.refresh();
+  }));
   register('selectSource', selectSource);
   register('refreshCollection', async () => {
     try {
       const source = await resolveCollection(context, { force: true });
-      if (source) vscode.window.showInformationMessage(`Bob collection loaded from ${source.label}.`);
+      if (source) {
+        vscode.window.showInformationMessage(`Bob collection loaded from ${source.label}.`);
+        webviewProvider.refresh();
+      }
     } catch (err) {
       vscode.window.showErrorMessage(`Bob Config Importer: ${err.message}`);
     }
   });
 }
 
-function deactivate() {}
+function deactivate() {
+  // Synchronous cleanup only — async work in _refresh() is already guarded
+  // by the _disposed flag so any in-flight promise resolves harmlessly.
+}
 
 module.exports = { activate, deactivate };

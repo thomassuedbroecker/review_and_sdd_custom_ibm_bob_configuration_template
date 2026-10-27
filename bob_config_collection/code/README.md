@@ -15,7 +15,17 @@ By default it loads the collection from the public GitHub repository
 You can point it at your own repository created from that template, use the
 collection bundled with the extension (offline), or use a local folder.
 
-Commands (Command Palette, category **Bob Config**):
+## Sidebar panel
+
+After installation a **Bob Config Importer** icon appears in the VS Code /
+IBM Bob activity bar (left-hand icon strip). Click it to open the catalog panel,
+which shows all available modes and skills as cards — grouped, with tag pills and
+an **Install** button per item — plus a toolbar for the remaining commands. No
+Command Palette required.
+
+## Commands
+
+All actions are also reachable via the Command Palette (category **Bob Config**):
 
 - **Read Mode or Skill Documentation…**: read any mode or skill without installing it
 - **Import Modes…**: pick modes; the skills they reference can be installed too
@@ -44,13 +54,7 @@ npm run package      # validates and bundles the collection, then packages
 Result: `bob_config_collection/code/dist/bob-config-importer-<version>.vsix`
 (the version comes from `package.json`).
 
-Install it in VS Code or IBM Bob:
-
-```bash
-code --install-extension dist/bob-config-importer-0.1.0.vsix
-```
-
-Or run **Extensions: Install from VSIX…** from the Command Palette and select
+Run **Extensions: Install from VSIX…** from the Command Palette and select
 the file. The `.vsix` contains the collection as it was when you packaged it
 (source **bundled**). By default, the extension still loads the latest
 collection from GitHub. Details: [docs/build-and-test.md](docs/build-and-test.md).

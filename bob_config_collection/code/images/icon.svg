@@ -1,41 +1,33 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
-  <!-- Community palette: deep teal, coral, amber, mint. Deliberately avoids IBM blues and the IBM wordmark/letterforms. -->
-  <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#0d3b3f"/>
-      <stop offset="1" stop-color="#16615f"/>
-    </linearGradient>
-  </defs>
+  <!--
+    Activity-bar icon: transparent background, opaque black paths.
+    VS Code treats opaque pixels as the mask and tints them with the
+    theme foreground colour. Use any fully-opaque colour here; #000000
+    is simplest and renders crisply when sharp converts to PNG.
+    The colour marketplace image is images/icon-color.svg / icon-color.png.
+  -->
 
-  <!-- Background rounded square -->
-  <rect width="128" height="128" rx="24" ry="24" fill="url(#bg)"/>
+  <!-- Three stacked config cards (modes / skills / other) -->
+  <rect x="18" y="14" width="68" height="20" rx="6" fill="#000000" transform="rotate(-7 52 24)"/>
+  <rect x="22" y="36" width="68" height="20" rx="6" fill="#000000" transform="rotate(4 56 46)"/>
+  <rect x="18" y="58" width="68" height="20" rx="6" fill="#000000" transform="rotate(-3 52 68)"/>
 
-  <!-- The collection: three stacked config cards (modes, skills, other configurations) -->
-  <rect x="30" y="20" width="56" height="16" rx="5" fill="#7ee0c3" transform="rotate(-8 58 28)"/>
-  <rect x="34" y="38" width="56" height="16" rx="5" fill="#ffc145" transform="rotate(4 62 46)"/>
-  <rect x="30" y="56" width="56" height="16" rx="5" fill="#ff7a59" transform="rotate(-3 58 64)"/>
-
-  <!-- Card detail lines -->
-  <g stroke="#0d3b3f" stroke-width="3" stroke-linecap="round" opacity="0.55">
-    <line x1="38" y1="29" x2="60" y2="26"/>
-    <line x1="42" y1="45" x2="66" y2="47"/>
-    <line x1="38" y1="64" x2="62" y2="63"/>
-  </g>
-
-  <!-- Import chevron into the workspace tray -->
-  <path d="M50,80 L58,88 L66,80" stroke="#ffffff" stroke-width="5" fill="none"
+  <!-- Import-down chevron -->
+  <path d="M46,86 L56,96 L66,86"
+        stroke="#000000" stroke-width="7" fill="none"
         stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M22,90 L22,104 Q22,110 28,110 L88,110 Q94,110 94,104 L94,90"
-        stroke="#ffffff" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
 
-  <!-- Community badge: three connected people-nodes -->
-  <circle cx="104" cy="96" r="19" fill="#0d3b3f" stroke="#ffffff" stroke-width="3"/>
-  <g stroke="#7ee0c3" stroke-width="2.5">
-    <line x1="104" y1="87" x2="95" y2="102"/>
-    <line x1="104" y1="87" x2="113" y2="102"/>
-    <line x1="95" y1="102" x2="113" y2="102"/>
-  </g>
-  <circle cx="104" cy="87" r="5" fill="#ffc145"/>
-  <circle cx="95" cy="102" r="5" fill="#ff7a59"/>
-  <circle cx="113" cy="102" r="5" fill="#7ee0c3"/>
+  <!-- Tray / workspace target -->
+  <path d="M16,96 L16,112 Q16,118 22,118 L90,118 Q96,118 96,112 L96,96"
+        stroke="#000000" stroke-width="7" fill="none"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Community triangle badge -->
+  <circle cx="108" cy="96" r="18" stroke="#000000" stroke-width="6" fill="none"/>
+  <line x1="108" y1="84"  x2="97"  y2="104" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+  <line x1="108" y1="84"  x2="119" y2="104" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+  <line x1="97"  y1="104" x2="119" y2="104" stroke="#000000" stroke-width="5" stroke-linecap="round"/>
+  <circle cx="108" cy="84"  r="5" fill="#000000"/>
+  <circle cx="97"  cy="104" r="5" fill="#000000"/>
+  <circle cx="119" cy="104" r="5" fill="#000000"/>
 </svg>

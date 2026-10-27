@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- Community palette: deep teal, coral, amber, mint.
+       Used for the VS Code Marketplace gallery tile and extension README.
+       NOT used as the activity-bar icon (which uses the transparent icon.svg). -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0d3b3f"/>
+      <stop offset="1" stop-color="#16615f"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background rounded square -->
+  <rect width="128" height="128" rx="24" ry="24" fill="url(#bg)"/>
+
+  <!-- Three stacked config cards (modes / skills / other configurations) -->
+  <rect x="18" y="14" width="68" height="20" rx="6" fill="#7ee0c3" transform="rotate(-7 52 24)"/>
+  <rect x="22" y="36" width="68" height="20" rx="6" fill="#ffc145" transform="rotate(4 56 46)"/>
+  <rect x="18" y="58" width="68" height="20" rx="6" fill="#ff7a59" transform="rotate(-3 52 68)"/>
+
+  <!-- Card detail lines -->
+  <g stroke="#0d3b3f" stroke-width="3" stroke-linecap="round" opacity="0.55">
+    <line x1="26" y1="25" x2="56" y2="21"/>
+    <line x1="30" y1="46" x2="62" y2="48"/>
+    <line x1="26" y1="67" x2="58" y2="66"/>
+  </g>
+
+  <!-- Import-down chevron -->
+  <path d="M46,86 L56,96 L66,86"
+        stroke="#ffffff" stroke-width="7" fill="none"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Tray / workspace target -->
+  <path d="M16,96 L16,112 Q16,118 22,118 L90,118 Q96,118 96,112 L96,96"
+        stroke="#ffffff" stroke-width="7" fill="none"
+        stroke-linecap="round" stroke-linejoin="round"/>
+
+  <!-- Community badge circle -->
+  <circle cx="108" cy="96" r="18" fill="#0d3b3f" stroke="#ffffff" stroke-width="4"/>
+  <!-- Triangle nodes -->
+  <line x1="108" y1="84"  x2="97"  y2="104" stroke="#7ee0c3" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="108" y1="84"  x2="119" y2="104" stroke="#7ee0c3" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="97"  y1="104" x2="119" y2="104" stroke="#7ee0c3" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="108" cy="84"  r="5" fill="#ffc145"/>
+  <circle cx="97"  cy="104" r="5" fill="#ff7a59"/>
+  <circle cx="119" cy="104" r="5" fill="#7ee0c3"/>
+</svg>

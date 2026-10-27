@@ -242,6 +242,7 @@ __marimo__/
 .bob/notes/.DS_Store
 review-sdlc-expert-bob-configuration-public.code-workspace
 review_and_sdd_custom_ibm_bob_configuration_template.code-workspace
+images/other
 
 # =============================================================================
 # 3. VS Code extension (bob_config_collection/code/)

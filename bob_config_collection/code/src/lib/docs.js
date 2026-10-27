@@ -5,6 +5,7 @@
 
 const fs = require('fs');
 const path = require('path');
+const { pathToFileURL } = require('url');
 const { rewritePaths } = require('./install');
 
 // Reads a scalar or folded/literal block value of a top-level mode key.
@@ -41,6 +42,42 @@ function readIfExists(file) {
   return fs.existsSync(file) ? fs.readFileSync(file, 'utf8') : undefined;
 }
 
+// All Markdown documents a reader can open for a mode, as
+// [{ kind, label, rel }] with rel relative to the mode group folder:
+//   guide      <slug>-mode.md next to the mode file
+//   reference  files the mode definition tells Bob to load (<sourcePrefix>references/*.md)
+//   overview   top-level *.md of the group (README, readmes, knowledge sources, licenses)
+//   guides     references/guides/*.md of the group
+function modeDocuments(catalog, mode) {
+  const group = catalog.groups.find((g) => g.id === mode.groupId);
+  const docs = [];
+  const add = (kind, rel) => {
+    if (!docs.some((d) => d.rel === rel) && fs.existsSync(path.join(group.dir, rel))) {
+      docs.push({ kind, label: path.posix.basename(rel), rel });
+    }
+  };
+  add('guide', `${mode.slug}-mode.md`);
+  const prefix = group.layout.sourcePrefix;
+  if (prefix) {
+    const re = new RegExp(`${prefix.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}([A-Za-z0-9_./-]+\\.md)`, 'g');
+    for (const m of mode.text.matchAll(re)) add('reference', m[1]);
+  }
+  const others = fs.readdirSync(group.dir).filter((f) => f.endsWith('.md') && !f.endsWith('-mode.md')).sort();
+  for (const f of others) add('overview', f);
+  const guidesDir = path.join(group.dir, 'references', 'guides');
+  if (fs.existsSync(guidesDir)) {
+    for (const f of fs.readdirSync(guidesDir).filter((n) => n.endsWith('.md')).sort()) add('guides', `references/guides/${f}`);
+  }
+  return docs;
+}
+
+const DOC_KIND_LABEL = {
+  guide: 'Mode guide',
+  reference: 'Reference files this mode loads',
+  overview: 'Group overview',
+  guides: 'Guides',
+};
+
 function modeDocumentation(catalog, mode) {
   const group = catalog.groups.find((g) => g.id === mode.groupId);
   const installed = rewritePaths(mode.block.join('\n'), catalog.layout, mode.groupId);
@@ -69,6 +106,17 @@ function modeDocumentation(catalog, mode) {
   const roleDefinition = readValue(mode.block, 'roleDefinition');
   if (roleDefinition) out.push('## Role definition', '', roleDefinition, '');
   if (extra) out.push('## Additional documentation', '', extra.trim(), '');
+  const related = modeDocuments(catalog, mode);
+  if (related.length) {
+    out.push('## Related documentation', '', 'Open a document in the Markdown preview:', '');
+    for (const kind of Object.keys(DOC_KIND_LABEL)) {
+      const items = related.filter((d) => d.kind === kind);
+      if (!items.length) continue;
+      out.push(`**${DOC_KIND_LABEL[kind]}**`, '');
+      for (const d of items) out.push(`- [\`${d.rel}\`](${pathToFileURL(path.join(group.dir, d.rel)).href})`);
+      out.push('');
+    }
+  }
   out.push(
     '## Mode definition as installed',
     '',
@@ -98,4 +146,4 @@ function skillDocumentation(catalog, skill) {
   return out.join('\n');
 }
 
-module.exports = { modeDocumentation, skillDocumentation, readValue, readList };
+module.exports = { modeDocumentation, skillDocumentation, modeDocuments, DOC_KIND_LABEL, readValue, readList };

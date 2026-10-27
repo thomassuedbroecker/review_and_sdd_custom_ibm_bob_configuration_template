@@ -8,7 +8,7 @@ bob_config_collection/
 ├── modes/<group>/references/...     supporting files of a mode group
 ├── skills/<skill>/SKILL.md          leading skills (+ README.md, references/)
 └── code/
-    ├── src/extension.js             VS Code UI: commands, pickers, confirmation
+    ├── src/extension.js             VS Code UI: activity bar webview panel, commands, pickers, confirmation
     ├── src/lib/catalog.js           scans a collection folder → modes, skills, support files
     ├── src/lib/install.js           plans file writes: path rewrite, mode upsert, MCP merge
     ├── src/lib/github.js            downloads a collection from a public GitHub repository
@@ -20,6 +20,32 @@ bob_config_collection/
 
 The extension and the CLI use the same `catalog` and `install` modules. A
 template sync and an extension import therefore produce identical files.
+
+### Sidebar webview panel
+
+`extension.js` registers a `BobConfigWebviewProvider` against the
+`bobConfigImporter.mainView` view declared in `package.json`
+(`contributes.viewsContainers.activitybar` + `contributes.views`, `"type":"webview"`).
+
+On first reveal (`resolveWebviewView`) the provider loads the catalog from the
+configured source, reads the installed mode slugs from `.bob/custom_modes.yaml`,
+and calls `buildWebviewHtml` to render the panel. The HTML contains:
+
+- A **toolbar** of secondary buttons (Docs, Full Group, Other, Source, Refresh).
+- A **summary bar** showing the total mode and skill counts.
+- A collapsible **Modes** section: one nested `<details>` per group, each
+  containing mode cards with a bold name, truncated description, coloured tag
+  pills (group name + Installed/Custom Mode), and an **Install** / **Update**
+  button.
+- A collapsible **Skills** section with skill cards and Install buttons.
+
+Every button carries a `data-cmd` attribute. The inline script calls
+`acquireVsCodeApi().postMessage({ command, slug? })` on click. The provider's
+`onDidReceiveMessage` handler forwards the message to
+`vscode.commands.executeCommand(msg.command, ...args)`. Mode Install buttons
+also pass `data-slug` so that `importModes` pre-ticks the chosen mode in the
+Quick Pick. After any import (`importModes`, `importSkills`, `importGroup`) the
+provider calls `refresh()` to rebuild the panel with updated Installed badges.
 
 ```text
  source (GitHub | bundled | local) ──► catalog ──► install.plan* ──► confirm ──► applyPlan ──► <workspace>/.bob/

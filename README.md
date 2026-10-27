@@ -68,7 +68,7 @@ your collection bundled. See the
 
 ## What It Does
 
-- **11 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, and GitHub issue generator
+- **12 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, GitHub issue generator, and license impact analysis
 - **11 Reusable Skills**: Comprehensive coverage of architecture review domains, SDLC discovery and gap analysis, requirements management, requirements traceability analysis, and GitHub issue traceability
 - **Comprehensive Architecture Reviews**: Conduct multi-dimensional reviews using specialized skills covering security, scalability, patterns, maintainability, and more
 - **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle

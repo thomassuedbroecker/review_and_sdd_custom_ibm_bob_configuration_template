@@ -4,7 +4,7 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const path = require('path');
 const { loadCatalog } = require('../src/lib/catalog');
-const { modeDocumentation, skillDocumentation, readValue, readList } = require('../src/lib/docs');
+const { modeDocumentation, modeDocuments, skillDocumentation, readValue, readList } = require('../src/lib/docs');
 
 const COLLECTION = path.resolve(__dirname, '..', '..');
 
@@ -60,4 +60,52 @@ test('every skill has documentation with its SKILL.md content and users', () => 
   }
   const security = skillDocumentation(catalog, catalog.skillById.get('sdd-security-threat-modeling'));
   assert.match(security, /used by .*`security-review`/);
+});
+
+test('every mode is listed in its group README and its reference files exist', () => {
+  const fs = require('fs');
+  const catalog = loadCatalog(COLLECTION);
+  for (const group of catalog.groups) {
+    const readme = fs.readFileSync(path.join(group.dir, 'README.md'), 'utf8');
+    for (const mode of group.modes) {
+      const name = mode.name.replace(/^\S+\s/, '');
+      assert.ok(readme.includes(name), `${group.id}/README.md lists ${mode.slug} (${name})`);
+      assert.ok(readme.includes(`${group.modes.length} Custom Modes`), `${group.id}/README.md states the mode count`);
+      for (const ref of mode.text.match(/Modes\/SDD\/references\/[A-Za-z0-9_.-]+\.md/g) || []) {
+        assert.ok(fs.existsSync(path.join(group.dir, ref.replace('Modes/SDD/', ''))), `${mode.slug} references existing ${ref}`);
+      }
+    }
+  }
+});
+
+test('license-impact-analysis documentation includes its mode guide and installed reference paths', () => {
+  const catalog = loadCatalog(COLLECTION);
+  const mode = catalog.groups.flatMap((g) => g.modes).find((m) => m.slug === 'license-impact-analysis');
+  const doc = modeDocumentation(catalog, mode);
+  assert.match(doc, /## Additional documentation/);
+  assert.match(doc, /\.bob\/documentation\/review_sdd\/references\/impact-reference\.md/);
+});
+
+test('every mode lists readable documentation files that exist', () => {
+  const fs = require('fs');
+  const catalog = loadCatalog(COLLECTION);
+  for (const group of catalog.groups) {
+    for (const mode of group.modes) {
+      const docs = modeDocuments(catalog, mode);
+      assert.ok(docs.some((d) => d.kind === 'overview'), `${mode.slug} links the group overview`);
+      for (const d of docs) assert.ok(fs.existsSync(path.join(group.dir, d.rel)), `${mode.slug}: ${d.rel} exists`);
+      assert.match(modeDocumentation(catalog, mode), /## Related documentation/);
+    }
+  }
+});
+
+test('license-impact-analysis links its mode guide and the three reference files', () => {
+  const catalog = loadCatalog(COLLECTION);
+  const mode = catalog.groups.flatMap((g) => g.modes).find((m) => m.slug === 'license-impact-analysis');
+  const rels = modeDocuments(catalog, mode).map((d) => d.rel);
+  for (const rel of ['license-impact-analysis-mode.md', 'references/impact-reference.md',
+    'references/ai-generated-code-reference.md', 'references/jurisdiction-impact-reference.md']) {
+    assert.ok(rels.includes(rel), `links ${rel}`);
+  }
+  assert.match(modeDocumentation(catalog, mode), /\]\(file:\/\/[^)]*impact-reference\.md\)/);
 });

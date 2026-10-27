@@ -8,12 +8,13 @@ issue generation.
 
 This `.bob` configuration provides:
 
-- **11 Custom Modes**
+- **12 Custom Modes**
   - 1 orchestrator review mode
   - 7 focused review modes
   - 1 specification-driven development mode
   - 1 configuration gap detection mode
   - 1 GitHub issue generator mode
+  - 1 license impact analysis mode
 - **11 Reusable Skills**
   - 7 architecture review skills
   - 1 SDLC discovery and gap-analysis skill
