@@ -1,4 +1,8 @@
-# Bob Config Importer — Documentation
+# Bob Config Importer (Community) — Documentation
+
+> **⚠️ Not affiliated with or supported by IBM.**
+> This is a community extension and template, not an official IBM product.
+> IBM Bob is a trademark of IBM Corporation.
 
 This folder documents the code in [`bob_config_collection/code/`](../). The code
 serves two jobs:

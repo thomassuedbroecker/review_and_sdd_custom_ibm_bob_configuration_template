@@ -1,8 +1,14 @@
-# IBM Bob Config Importer
+# Bob Config Importer (Community)
 
-VS Code extension that installs IBM Bob **modes**, **skills**, and **other
+> **⚠️ Not affiliated with or supported by IBM.**
+> This is a community extension created by Thomas Suedbroecker as a personal
+> reference implementation. It is **not** an official IBM product, not endorsed
+> by IBM, and not supported by IBM. IBM Bob is a trademark of IBM Corporation.
+> Use this extension at your own risk.
+
+VS Code extension that installs custom **modes**, **skills**, and **other
 configurations** (scripts, MCP configuration, guides) from a
-`bob_config_collection` into the `.bob/` folder of the open workspace.
+`bob_config_collection` into the `.bob/` folder of an IBM Bob workspace.
 
 By default it loads the collection from the public GitHub repository
 [thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template](https://github.com/thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template).

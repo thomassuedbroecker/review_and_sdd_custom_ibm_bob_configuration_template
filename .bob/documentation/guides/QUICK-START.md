@@ -202,7 +202,7 @@ automations/run_arch_review.sh --repo <name> \
 automations/run_arch_review.sh --repo <name> \
   --yolo --output json --max-coins 500 --out /tmp/review.json
 ```
-See [`automations/README.md`](../../automations/README.md) for full options and troubleshooting.
+See [`automations/README.md`](../../../automations/README.md) for full options and troubleshooting.
 
 ---
 

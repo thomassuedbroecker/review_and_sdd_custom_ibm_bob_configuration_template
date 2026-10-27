@@ -9,6 +9,22 @@
       "env": {
         "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_PERSONAL_ACCESS_TOKEN}"
       }
+    },
+    "bob-marketplace": {
+      "type": "streamable-http",
+      "url": "http://127.0.0.1:55503/mcp",
+      "headers": {
+        "Bob-Marketplace-Token": "bob-marketplace-local"
+      },
+      "disabled": false,
+      "alwaysAllow": [
+        "search_assets",
+        "get_asset",
+        "list_installed",
+        "list_favorites",
+        "suggest_assets",
+        "list_updates"
+      ]
     }
   }
 }

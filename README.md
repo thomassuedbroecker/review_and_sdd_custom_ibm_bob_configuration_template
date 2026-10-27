@@ -1,5 +1,11 @@
 # Review & SDD Expert Bob Configuration
 
+> **⚠️ Community project — not affiliated with or supported by IBM.**
+> This is a personal reference implementation and experimental template created
+> by Thomas Suedbroecker. It is **not** an official IBM product, not endorsed by
+> IBM, and not supported by IBM. IBM Bob is a trademark of IBM Corporation.
+> Use this template at your own risk.
+
 Experimental template / personal reference implementation for IBM Bob SDLC workflow configuration.
 
 ## Overview

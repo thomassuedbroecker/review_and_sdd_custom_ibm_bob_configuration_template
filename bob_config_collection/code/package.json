@@ -1,7 +1,7 @@
 {
   "name": "bob-config-importer",
-  "displayName": "IBM Bob Config Importer",
-  "description": "Import IBM Bob modes, skills, and supporting configurations from a bob_config_collection (public GitHub repository, bundled, or local) into a workspace's .bob/ folder.",
+  "displayName": "Bob Config Importer (Community)",
+  "description": "Community extension (not affiliated with or supported by IBM). Imports custom Bob modes, skills, and supporting configurations from a bob_config_collection (public GitHub repository, bundled, or local) into a workspace's .bob/ folder.",
   "version": "0.1.0",
   "publisher": "thomassuedbroecker",
   "license": "Apache-2.0",
@@ -14,26 +14,67 @@
     "vscode": "^1.85.0",
     "node": ">=18"
   },
-  "categories": ["Other"],
-  "keywords": ["IBM Bob", "modes", "skills", "architecture review", "spec-driven development"],
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "IBM Bob",
+    "community",
+    "custom modes",
+    "custom skills",
+    "architecture review",
+    "spec-driven development"
+  ],
   "main": "./src/extension.js",
   "activationEvents": [],
   "contributes": {
     "commands": [
-      { "command": "bobConfigImporter.browseDocs", "title": "Read Mode or Skill Documentation…", "category": "Bob Config" },
-      { "command": "bobConfigImporter.importModes", "title": "Import Modes…", "category": "Bob Config" },
-      { "command": "bobConfigImporter.importSkills", "title": "Import Skills…", "category": "Bob Config" },
-      { "command": "bobConfigImporter.importOther", "title": "Import Other Configurations…", "category": "Bob Config" },
-      { "command": "bobConfigImporter.importGroup", "title": "Import Complete Mode Group…", "category": "Bob Config" },
-      { "command": "bobConfigImporter.selectSource", "title": "Select Collection Source…", "category": "Bob Config" },
-      { "command": "bobConfigImporter.refreshCollection", "title": "Refresh Collection", "category": "Bob Config" }
+      {
+        "command": "bobConfigImporter.browseDocs",
+        "title": "Read Mode or Skill Documentation…",
+        "category": "Bob Config"
+      },
+      {
+        "command": "bobConfigImporter.importModes",
+        "title": "Import Modes…",
+        "category": "Bob Config"
+      },
+      {
+        "command": "bobConfigImporter.importSkills",
+        "title": "Import Skills…",
+        "category": "Bob Config"
+      },
+      {
+        "command": "bobConfigImporter.importOther",
+        "title": "Import Other Configurations…",
+        "category": "Bob Config"
+      },
+      {
+        "command": "bobConfigImporter.importGroup",
+        "title": "Import Complete Mode Group…",
+        "category": "Bob Config"
+      },
+      {
+        "command": "bobConfigImporter.selectSource",
+        "title": "Select Collection Source…",
+        "category": "Bob Config"
+      },
+      {
+        "command": "bobConfigImporter.refreshCollection",
+        "title": "Refresh Collection",
+        "category": "Bob Config"
+      }
     ],
     "configuration": {
       "title": "Bob Config Importer",
       "properties": {
         "bobConfigImporter.source": {
           "type": "string",
-          "enum": ["github", "bundled", "local"],
+          "enum": [
+            "github",
+            "bundled",
+            "local"
+          ],
           "enumDescriptions": [
             "Download the collection from a public GitHub repository (latest).",
             "Use the collection packaged into this extension version (offline).",
@@ -73,6 +114,7 @@
     "sync:check": "node src/tools/sync-workspace.js --target ../.. --check"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.2.1"
+    "@vscode/vsce": "^3.2.1",
+    "sharp": "^0.35.5"
   }
 }
