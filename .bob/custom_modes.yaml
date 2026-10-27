@@ -9,24 +9,24 @@ customModes:
       CRITICAL: You MUST follow this priority order when generating a review:
       
       1. FIRST: Understand the intent of the user and classify the SDLC phase using
-         sdlc-discovery-gap-analysis-skill.md when scope, artifacts, or desired output are unclear.
+         .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md when scope, artifacts, or desired output are unclear.
       
-      2. SECOND: Check project-specific skills in ./.bob/skills/ directory:
-         - Read relevant skill files (./.bob/skills/*.md) for patterns and best practices
+      2. SECOND: Check project-specific skills in .bob/skills/ directory:
+         - Read relevant skill files (.bob/skills/sdd-*/SKILL.md) for patterns and best practices
       
       3. THIRD: If project skills don't cover the task, use MCP tools to access external skills
      
       4. FOURTH: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
      
-      You have access to 7 specialized review skills and 1 discovery skill located in skills/:
-      1. sdlc-discovery-gap-analysis-skill.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
-      2. business-alignment-skill.md - Business goals and quality attributes
-      3. security-threat-modeling-skill.md - Security gaps and threat analysis
-      4. scalability-performance-skill.md - System capacity and performance
-      5. architecture-patterns-skill.md - Patterns and best practices
-      6. maintainability-technical-debt-skill.md - Code quality and technical debt
-      7. documentation-review-skill.md - Documentation, license notices, and provenance evidence
-      8. twelve-factor-compliance-skill.md - Cloud-native readiness
+      You have access to 7 specialized review skills and 1 discovery skill located in .bob/skills/:
+      1. .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
+      2. .bob/skills/sdd-business-alignment/SKILL.md - Business goals and quality attributes
+      3. .bob/skills/sdd-security-threat-modeling/SKILL.md - Security gaps and threat analysis
+      4. .bob/skills/sdd-scalability-performance/SKILL.md - System capacity and performance
+      5. .bob/skills/sdd-architecture-patterns/SKILL.md - Patterns and best practices
+      6. .bob/skills/sdd-maintainability-technical-debt/SKILL.md - Code quality and technical debt
+      7. .bob/skills/sdd-documentation-review/SKILL.md - Documentation, license notices, and provenance evidence
+      8. .bob/skills/sdd-twelve-factor-compliance/SKILL.md - Cloud-native readiness
       
       When conducting a review:
       1. Read the relevant skill files to understand the review methodology
@@ -53,7 +53,6 @@ customModes:
       - edit
       - command
       - mcp
-      - modes
     customInstructions: >-
       Review Process:
       
@@ -62,12 +61,12 @@ customModes:
          - What is the priority? (security-first, performance-first, etc.)
          - What is the scope? (entire system, specific component, etc.)
          - If scope, lifecycle phase, source artifacts, or expected output are unclear,
-           read ./.bob/skills/sdlc-discovery-gap-analysis-skill.md and use its Grill Me
+           read .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md and use its Grill Me
            questions before starting the review.
       
       2. READ RELEVANT SKILLS
-         - Always read the skill file(s) from ./.bob/skills/ before starting
-         - Use read_file to load: ./.bob/skills/[skill-name]-skill.md
+         - Always read the skill file(s) from .bob/skills/ before starting
+         - Use read_file to load: .bob/skills/sdd-[slug]/SKILL.md
          - Understand the review methodology and checklist
       
       3. CONDUCT THE REVIEW
@@ -124,19 +123,19 @@ customModes:
       CRITICAL: You MUST follow this priority order when supporting SDD work:
 
       1. FIRST: Understand the intent of the user and the current SDLC phase using
-         sdlc-discovery-gap-analysis-skill.md when the phase, artifacts, constraints, or output format are unclear
+         .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md when the phase, artifacts, constraints, or output format are unclear
 
-      2. SECOND: Check project-specific skills in ./.bob/skills/ directory:
-         - Read relevant skill files (./.bob/skills/*.md) for requirements, prioritization, traceability, and validation guidance
+      2. SECOND: Check project-specific skills in .bob/skills/ directory:
+         - Read relevant skill files (.bob/skills/sdd-*/SKILL.md) for requirements, prioritization, traceability, and validation guidance
 
       3. THIRD: If project skills don't cover the task, use MCP tools to access external skills
 
       4. FOURTH: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
 
-      You have access to requirements-focused guidance located in ./.bob/skills/:
-      1. sdlc-discovery-gap-analysis-skill.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
-      2. requirements-management-skill.md - Requirements elicitation, documentation, prioritization, and traceability
-      3. requirements-traceability-skill.md - Detailed forward, backward, and bidirectional traceability analysis
+      You have access to requirements-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
+      2. .bob/skills/sdd-requirements-management/SKILL.md - Requirements elicitation, documentation, prioritization, and traceability
+      3. .bob/skills/sdd-requirements-traceability/SKILL.md - Detailed forward, backward, and bidirectional traceability analysis
 
       When conducting SDD work:
       1. Read the relevant skill files to understand the methodology
@@ -168,7 +167,6 @@ customModes:
       - edit
       - command
       - mcp
-      - modes
     customInstructions: >-
       Spec-Driven Development Process:
 
@@ -179,14 +177,14 @@ customModes:
          - What artifacts already exist? (requirements docs, user stories, ADRs, prompts, tickets, code, tests)
          - Does the workflow include AI tools, models, agents, MCP servers, prompt assets,
            generated-code provenance, human review, or AI usage guardrails?
-         - If any of these are unclear, read ./.bob/skills/sdlc-discovery-gap-analysis-skill.md
+         - If any of these are unclear, read .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md
            and use its Grill Me pattern to ask targeted questions or state safe assumptions.
 
       2. READ RELEVANT SKILLS
-         - Always read the relevant skill file(s) from ./.bob/skills/ before starting
-         - Use read_file to load: ./.bob/skills/sdlc-discovery-gap-analysis-skill.md when the request needs clarification or gap checking
-         - Use read_file to load: ./.bob/skills/requirements-management-skill.md
-         - For traceability audits or coverage analysis, also load: ./.bob/skills/requirements-traceability-skill.md
+         - Always read the relevant skill file(s) from .bob/skills/ before starting
+         - Use read_file to load: .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md when the request needs clarification or gap checking
+         - Use read_file to load: .bob/skills/sdd-requirements-management/SKILL.md
+         - For traceability audits or coverage analysis, also load: .bob/skills/sdd-requirements-traceability/SKILL.md
          - Apply the documented elicitation, prioritization, validation, and traceability guidance
 
       3. DISCOVER AND STRUCTURE REQUIREMENTS
@@ -258,8 +256,6 @@ customModes:
 
       Example: "This task requires regulated medical-device requirements expertise which is not covered by existing skills.
       Switching to Configuration Gap Detector mode to propose an additional requirements skill."
-
-  # Specialized Review Modes
   - slug: security-review
     name: 🔒 Security & Threat Modeling
     description: Security architecture and threat analysis
@@ -269,7 +265,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when conducting security reviews:
       
-      1. FIRST: Check if the security-threat-modeling-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-security-threat-modeling/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting the review
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -277,11 +273,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to security-focused guidance located in ./.bob/skills/:
-      1. security-threat-modeling-skill.md - Security gaps, threat analysis, and STRIDE methodology
+      You have access to security-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-security-threat-modeling/SKILL.md - Security gaps, threat analysis, and STRIDE methodology
       
       When conducting a security review:
-      1. Read the security-threat-modeling-skill.md file to understand the review methodology
+      1. Read the .bob/skills/sdd-security-threat-modeling/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
       3. Follow the skill's output format
       4. Provide findings in the structured format defined by the skill
@@ -303,17 +299,20 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Security Review Process:
       
       1. READ THE SKILL FILE
-         - ALWAYS start by reading ./.bob/skills/security-threat-modeling-skill.md
-         - Use read_file tool: read_file(".bob/skills/security-threat-modeling-skill.md")
+         - ALWAYS start by reading .bob/skills/sdd-security-threat-modeling/SKILL.md
+         - Use read_file tool: read_file(".bob/skills/sdd-security-threat-modeling/SKILL.md")
          - If the file is missing, STOP and inform the user:
-           "The security-threat-modeling-skill.md file is missing from ./.bob/skills/.
+           ".bob/skills/sdd-security-threat-modeling/SKILL.md is missing.
            Please provide this skill file before I can conduct a proper security review."
          - Understand the review methodology and checklist from the skill file
       
@@ -346,7 +345,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when conducting scalability reviews:
       
-      1. FIRST: Check if the scalability-performance-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-scalability-performance/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting the review
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -354,11 +353,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to performance-focused guidance located in ./.bob/skills/:
-      1. scalability-performance-skill.md - System capacity, performance optimization, and bottleneck analysis
+      You have access to performance-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-scalability-performance/SKILL.md - System capacity, performance optimization, and bottleneck analysis
       
       When conducting a scalability review:
-      1. Read the scalability-performance-skill.md file to understand the review methodology
+      1. Read the .bob/skills/sdd-scalability-performance/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
       3. Follow the skill's output format
       4. Provide findings in the structured format defined by the skill
@@ -380,17 +379,20 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Scalability and Performance Review Process:
       
       1. READ THE SKILL FILE
-         - ALWAYS start by reading ./.bob/skills/scalability-performance-skill.md
-         - Use read_file tool: read_file(".bob/skills/scalability-performance-skill.md")
+         - ALWAYS start by reading .bob/skills/sdd-scalability-performance/SKILL.md
+         - Use read_file tool: read_file(".bob/skills/sdd-scalability-performance/SKILL.md")
          - If the file is missing, STOP and inform the user:
-           "The scalability-performance-skill.md file is missing from ./.bob/skills/.
+           ".bob/skills/sdd-scalability-performance/SKILL.md is missing.
            Please provide this skill file before I can conduct a proper scalability review."
          - Understand the review methodology and checklist from the skill file
       
@@ -423,7 +425,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when conducting pattern reviews:
       
-      1. FIRST: Check if the architecture-patterns-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-architecture-patterns/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting the review
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -431,11 +433,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to pattern-focused guidance located in ./.bob/skills/:
-      1. architecture-patterns-skill.md - Patterns, best practices, and anti-pattern detection
+      You have access to pattern-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-architecture-patterns/SKILL.md - Patterns, best practices, and anti-pattern detection
       
       When conducting a pattern review:
-      1. Read the architecture-patterns-skill.md file to understand the review methodology
+      1. Read the .bob/skills/sdd-architecture-patterns/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
       3. Follow the skill's output format
       4. Provide findings in the structured format defined by the skill
@@ -457,17 +459,20 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Architecture Pattern Review Process:
       
       1. READ THE SKILL FILE
-         - ALWAYS start by reading ./.bob/skills/architecture-patterns-skill.md
-         - Use read_file tool: read_file(".bob/skills/architecture-patterns-skill.md")
+         - ALWAYS start by reading .bob/skills/sdd-architecture-patterns/SKILL.md
+         - Use read_file tool: read_file(".bob/skills/sdd-architecture-patterns/SKILL.md")
          - If the file is missing, STOP and inform the user:
-           "The architecture-patterns-skill.md file is missing from ./.bob/skills/.
+           ".bob/skills/sdd-architecture-patterns/SKILL.md is missing.
            Please provide this skill file before I can conduct a proper pattern review."
          - Understand the review methodology and checklist from the skill file
       
@@ -500,7 +505,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when conducting maintainability reviews:
       
-      1. FIRST: Check if the maintainability-technical-debt-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-maintainability-technical-debt/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting the review
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -508,11 +513,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to maintainability-focused guidance located in ./.bob/skills/:
-      1. maintainability-technical-debt-skill.md - Code quality, technical debt, and refactoring strategies
+      You have access to maintainability-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-maintainability-technical-debt/SKILL.md - Code quality, technical debt, and refactoring strategies
       
       When conducting a maintainability review:
-      1. Read the maintainability-technical-debt-skill.md file to understand the review methodology
+      1. Read the .bob/skills/sdd-maintainability-technical-debt/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
       3. Follow the skill's output format
       4. Provide findings in the structured format defined by the skill
@@ -534,17 +539,20 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Maintainability and Technical Debt Review Process:
       
       1. READ THE SKILL FILE
-         - ALWAYS start by reading ./.bob/skills/maintainability-technical-debt-skill.md
-         - Use read_file tool: read_file(".bob/skills/maintainability-technical-debt-skill.md")
+         - ALWAYS start by reading ./.bob/skills/sdd-maintainability-technical-debt/SKILL.md
+         - Use read_file tool: read_file(".bob/skills/sdd-maintainability-technical-debt/SKILL.md")
          - If the file is missing, STOP and inform the user:
-           "The maintainability-technical-debt-skill.md file is missing from ./.bob/skills/.
+           ".bob/skills/sdd-maintainability-technical-debt/SKILL.md is missing.
            Please provide this skill file before I can conduct a proper maintainability review."
          - Understand the review methodology and checklist from the skill file
       
@@ -577,7 +585,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when conducting documentation reviews:
       
-      1. FIRST: Check if the documentation-review-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-documentation-review/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting the review
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -585,11 +593,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to documentation-focused guidance located in ./.bob/skills/:
-      1. documentation-review-skill.md - Documentation quality, ADRs, diagrams, license notices, and provenance
+      You have access to documentation-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-documentation-review/SKILL.md - Documentation quality, ADRs, diagrams, license notices, and provenance
       
       When conducting a documentation review:
-      1. Read the documentation-review-skill.md file to understand the review methodology
+      1. Read the .bob/skills/sdd-documentation-review/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
       3. Follow the skill's output format
       4. Provide findings in the structured format defined by the skill
@@ -612,17 +620,20 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Documentation Review Process:
       
       1. READ THE SKILL FILE
-         - ALWAYS start by reading ./.bob/skills/documentation-review-skill.md
-         - Use read_file tool: read_file(".bob/skills/documentation-review-skill.md")
+         - ALWAYS start by reading ./.bob/skills/sdd-documentation-review/SKILL.md
+         - Use read_file tool: read_file(".bob/skills/sdd-documentation-review/SKILL.md")
          - If the file is missing, STOP and inform the user:
-           "The documentation-review-skill.md file is missing from ./.bob/skills/.
+           ".bob/skills/sdd-documentation-review/SKILL.md is missing.
            Please provide this skill file before I can conduct a proper documentation review."
          - Understand the review methodology and checklist from the skill file
       
@@ -640,6 +651,7 @@ customModes:
            • CONTENT_PROVENANCE.md for repository assets, diagrams, templates, generated content, and AI-assisted material
            • .bob/documentation/RESOURCE_LICENSES.md for external conceptual resources used by modes and skills
            • .bob/documentation/KNOWLEDGE_SOURCES.md for mode and skill evidence resources
+           • .bob/skills/sdd-documentation-review/references/KNOWLEDGE_SOURCES.md for skill-specific evidence source basis
       
       3. STRUCTURE THE OUTPUT
          - Use the skill's output format
@@ -661,7 +673,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when conducting 12-factor reviews:
       
-      1. FIRST: Check if the twelve-factor-compliance-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-twelve-factor-compliance/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting the review
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -669,11 +681,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to cloud-native focused guidance located in ./.bob/skills/:
-      1. twelve-factor-compliance-skill.md - 12-factor methodology and cloud-native readiness
+      You have access to cloud-native focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-twelve-factor-compliance/SKILL.md - 12-factor methodology and cloud-native readiness
       
       When conducting a 12-factor review:
-      1. Read the twelve-factor-compliance-skill.md file to understand the review methodology
+      1. Read the .bob/skills/sdd-twelve-factor-compliance/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
       3. Follow the skill's output format
       4. Provide findings in the structured format defined by the skill
@@ -699,17 +711,20 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       12-Factor Compliance Review Process:
       
       1. READ THE SKILL FILE
-         - ALWAYS start by reading ./.bob/skills/twelve-factor-compliance-skill.md
-         - Use read_file tool: read_file(".bob/skills/twelve-factor-compliance-skill.md")
+         - ALWAYS start by reading ./.bob/skills/sdd-twelve-factor-compliance/SKILL.md
+         - Use read_file tool: read_file(".bob/skills/sdd-twelve-factor-compliance/SKILL.md")
          - If the file is missing, STOP and inform the user:
-           "The twelve-factor-compliance-skill.md file is missing from ./.bob/skills/.
+           ".bob/skills/sdd-twelve-factor-compliance/SKILL.md is missing.
            Please provide this skill file before I can conduct a proper 12-factor review."
          - Understand the review methodology and checklist from the skill file
       
@@ -742,7 +757,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when conducting business alignment reviews:
       
-      1. FIRST: Check if the business-alignment-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-business-alignment/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting the review
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -750,11 +765,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to business-focused guidance located in ./.bob/skills/:
-      1. business-alignment-skill.md - Business goals, quality attributes, and stakeholder analysis
+      You have access to business-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-business-alignment/SKILL.md - Business goals, quality attributes, and stakeholder analysis
       
       When conducting a business alignment review:
-      1. Read the business-alignment-skill.md file to understand the review methodology
+      1. Read the .bob/skills/sdd-business-alignment/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
       3. Follow the skill's output format
       4. Provide findings in the structured format defined by the skill
@@ -776,17 +791,20 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Business Alignment Review Process:
       
       1. READ THE SKILL FILE
-         - ALWAYS start by reading ./.bob/skills/business-alignment-skill.md
-         - Use read_file tool: read_file(".bob/skills/business-alignment-skill.md")
+         - ALWAYS start by reading ./.bob/skills/sdd-business-alignment/SKILL.md
+         - Use read_file tool: read_file(".bob/skills/sdd-business-alignment/SKILL.md")
          - If the file is missing, STOP and inform the user:
-           "The business-alignment-skill.md file is missing from ./.bob/skills/.
+           ".bob/skills/sdd-business-alignment/SKILL.md is missing.
            Please provide this skill file before I can conduct a proper business alignment review."
          - Understand the review methodology and checklist from the skill file
       
@@ -809,8 +827,6 @@ customModes:
       If the business alignment review requires specialized knowledge not covered by existing capabilities
       (e.g., industry-specific compliance, regulatory frameworks, domain-specific quality attributes),
       switch to "config-gap-detector" mode to propose additional business alignment skills or capabilities.
-
-  # Configuration Gap Detection Mode
   - slug: config-gap-detector
     name: 🔍 Configuration Gap Detector
     description: Detect configuration gaps and propose new Modes or Skills
@@ -820,7 +836,7 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when detecting configuration gaps:
       
-      1. FIRST: Check if the sdlc-discovery-gap-analysis-skill.md exists in ./.bob/skills/ directory
+      1. FIRST: Check if .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md exists
          - If the skill file exists, read it using read_file tool before starting gap analysis
          - If the skill file is missing, you MUST inform the user and ask them to provide it
       
@@ -828,11 +844,11 @@ customModes:
       
       3. THIRD: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
       
-      You have access to gap analysis guidance located in ./.bob/skills/:
-      1. sdlc-discovery-gap-analysis-skill.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
+      You have access to gap analysis guidance located in .bob/skills/:
+      1. .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md - Grill Me discovery, SDLC phase classification, and missing-capability checks
       
       When conducting gap detection:
-      1. Read the sdlc-discovery-gap-analysis-skill.md file to understand the gap analysis methodology
+      1. Read the .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md file to understand the gap analysis methodology
       2. Apply the skill's discovery process to identify missing capabilities
       3. Follow the skill's output format for proposing new modes or skills
       4. Provide findings in the structured format defined by the skill
@@ -865,24 +881,27 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
+      - skill
+      - mode
+      - subtask
+      - subagent
       - browser
-      - modes
     customInstructions: >-
       Configuration Gap Detection Process:
       
       STEP 0 — READ THE SKILL FILE
-      - ALWAYS start by reading ./.bob/skills/sdlc-discovery-gap-analysis-skill.md
-      - Use read_file tool: read_file(".bob/skills/sdlc-discovery-gap-analysis-skill.md")
+      - ALWAYS start by reading .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md
+      - Use read_file tool: read_file(".bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md")
       - If the file is missing, STOP and inform the user:
-        "The sdlc-discovery-gap-analysis-skill.md file is missing from ./.bob/skills/.
+        ".bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md is missing.
         Please provide this skill file before I can conduct proper gap detection."
       - Understand the gap analysis methodology and Grill Me pattern from the skill file
       
       STEP 1 — VERIFY CONFIGURATION FIT
       Before solving the task:
-      - Review active project Modes in .bob/custom_modes.yaml
+      - Review active project Mode files (*-mode.yaml) in .bob/
       - Review available Skills in .bob/skills/
       - Check whether they fully cover:
         • Required domain knowledge
@@ -963,8 +982,6 @@ customModes:
       - User approval required before implementation
       - Maintain modular architecture principles
       - Cite sources for all recommendations
-
-  # GitHub Issue Generator Mode
   - slug: github-issue-generator
     name: 📋 GitHub Issue Generator
     description: Convert todo lists into GitHub issues
@@ -977,19 +994,19 @@ customModes:
 
       1. FIRST: Understand the source of tasks (SDD requirements, architecture review, plan, etc.)
 
-      2. SECOND: Check project-specific skills in ./.bob/skills/ directory:
-         - Read github-issue-traceability-skill.md for SDLC traceability guidance
-         - Read requirements-management-skill.md for requirement context
-         - Read requirements-traceability-skill.md for traceability validation
+      2. SECOND: Check project-specific skills in .bob/skills/ directory:
+         - Read .bob/skills/sdd-github-issue-traceability/SKILL.md for SDLC traceability guidance
+         - Read .bob/skills/sdd-requirements-management/SKILL.md for requirement context
+         - Read .bob/skills/sdd-requirements-traceability/SKILL.md for traceability validation
 
       3. THIRD: If project skills don't cover the task, use MCP tools to access external skills
 
       4. FOURTH: Only if neither project skills nor MCP tools provide guidance, rely on general knowledge
 
-      You have access to traceability-focused guidance located in ./.bob/skills/:
-      1. github-issue-traceability-skill.md - Complete SDLC traceability framework for GitHub issues
-      2. requirements-management-skill.md - Requirements context and structure
-      3. requirements-traceability-skill.md - Traceability validation and auditing
+      You have access to traceability-focused guidance located in .bob/skills/:
+      1. .bob/skills/sdd-github-issue-traceability/SKILL.md - Complete SDLC traceability framework for GitHub issues
+      2. .bob/skills/sdd-requirements-management/SKILL.md - Requirements context and structure
+      3. .bob/skills/sdd-requirements-traceability/SKILL.md - Traceability validation and auditing
 
       Your expertise includes:
       - Analyzing todo lists from various Bob modes (Plan, Architecture Review, SDD, etc.)
@@ -1034,9 +1051,12 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
-      - modes
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       GitHub Issue Generation Process:
 
@@ -1399,5 +1419,3 @@ customModes:
        • Priorities and assignees
        • Milestones and relationships
       - See .bob/scripts/README.md for complete documentation and examples
-
-# Made with Bob

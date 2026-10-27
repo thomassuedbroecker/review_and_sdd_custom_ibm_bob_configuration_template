@@ -95,7 +95,7 @@ The main mode prompt provides:
 
 **When to use**: As your primary reference for all SDD activities
 
-### 2. Requirements Management Skill (`requirements-management-skill.md`)
+### 2. Requirements Management Skill (`sdd-requirements-management/SKILL.md`)
 
 A specialized skill that covers:
 - Stakeholder analysis
@@ -108,7 +108,7 @@ A specialized skill that covers:
 
 **When to use**: When you need deep expertise in requirements engineering
 
-### 3. Requirements Traceability Analysis Skill (`requirements-traceability-skill.md`)
+### 3. Requirements Traceability Analysis Skill (`sdd-requirements-traceability/SKILL.md`)
 
 A specialized skill for deeper traceability audits:
 - Forward and backward traceability validation
@@ -377,7 +377,7 @@ Top 10, and NIST SSDF resources used to introduce this SDLC topic.
 
 ### Requirements Document Template
 
-See [Requirements Document Structure](../skills/requirements-management-skill.md#output-format) for a complete template.
+See [Requirements Document Structure](../skills/sdd-requirements-management/SKILL.md#output-format) for a complete template.
 
 ### Prompt Templates
 
@@ -400,9 +400,9 @@ See [Real-World Examples](./guides/sdd-interactive-guide.md#real-world-examples)
 ### Documentation
 
 - **Main SDD Mode Guide**: [`./guides/spec-driven-development.md`](./guides/spec-driven-development.md)
-- **Requirements Skill**: [`../skills/requirements-management-skill.md`](../skills/requirements-management-skill.md)
-- **SDLC Discovery and Gap Analysis Skill**: [`../skills/sdlc-discovery-gap-analysis-skill.md`](../skills/sdlc-discovery-gap-analysis-skill.md)
-- **Requirements Traceability Skill**: [`../skills/requirements-traceability-skill.md`](../skills/requirements-traceability-skill.md)
+- **Requirements Skill**: [`../skills/sdd-requirements-management/SKILL.md`](../skills/sdd-requirements-management/SKILL.md)
+- **SDLC Discovery and Gap Analysis Skill**: [`../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md`](../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
+- **Requirements Traceability Skill**: [`../skills/sdd-requirements-traceability/SKILL.md`](../skills/sdd-requirements-traceability/SKILL.md)
 - **Interactive Guide**: [`./guides/sdd-interactive-guide.md`](./guides/sdd-interactive-guide.md)
 - **Skills Overview**: [`../skills/README.md`](../skills/README.md)
 - **Mode Configuration**: [`../custom_modes.yaml`](../custom_modes.yaml)
@@ -512,7 +512,7 @@ Rule of thumb: If someone unfamiliar with the project can understand what needs 
 - **WSJF**: Weighted Shortest Job First
 - **Value vs. Effort**: 2x2 matrix
 
-See [Requirements Prioritization](../skills/requirements-management-skill.md#6-requirements-prioritization) for details.
+See [Requirements Prioritization](../skills/sdd-requirements-management/SKILL.md#6-requirements-prioritization) for details.
 
 ### Q: Can I use SDD mode with Agile?
 
@@ -548,7 +548,7 @@ To improve SDD mode:
 
 For questions or support:
 - Review the [Interactive Guide](./guides/sdd-interactive-guide.md)
-- Check [Requirements Management Skill](../skills/requirements-management-skill.md)
+- Check [Requirements Management Skill](../skills/sdd-requirements-management/SKILL.md)
 - Consult [External Resources](#external-resources)
 - Engage with the Bob community
 

@@ -39,8 +39,8 @@ BUSINESS GOAL → REQUIREMENT → EPIC → FEATURE → TASK → GIT COMMIT → C
 
 **Mode**: [`sdd`](../../custom_modes.yaml)
 **Skills**:
-- [`requirements-management-skill.md`](../../skills/requirements-management-skill.md)
-- [`requirements-traceability-skill.md`](../../skills/requirements-traceability-skill.md)
+- [`sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)
+- [`sdd-requirements-traceability/SKILL.md`](../../skills/sdd-requirements-traceability/SKILL.md)
 
 **Process**:
 1. Elicit requirements from stakeholders
@@ -78,7 +78,7 @@ BUSINESS GOAL → REQUIREMENT → EPIC → FEATURE → TASK → GIT COMMIT → C
 
 **Mode**: [`github-issue-generator`](../../custom_modes.yaml)
 **Skills**:
-- [`github-issue-traceability-skill.md`](../../skills/github-issue-traceability-skill.md)
+- [`sdd-github-issue-traceability/SKILL.md`](../../skills/sdd-github-issue-traceability/SKILL.md)
 
 **Process**:
 1. Read requirements from SDD output
@@ -472,9 +472,9 @@ Track these metrics to ensure traceability effectiveness:
 ## Related Documentation
 
 - [Custom Modes Configuration](../../custom_modes.yaml)
-- [Requirements Management Skill](../../skills/requirements-management-skill.md)
-- [Requirements Traceability Skill](../../skills/requirements-traceability-skill.md)
-- [GitHub Issue Traceability Skill](../../skills/github-issue-traceability-skill.md)
+- [Requirements Management Skill](../../skills/sdd-requirements-management/SKILL.md)
+- [Requirements Traceability Skill](../../skills/sdd-requirements-traceability/SKILL.md)
+- [GitHub Issue Traceability Skill](../../skills/sdd-github-issue-traceability/SKILL.md)
 - [GitHub Scripts README](../../scripts/README.md)
 
 ## Support

@@ -34,7 +34,7 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
 
 ### Skills
 
-5. **[`../../skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)**
+5. **[`../../skills/sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)**
    - Specialized requirements engineering skill
    - Stakeholder analysis framework
    - Requirements elicitation techniques
@@ -57,9 +57,9 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
 │       ├── SDD-QUICK-START.md              # Quick start
 │       └── SDD-SUMMARY.md                  # This file
 └── skills/
-    ├── sdlc-discovery-gap-analysis-skill.md # SDLC discovery and gap analysis
-    ├── requirements-management-skill.md    # Requirements skill
-    ├── requirements-traceability-skill.md  # Traceability skill
+    ├── sdd-sdlc-discovery-gap-analysis/SKILL.md # SDLC discovery and gap analysis
+    ├── sdd-requirements-management/SKILL.md    # Requirements skill
+    ├── sdd-requirements-traceability/SKILL.md  # Traceability skill
     └── README.md                           # Skills overview
 ```
 
@@ -102,7 +102,7 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
 1. Read [`../SDD-README.md`](../SDD-README.md)
 2. Study [`spec-driven-development.md`](spec-driven-development.md)
 3. Practice with [`sdd-interactive-guide.md`](sdd-interactive-guide.md)
-4. Reference [`../../skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)
+4. Reference [`../../skills/sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)
 
 ## Task Requirements Fulfilled
 
@@ -166,9 +166,9 @@ All requested resources have been integrated:
 - **Learn More**: [../SDD-README.md](../SDD-README.md)
 - **Main Mode**: [spec-driven-development.md](spec-driven-development.md)
 - **Interactive Guide**: [sdd-interactive-guide.md](sdd-interactive-guide.md)
-- **Requirements Skill**: [../../skills/requirements-management-skill.md](../../skills/requirements-management-skill.md)
-- **SDLC Discovery Skill**: [../../skills/sdlc-discovery-gap-analysis-skill.md](../../skills/sdlc-discovery-gap-analysis-skill.md)
-- **Requirements Traceability Skill**: [../../skills/requirements-traceability-skill.md](../../skills/requirements-traceability-skill.md)
+- **Requirements Skill**: [../../skills/sdd-requirements-management/SKILL.md](../../skills/sdd-requirements-management/SKILL.md)
+- **SDLC Discovery Skill**: [../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md](../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
+- **Requirements Traceability Skill**: [../../skills/sdd-requirements-traceability/SKILL.md](../../skills/sdd-requirements-traceability/SKILL.md)
 
 ---
 

@@ -168,21 +168,21 @@ fi
 if [[ -z "$CUSTOM_PROMPT" ]]; then
   case "$MODE" in
     arch-review)
-      PROMPT="Conduct a comprehensive architecture review of the source code located at $REPO_PATH. Read the skill files from .bob/skills/ before starting: business-alignment-skill.md, security-threat-modeling-skill.md, scalability-performance-skill.md, architecture-patterns-skill.md, maintainability-technical-debt-skill.md, documentation-review-skill.md, twelve-factor-compliance-skill.md. Produce a structured findings report with ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, and 💡 Recommendations for each area." ;;
+      PROMPT="Conduct a comprehensive architecture review of the source code located at $REPO_PATH. Read the skill files from .bob/skills/ before starting: sdd-business-alignment/SKILL.md, sdd-security-threat-modeling/SKILL.md, sdd-scalability-performance/SKILL.md, sdd-architecture-patterns/SKILL.md, sdd-maintainability-technical-debt/SKILL.md, sdd-documentation-review/SKILL.md, sdd-twelve-factor-compliance/SKILL.md. Produce a structured findings report with ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, and 💡 Recommendations for each area." ;;
     security-review)
-      PROMPT="Perform a security and threat modeling review of the source code at $REPO_PATH. Read .bob/skills/security-threat-modeling-skill.md first. Include STRIDE analysis, OWASP Top 10 check, and prioritised recommendations." ;;
+      PROMPT="Perform a security and threat modeling review of the source code at $REPO_PATH. Read .bob/skills/sdd-security-threat-modeling/SKILL.md first. Include STRIDE analysis, OWASP Top 10 check, and prioritised recommendations." ;;
     scalability-review)
-      PROMPT="Review scalability and performance of the source code at $REPO_PATH. Read .bob/skills/scalability-performance-skill.md first. Identify bottlenecks, scaling gaps, and prioritised recommendations." ;;
+      PROMPT="Review scalability and performance of the source code at $REPO_PATH. Read .bob/skills/sdd-scalability-performance/SKILL.md first. Identify bottlenecks, scaling gaps, and prioritised recommendations." ;;
     patterns-review)
-      PROMPT="Review architecture patterns and best practices in the source code at $REPO_PATH. Read .bob/skills/architecture-patterns-skill.md first. Check SOLID principles, identify anti-patterns, and provide recommendations." ;;
+      PROMPT="Review architecture patterns and best practices in the source code at $REPO_PATH. Read .bob/skills/sdd-architecture-patterns/SKILL.md first. Check SOLID principles, identify anti-patterns, and provide recommendations." ;;
     maintainability-review)
-      PROMPT="Assess maintainability and technical debt in the source code at $REPO_PATH. Read .bob/skills/maintainability-technical-debt-skill.md first. Quantify debt, identify coupling issues, and provide a remediation roadmap." ;;
+      PROMPT="Assess maintainability and technical debt in the source code at $REPO_PATH. Read .bob/skills/sdd-maintainability-technical-debt/SKILL.md first. Quantify debt, identify coupling issues, and provide a remediation roadmap." ;;
     documentation-review)
-      PROMPT="Review documentation completeness for the source code at $REPO_PATH. Read .bob/skills/documentation-review-skill.md first. Check for ADRs, C4 diagrams, API docs, license notices, and content provenance." ;;
+      PROMPT="Review documentation completeness for the source code at $REPO_PATH. Read .bob/skills/sdd-documentation-review/SKILL.md first. Check for ADRs, C4 diagrams, API docs, license notices, and content provenance." ;;
     twelve-factor-review)
-      PROMPT="Check 12-factor app compliance for the source code at $REPO_PATH. Read .bob/skills/twelve-factor-compliance-skill.md first. Rate each factor and provide specific remediation steps for any violations." ;;
+      PROMPT="Check 12-factor app compliance for the source code at $REPO_PATH. Read .bob/skills/sdd-twelve-factor-compliance/SKILL.md first. Rate each factor and provide specific remediation steps for any violations." ;;
     business-alignment-review)
-      PROMPT="Review business alignment and quality attributes for the source code at $REPO_PATH. Read .bob/skills/business-alignment-skill.md first. Assess stakeholder requirements, cost-benefit, and strategic fit." ;;
+      PROMPT="Review business alignment and quality attributes for the source code at $REPO_PATH. Read .bob/skills/sdd-business-alignment/SKILL.md first. Assess stakeholder requirements, cost-benefit, and strategic fit." ;;
   esac
 else
   PROMPT="Review the source code at $REPO_PATH — $CUSTOM_PROMPT"

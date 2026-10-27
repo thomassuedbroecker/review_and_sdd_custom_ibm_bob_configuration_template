@@ -4,7 +4,7 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ## Available Skills
 
-### 1. Business Alignment (`business-alignment-skill.md`)
+### 1. Business Alignment (`sdd-business-alignment/SKILL.md`)
 **Purpose**: Evaluate how well the architecture supports organizational goals and quality attributes.
 
 **Key Areas**:
@@ -18,7 +18,7 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ---
 
-### 2. Security & Threat Modeling (`security-threat-modeling-skill.md`)
+### 2. Security & Threat Modeling (`sdd-security-threat-modeling/SKILL.md`)
 **Purpose**: Identify security gaps, potential attack vectors, and provide security recommendations.
 
 **Key Areas**:
@@ -32,7 +32,7 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ---
 
-### 3. Scalability & Performance (`scalability-performance-skill.md`)
+### 3. Scalability & Performance (`sdd-scalability-performance/SKILL.md`)
 **Purpose**: Evaluate system capacity, identify bottlenecks, and provide performance optimization recommendations.
 
 **Key Areas**:
@@ -46,7 +46,7 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ---
 
-### 4. Architecture Patterns (`architecture-patterns-skill.md`)
+### 4. Architecture Patterns (`sdd-architecture-patterns/SKILL.md`)
 **Purpose**: Evaluate pattern usage, identify anti-patterns, and recommend appropriate architectural patterns.
 
 **Key Areas**:
@@ -60,7 +60,7 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ---
 
-### 5. Maintainability & Technical Debt (`maintainability-technical-debt-skill.md`)
+### 5. Maintainability & Technical Debt (`sdd-maintainability-technical-debt/SKILL.md`)
 **Purpose**: Identify maintainability issues, quantify technical debt, and provide refactoring recommendations.
 
 **Key Areas**:
@@ -74,7 +74,7 @@ This directory contains reusable skill definitions used by Bob custom modes. Ski
 
 ---
 
-### 6. Documentation Review (`documentation-review-skill.md`)
+### 6. Documentation Review (`sdd-documentation-review/SKILL.md`)
 **Purpose**: Evaluate documentation completeness, clarity, currency, license notice coverage, and content-provenance evidence.
 
 **Key Areas**:
@@ -95,7 +95,7 @@ mode and skill evidence map in
 
 ---
 
-### 7. 12-Factor Compliance (`twelve-factor-compliance-skill.md`)
+### 7. 12-Factor Compliance (`sdd-twelve-factor-compliance/SKILL.md`)
 **Purpose**: Evaluate compliance with 12-factor app methodology and provide cloud-native recommendations.
 
 **Key Areas**:
@@ -109,7 +109,7 @@ mode and skill evidence map in
 
 ---
 
-### 8. Requirements Management (`requirements-management-skill.md`)
+### 8. Requirements Management (`sdd-requirements-management/SKILL.md`)
 **Purpose**: Elicit, document, analyze, and validate software requirements to ensure they are complete, consistent, testable, and aligned with business objectives.
 
 **Key Areas**:
@@ -125,7 +125,7 @@ mode and skill evidence map in
 
 ---
 
-### 9. SDLC Discovery and Gap Analysis (`sdlc-discovery-gap-analysis-skill.md`)
+### 9. SDLC Discovery and Gap Analysis (`sdd-sdlc-discovery-gap-analysis/SKILL.md`)
 **Purpose**: Use the Grill Me discovery pattern to clarify the user's SDLC phase, desired outcome, source artifacts, constraints, and missing skill or resource needs before starting SDD or architecture-review work.
 
 **Key Areas**:
@@ -145,7 +145,7 @@ references documented in
 
 ---
 
-### 10. Requirements Traceability Analysis (`requirements-traceability-skill.md`)
+### 10. Requirements Traceability Analysis (`sdd-requirements-traceability/SKILL.md`)
 **Purpose**: Provide comprehensive requirements traceability analysis using GitHub issues, Markdown documents, and code entries, enabling complete, validated traceability chains from requirements through design to implementation.
 
 **Key Areas**:
@@ -167,7 +167,7 @@ a dedicated integration is added.
 
 ---
 
-### 11. GitHub Issue Traceability (`github-issue-traceability-skill.md`)
+### 11. GitHub Issue Traceability (`sdd-github-issue-traceability/SKILL.md`)
 **Purpose**: Structure GitHub issues with complete SDLC traceability from business goals through requirements, Markdown specifications, code entries, tests, and validation.
 
 **Key Areas**:

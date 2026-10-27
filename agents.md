@@ -23,7 +23,7 @@ Never open a sub-repository as the workspace root.
 | Convert todos, findings, or specs into GitHub issues | `github-issue-generator` |
 
 Multi-area requests → prefer `arch-review`; it orchestrates across all review skills.
-Unclear scope or SDLC phase → apply the Grill Me pattern from `.bob/skills/sdlc-discovery-gap-analysis-skill.md` first.
+Unclear scope or SDLC phase → apply the Grill Me pattern from `.bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md` first.
 
 ## Hard Rules
 

@@ -372,7 +372,7 @@ Track the effectiveness of SDD practices:
 - SWEBOK Guide for SDLC and software engineering knowledge-area framing
 
 ### SDLC Discovery and Gap Analysis
-- Grill Me discovery pattern from `../../skills/sdlc-discovery-gap-analysis-skill.md`
+- Grill Me discovery pattern from `../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md`
 - C4 Model for architecture scope and communication
 - arc42 architecture documentation template
 - Architecture Decision Records (ADRs)

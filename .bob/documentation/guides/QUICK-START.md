@@ -147,17 +147,17 @@ For each review, Bob provides:
 
 | # | Skill | Focus Area | File |
 |---|-------|------------|------|
-| 1 | 🎯 Business Alignment | Strategy & Quality Attributes | `business-alignment-skill.md` |
-| 2 | 🔒 Security & Threat Modeling | Security & Compliance | `security-threat-modeling-skill.md` |
-| 3 | 📈 Scalability & Performance | Capacity & Performance | `scalability-performance-skill.md` |
-| 4 | 🎨 Architecture Patterns | Patterns & Best Practices | `architecture-patterns-skill.md` |
-| 5 | 🔧 Maintainability & Tech Debt | Code Quality & Debt | `maintainability-technical-debt-skill.md` |
-| 6 | 📚 Documentation | Docs, Diagrams & Provenance | `documentation-review-skill.md` |
-| 7 | ☁️ 12-Factor Compliance | Cloud-Native Readiness | `twelve-factor-compliance-skill.md` |
-| 8 | 🔎 SDLC Discovery & Gap Analysis | Grill Me Discovery & Skill Gap Checks | `sdlc-discovery-gap-analysis-skill.md` |
-| 9 | 🧭 Requirements Management | Requirements & Specifications | `requirements-management-skill.md` |
-| 10 | 🔗 Requirements Traceability | Traceability Analysis | `requirements-traceability-skill.md` |
-| 11 | 📋 GitHub Issue Traceability | Issue Hierarchy & SDLC Links | `github-issue-traceability-skill.md` |
+| 1 | 🎯 Business Alignment | Strategy & Quality Attributes | `sdd-business-alignment/SKILL.md` |
+| 2 | 🔒 Security & Threat Modeling | Security & Compliance | `sdd-security-threat-modeling/SKILL.md` |
+| 3 | 📈 Scalability & Performance | Capacity & Performance | `sdd-scalability-performance/SKILL.md` |
+| 4 | 🎨 Architecture Patterns | Patterns & Best Practices | `sdd-architecture-patterns/SKILL.md` |
+| 5 | 🔧 Maintainability & Tech Debt | Code Quality & Debt | `sdd-maintainability-technical-debt/SKILL.md` |
+| 6 | 📚 Documentation | Docs, Diagrams & Provenance | `sdd-documentation-review/SKILL.md` |
+| 7 | ☁️ 12-Factor Compliance | Cloud-Native Readiness | `sdd-twelve-factor-compliance/SKILL.md` |
+| 8 | 🔎 SDLC Discovery & Gap Analysis | Grill Me Discovery & Skill Gap Checks | `sdd-sdlc-discovery-gap-analysis/SKILL.md` |
+| 9 | 🧭 Requirements Management | Requirements & Specifications | `sdd-requirements-management/SKILL.md` |
+| 10 | 🔗 Requirements Traceability | Traceability Analysis | `sdd-requirements-traceability/SKILL.md` |
+| 11 | 📋 GitHub Issue Traceability | Issue Hierarchy & SDLC Links | `sdd-github-issue-traceability/SKILL.md` |
 
 ---
 
@@ -213,8 +213,8 @@ See [`automations/README.md`](../../automations/README.md) for full options and 
    "Review security and scalability"
    
 2. Bob Reads Skills
-   - security-threat-modeling-skill.md
-   - scalability-performance-skill.md
+   - sdd-security-threat-modeling/SKILL.md
+   - sdd-scalability-performance/SKILL.md
    
 3. Bob Analyzes Codebase
    - Checks authentication

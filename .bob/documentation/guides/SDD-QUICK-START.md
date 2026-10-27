@@ -16,10 +16,10 @@ Select the scenario that best matches your current need:
 **Quick Actions**:
 1. Activate SDD mode in Bob
 2. Start with stakeholder identification
-3. Use the [Requirements Management Skill](../../skills/requirements-management-skill.md#1-stakeholder-analysis)
+3. Use the [Requirements Management Skill](../../skills/sdd-requirements-management/SKILL.md#1-stakeholder-analysis)
 4. Follow the [Requirements Phase Prompts](sdd-interactive-guide.md#requirements-phase-prompts)
 
-**Template to Use**: [Requirements Document Template](../../skills/requirements-management-skill.md#output-format)
+**Template to Use**: [Requirements Document Template](../../skills/sdd-requirements-management/SKILL.md#output-format)
 
 ---
 
@@ -43,12 +43,12 @@ Select the scenario that best matches your current need:
 **You need to**: Review and improve existing requirements documentation
 
 **Quick Actions**:
-1. Use the [Requirements Validation](../../skills/requirements-management-skill.md#8-requirements-validation) checklist
-2. Check for [Completeness, Consistency, and Testability](../../skills/requirements-management-skill.md#5-requirements-analysis)
-3. Apply [Prioritization Frameworks](../../skills/requirements-management-skill.md#6-requirements-prioritization)
-4. Update using [Change Management Process](../../skills/requirements-management-skill.md#9-requirements-change-management)
+1. Use the [Requirements Validation](../../skills/sdd-requirements-management/SKILL.md#8-requirements-validation) checklist
+2. Check for [Completeness, Consistency, and Testability](../../skills/sdd-requirements-management/SKILL.md#5-requirements-analysis)
+3. Apply [Prioritization Frameworks](../../skills/sdd-requirements-management/SKILL.md#6-requirements-prioritization)
+4. Update using [Change Management Process](../../skills/sdd-requirements-management/SKILL.md#9-requirements-change-management)
 
-**Checklist to Use**: [Requirements Validation](../../skills/requirements-management-skill.md#8-requirements-validation)
+**Checklist to Use**: [Requirements Validation](../../skills/sdd-requirements-management/SKILL.md#8-requirements-validation)
 
 ---
 
@@ -294,7 +294,7 @@ After completing your quick start:
 - Review [Real-World Examples](sdd-interactive-guide.md#real-world-examples)
 
 ### For Specific Skills
-- [Requirements Management](../../skills/requirements-management-skill.md)
+- [Requirements Management](../../skills/sdd-requirements-management/SKILL.md)
 - [Architecture Review](../../skills/README.md)
 - [All Available Skills](../../skills/README.md)
 
@@ -333,12 +333,12 @@ After completing your quick start:
 
 | Situation | Use This | Link |
 |-----------|----------|------|
-| Starting new project | Requirements Management Skill | [Link](../../skills/requirements-management-skill.md) |
+| Starting new project | Requirements Management Skill | [Link](../../skills/sdd-requirements-management/SKILL.md) |
 | Crafting a prompt | Interactive Guide | [Link](sdd-interactive-guide.md) |
-| Reviewing requirements | Validation Checklist | [Link](../../skills/requirements-management-skill.md#8-requirements-validation) |
+| Reviewing requirements | Validation Checklist | [Link](../../skills/sdd-requirements-management/SKILL.md#8-requirements-validation) |
 | Creating specifications | SDD Mode Guide | [Link](spec-driven-development.md) |
-| Prioritizing requirements | Prioritization Frameworks | [Link](../../skills/requirements-management-skill.md#6-requirements-prioritization) |
-| Managing changes | Change Management | [Link](../../skills/requirements-management-skill.md#9-requirements-change-management) |
+| Prioritizing requirements | Prioritization Frameworks | [Link](../../skills/sdd-requirements-management/SKILL.md#6-requirements-prioritization) |
+| Managing changes | Change Management | [Link](../../skills/sdd-requirements-management/SKILL.md#9-requirements-change-management) |
 | SDLC-specific guidance | SDLC Integration | [Link](../SDD-README.md#sdlc-integration) |
 
 ---

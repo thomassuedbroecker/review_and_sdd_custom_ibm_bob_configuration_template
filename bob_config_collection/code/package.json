@@ -1,0 +1,78 @@
+{
+  "name": "bob-config-importer",
+  "displayName": "IBM Bob Config Importer",
+  "description": "Import IBM Bob modes, skills, and supporting configurations from a bob_config_collection (public GitHub repository, bundled, or local) into a workspace's .bob/ folder.",
+  "version": "0.1.0",
+  "publisher": "thomassuedbroecker",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template.git",
+    "directory": "bob_config_collection/code"
+  },
+  "engines": {
+    "vscode": "^1.85.0",
+    "node": ">=18"
+  },
+  "categories": ["Other"],
+  "keywords": ["IBM Bob", "modes", "skills", "architecture review", "spec-driven development"],
+  "main": "./src/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      { "command": "bobConfigImporter.browseDocs", "title": "Read Mode or Skill Documentation…", "category": "Bob Config" },
+      { "command": "bobConfigImporter.importModes", "title": "Import Modes…", "category": "Bob Config" },
+      { "command": "bobConfigImporter.importSkills", "title": "Import Skills…", "category": "Bob Config" },
+      { "command": "bobConfigImporter.importOther", "title": "Import Other Configurations…", "category": "Bob Config" },
+      { "command": "bobConfigImporter.importGroup", "title": "Import Complete Mode Group…", "category": "Bob Config" },
+      { "command": "bobConfigImporter.selectSource", "title": "Select Collection Source…", "category": "Bob Config" },
+      { "command": "bobConfigImporter.refreshCollection", "title": "Refresh Collection", "category": "Bob Config" }
+    ],
+    "configuration": {
+      "title": "Bob Config Importer",
+      "properties": {
+        "bobConfigImporter.source": {
+          "type": "string",
+          "enum": ["github", "bundled", "local"],
+          "enumDescriptions": [
+            "Download the collection from a public GitHub repository (latest).",
+            "Use the collection packaged into this extension version (offline).",
+            "Use a bob_config_collection folder on disk."
+          ],
+          "default": "github",
+          "description": "Where modes, skills, and other configurations are imported from."
+        },
+        "bobConfigImporter.githubRepository": {
+          "type": "string",
+          "default": "thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template",
+          "description": "Public GitHub repository (owner/name) that contains the collection. Point this at your own repository created from the template."
+        },
+        "bobConfigImporter.githubRef": {
+          "type": "string",
+          "default": "main",
+          "description": "Branch, tag, or commit SHA to import from."
+        },
+        "bobConfigImporter.githubCollectionPath": {
+          "type": "string",
+          "default": "bob_config_collection",
+          "description": "Folder inside the repository that contains modes/ and skills/."
+        },
+        "bobConfigImporter.localCollectionPath": {
+          "type": "string",
+          "default": "",
+          "description": "Collection folder for source 'local': absolute, or relative to the first workspace folder (default: bob_config_collection)."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node src/tools/build.js",
+    "test": "node --test test/*.test.js",
+    "package": "npm run build && vsce package --out dist/",
+    "sync:template": "node src/tools/sync-workspace.js --target ../..",
+    "sync:check": "node src/tools/sync-workspace.js --target ../.. --check"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.2.1"
+  }
+}

@@ -81,14 +81,14 @@ The diagram shows 7 specialized modes, each focusing on a specific aspect:
 The architecture-review subset uses these skills from the
 [`.bob/skills/`](../../skills/README.md) directory:
 
-1. [`sdlc-discovery-gap-analysis-skill.md`](../../skills/sdlc-discovery-gap-analysis-skill.md)
-2. [`business-alignment-skill.md`](../../skills/business-alignment-skill.md)
-3. [`security-threat-modeling-skill.md`](../../skills/security-threat-modeling-skill.md)
-4. [`scalability-performance-skill.md`](../../skills/scalability-performance-skill.md)
-5. [`architecture-patterns-skill.md`](../../skills/architecture-patterns-skill.md)
-6. [`maintainability-technical-debt-skill.md`](../../skills/maintainability-technical-debt-skill.md)
-7. [`documentation-review-skill.md`](../../skills/documentation-review-skill.md)
-8. [`twelve-factor-compliance-skill.md`](../../skills/twelve-factor-compliance-skill.md)
+1. [`sdd-sdlc-discovery-gap-analysis/SKILL.md`](../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
+2. [`sdd-business-alignment/SKILL.md`](../../skills/sdd-business-alignment/SKILL.md)
+3. [`sdd-security-threat-modeling/SKILL.md`](../../skills/sdd-security-threat-modeling/SKILL.md)
+4. [`sdd-scalability-performance/SKILL.md`](../../skills/sdd-scalability-performance/SKILL.md)
+5. [`sdd-architecture-patterns/SKILL.md`](../../skills/sdd-architecture-patterns/SKILL.md)
+6. [`sdd-maintainability-technical-debt/SKILL.md`](../../skills/sdd-maintainability-technical-debt/SKILL.md)
+7. [`sdd-documentation-review/SKILL.md`](../../skills/sdd-documentation-review/SKILL.md)
+8. [`sdd-twelve-factor-compliance/SKILL.md`](../../skills/sdd-twelve-factor-compliance/SKILL.md)
 
 ## Visual Elements
 

@@ -68,7 +68,7 @@ Spec-Driven Development mode in [`.bob/custom_modes.yaml`](../../custom_modes.ya
 ### Supporting Skill
 
 **Requirements Management Skill**
-- Implemented in [`skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)
+- Implemented in [`skills/sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)
 - Provides deeper requirements engineering guidance
 - Covers elicitation, prioritization, traceability, validation, and change management
 - Acts as the specialist skill underpinning the SDD mode
@@ -158,7 +158,7 @@ When updating the SDD ecosystem:
 ## Related Files
 
 - Main Mode: [`.bob/custom_modes.yaml`](../../custom_modes.yaml)
-- Requirements Skill: [`skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)
+- Requirements Skill: [`skills/sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)
 - Guide: [`documentation/SDD-README.md`](../SDD-README.md)
 - Quick Start: [`documentation/guides/SDD-QUICK-START.md`](../guides/SDD-QUICK-START.md)
 - Summary: [`documentation/guides/SDD-SUMMARY.md`](../guides/SDD-SUMMARY.md)

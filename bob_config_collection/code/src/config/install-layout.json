@@ -1,0 +1,27 @@
+{
+  "$comment": "Maps collection-relative paths (as written inside *-mode.yaml files) to IBM Bob workspace paths. Entries are matched longest 'from' first.",
+  "modesFile": ".bob/custom_modes.yaml",
+  "skills": {
+    "sourcePrefix": "SKILLS/",
+    "collectionDir": "skills",
+    "target": ".bob/skills/"
+  },
+  "exampleSkills": ["sdd-custom-compliance"],
+  "groups": {
+    "review_sdd": {
+      "label": "Review & SDD",
+      "sourcePrefix": "Modes/SDD/",
+      "groupRoot": ".bob/",
+      "paths": [
+        { "id": "scripts", "label": "GitHub issue scripts", "from": "references/scripts/", "to": ".bob/scripts/" },
+        { "id": "mcp", "label": "MCP server configuration (merged into .bob/mcp.json)", "from": "references/mcp/mcp.json", "to": ".bob/mcp.json", "merge": "mcp" },
+        { "id": "guides", "label": "Guides", "from": "references/guides/", "to": ".bob/documentation/guides/" },
+        { "id": "diagrams", "label": "Diagrams", "from": "references/diagramms/", "to": ".bob/documentation/diagramms/" },
+        { "id": "images", "label": "Images", "from": "references/images/", "to": ".bob/images/" },
+        { "id": "knowledge-sources", "label": "Knowledge sources", "from": "knowledge-sources.md", "to": ".bob/documentation/KNOWLEDGE_SOURCES.md" },
+        { "id": "resource-licenses", "label": "Resource licenses", "from": "resource-licenses.md", "to": ".bob/documentation/RESOURCE_LICENSES.md" },
+        { "id": "documentation", "label": "Mode group documentation and references", "from": "", "to": ".bob/documentation/review_sdd/" }
+      ]
+    }
+  }
+}

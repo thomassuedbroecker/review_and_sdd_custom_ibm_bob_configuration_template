@@ -25,6 +25,41 @@ Usage example on YouTube:
 
 📚 **[View Full Documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)**
 
+## Two Ways to Use This Repository
+
+This repository serves two separate purposes. Keep them apart when you
+customize it.
+
+| | 1. Out-of-the-box Bob workspace | 2. Reusable configuration repository |
+|---|---|---|
+| **What** | The ready-to-use configuration in [`.bob/`](./.bob/) (`custom_modes.yaml`, `skills/`, scripts, documentation) | The source collection in [`bob_config_collection/`](./bob_config_collection/) (`modes/<group>/*-mode.yaml`, `skills/<skill>/SKILL.md`) plus the VS Code extension in [`bob_config_collection/code/`](./bob_config_collection/code/) |
+| **Who uses it** | You, when you open this repository's root folder in IBM Bob | Any other Bob workspace that installs selected modes or skills with the **IBM Bob Config Importer** extension |
+| **How you get it** | Create a repository from this template and open it in IBM Bob, with no install step | Install the extension and run **Bob Config: Import Modes… / Import Skills… / Import Other Configurations…**. Selections come from the public GitHub repository by default |
+| **Where you change it** | Do not edit the overlapping modes and skills directly. They are generated from the collection | Edit here. The collection is the **leading configuration** |
+
+**Rule:** `bob_config_collection/` leads. Every mode in `.bob/custom_modes.yaml`
+that also exists in the collection, and every skill those modes reference, is
+replaced by the collection version when you run the sync:
+
+```bash
+cd bob_config_collection/code
+npm run sync:template   # update .bob/ from the collection
+npm run sync:check      # exit 1 if .bob/ differs from the collection
+```
+
+Modes that exist only in `.bob/` (your own additions) are left untouched. Modes
+and skills that exist only in the collection (for example
+`license-impact-analysis` and `ai-regulatory-compliance`) are not added to the
+out-of-the-box workspace. Install them with the extension, or with
+`node src/tools/sync-workspace.js --target ../.. --all`.
+
+**Build your own reusable repository:** create a repository from this template,
+change or add modes and skills in `bob_config_collection/`, push it to a public
+GitHub repository, and point the extension's `bobConfigImporter.githubRepository`
+setting at `<owner>/<name>`. You can also package your own extension build with
+your collection bundled. See the
+[extension documentation](./bob_config_collection/code/docs/README.md).
+
 ## What It Does
 
 - **11 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, and GitHub issue generator
@@ -34,6 +69,7 @@ Usage example on YouTube:
 - **Adaptive Configuration**: Use the Grill Me discovery pattern to clarify SDLC intent, detect gaps, and propose new capabilities based on emerging requirements
 - **Modular Skills**: Use individual skills independently or combine them for comprehensive reviews
 - **CLI Automation**: Run any review mode non-interactively from a terminal or CI pipeline using the scripts in [`automations/`](./automations/)
+- **Reusable Collection + VS Code Extension**: Install selected modes, skills, and supporting configurations from [`bob_config_collection/`](./bob_config_collection/) into any Bob workspace
 
 ## Traceability Boundary
 
@@ -93,8 +129,12 @@ git clone <repository-url> repos/<repository-name>
 
 ```text
 <template-repository-name>/
-├── .bob/
+├── .bob/                      # out-of-the-box Bob configuration (generated from the collection)
 ├── automations/
+├── bob_config_collection/     # leading, reusable modes and skills
+│   ├── modes/
+│   ├── skills/
+│   └── code/                  # VS Code extension: src/, docs/, test/
 ├── repos/
 │   ├── your-application/
 │   └── another-repository/
@@ -238,7 +278,7 @@ Output:
 User: "Analyze technical debt and maintainability"
 
 Bob will:
-1. Read maintainability-technical-debt-skill.md
+1. Read sdd-maintainability-technical-debt/SKILL.md
 2. Analyze code complexity and coupling
 3. Detect code duplication
 4. Assess test coverage
@@ -254,7 +294,7 @@ Output: Prioritized technical debt backlog with effort estimates
 User: "Perform STRIDE threat modeling and check OWASP Top 10"
 
 Bob will:
-1. Read security-threat-modeling-skill.md
+1. Read sdd-security-threat-modeling/SKILL.md
 2. Identify security gaps and attack vectors
 3. Check for OWASP Top 10 vulnerabilities
 4. Assess authentication/authorization
@@ -340,9 +380,14 @@ Output: List of created GitHub issues with numbers and links
 
 ### Adding Organization-Specific Requirements
 
+Make changes to shared modes and skills in `bob_config_collection/`, then run
+`npm run sync:template` in `bob_config_collection/code/` to update `.bob/`.
+If you edit an overlapping mode or skill only in `.bob/`, the next sync
+overwrites it. See [Two Ways to Use This Repository](#two-ways-to-use-this-repository).
+
 1. **Modify existing skills**
 
-   Edit skill files in `.bob/skills/` to add:
+   Edit `bob_config_collection/skills/sdd-<name>/SKILL.md` to add:
    - Internal compliance requirements
    - Company-specific patterns
    - Custom quality attributes
@@ -352,9 +397,10 @@ Output: List of created GitHub issues with numbers and links
 2. **Create new skills**
 
    ```bash
-   # Copy an existing skill as template
-   cp .bob/skills/security-threat-modeling-skill.md \
-      .bob/skills/custom-compliance-skill.md
+   # Copy an existing skill as template (one folder per skill)
+   mkdir -p bob_config_collection/skills/sdd-custom-compliance
+   cp bob_config_collection/skills/sdd-security-threat-modeling/SKILL.md \
+      bob_config_collection/skills/sdd-custom-compliance/SKILL.md
    ```
 
    Then customize:
@@ -365,8 +411,10 @@ Output: List of created GitHub issues with numbers and links
 
 3. **Update mode configuration**
 
-   Update `.bob/custom_modes.yaml` so that the relevant mode explicitly
-   references the new skill when it should be part of a standard workflow.
+   Update the mode file in `bob_config_collection/modes/<group>/<slug>-mode.yaml`
+   so that it explicitly references the new skill as `SKILLS/<skill>/SKILL.md`
+   when it should be part of a standard workflow. On install, these paths are
+   rewritten to `.bob/skills/<skill>/SKILL.md`.
    For license notice or provenance checks, prefer extending the existing
    Documentation Review skill unless a dedicated legal/compliance workflow is
    required.
@@ -412,6 +460,7 @@ Output: List of created GitHub issues with numbers and links
 |----------|---------|
 | **README.md** | Main documentation (this file) |
 | **[agents.md](./agents.md)** | Agent routing rules and hard constraints for IBM Bob |
+| **[bob_config_collection/code/docs/README.md](./bob_config_collection/code/docs/README.md)** | VS Code extension and template sync: usage, build, architecture |
 | **[.bob/skills/README.md](./.bob/skills/README.md)** | Skills documentation |
 | **[.bob/documentation/README-ARCHITECTURE-REVIEW.md](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)** | Architecture review details |
 | **[.bob/documentation/KNOWLEDGE_SOURCES.md](./.bob/documentation/KNOWLEDGE_SOURCES.md)** | Mode and skill knowledge-source map |
@@ -445,6 +494,15 @@ After changing Markdown documentation, validate local links and heading anchors:
 
 ```bash
 python3 .bob/scripts/check_markdown_links.py
+```
+
+After changing modes or skills in `bob_config_collection/`, verify that `.bob/`
+matches the collection and that the extension tests pass:
+
+```bash
+cd bob_config_collection/code
+npm run sync:check
+npm test
 ```
 
 ## Limitations

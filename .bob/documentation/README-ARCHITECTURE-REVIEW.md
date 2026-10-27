@@ -164,62 +164,62 @@ package is deprecated and should be replaced before production use.
 ## 📚 Available Skills
 
 ### 1. 🎯 Business Alignment
-**File**: `../skills/business-alignment-skill.md`
+**File**: `../skills/sdd-business-alignment/SKILL.md`
 
 Evaluates how well the architecture supports organizational goals and quality attributes.
 
 ### 2. 🔒 Security & Threat Modeling
-**File**: `../skills/security-threat-modeling-skill.md`
+**File**: `../skills/sdd-security-threat-modeling/SKILL.md`
 
 Identifies security gaps, potential attack vectors, and provides security recommendations.
 
 ### 3. 📈 Scalability & Performance
-**File**: `../skills/scalability-performance-skill.md`
+**File**: `../skills/sdd-scalability-performance/SKILL.md`
 
 Evaluates system capacity, identifies bottlenecks, and provides performance optimization recommendations.
 
 ### 4. 🎨 Architecture Patterns
-**File**: `../skills/architecture-patterns-skill.md`
+**File**: `../skills/sdd-architecture-patterns/SKILL.md`
 
 Evaluates pattern usage, identifies anti-patterns, and recommends appropriate patterns.
 
 ### 5. 🔧 Maintainability & Technical Debt
-**File**: `../skills/maintainability-technical-debt-skill.md`
+**File**: `../skills/sdd-maintainability-technical-debt/SKILL.md`
 
 Identifies maintainability issues, quantifies technical debt, and provides refactoring recommendations.
 
 ### 6. 📚 Documentation Review
-**File**: `../skills/documentation-review-skill.md`
+**File**: `../skills/sdd-documentation-review/SKILL.md`
 
 Evaluates documentation completeness, clarity, currency, license notice
 coverage, content-provenance evidence, and mode/skill source alignment.
 
 ### 7. ☁️ 12-Factor Compliance
-**File**: `../skills/twelve-factor-compliance-skill.md`
+**File**: `../skills/sdd-twelve-factor-compliance/SKILL.md`
 
 Evaluates compliance with 12-factor app methodology and provides cloud-native recommendations.
 
 ### 8. 🧭 Requirements Management
-**File**: `../skills/requirements-management-skill.md`
+**File**: `../skills/sdd-requirements-management/SKILL.md`
 
 Supports elicitation, documentation, prioritization, validation, and traceability of requirements.
 
 ### 9. 🔎 SDLC Discovery and Gap Analysis
-**File**: `../skills/sdlc-discovery-gap-analysis-skill.md`
+**File**: `../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md`
 
 Uses the Grill Me discovery pattern to classify the SDLC phase, clarify user
 intent, select modes and skills, and detect missing SDD or architecture-review
 capabilities.
 
 ### 10. 🔗 Requirements Traceability Analysis
-**File**: `../skills/requirements-traceability-skill.md`
+**File**: `../skills/sdd-requirements-traceability/SKILL.md`
 
 Validates forward and backward traceability, detects orphaned artifacts, and
 supports coverage reporting across requirements, design, implementation, and
 tests.
 
 ### 11. 📋 GitHub Issue Traceability
-**File**: `../skills/github-issue-traceability-skill.md`
+**File**: `../skills/sdd-github-issue-traceability/SKILL.md`
 
 Structures GitHub issues with SDLC traceability metadata, issue hierarchy, and
 requirement-to-implementation links.

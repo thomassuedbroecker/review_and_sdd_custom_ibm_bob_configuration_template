@@ -31,25 +31,25 @@
         <mxCell id="skills-container" parent="specialized-container" style="swimlane;whiteSpace=wrap;html=1;fillColor=#e8f5e9;strokeColor=#388e3c;fontSize=16;fontStyle=1;startSize=40" value="Review Skills (.bob/skills/)" vertex="1">
           <mxGeometry height="280" width="1360" x="30" y="400" as="geometry" />
         </mxCell>
-        <mxCell id="skill1" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="business-alignment-skill.md" vertex="1">
+        <mxCell id="skill1" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="sdd-business-alignment/SKILL.md" vertex="1">
           <mxGeometry height="60" width="240" x="747.5" y="180" as="geometry" />
         </mxCell>
-        <mxCell id="skill2" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="security-threat-modeling-skill.md" vertex="1">
+        <mxCell id="skill2" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="sdd-security-threat-modeling/SKILL.md" vertex="1">
           <mxGeometry height="60" width="240" x="217.5" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="skill3" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="&lt;font&gt;scalability-performance-skill.md&lt;/font&gt;" vertex="1">
+        <mxCell id="skill3" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="&lt;font&gt;sdd-scalability-performance/SKILL.md&lt;/font&gt;" vertex="1">
           <mxGeometry height="60" width="240" x="567.5" y="70" as="geometry" />
         </mxCell>
-        <mxCell id="skill4" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="architecture-patterns-skill.md" vertex="1">
+        <mxCell id="skill4" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="sdd-architecture-patterns/SKILL.md" vertex="1">
           <mxGeometry height="60" width="240" x="927.5" y="80" as="geometry" />
         </mxCell>
-        <mxCell id="skill5" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="maintainability-technical-debt-skill.md" vertex="1">
+        <mxCell id="skill5" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="sdd-maintainability-technical-debt/SKILL.md" vertex="1">
           <mxGeometry height="60" width="270" x="1072.5" y="180" as="geometry" />
         </mxCell>
-        <mxCell id="skill6" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="documentation-review-skill.md" vertex="1">
+        <mxCell id="skill6" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="sdd-documentation-review/SKILL.md" vertex="1">
           <mxGeometry height="60" width="280" x="17.5" y="180" as="geometry" />
         </mxCell>
-        <mxCell id="skill7" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="twelve-factor-compliance-skill.md" vertex="1">
+        <mxCell id="skill7" parent="skills-container" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="sdd-twelve-factor-compliance/SKILL.md" vertex="1">
           <mxGeometry height="60" width="280" x="367.5" y="180" as="geometry" />
         </mxCell>
         <mxCell id="arrow-mode3-skill" edge="1" parent="specialized-container" source="mode3" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;fontSize=16;strokeColor=#4B0082;dashed=1;dashPattern=5 5;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" target="skill4" value="uses">

@@ -70,14 +70,14 @@ The **🏛️ Architecture Review** mode is the primary orchestrator that conduc
 - Compliance checks
 
 ### Available Skills
-1. **sdlc-discovery-gap-analysis-skill.md** - Grill Me discovery, SDLC phase classification, and missing-capability checks
-2. **business-alignment-skill.md** - Business goals and quality attributes
-3. **security-threat-modeling-skill.md** - Security gaps and threat analysis
-4. **scalability-performance-skill.md** - System capacity and performance
-5. **architecture-patterns-skill.md** - Patterns and best practices
-6. **maintainability-technical-debt-skill.md** - Code quality and technical debt
-7. **documentation-review-skill.md** - Documentation, license notices, and provenance evidence
-8. **twelve-factor-compliance-skill.md** - Cloud-native readiness
+1. **sdd-sdlc-discovery-gap-analysis/SKILL.md** - Grill Me discovery, SDLC phase classification, and missing-capability checks
+2. **sdd-business-alignment/SKILL.md** - Business goals and quality attributes
+3. **sdd-security-threat-modeling/SKILL.md** - Security gaps and threat analysis
+4. **sdd-scalability-performance/SKILL.md** - System capacity and performance
+5. **sdd-architecture-patterns/SKILL.md** - Patterns and best practices
+6. **sdd-maintainability-technical-debt/SKILL.md** - Code quality and technical debt
+7. **sdd-documentation-review/SKILL.md** - Documentation, license notices, and provenance evidence
+8. **sdd-twelve-factor-compliance/SKILL.md** - Cloud-native readiness
 
 ---
 
@@ -186,7 +186,7 @@ deprecated and should be replaced before production use.
 
 ### Skill 1: Business Alignment Review
 
-**File**: `.bob/skills/business-alignment-skill.md`
+**File**: `.bob/skills/sdd-business-alignment/SKILL.md`
 
 **Purpose**: Evaluate how architecture supports organizational goals and quality attributes.
 
@@ -208,7 +208,7 @@ deprecated and should be replaced before production use.
 
 ### Skill 2: Security & Threat Modeling Review
 
-**File**: `.bob/skills/security-threat-modeling-skill.md`
+**File**: `.bob/skills/sdd-security-threat-modeling/SKILL.md`
 
 **Purpose**: Identify security gaps and provide actionable security recommendations.
 
@@ -236,7 +236,7 @@ deprecated and should be replaced before production use.
 
 ### Skill 3: Scalability & Performance Review
 
-**File**: `.bob/skills/scalability-performance-skill.md`
+**File**: `.bob/skills/sdd-scalability-performance/SKILL.md`
 
 **Purpose**: Evaluate system capacity and provide performance optimization recommendations.
 
@@ -264,7 +264,7 @@ deprecated and should be replaced before production use.
 
 ### Skill 4: Architecture Patterns Review
 
-**File**: `.bob/skills/architecture-patterns-skill.md`
+**File**: `.bob/skills/sdd-architecture-patterns/SKILL.md`
 
 **Purpose**: Evaluate pattern usage and recommend appropriate architectural patterns.
 
@@ -297,7 +297,7 @@ deprecated and should be replaced before production use.
 
 ### Skill 5: Maintainability & Technical Debt Review
 
-**File**: `.bob/skills/maintainability-technical-debt-skill.md`
+**File**: `.bob/skills/sdd-maintainability-technical-debt/SKILL.md`
 
 **Purpose**: Identify maintainability issues and quantify technical debt.
 
@@ -332,7 +332,7 @@ deprecated and should be replaced before production use.
 
 ### Skill 6: Documentation Review
 
-**File**: `.bob/skills/documentation-review-skill.md`
+**File**: `.bob/skills/sdd-documentation-review/SKILL.md`
 
 **Purpose**: Evaluate documentation completeness, clarity, currency, license notice coverage, and content-provenance evidence.
 
@@ -382,7 +382,7 @@ for the mode and skill evidence source groups.
 
 ### Skill 7: 12-Factor Compliance Review
 
-**File**: `.bob/skills/twelve-factor-compliance-skill.md`
+**File**: `.bob/skills/sdd-twelve-factor-compliance/SKILL.md`
 
 **Purpose**: Evaluate cloud-native 12-factor app compliance.
 
@@ -423,7 +423,7 @@ for the mode and skill evidence source groups.
 
 ### Skill 8: Requirements Management
 
-**File**: `.bob/skills/requirements-management-skill.md`
+**File**: `.bob/skills/sdd-requirements-management/SKILL.md`
 
 **Purpose**: Elicit, document, analyze, prioritize, validate, and trace
 software requirements.
@@ -440,7 +440,7 @@ software requirements.
 
 ### Skill 9: SDLC Discovery and Gap Analysis
 
-**File**: `.bob/skills/sdlc-discovery-gap-analysis-skill.md`
+**File**: `.bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md`
 
 **Purpose**: Clarify the user's SDLC phase, expected outcome, artifacts,
 constraints, and missing skill or resource needs before SDD or architecture
@@ -457,7 +457,7 @@ review work begins.
 
 ### Skill 10: Requirements Traceability Analysis
 
-**File**: `.bob/skills/requirements-traceability-skill.md`
+**File**: `.bob/skills/sdd-requirements-traceability/SKILL.md`
 
 **Purpose**: Validate traceability chains from requirements through design,
 implementation, and tests.
@@ -473,7 +473,7 @@ implementation, and tests.
 
 ### Skill 11: GitHub Issue Traceability
 
-**File**: `.bob/skills/github-issue-traceability-skill.md`
+**File**: `.bob/skills/sdd-github-issue-traceability/SKILL.md`
 
 **Purpose**: Structure GitHub issues with SDLC traceability metadata,
 requirement links, implementation references, and test validation links.
@@ -587,9 +587,9 @@ Mode: 🏛️ Architecture Review
 Request: "Review security, scalability, and documentation for our AI model deployment"
 
 Bob will:
-1. Read security-threat-modeling-skill.md
-2. Read scalability-performance-skill.md
-3. Read documentation-review-skill.md
+1. Read sdd-security-threat-modeling/SKILL.md
+2. Read sdd-scalability-performance/SKILL.md
+3. Read sdd-documentation-review/SKILL.md
 4. Analyze model serving infrastructure
 5. Identify security vulnerabilities
 6. Assess performance and scalability
@@ -603,7 +603,7 @@ Mode: 🎯 Business Alignment
 Request: "Validate our AI system aligns with business goals and quality attributes"
 
 Bob will:
-1. Read business-alignment-skill.md
+1. Read sdd-business-alignment/SKILL.md
 2. Identify business objectives
 3. Map AI capabilities to business needs
 4. Evaluate quality attributes (fairness, accuracy, explainability)
@@ -632,7 +632,7 @@ Mode: 🔧 Maintainability & Technical Debt
 Request: "Analyze technical debt in our ML training pipeline"
 
 Bob will:
-1. Read maintainability-technical-debt-skill.md
+1. Read sdd-maintainability-technical-debt/SKILL.md
 2. Analyze pipeline code complexity
 3. Identify coupling issues
 4. Detect code duplication
@@ -661,7 +661,7 @@ Mode: 🧭 Spec-Driven Development
 Request: "Turn these notes into prioritized functional and non-functional requirements"
 
 Bob will:
-1. Read requirements-management-skill.md
+1. Read sdd-requirements-management/SKILL.md
 2. Identify stakeholders, scope, assumptions, and constraints
 3. Define testable requirements and acceptance criteria
 4. Prioritize requirements

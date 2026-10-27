@@ -31,7 +31,7 @@ workspace root  (bob runs here)
 
 | Path | How it is resolved |
 |---|---|
-| `.bob/skills/*.md` | Relative to workspace root — always found at `./.bob/skills/` |
+| `.bob/skills/*/SKILL.md` | Relative to workspace root — always found at `./.bob/skills/` |
 | Repo source files | Absolute path (`$WORKSPACE_ROOT/repos/<name>`) embedded in the prompt |
 | `--out FILE` | Made absolute before bob runs — output always lands in the workspace |
 
@@ -107,13 +107,13 @@ automations/run_arch_review.sh --repo <name> [options] [PROMPT]
 | Mode | Skill file(s) read | Covers |
 |---|---|---|
 | `arch-review` | all 7 skills | Comprehensive review — all areas |
-| `security-review` | `security-threat-modeling-skill.md` | STRIDE threat model, OWASP Top 10 |
-| `scalability-review` | `scalability-performance-skill.md` | Bottlenecks, scaling strategy, SLAs |
-| `patterns-review` | `architecture-patterns-skill.md` | SOLID, design patterns, anti-patterns |
-| `maintainability-review` | `maintainability-technical-debt-skill.md` | Technical debt, coupling, refactoring |
-| `documentation-review` | `documentation-review-skill.md` | ADRs, C4 diagrams, API docs, license notices |
-| `twelve-factor-review` | `twelve-factor-compliance-skill.md` | 12-factor compliance, cloud-native readiness |
-| `business-alignment-review` | `business-alignment-skill.md` | Stakeholder requirements, cost-benefit |
+| `security-review` | `sdd-security-threat-modeling/SKILL.md` | STRIDE threat model, OWASP Top 10 |
+| `scalability-review` | `sdd-scalability-performance/SKILL.md` | Bottlenecks, scaling strategy, SLAs |
+| `patterns-review` | `sdd-architecture-patterns/SKILL.md` | SOLID, design patterns, anti-patterns |
+| `maintainability-review` | `sdd-maintainability-technical-debt/SKILL.md` | Technical debt, coupling, refactoring |
+| `documentation-review` | `sdd-documentation-review/SKILL.md` | ADRs, C4 diagrams, API docs, license notices |
+| `twelve-factor-review` | `sdd-twelve-factor-compliance/SKILL.md` | 12-factor compliance, cloud-native readiness |
+| `business-alignment-review` | `sdd-business-alignment/SKILL.md` | Stakeholder requirements, cost-benefit |
 
 #### Startup output
 

@@ -262,17 +262,17 @@ graph TD
 │   ├── 📄 custom_modes.yaml          # 11 custom mode definitions
 │   ├── 📁 skills/                    # Reusable Bob skills
 │   │   ├── 📄 README.md
-│   │   ├── 🔎 sdlc-discovery-gap-analysis-skill.md
-│   │   ├── 🎯 business-alignment-skill.md
-│   │   ├── 🔒 security-threat-modeling-skill.md
-│   │   ├── 📈 scalability-performance-skill.md
-│   │   ├── 🎨 architecture-patterns-skill.md
-│   │   ├── 🔧 maintainability-technical-debt-skill.md
-│   │   ├── 📚 documentation-review-skill.md
-│   │   ├── ☁️ twelve-factor-compliance-skill.md
-│   │   ├── 🧭 requirements-management-skill.md
-│   │   ├── 🔗 requirements-traceability-skill.md
-│   │   └── 📋 github-issue-traceability-skill.md
+│   │   ├── 🔎 sdd-sdlc-discovery-gap-analysis/SKILL.md
+│   │   ├── 🎯 sdd-business-alignment/SKILL.md
+│   │   ├── 🔒 sdd-security-threat-modeling/SKILL.md
+│   │   ├── 📈 sdd-scalability-performance/SKILL.md
+│   │   ├── 🎨 sdd-architecture-patterns/SKILL.md
+│   │   ├── 🔧 sdd-maintainability-technical-debt/SKILL.md
+│   │   ├── 📚 sdd-documentation-review/SKILL.md
+│   │   ├── ☁️ sdd-twelve-factor-compliance/SKILL.md
+│   │   ├── 🧭 sdd-requirements-management/SKILL.md
+│   │   ├── 🔗 sdd-requirements-traceability/SKILL.md
+│   │   └── 📋 sdd-github-issue-traceability/SKILL.md
 │   └── 📁 documentation/
 │       ├── 📄 README-ARCHITECTURE-REVIEW.md
 │       ├── 📄 SDD-README.md

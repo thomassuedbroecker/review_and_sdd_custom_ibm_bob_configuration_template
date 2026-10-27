@@ -1,0 +1,5 @@
+docs/**
+test/**
+src/tools/**
+node_modules/**
+dist/*.vsix
