@@ -104,3 +104,15 @@ test('supportEntries covers every non-mode file of a group exactly once', () => 
     assert.deepEqual(files, [...g.supportFiles].sort());
   }
 });
+
+test('one-click mode install writes the mode and its skills, and existingSkillIds sees them', () => {
+  const catalog = loadCatalog(COLLECTION);
+  const ws = tmpWorkspace();
+  const slug = 'security-review';
+  const plan = [...install.planModes(catalog, ws, [slug]), ...install.planSkills(catalog, ws, install.skillsForModes(catalog, [slug]))];
+  install.applyPlan(ws, plan);
+  assert.deepEqual(install.existingModeSlugs(catalog, ws), [slug]);
+  assert.deepEqual(install.existingSkillIds(catalog, ws), ['sdd-security-threat-modeling']);
+  const again = [...install.planModes(catalog, ws, [slug]), ...install.planSkills(catalog, ws, ['sdd-security-threat-modeling'])];
+  assert.ok(again.every((p) => p.status === 'unchanged'), 'second install is a no-op');
+});

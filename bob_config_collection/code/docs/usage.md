@@ -26,6 +26,16 @@ Every mode and skill can be read before anything is written to your workspace:
 | Mode | Name, slug, group, description, *when to use*, tool groups, the skills it uses (with their purpose), role definition, `<slug>-mode.md` from the collection if present, a **Related documentation** list (mode guide, the reference files the mode loads, the group overview, and the guides, each opening in the Markdown preview), and the exact mode definition as it will be written to `.bob/custom_modes.yaml` |
 | Skill | Install target, files, which modes use it, its `README.md`, and the full `SKILL.md` |
 
+**One click, no questions.** In the sidebar, **Install** / **Update** on a mode
+card writes the mode and the skills it reads into `.bob/` of the open workspace
+folder; **Install** / **Update** on a skill card writes that skill. **Full Group**
+installs every mode, skill and other configuration, and **Other** installs the
+other configurations (scripts, MCP, guides, diagrams, images, licenses). There is
+no picker, no skills question, and no replace confirmation: the collection is the
+leading configuration and existing files are replaced. A notification reports
+what was written. The Command Palette commands (**Import Modes…** etc.) keep their
+pickers for selecting several items at once.
+
 In the sidebar, every mode card has a **Documentation (n)** list with the same
 links, so a mode's intent and its documents are one click away without
 installing anything. Click the mode name or **Docs** for the overview.

@@ -13,7 +13,7 @@ const { modeDocumentation, skillDocumentation, modeDocuments, DOC_KIND_LABEL } =
 
 // Builds the full HTML catalog panel (groups → mode cards with tag pills and
 // Install buttons, plus Skills and Other Configurations sections).
-function buildWebviewHtml(catalog, installedSlugs, nonce) {
+function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = []) {
   const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
   // tag pill colours (group label → hue)
@@ -55,7 +55,7 @@ function buildWebviewHtml(catalog, installedSlugs, nonce) {
             <div class="pills">${pill(g.label, hue)}${pill(installed ? 'Installed' : 'Custom Mode', installed ? 120 : 270)}</div>
             <div class="actions">
               <button class="btn-docs" data-cmd="bobConfigImporter.showModeDoc" data-slug="${esc(m.slug)}">Docs</button>
-              <button class="btn-install" data-cmd="bobConfigImporter.importModes" data-slug="${esc(m.slug)}">${btnLabel}</button>
+              <button class="btn-install" data-cmd="bobConfigImporter.installMode" data-slug="${esc(m.slug)}" title="Installs this mode and the skills it reads">${btnLabel}</button>
             </div>
           </div>
         </div>
@@ -80,7 +80,7 @@ function buildWebviewHtml(catalog, installedSlugs, nonce) {
           <div class="pills">${pill('Skill', 200)}</div>
           <div class="actions">
             <button class="btn-docs" data-cmd="bobConfigImporter.showSkillDoc" data-slug="${esc(s.id)}">Docs</button>
-            <button class="btn-install" data-cmd="bobConfigImporter.importSkills">Install</button>
+            <button class="btn-install" data-cmd="bobConfigImporter.installSkill" data-slug="${esc(s.id)}">${installedSkills.includes(s.id) ? 'Update' : 'Install'}</button>
           </div>
         </div>
       </div>
@@ -194,8 +194,8 @@ function buildWebviewHtml(catalog, installedSlugs, nonce) {
 <body>
 <div class="toolbar">
   <button data-cmd="bobConfigImporter.browseDocs">📖 Docs</button>
-  <button data-cmd="bobConfigImporter.importGroup">⊞ Full Group</button>
-  <button data-cmd="bobConfigImporter.importOther">📦 Other</button>
+  <button data-cmd="bobConfigImporter.installGroup">⊞ Full Group</button>
+  <button data-cmd="bobConfigImporter.installOther">📦 Other</button>
   <button data-cmd="bobConfigImporter.selectSource">⚙ Source</button>
   <button data-cmd="bobConfigImporter.refreshCollection">↺ Refresh</button>
 </div>
@@ -264,7 +264,8 @@ class BobConfigWebviewProvider {
       const folders = vscode.workspace.workspaceFolders || [];
       const targetRoot = folders[0]?.uri.fsPath ?? '';
       const installedSlugs = targetRoot ? install.existingModeSlugs(catalog, targetRoot) : [];
-      this._view.webview.html = buildWebviewHtml(catalog, installedSlugs, nonce);
+      const installedSkills = targetRoot ? install.existingSkillIds(catalog, targetRoot) : [];
+      this._view.webview.html = buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills);
     } catch (err) {
       if (this._disposed || !this._view) return;
       this._view.webview.html = `<body style="padding:12px;font-family:sans-serif;color:#c00">Error loading collection:<br>${err.message}</body>`;
@@ -418,14 +419,14 @@ async function pickTargetRoot() {
 
 // --- confirm & apply --------------------------------------------------------------
 
-async function confirmAndApply(targetRoot, plan, what) {
+async function confirmAndApply(targetRoot, plan, what, { confirm = true } = {}) {
   const changed = plan.filter((p) => p.status === 'changed');
   const created = plan.filter((p) => p.status === 'new');
   if (!changed.length && !created.length) {
     vscode.window.showInformationMessage(`${what}: already up to date with the collection.`);
     return;
   }
-  if (changed.length) {
+  if (changed.length && confirm) {
     const list = changed.slice(0, 8).map((p) => p.dest).join('\n');
     const more = changed.length > 8 ? `\n… and ${changed.length - 8} more` : '';
     const ok = await vscode.window.showWarningMessage(
@@ -437,9 +438,11 @@ async function confirmAndApply(targetRoot, plan, what) {
   const written = install.applyPlan(targetRoot, plan);
   const modesNote = plan.filter((p) => p.added || p.updated)
     .map((p) => ` Modes added: ${p.added.length}, updated: ${p.updated.length}.`).join('');
-  const open = await vscode.window.showInformationMessage(
-    `${what}: wrote ${written.length} file(s) into .bob/.${modesNote}`, 'Open .bob folder');
-  if (open) vscode.commands.executeCommand('revealInExplorer', vscode.Uri.file(path.join(targetRoot, '.bob')));
+  vscode.window.showInformationMessage(
+    `${what}: wrote ${written.length} file(s) into .bob/.${modesNote}`, 'Open .bob folder')
+    .then((open) => {
+      if (open) vscode.commands.executeCommand('revealInExplorer', vscode.Uri.file(path.join(targetRoot, '.bob')));
+    });
 }
 
 // --- pickers ----------------------------------------------------------------------
@@ -563,6 +566,56 @@ async function importGroup(catalog, sourceLabel, targetRoot) {
   await confirmAndApply(targetRoot, plan, `Import ${group.label} (${sourceLabel})`);
 }
 
+// --- direct installs (sidebar): no pickers, no confirmation ------------------------
+// The collection is the leading configuration, so existing files are replaced.
+
+function directCommand(context, webviewProvider, fn) {
+  return async (...args) => {
+    try {
+      const loaded = await getCatalog(context);
+      if (!loaded) return;
+      const folder = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+      if (!folder) {
+        vscode.window.showErrorMessage('Open the Bob workspace folder first; configurations are installed into its .bob/ folder.');
+        return;
+      }
+      await fn(loaded.catalog, folder, ...args);
+      webviewProvider.refresh();
+    } catch (err) {
+      vscode.window.showErrorMessage(`Bob Config Importer: ${err.message}`);
+    }
+  };
+}
+
+const NO_CONFIRM = { confirm: false };
+
+async function installMode(catalog, targetRoot, slug) {
+  const plan = [...install.planModes(catalog, targetRoot, [slug]), ...install.planSkills(catalog, targetRoot, install.skillsForModes(catalog, [slug]))];
+  await confirmAndApply(targetRoot, plan, `Mode ${slug}`, NO_CONFIRM);
+}
+
+async function installSkill(catalog, targetRoot, id) {
+  await confirmAndApply(targetRoot, install.planSkills(catalog, targetRoot, [id]), `Skill ${id}`, NO_CONFIRM);
+}
+
+async function installGroup(catalog, targetRoot) {
+  const plan = catalog.groups.flatMap((group) => {
+    const slugs = group.modes.map((m) => m.slug);
+    return [
+      ...install.planModes(catalog, targetRoot, slugs),
+      ...install.planSkills(catalog, targetRoot, install.skillsForModes(catalog, slugs)),
+      ...install.planSupport(catalog, targetRoot, group.id, install.supportEntries(catalog, group.id).map((e) => e.id)),
+    ];
+  });
+  await confirmAndApply(targetRoot, plan, 'Full group', NO_CONFIRM);
+}
+
+async function installOther(catalog, targetRoot) {
+  const plan = catalog.groups.flatMap((group) =>
+    install.planSupport(catalog, targetRoot, group.id, install.supportEntries(catalog, group.id).map((e) => e.id)));
+  await confirmAndApply(targetRoot, plan, 'Other configurations', NO_CONFIRM);
+}
+
 // Read documentation without installing; Enter or the book icon opens it.
 async function browseDocs(context) {
   try {
@@ -654,6 +707,10 @@ function activate(context) {
     await importSkills(catalog, sourceLabel, targetRoot);
     webviewProvider.refresh();
   }));
+  register('installMode', directCommand(context, webviewProvider, installMode));
+  register('installSkill', directCommand(context, webviewProvider, installSkill));
+  register('installGroup', directCommand(context, webviewProvider, installGroup));
+  register('installOther', directCommand(context, webviewProvider, installOther));
   register('importOther', command(context, importOther));
   register('importGroup', command(context, async (catalog, sourceLabel, targetRoot) => {
     await importGroup(catalog, sourceLabel, targetRoot);

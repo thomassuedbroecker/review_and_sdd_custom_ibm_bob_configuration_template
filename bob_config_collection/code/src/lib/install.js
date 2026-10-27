@@ -151,6 +151,12 @@ function existingModeSlugs(catalog, targetRoot) {
   return splitModes(fs.readFileSync(file, 'utf8')).items.map((it) => it.slug).filter(Boolean);
 }
 
+function existingSkillIds(catalog, targetRoot) {
+  return catalog.skills
+    .map((s) => s.id)
+    .filter((id) => fs.existsSync(path.join(targetRoot, catalog.layout.skills.target, id, 'SKILL.md')));
+}
+
 function planModes(catalog, targetRoot, slugs) {
   if (!slugs.length) return [];
   const dest = catalog.layout.modesFile;
@@ -226,6 +232,7 @@ module.exports = {
   upsertModes,
   mergeMcp,
   existingModeSlugs,
+  existingSkillIds,
   planModes,
   planSkills,
   planSupport,
