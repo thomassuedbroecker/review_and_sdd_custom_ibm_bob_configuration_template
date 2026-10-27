@@ -1,10 +1,15 @@
 {
   "name": "bob-config-importer",
   "displayName": "Bob Config Importer (Community)",
-  "description": "Community extension (not affiliated with or supported by IBM). Imports custom Bob modes, skills, and supporting configurations from a bob_config_collection (public GitHub repository, bundled, or local) into a workspace's .bob/ folder.",
+  "description": "Unofficial community importer: browse, preview, and install curated Bob modes, skills, and MCP configurations from any bob_config_collection (GitHub, bundled, or local) into your workspace's .bob/ folder. Not affiliated with or supported by IBM.",
   "version": "0.1.0",
   "publisher": "thomassuedbroecker",
   "license": "Apache-2.0",
+  "icon": "images/icon.png",
+  "galleryBanner": {
+    "color": "#0d3b3f",
+    "theme": "dark"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template.git",
@@ -108,6 +113,7 @@
   },
   "scripts": {
     "build": "node src/tools/build.js",
+    "icon": "node src/tools/render-icon.js",
     "test": "node --test test/*.test.js",
     "package": "npm run build && vsce package --out dist/",
     "sync:template": "node src/tools/sync-workspace.js --target ../..",
