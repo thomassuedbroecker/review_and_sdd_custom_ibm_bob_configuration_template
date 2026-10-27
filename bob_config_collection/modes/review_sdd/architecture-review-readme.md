@@ -15,12 +15,13 @@ This `.bob` configuration provides:
   - 1 configuration gap detection mode
   - 1 GitHub issue generator mode
   - 1 license impact analysis mode
-- **11 Reusable Skills**
+- **12 Reusable Skills**
   - 7 architecture review skills
   - 1 SDLC discovery and gap-analysis skill
   - 1 requirements management skill
   - 1 requirements traceability analysis skill
   - 1 GitHub issue traceability skill
+  - 1 AI regulatory compliance provenance skill
 
 This modular approach provides:
 - ✅ **Flexibility**: Use broad orchestration or focused modes
@@ -64,6 +65,7 @@ This modular approach provides:
 │ 9. Requirements Management                                   │
 │ 10. Requirements Traceability Analysis                       │
 │ 11. GitHub Issue Traceability                                │
+│ 12. AI Regulatory Compliance Provenance                      │
 └──────────────────────────────────────────────────────────────┘
 ```
 
@@ -165,65 +167,72 @@ package is deprecated and should be replaced before production use.
 ## 📚 Available Skills
 
 ### 1. 🎯 Business Alignment
-**File**: `../skills/business-alignment-skill.md`
+**File**: `SKILLS/sdd-business-alignment/SKILL.md`
 
 Evaluates how well the architecture supports organizational goals and quality attributes.
 
 ### 2. 🔒 Security & Threat Modeling
-**File**: `../skills/security-threat-modeling-skill.md`
+**File**: `SKILLS/sdd-security-threat-modeling/SKILL.md`
 
 Identifies security gaps, potential attack vectors, and provides security recommendations.
 
 ### 3. 📈 Scalability & Performance
-**File**: `../skills/scalability-performance-skill.md`
+**File**: `SKILLS/sdd-scalability-performance/SKILL.md`
 
 Evaluates system capacity, identifies bottlenecks, and provides performance optimization recommendations.
 
 ### 4. 🎨 Architecture Patterns
-**File**: `../skills/architecture-patterns-skill.md`
+**File**: `SKILLS/sdd-architecture-patterns/SKILL.md`
 
 Evaluates pattern usage, identifies anti-patterns, and recommends appropriate patterns.
 
 ### 5. 🔧 Maintainability & Technical Debt
-**File**: `../skills/maintainability-technical-debt-skill.md`
+**File**: `SKILLS/sdd-maintainability-technical-debt/SKILL.md`
 
 Identifies maintainability issues, quantifies technical debt, and provides refactoring recommendations.
 
 ### 6. 📚 Documentation Review
-**File**: `../skills/documentation-review-skill.md`
+**File**: `SKILLS/sdd-documentation-review/SKILL.md`
 
 Evaluates documentation completeness, clarity, currency, license notice
 coverage, content-provenance evidence, and mode/skill source alignment.
 
 ### 7. ☁️ 12-Factor Compliance
-**File**: `../skills/twelve-factor-compliance-skill.md`
+**File**: `SKILLS/sdd-twelve-factor-compliance/SKILL.md`
 
 Evaluates compliance with 12-factor app methodology and provides cloud-native recommendations.
 
 ### 8. 🧭 Requirements Management
-**File**: `../skills/requirements-management-skill.md`
+**File**: `SKILLS/sdd-requirements-management/SKILL.md`
 
 Supports elicitation, documentation, prioritization, validation, and traceability of requirements.
 
 ### 9. 🔎 SDLC Discovery and Gap Analysis
-**File**: `../skills/sdlc-discovery-gap-analysis-skill.md`
+**File**: `SKILLS/sdd-sdlc-discovery-gap-analysis/SKILL.md`
 
 Uses the Grill Me discovery pattern to classify the SDLC phase, clarify user
 intent, select modes and skills, and detect missing SDD or architecture-review
 capabilities.
 
 ### 10. 🔗 Requirements Traceability Analysis
-**File**: `../skills/requirements-traceability-skill.md`
+**File**: `SKILLS/sdd-requirements-traceability/SKILL.md`
 
 Validates forward and backward traceability, detects orphaned artifacts, and
 supports coverage reporting across requirements, design, implementation, and
 tests.
 
 ### 11. 📋 GitHub Issue Traceability
-**File**: `../skills/github-issue-traceability-skill.md`
+**File**: `SKILLS/sdd-github-issue-traceability/SKILL.md`
 
 Structures GitHub issues with SDLC traceability metadata, issue hierarchy, and
 requirement-to-implementation links.
+
+### 12. ⚖️ AI Regulatory Compliance
+**File**: `SKILLS/ai-regulatory-compliance/SKILL.md`
+
+Generates an AI Regulatory Compliance Provenance document (EU AI Act, GDPR)
+describing how an application was built with an AI coding assistant. Requires a
+`task-history/` folder of exported session files.
 
 ## 💡 Usage Examples
 
@@ -290,7 +299,7 @@ Specific next actions, priorities, and improvements
 ## 🔧 Customization
 
 ### 1. Modify Existing Skills
-Edit files in `../skills/` to:
+Edit files in `../../skills/` to:
 - Add organization-specific requirements
 - Include custom compliance checks
 - Reference internal standards
@@ -304,17 +313,17 @@ Update the relevant `Modes/SDD/*-mode.yaml` file when a new role, workflow, or b
 
 ## 📖 Documentation
 
-- **[Skills README](../skills/README.md)** - Detailed skill documentation
-- **[Knowledge Sources](KNOWLEDGE_SOURCES.md)** - Where mode and skill guidance comes from
-- **[Architecture Review Quick Start](guides/QUICK-START.md)** - Review-oriented quick start
-- **[Architecture Review Guide](guides/architecture-review-guide.md)** - Detailed review guidance
-- **[SDD Guide](SDD-README.md)** - Spec-driven development documentation
+- **[Skills README](../../skills/)** - Detailed skill documentation
+- **[Knowledge Sources](knowledge-sources.md)** - Where mode and skill guidance comes from
+- **[Architecture Review Quick Start](./references/guides/QUICK-START.md)** - Review-oriented quick start
+- **[Architecture Review Guide](./references/guides/architecture-review-guide.md)** - Detailed review guidance
+- **[SDD Guide](sdd-readme.md)** - Spec-driven development documentation
 - **[GitHub Issue Generator Guide](GITHUB-ISSUE-GENERATOR-MODE.md)** - GitHub issue workflow
 
 ## 🆘 Support
 
 For questions or issues:
-1. Review the [Skills README](../skills/README.md)
+1. Review the [Skills README](../../skills/)
 2. Check the relevant guide in `guides/`
 3. Review `Modes/SDD/*-mode.yaml`
 4. Use Configuration Gap Detector when capabilities appear incomplete

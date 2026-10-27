@@ -2,7 +2,7 @@
 
 This document explains the [`custom-modes-overview.drawio`](custom-modes-overview.drawio)
 diagram that visualizes the architecture-review subset of the modes defined in
-[`Modes/SDD/*-mode.yaml`](../../Modes/SDD/).
+[`Modes/SDD/*-mode.yaml`](../../).
 
 ## Diagram Purpose
 
@@ -15,7 +15,7 @@ The diagram provides a comprehensive visual representation of:
 
 ## Target Audience
 
-**Primary Users:** Developers and programmers who maintain the [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/) file
+**Primary Users:** Developers and programmers who maintain the [`Modes/SDD/*-mode.yaml`](../../) file
 
 **Use Cases:**
 - Understanding the architecture-review mode subset
@@ -79,16 +79,16 @@ The diagram shows 7 specialized modes, each focusing on a specific aspect:
 ### Review Skills
 
 The architecture-review subset uses these skills from the
-[`.bob/skills/`](../../skills/README.md) directory:
+[`.bob/skills/`](../../../../skills/) directory:
 
-1. [`sdlc-discovery-gap-analysis-skill.md`](../../skills/sdlc-discovery-gap-analysis-skill.md)
-2. [`business-alignment-skill.md`](../../skills/business-alignment-skill.md)
-3. [`security-threat-modeling-skill.md`](../../skills/security-threat-modeling-skill.md)
-4. [`scalability-performance-skill.md`](../../skills/scalability-performance-skill.md)
-5. [`architecture-patterns-skill.md`](../../skills/architecture-patterns-skill.md)
-6. [`maintainability-technical-debt-skill.md`](../../skills/maintainability-technical-debt-skill.md)
-7. [`documentation-review-skill.md`](../../skills/documentation-review-skill.md)
-8. [`twelve-factor-compliance-skill.md`](../../skills/twelve-factor-compliance-skill.md)
+1. [`sdd-sdlc-discovery-gap-analysis/SKILL.md`](../../../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
+2. [`sdd-business-alignment/SKILL.md`](../../../../skills/sdd-business-alignment/SKILL.md)
+3. [`sdd-security-threat-modeling/SKILL.md`](../../../../skills/sdd-security-threat-modeling/SKILL.md)
+4. [`sdd-scalability-performance/SKILL.md`](../../../../skills/sdd-scalability-performance/SKILL.md)
+5. [`sdd-architecture-patterns/SKILL.md`](../../../../skills/sdd-architecture-patterns/SKILL.md)
+6. [`sdd-maintainability-technical-debt/SKILL.md`](../../../../skills/sdd-maintainability-technical-debt/SKILL.md)
+7. [`sdd-documentation-review/SKILL.md`](../../../../skills/sdd-documentation-review/SKILL.md)
+8. [`sdd-twelve-factor-compliance/SKILL.md`](../../../../skills/sdd-twelve-factor-compliance/SKILL.md)
 
 ## Visual Elements
 
@@ -113,11 +113,11 @@ All modes share these capabilities:
 - **Evidence-Based**: Specific examples and code references
 
 Documentation Review also checks repository license and provenance evidence:
-[`LICENSE_DOCUMENTATION.md`](../../../LICENSE_DOCUMENTATION.md),
-[`THIRD_PARTY_NOTICES.md`](../../../THIRD_PARTY_NOTICES.md),
-[`CONTENT_PROVENANCE.md`](../../../CONTENT_PROVENANCE.md),
-[`RESOURCE_LICENSES.md`](../RESOURCE_LICENSES.md), and
-[`KNOWLEDGE_SOURCES.md`](../KNOWLEDGE_SOURCES.md).
+[`LICENSE_DOCUMENTATION.md`](../../../../../LICENSE_DOCUMENTATION.md),
+[`THIRD_PARTY_NOTICES.md`](../../../../../THIRD_PARTY_NOTICES.md),
+[`CONTENT_PROVENANCE.md`](../../../../../CONTENT_PROVENANCE.md),
+[`RESOURCE_LICENSES.md`](../../resource-licenses.md), and
+[`KNOWLEDGE_SOURCES.md`](../../knowledge-sources.md).
 
 ## Usage Patterns
 
@@ -139,7 +139,7 @@ Start with Architecture Review and work through skills one at a time based on pr
 
 ## Maintenance Notes
 
-When updating [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/):
+When updating [`Modes/SDD/*-mode.yaml`](../../):
 1. Ensure architecture-review mode changes are reflected in the diagram
 2. Verify skill file references are correct
 3. Update relationships if new modes or skills are added
@@ -148,7 +148,7 @@ When updating [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/):
 
 ## Related Files
 
-- Configuration: [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/)
-- Skills Directory: [`.bob/skills/`](../../skills/README.md)
-- Architecture Review Guide: [`documentation/guides/architecture-review-guide.md`](../references/guides/architecture-review-guide.md)
+- Configuration: [`Modes/SDD/*-mode.yaml`](../../)
+- Skills Directory: [`.bob/skills/`](../../../../skills/)
+- Architecture Review Guide: [`documentation/guides/architecture-review-guide.md`](../guides/architecture-review-guide.md)
 - System Diagram: [`architecture-review-system.drawio`](architecture-review-system.drawio)

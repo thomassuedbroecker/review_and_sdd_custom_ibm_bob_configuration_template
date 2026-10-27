@@ -372,7 +372,7 @@ Track the effectiveness of SDD practices:
 - SWEBOK Guide for SDLC and software engineering knowledge-area framing
 
 ### SDLC Discovery and Gap Analysis
-- Grill Me discovery pattern from `../../skills/sdlc-discovery-gap-analysis-skill.md`
+- Grill Me discovery pattern from `SKILLS/sdd-sdlc-discovery-gap-analysis/SKILL.md`
 - C4 Model for architecture scope and communication
 - arc42 architecture documentation template
 - Architecture Decision Records (ADRs)
@@ -382,7 +382,7 @@ Track the effectiveness of SDD practices:
 
 ### AI Integration and Usage
 - Source basis:
-  [`../KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis`](../KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis)
+  [`../KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis`](../../knowledge-sources.md#ai-integration-and-usage-source-basis)
 - IBM Bob documentation and IBM spec-driven development guidance for
   AI-assisted SDLC framing
 - NIST AI Risk Management Framework and NIST Generative AI Profile for AI

@@ -95,7 +95,7 @@ The main mode prompt provides:
 
 **When to use**: As your primary reference for all SDD activities
 
-### 2. Requirements Management Skill (`requirements-management-skill.md`)
+### 2. Requirements Management Skill (`sdd-requirements-management/SKILL.md`)
 
 A specialized skill that covers:
 - Stakeholder analysis
@@ -108,7 +108,7 @@ A specialized skill that covers:
 
 **When to use**: When you need deep expertise in requirements engineering
 
-### 3. Requirements Traceability Analysis Skill (`requirements-traceability-skill.md`)
+### 3. Requirements Traceability Analysis Skill (`sdd-requirements-traceability/SKILL.md`)
 
 A specialized skill for deeper traceability audits:
 - Forward and backward traceability validation
@@ -223,7 +223,7 @@ SDD mode integrates with all SDLC phases:
 - Risk assessment
 - Resource planning
 
-**Example Prompt**: See [Planning Phase Prompts](./guides/sdd-interactive-guide.md#planning-phase-prompts)
+**Example Prompt**: See [Planning Phase Prompts](./references/guides/sdd-interactive-guide.md#planning-phase-prompts)
 
 ### Requirements Phase
 **Focus**: Detailed requirements gathering and documentation
@@ -234,7 +234,7 @@ SDD mode integrates with all SDLC phases:
 - Requirements prioritization
 - Acceptance criteria definition
 
-**Example Prompt**: See [Requirements Phase Prompts](./guides/sdd-interactive-guide.md#requirements-phase-prompts)
+**Example Prompt**: See [Requirements Phase Prompts](./references/guides/sdd-interactive-guide.md#requirements-phase-prompts)
 
 ### Design Phase
 **Focus**: Architecture and detailed design
@@ -245,7 +245,7 @@ SDD mode integrates with all SDLC phases:
 - Data model design
 - Integration specifications
 
-**Example Prompt**: See [Design Phase Prompts](./guides/sdd-interactive-guide.md#design-phase-prompts)
+**Example Prompt**: See [Design Phase Prompts](./references/guides/sdd-interactive-guide.md#design-phase-prompts)
 
 ### Implementation Phase
 **Focus**: Code development
@@ -255,7 +255,7 @@ SDD mode integrates with all SDLC phases:
 - Error handling specifications
 - Testing approach definition
 
-**Example Prompt**: See [Implementation Phase Prompts](./guides/sdd-interactive-guide.md#implementation-phase-prompts)
+**Example Prompt**: See [Implementation Phase Prompts](./references/guides/sdd-interactive-guide.md#implementation-phase-prompts)
 
 ### AI Integration and Usage
 **Focus**: Govern how AI tools are used across requirements, design,
@@ -272,7 +272,7 @@ project, including approved tools, guardrails, generated-code provenance,
 human review, and validation evidence."
 
 **Source Basis**: See
-[`KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis`](KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis)
+[`KNOWLEDGE_SOURCES.md#ai-integration-and-usage-source-basis`](knowledge-sources.md#ai-integration-and-usage-source-basis)
 for the IBM Bob, IBM SDD, NIST AI RMF, NIST Generative AI Profile, OWASP LLM
 Top 10, and NIST SSDF resources used to introduce this SDLC topic.
 
@@ -284,7 +284,7 @@ Top 10, and NIST SSDF resources used to introduce this SDLC topic.
 - Performance testing specifications
 - Security testing requirements
 
-**Example Prompt**: See [Testing Phase Prompts](./guides/sdd-interactive-guide.md#testing-phase-prompts)
+**Example Prompt**: See [Testing Phase Prompts](./references/guides/sdd-interactive-guide.md#testing-phase-prompts)
 
 ### Deployment Phase
 **Focus**: Production release
@@ -294,7 +294,7 @@ Top 10, and NIST SSDF resources used to introduce this SDLC topic.
 - Monitoring requirements
 - Rollback procedures
 
-**Example Prompt**: See [Deployment Phase Prompts](./guides/sdd-interactive-guide.md#deployment-phase-prompts)
+**Example Prompt**: See [Deployment Phase Prompts](./references/guides/sdd-interactive-guide.md#deployment-phase-prompts)
 
 ### Maintenance Phase
 **Focus**: Bug fixes and enhancements
@@ -304,7 +304,7 @@ Top 10, and NIST SSDF resources used to introduce this SDLC topic.
 - Performance optimization specifications
 - Technical debt documentation
 
-**Example Prompt**: See [Maintenance Phase Prompts](./guides/sdd-interactive-guide.md#maintenance-phase-prompts)
+**Example Prompt**: See [Maintenance Phase Prompts](./references/guides/sdd-interactive-guide.md#maintenance-phase-prompts)
 
 ---
 
@@ -377,18 +377,18 @@ Top 10, and NIST SSDF resources used to introduce this SDLC topic.
 
 ### Requirements Document Template
 
-See [Requirements Document Structure](../skills/requirements-management-skill.md#output-format) for a complete template.
+See [Requirements Document Structure](../../skills/sdd-requirements-management/SKILL.md#output-format) for a complete template.
 
 ### Prompt Templates
 
 The interactive guide provides templates for:
-- [Feature Implementation](./guides/sdd-interactive-guide.md#template-1-feature-implementation)
-- [Bug Fix](./guides/sdd-interactive-guide.md#template-2-bug-fix)
-- [Architecture Decision](./guides/sdd-interactive-guide.md#template-3-architecture-decision)
+- [Feature Implementation](./references/guides/sdd-interactive-guide.md#template-1-feature-implementation)
+- [Bug Fix](./references/guides/sdd-interactive-guide.md#template-2-bug-fix)
+- [Architecture Decision](./references/guides/sdd-interactive-guide.md#template-3-architecture-decision)
 
 ### Real-World Examples
 
-See [Real-World Examples](./guides/sdd-interactive-guide.md#real-world-examples) for:
+See [Real-World Examples](./references/guides/sdd-interactive-guide.md#real-world-examples) for:
 - Transforming vague prompts into specific ones
 - Adding missing context
 - Complete SDLC phase examples
@@ -399,13 +399,13 @@ See [Real-World Examples](./guides/sdd-interactive-guide.md#real-world-examples)
 
 ### Documentation
 
-- **Main SDD Mode Guide**: [`./guides/spec-driven-development.md`](./guides/spec-driven-development.md)
-- **Requirements Skill**: [`../skills/requirements-management-skill.md`](../skills/requirements-management-skill.md)
-- **SDLC Discovery and Gap Analysis Skill**: [`../skills/sdlc-discovery-gap-analysis-skill.md`](../skills/sdlc-discovery-gap-analysis-skill.md)
-- **Requirements Traceability Skill**: [`../skills/requirements-traceability-skill.md`](../skills/requirements-traceability-skill.md)
-- **Interactive Guide**: [`./guides/sdd-interactive-guide.md`](./guides/sdd-interactive-guide.md)
-- **Skills Overview**: [`../skills/README.md`](../skills/README.md)
-- **Mode Configuration**: [`../Modes/SDD/sdd-mode.yaml`](../Modes/SDD/sdd-mode.yaml)
+- **Main SDD Mode Guide**: [`./guides/spec-driven-development.md`](./references/guides/spec-driven-development.md)
+- **Requirements Skill**: [`SKILLS/sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)
+- **SDLC Discovery and Gap Analysis Skill**: [`SKILLS/sdd-sdlc-discovery-gap-analysis/SKILL.md`](../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
+- **Requirements Traceability Skill**: [`SKILLS/sdd-requirements-traceability/SKILL.md`](../../skills/sdd-requirements-traceability/SKILL.md)
+- **Interactive Guide**: [`./guides/sdd-interactive-guide.md`](./references/guides/sdd-interactive-guide.md)
+- **Skills Overview**: [`../skills/README.md`](../../skills/)
+- **Mode Configuration**: [`../Modes/SDD/sdd-mode.yaml`](./sdd-mode.yaml)
 
 ### External Resources
 
@@ -512,7 +512,7 @@ Rule of thumb: If someone unfamiliar with the project can understand what needs 
 - **WSJF**: Weighted Shortest Job First
 - **Value vs. Effort**: 2x2 matrix
 
-See [Requirements Prioritization](../skills/requirements-management-skill.md#6-requirements-prioritization) for details.
+See [Requirements Prioritization](../../skills/sdd-requirements-management/SKILL.md#6-requirements-prioritization) for details.
 
 ### Q: Can I use SDD mode with Agile?
 
@@ -547,8 +547,8 @@ To improve SDD mode:
 ## Support
 
 For questions or support:
-- Review the [Interactive Guide](./guides/sdd-interactive-guide.md)
-- Check [Requirements Management Skill](../skills/requirements-management-skill.md)
+- Review the [Interactive Guide](./references/guides/sdd-interactive-guide.md)
+- Check [Requirements Management Skill](../../skills/sdd-requirements-management/SKILL.md)
 - Consult [External Resources](#external-resources)
 - Engage with the Bob community
 

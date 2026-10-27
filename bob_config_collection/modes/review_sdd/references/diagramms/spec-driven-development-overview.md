@@ -16,7 +16,7 @@ The diagram should provide a concise visual overview of:
 
 ## Target Audience
 
-**Primary Users:** Developers, solution architects, product owners, and maintainers who work with [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/) and the related SDD guidance files.
+**Primary Users:** Developers, solution architects, product owners, and maintainers who work with [`Modes/SDD/*-mode.yaml`](../../) and the related SDD guidance files.
 
 **Use Cases:**
 - Understanding what the SDD mode is responsible for
@@ -39,7 +39,7 @@ The diagram should provide a concise visual overview of:
 ### Core Capability Areas
 
 The diagram should show four primary capability groups implemented by the
-Spec-Driven Development mode in [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/):
+Spec-Driven Development mode in [`Modes/SDD/*-mode.yaml`](../../):
 
 1. **Requirements Management**
    - Elicit and document functional requirements
@@ -68,7 +68,7 @@ Spec-Driven Development mode in [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/):
 ### Supporting Skill
 
 **Requirements Management Skill**
-- Implemented in [`skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)
+- Implemented in [`SKILLS/sdd-requirements-management/SKILL.md`](../../../../skills/sdd-requirements-management/SKILL.md)
 - Provides deeper requirements engineering guidance
 - Covers elicitation, prioritization, traceability, validation, and change management
 - Acts as the specialist skill underpinning the SDD mode
@@ -77,22 +77,22 @@ Spec-Driven Development mode in [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/):
 
 The diagram should include the main documentation assets around the mode:
 
-1. [`documentation/SDD-README.md`](../SDD-README.md)
+1. [`documentation/sdd-readme.md`](../../sdd-readme.md)
    - Comprehensive documentation hub
    - End-to-end workflows
    - Best practices and resource references
 
-2. [`documentation/guides/SDD-QUICK-START.md`](../references/guides/SDD-QUICK-START.md)
+2. [`documentation/guides/SDD-QUICK-START.md`](../guides/SDD-QUICK-START.md)
    - Fast onboarding guide
    - Scenario-based entry points
    - Quick actions and templates
 
-3. [`documentation/guides/SDD-SUMMARY.md`](../references/guides/SDD-SUMMARY.md)
+3. [`documentation/guides/SDD-SUMMARY.md`](../guides/SDD-SUMMARY.md)
    - Implementation summary
    - Asset inventory and fulfilled requirements
    - High-level orientation for maintainers
 
-4. [`documentation/guides/sdd-interactive-guide.md`](../references/guides/sdd-interactive-guide.md)
+4. [`documentation/guides/sdd-interactive-guide.md`](../guides/sdd-interactive-guide.md)
    - Step-by-step interactive guidance
    - Prompt crafting workflow
    - SDLC-specific examples and validation support
@@ -100,7 +100,7 @@ The diagram should include the main documentation assets around the mode:
 ### Downstream Integration
 
 The diagram should also show where SDD hands work off to other modes, based
-on guidance in [`documentation/SDD-README.md`](../SDD-README.md):
+on guidance in [`documentation/sdd-readme.md`](../../sdd-readme.md):
 
 - **Architecture Review**
   - Validates technical decisions and specifications
@@ -142,8 +142,8 @@ A compact workflow section in the diagram should show:
 6. Implementation handoff to Code mode
 
 This reflects the workflows documented in
-[`documentation/SDD-README.md`](../SDD-README.md) and the phased process in
-[`documentation/guides/spec-driven-development.md`](../references/guides/spec-driven-development.md).
+[`documentation/sdd-readme.md`](../../sdd-readme.md) and the phased process in
+[`documentation/guides/spec-driven-development.md`](../guides/spec-driven-development.md).
 
 ## Maintenance Notes
 
@@ -157,9 +157,9 @@ When updating the SDD ecosystem:
 
 ## Related Files
 
-- Main Mode: [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/)
-- Requirements Skill: [`skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)
-- Guide: [`documentation/SDD-README.md`](../SDD-README.md)
-- Quick Start: [`documentation/guides/SDD-QUICK-START.md`](../references/guides/SDD-QUICK-START.md)
-- Summary: [`documentation/guides/SDD-SUMMARY.md`](../references/guides/SDD-SUMMARY.md)
-- Interactive Guide: [`documentation/guides/sdd-interactive-guide.md`](../references/guides/sdd-interactive-guide.md)
+- Main Mode: [`Modes/SDD/*-mode.yaml`](../../)
+- Requirements Skill: [`SKILLS/sdd-requirements-management/SKILL.md`](../../../../skills/sdd-requirements-management/SKILL.md)
+- Guide: [`documentation/sdd-readme.md`](../../sdd-readme.md)
+- Quick Start: [`documentation/guides/SDD-QUICK-START.md`](../guides/SDD-QUICK-START.md)
+- Summary: [`documentation/guides/SDD-SUMMARY.md`](../guides/SDD-SUMMARY.md)
+- Interactive Guide: [`documentation/guides/sdd-interactive-guide.md`](../guides/sdd-interactive-guide.md)

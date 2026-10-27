@@ -9,10 +9,10 @@ repository content unless the applicable license or terms are reviewed first.
 
 Use this file together with:
 
-- [`../../LICENSE_DOCUMENTATION.md`](../../LICENSE_DOCUMENTATION.md)
-- [`../../THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md)
-- [`../../CONTENT_PROVENANCE.md`](../../CONTENT_PROVENANCE.md)
-- [`KNOWLEDGE_SOURCES.md`](KNOWLEDGE_SOURCES.md)
+- [`../../LICENSE_DOCUMENTATION.md`](../../../LICENSE_DOCUMENTATION.md)
+- [`../../THIRD_PARTY_NOTICES.md`](../../../THIRD_PARTY_NOTICES.md)
+- [`../../CONTENT_PROVENANCE.md`](../../../CONTENT_PROVENANCE.md)
+- [`KNOWLEDGE_SOURCES.md`](knowledge-sources.md)
 
 This is a repository-maintenance aid and not legal advice.
 

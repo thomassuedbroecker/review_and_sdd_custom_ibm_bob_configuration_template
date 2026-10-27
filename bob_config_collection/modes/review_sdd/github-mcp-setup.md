@@ -72,7 +72,7 @@ The legacy GitHub MCP server has been configured in `.bob/mcp.json` with the fol
 ```
 
 The package is pinned to the reviewed version recorded in
-[`../../THIRD_PARTY_NOTICES.md`](../../THIRD_PARTY_NOTICES.md). The package is
+[`../../THIRD_PARTY_NOTICES.md`](../../../THIRD_PARTY_NOTICES.md). The package is
 deprecated, so replace it with a maintained integration and regenerate the
 dependency notice before the next release.
 

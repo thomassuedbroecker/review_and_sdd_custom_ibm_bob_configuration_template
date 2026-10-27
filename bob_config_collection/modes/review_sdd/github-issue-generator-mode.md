@@ -10,7 +10,7 @@ The **GitHub Issue Generator** mode transforms todo lists and task breakdowns fr
 
 Use either approach explicitly when GitHub issue management is needed. The
 configured MCP package is deprecated; see
-[GITHUB_MCP_SETUP.md](./GITHUB_MCP_SETUP.md) before enabling it.
+[github-mcp-setup.md](./github-mcp-setup.md) before enabling it.
 
 ## Purpose
 
@@ -26,7 +26,7 @@ This mode bridges the gap between planning/review activities and issue tracking 
 ### For GitHub MCP Server (Method 1)
 
 1. **GitHub MCP Server Configured**
-   - See [GITHUB_MCP_SETUP.md](./GITHUB_MCP_SETUP.md) for setup instructions
+   - See [github-mcp-setup.md](./github-mcp-setup.md) for setup instructions
    - GitHub MCP server must be configured in `.bob/mcp.json`
 
 2. **GitHub Personal Access Token**
@@ -53,7 +53,7 @@ This mode bridges the gap between planning/review activities and issue tracking 
 3. **Scripts Available**
    - Located in `.bob/scripts/` directory
    - All scripts have executable permissions
-   - Complete documentation in [`.bob/scripts/README.md`](../scripts/README.md)
+   - Complete documentation in [`.bob/scripts/README.md`](./references/scripts/README.md)
 
 ## When to Use
 
@@ -275,7 +275,7 @@ Each generated issue follows this template:
 1. Check `.bob/mcp.json` for GitHub MCP configuration
 2. Verify `GITHUB_PERSONAL_ACCESS_TOKEN` in `.env` file
 3. Restart VS Code to load environment variables
-4. See [GITHUB_MCP_SETUP.md](./GITHUB_MCP_SETUP.md) for detailed setup
+4. See [github-mcp-setup.md](./github-mcp-setup.md) for detailed setup
 
 ### Authentication Failed
 
@@ -412,11 +412,11 @@ The mode is configured in `Modes/SDD/github-issue-generator-mode.yaml`:
 
 ## Related Documentation
 
-- [GitHub MCP Setup Guide](./GITHUB_MCP_SETUP.md)
-- [GitHub Issue-Management Scripts](../scripts/README.md)
-- [Architecture Review Mode](./README-ARCHITECTURE-REVIEW.md)
-- [Spec-Driven Development Mode](./SDD-README.md)
-- [Main README](../../README.md)
+- [GitHub MCP Setup Guide](./github-mcp-setup.md)
+- [GitHub Issue-Management Scripts](./references/scripts/README.md)
+- [Architecture Review Mode](./architecture-review-readme.md)
+- [Spec-Driven Development Mode](./sdd-readme.md)
+- [Main README](../../../README.md)
 
 ## Support
 

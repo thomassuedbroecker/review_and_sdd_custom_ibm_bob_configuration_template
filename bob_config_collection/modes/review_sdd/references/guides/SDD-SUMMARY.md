@@ -20,7 +20,7 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
    - SDLC-specific guidelines for all phases
    - Real-world examples and transformations
 
-3. **[`../SDD-README.md`](../SDD-README.md)**
+3. **[`../sdd-readme.md`](../../sdd-readme.md)**
    - Comprehensive documentation hub
    - Getting started guide
    - Workflow examples
@@ -34,13 +34,13 @@ This document summarizes the complete Spec-Driven Development (SDD) mode impleme
 
 ### Skills
 
-5. **[`../../skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)**
+5. **[`SKILLS/sdd-requirements-management/SKILL.md`](../../../../skills/sdd-requirements-management/SKILL.md)**
    - Specialized requirements engineering skill
    - Stakeholder analysis framework
    - Requirements elicitation techniques
    - Prioritization frameworks (MoSCoW, Kano, WSJF)
 
-6. **[`../../skills/README.md`](../../skills/README.md)** (Updated)
+6. **[`../../skills/README.md`](../../../../skills/)** (Updated)
    - Added Requirements Management skill (#8)
    - Updated skill count from 7 to 8
    - Updated version to 1.2
@@ -100,10 +100,10 @@ SKILLS/
 4. Use provided templates
 
 ### For Detailed Learning
-1. Read [`../SDD-README.md`](../SDD-README.md)
+1. Read [`../sdd-readme.md`](../../sdd-readme.md)
 2. Study [`spec-driven-development.md`](spec-driven-development.md)
 3. Practice with [`sdd-interactive-guide.md`](sdd-interactive-guide.md)
-4. Reference [`../../skills/requirements-management-skill.md`](../../skills/requirements-management-skill.md)
+4. Reference [`SKILLS/sdd-requirements-management/SKILL.md`](../../../../skills/sdd-requirements-management/SKILL.md)
 
 ## Task Requirements Fulfilled
 
@@ -150,7 +150,7 @@ All requested resources have been integrated:
 - Vibes, Specs, Skills, Agents article
 - IBM Requirements Management guide
 - SDLC Discovery and Gap Analysis skill
-- AI Integration and Usage source basis in [`../KNOWLEDGE_SOURCES.md`](../KNOWLEDGE_SOURCES.md)
+- AI Integration and Usage source basis in [`../KNOWLEDGE_SOURCES.md`](../../knowledge-sources.md)
 - Architecture Review Mode and Skills
 
 ## Quality Metrics
@@ -164,12 +164,12 @@ All requested resources have been integrated:
 ## Quick Links
 
 - **Start Here**: [SDD-QUICK-START.md](SDD-QUICK-START.md)
-- **Learn More**: [../SDD-README.md](../SDD-README.md)
+- **Learn More**: [../sdd-readme.md](../../sdd-readme.md)
 - **Main Mode**: [spec-driven-development.md](spec-driven-development.md)
 - **Interactive Guide**: [sdd-interactive-guide.md](sdd-interactive-guide.md)
-- **Requirements Skill**: [../../skills/requirements-management-skill.md](../../skills/requirements-management-skill.md)
-- **SDLC Discovery Skill**: [../../skills/sdlc-discovery-gap-analysis-skill.md](../../skills/sdlc-discovery-gap-analysis-skill.md)
-- **Requirements Traceability Skill**: [../../skills/requirements-traceability-skill.md](../../skills/requirements-traceability-skill.md)
+- **Requirements Skill**: [SKILLS/sdd-requirements-management/SKILL.md](../../../../skills/sdd-requirements-management/SKILL.md)
+- **SDLC Discovery Skill**: [SKILLS/sdd-sdlc-discovery-gap-analysis/SKILL.md](../../../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
+- **Requirements Traceability Skill**: [SKILLS/sdd-requirements-traceability/SKILL.md](../../../../skills/sdd-requirements-traceability/SKILL.md)
 
 ---
 

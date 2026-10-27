@@ -16,7 +16,7 @@ This repository is intended to be used as a template. Create your own GitHub rep
 
 The custom SDD workflow:
 
-![](./references/images/custom_sdd_workflow_in_bob.jpg)
+![](../../../images/custom_sdd_workflow_in_bob.jpg)
 
 Usage example on YouTube:
 
@@ -28,7 +28,7 @@ Usage example on YouTube:
 ## What It Does
 
 - **12 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, GitHub issue generator, and license impact analysis
-- **11 Reusable Skills** (located in [`SKILLS/`](../../SKILLS/)): Comprehensive coverage of architecture review domains, SDLC discovery and gap analysis, requirements management, requirements traceability analysis, and GitHub issue traceability
+- **12 Reusable Skills** (located in [`SKILLS/`](../../skills/)): Comprehensive coverage of architecture review domains, SDLC discovery and gap analysis, requirements management, requirements traceability analysis, GitHub issue traceability, and AI regulatory compliance provenance
 - **Comprehensive Architecture Reviews**: Conduct multi-dimensional reviews using specialized skills covering security, scalability, patterns, maintainability, and more
 - **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle
 - **Adaptive Configuration**: Use the Grill Me discovery pattern to clarify SDLC intent, detect gaps, and propose new capabilities based on emerging requirements
@@ -81,7 +81,7 @@ supported sources of truth unless you add a dedicated integration.
 
 The provided IBM Bob modes are currently configured at project scope. To make
 another local repository available to these modes, clone or copy it into the
-[`repos/`](./repos/) folder:
+[`repos/`](../../../repos/) folder:
 
 ```bash
 git clone <repository-url> repos/<repository-name>
@@ -104,7 +104,7 @@ repositories that you want to inspect, review, or use as nested folders under
 
 ### 1. Explore Pre-existing Configuration
 Review the available modes and skills to understand capabilities:
-- Browse the 11 specialized skills in [`SKILLS/sdd-*/`](../../SKILLS/) — each folder contains a `SKILL.md` and a `README.md`
+- Browse the 11 specialized skills in [`SKILLS/sdd-*/`](../../skills/) — each folder contains a `SKILL.md` and a `README.md`
 - Study the [Architecture Review documentation](architecture-review-readme.md)
 - Review [Spec-Driven Development guide](sdd-readme.md)
 - Review the [knowledge source map](knowledge-sources.md)
@@ -131,26 +131,28 @@ Review the available modes and skills to understand capabilities:
 | 📋 GitHub Issue Generator | Converts todo lists and findings into GitHub issues |
 | 🔍 License Impact Analysis | Assesses license posture, SBOM/provenance evidence, jurisdiction impact, and repository health score (see [license-impact-analysis-mode.md](license-impact-analysis-mode.md)) |
 
-The configuration also includes **11 reusable skills**: seven architecture
+The configuration also includes **12 reusable skills**: seven architecture
 review skills, one SDLC discovery and gap-analysis skill, one
 requirements-management skill, one requirements-traceability analysis skill,
-and one GitHub issue traceability skill. Each skill lives in its own folder
-under [`SKILLS/`](../../SKILLS/) as `SKILLS/sdd-<name>/SKILL.md` with a
+one GitHub issue traceability skill, and one AI regulatory compliance
+provenance skill. Each skill lives in its own folder
+under [`SKILLS/`](../../skills/) as `SKILLS/sdd-<name>/SKILL.md` with an optional
 companion `README.md` summary. See the table below for the full list.
 
 | Skill folder | Purpose |
 |---|---|
-| [`SKILLS/sdd-sdlc-discovery-gap-analysis/`](../../SKILLS/sdd-sdlc-discovery-gap-analysis/) | Grill Me discovery, SDLC phase classification, missing-capability checks |
-| [`SKILLS/sdd-requirements-management/`](../../SKILLS/sdd-requirements-management/) | Requirements elicitation, documentation, prioritization, and traceability |
-| [`SKILLS/sdd-requirements-traceability/`](../../SKILLS/sdd-requirements-traceability/) | Forward, backward, and bidirectional traceability analysis |
-| [`SKILLS/sdd-github-issue-traceability/`](../../SKILLS/sdd-github-issue-traceability/) | Complete SDLC traceability framework for GitHub issues |
-| [`SKILLS/sdd-security-threat-modeling/`](../../SKILLS/sdd-security-threat-modeling/) | Security gaps, threat analysis, and STRIDE methodology |
-| [`SKILLS/sdd-scalability-performance/`](../../SKILLS/sdd-scalability-performance/) | System capacity, bottleneck detection, and performance optimization |
-| [`SKILLS/sdd-architecture-patterns/`](../../SKILLS/sdd-architecture-patterns/) | Architectural patterns, best practices, and anti-pattern detection |
-| [`SKILLS/sdd-maintainability-technical-debt/`](../../SKILLS/sdd-maintainability-technical-debt/) | Code quality, technical debt quantification, and refactoring strategies |
-| [`SKILLS/sdd-documentation-review/`](../../SKILLS/sdd-documentation-review/) | Documentation quality, ADRs, diagrams, license notices, and provenance |
-| [`SKILLS/sdd-twelve-factor-compliance/`](../../SKILLS/sdd-twelve-factor-compliance/) | 12-factor methodology and cloud-native readiness |
-| [`SKILLS/sdd-business-alignment/`](../../SKILLS/sdd-business-alignment/) | Business goals, quality attributes, and stakeholder analysis |
+| [`SKILLS/sdd-sdlc-discovery-gap-analysis/`](../../skills/sdd-sdlc-discovery-gap-analysis/) | Grill Me discovery, SDLC phase classification, missing-capability checks |
+| [`SKILLS/sdd-requirements-management/`](../../skills/sdd-requirements-management/) | Requirements elicitation, documentation, prioritization, and traceability |
+| [`SKILLS/sdd-requirements-traceability/`](../../skills/sdd-requirements-traceability/) | Forward, backward, and bidirectional traceability analysis |
+| [`SKILLS/sdd-github-issue-traceability/`](../../skills/sdd-github-issue-traceability/) | Complete SDLC traceability framework for GitHub issues |
+| [`SKILLS/sdd-security-threat-modeling/`](../../skills/sdd-security-threat-modeling/) | Security gaps, threat analysis, and STRIDE methodology |
+| [`SKILLS/sdd-scalability-performance/`](../../skills/sdd-scalability-performance/) | System capacity, bottleneck detection, and performance optimization |
+| [`SKILLS/sdd-architecture-patterns/`](../../skills/sdd-architecture-patterns/) | Architectural patterns, best practices, and anti-pattern detection |
+| [`SKILLS/sdd-maintainability-technical-debt/`](../../skills/sdd-maintainability-technical-debt/) | Code quality, technical debt quantification, and refactoring strategies |
+| [`SKILLS/sdd-documentation-review/`](../../skills/sdd-documentation-review/) | Documentation quality, ADRs, diagrams, license notices, and provenance |
+| [`SKILLS/sdd-twelve-factor-compliance/`](../../skills/sdd-twelve-factor-compliance/) | 12-factor methodology and cloud-native readiness |
+| [`SKILLS/sdd-business-alignment/`](../../skills/sdd-business-alignment/) | Business goals, quality attributes, and stakeholder analysis |
+| [`SKILLS/ai-regulatory-compliance/`](../../skills/ai-regulatory-compliance/) | EU AI Act and GDPR provenance document for applications built with an AI coding assistant |
 
 Traceability matrices are intentionally limited to GitHub issues, Markdown
 documents, and code entries. See the [SDLC traceability guide](references/guides/SDLC_TRACEABILITY_GUIDE.md)
@@ -158,13 +160,13 @@ for the supported traceability carriers and matrix format.
 
 ## Configuration Visuals
 
-![architecture-review](images/architecture-review.png)
+![architecture-review](./references/images/architecture-review.png)
 
-![configuration-gap-detector](images/configuration-gap-detector.png)
+![configuration-gap-detector](./references/images/configuration-gap-detector.png)
 
-![skills-review](images/skills-review.png)
+![skills-review](./references/images/skills-review.png)
 
-![spec-driven-development-overview](images/spec-driven-development-overview.png)
+![spec-driven-development-overview](./references/images/spec-driven-development-overview.png)
 
 ---
 
@@ -173,7 +175,7 @@ for the supported traceability carriers and matrix format.
 Add code or a repository to your IBM Bob IDE, then follow the examples.
 
 For this template, add the repository that you want to inspect or use under
-[`repos/`](./repos/). The nested repository layout is required because the
+[`repos/`](../../../repos/). The nested repository layout is required because the
 provided modes are currently configured at IBM Bob project scope.
 
 ### Example 1: Pre-Production Review
@@ -201,7 +203,7 @@ Output:
 User: "Analyze technical debt and maintainability"
 
 Bob will:
-1. Read maintainability-technical-debt-skill.md
+1. Read SKILLS/sdd-maintainability-technical-debt/SKILL.md
 2. Analyze code complexity and coupling
 3. Detect code duplication
 4. Assess test coverage
@@ -217,7 +219,7 @@ Output: Prioritized technical debt backlog with effort estimates
 User: "Perform STRIDE threat modeling and check OWASP Top 10"
 
 Bob will:
-1. Read security-threat-modeling-skill.md
+1. Read SKILLS/sdd-security-threat-modeling/SKILL.md
 2. Identify security gaps and attack vectors
 3. Check for OWASP Top 10 vulnerabilities
 4. Assess authentication/authorization
@@ -382,7 +384,7 @@ and references skills using this path pattern.
 | Document | Purpose |
 |----------|---------|
 | **README.md** | Main documentation (this file) |
-| **[`SKILLS/sdd-*/`](../../SKILLS/)** | All SDD skill folders — each contains `SKILL.md` and `README.md` |
+| **[`SKILLS/sdd-*/`](../../skills/)** | All SDD skill folders — each contains `SKILL.md` and `README.md` |
 | **[`*-mode.yaml`](./)** | One YAML file per mode slug (12 total) — each references `SKILLS/sdd-*/SKILL.md` paths |
 | **[references/SDD-UPDATE.md](references/SDD-UPDATE.md)** | 📋 Change record — validated update log for all modes and skills |
 | **[architecture-review-readme.md](architecture-review-readme.md)** | Architecture review details |
@@ -391,6 +393,14 @@ and references skills using this path pattern.
 | **[references/guides/QUICK-START.md](references/guides/QUICK-START.md)** | Quick start guide |
 | **[references/guides/CREATING-AGENTS-MD.md](references/guides/CREATING-AGENTS-MD.md)** | Guide for creating agents.md files |
 | **[sdd-readme.md](sdd-readme.md)** | Spec-driven development guide |
+| **[security-review-mode.md](security-review-mode.md)** | Security & threat modeling mode |
+| **[scalability-review-mode.md](scalability-review-mode.md)** | Scalability & performance mode |
+| **[patterns-review-mode.md](patterns-review-mode.md)** | Architecture patterns mode |
+| **[maintainability-review-mode.md](maintainability-review-mode.md)** | Maintainability & technical debt mode |
+| **[documentation-review-mode.md](documentation-review-mode.md)** | Documentation review mode |
+| **[twelve-factor-review-mode.md](twelve-factor-review-mode.md)** | 12-factor compliance mode |
+| **[business-alignment-review-mode.md](business-alignment-review-mode.md)** | Business alignment mode |
+| **[config-gap-detector-mode.md](config-gap-detector-mode.md)** | Configuration gap detector mode |
 | **[github-issue-generator-mode.md](github-issue-generator-mode.md)** | GitHub issue generator mode |
 | **[license-impact-analysis-mode.md](license-impact-analysis-mode.md)** | License impact analysis mode |
 | **[references/scripts/README.md](references/scripts/README.md)** | GitHub issue-management scripts |
@@ -441,7 +451,7 @@ The `references/scripts/` folder contains mode-related Python scripts and shell 
 
 | Skill folder | References file | Purpose |
 |---|---|---|
-| [`SKILLS/sdd-documentation-review/references/`](../../SKILLS/sdd-documentation-review/references/) | `KNOWLEDGE_SOURCES.md` | Knowledge sources and evidence basis for the Documentation Review skill |
+| [`SKILLS/sdd-documentation-review/references/`](./references/) | `KNOWLEDGE_SOURCES.md` | Knowledge sources and evidence basis for the Documentation Review skill |
 
 ## Documentation Validation
 
@@ -458,11 +468,11 @@ This template does not replace architecture review boards, security review, lega
 ## License and Third-Party Notices
 
 This repository is distributed under the Apache License, Version 2.0. See
-[LICENSE](./LICENSE) for the full license text.
+[LICENSE](../../../LICENSE) for the full license text.
 
-- [License documentation](./LICENSE_DOCUMENTATION.md)
-- [Third-party dependency notices](./THIRD_PARTY_NOTICES.md)
-- [Content provenance register](./CONTENT_PROVENANCE.md)
+- [License documentation](../../../LICENSE_DOCUMENTATION.md)
+- [Third-party dependency notices](../../../THIRD_PARTY_NOTICES.md)
+- [Content provenance register](../../../CONTENT_PROVENANCE.md)
 - [Mode resource license map](resource-licenses.md)
 
 ---
@@ -635,7 +645,7 @@ All 12 custom modes now live in individual `*-mode.yaml` files.
 
 ## Skill Changes — `SKILLS/sdd-<name>/`
 
-All 11 skills migrated from `Modes/SDD/skills/<name>-skill.md` to `SKILLS/sdd-<name>/SKILL.md`.
+11 skills migrated from `Modes/SDD/skills/<name>-skill.md` to `SKILLS/sdd-<name>/SKILL.md`.
 
 | Skill folder | SKILL.md | README.md | references/ | Notes |
 |---|---|---|---|---|
@@ -644,7 +654,7 @@ All 11 skills migrated from `Modes/SDD/skills/<name>-skill.md` to `SKILLS/sdd-<n
 | `sdd-documentation-review` | ✅ 380 lines | ✅ | ✅ `KNOWLEDGE_SOURCES.md` | Stale `../documentation/` link fixed |
 | `sdd-github-issue-traceability` | ✅ 521 lines | ✅ | — | |
 | `sdd-maintainability-technical-debt` | ✅ 298 lines | ✅ | — | README was empty — populated |
-| `sdd-requirements-management` | ✅ 587 lines | ✅ | — | Created from `requirements-management-skill.md` |
+| `sdd-requirements-management` | ✅ 587 lines | ✅ | — | Created from `SKILLS/sdd-requirements-management/SKILL.md` |
 | `sdd-requirements-traceability` | ✅ 165 lines | ✅ | — | README had wrong content — corrected |
 | `sdd-scalability-performance` | ✅ 215 lines | ✅ | — | |
 | `sdd-sdlc-discovery-gap-analysis` | ✅ 196 lines | ✅ | — | Stale `../documentation/` link fixed |

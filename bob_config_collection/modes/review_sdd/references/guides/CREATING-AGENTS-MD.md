@@ -680,5 +680,5 @@ When you have `agents.md` in your application repository under `repos/`, Bob's c
 
 - [IBM Bob Documentation](https://bob.ibm.com/docs)
 - [agents.md Tutorial](https://bob.ibm.com/docs/ide/getting-started/tutorials/start-a-project#explore-agentsmd-files)
-- [Architecture Review Mode](../README-ARCHITECTURE-REVIEW.md)
-- [Spec-Driven Development](../SDD-README.md)
+- [Architecture Review Mode](../../architecture-review-readme.md)
+- [Spec-Driven Development](../../sdd-readme.md)

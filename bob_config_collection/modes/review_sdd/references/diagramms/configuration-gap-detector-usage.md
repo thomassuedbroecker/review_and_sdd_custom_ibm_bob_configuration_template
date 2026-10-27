@@ -14,7 +14,7 @@ The diagram provides a visual explanation of:
 
 ## Target Audience
 
-**Primary Users:** Maintainers and advanced users working with the custom mode system, especially those extending [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/) and the related skill assets.
+**Primary Users:** Maintainers and advanced users working with the custom mode system, especially those extending [`Modes/SDD/*-mode.yaml`](../../) and the related skill assets.
 
 **Use Cases:**
 - Understanding when the Configuration Gap Detector should be used
@@ -212,6 +212,6 @@ When updating the Configuration Gap Detector workflow:
 ## Related Files
 
 - Diagram: [`configuration-gap-detector-usage.drawio`](configuration-gap-detector-usage.drawio)
-- Modes Configuration: [`Modes/SDD/*-mode.yaml`](../../Modes/SDD/)
-- Skills Overview: [`skills/README.md`](../../skills/README.md)
+- Modes Configuration: [`Modes/SDD/*-mode.yaml`](../../)
+- Skills Overview: [`skills/README.md`](../../../../skills/)
 - Existing Mode Overview: [`custom-modes-overview.md`](custom-modes-overview.md)
