@@ -37,7 +37,7 @@
       "activitybar": [
         {
           "id": "bob-config-importer",
-          "title": "Bob Config Importer",
+          "title": "Bob Config Importer (Community)",
           "icon": "images/icon.png"
         }
       ]
@@ -46,7 +46,7 @@
       "bob-config-importer": [
         {
           "id": "bobConfigImporter.mainView",
-          "name": "Bob Config Importer",
+          "name": "Bob Config Importer (Community)",
           "type": "webview",
           "icon": "images/icon.png"
         }
@@ -90,7 +90,7 @@
       }
     ],
     "configuration": {
-      "title": "Bob Config Importer",
+      "title": "Bob Config Importer (Community)",
       "properties": {
         "bobConfigImporter.source": {
           "type": "string",

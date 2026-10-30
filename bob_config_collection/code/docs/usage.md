@@ -47,7 +47,7 @@ so you read exactly what would be installed.
 
 Open the Bob workspace folder, then start a command in one of two ways:
 
-- **Sidebar panel**: click the **Bob Config Importer** icon in the activity bar
+- **Sidebar panel**: click the **Bob Config Importer (Community)** icon in the activity bar
   (left-hand icon strip) to open the catalog panel; click **Install** on any
   mode or skill card, or use the toolbar buttons for other actions.
 - **Command Palette**: press `Cmd+Shift+P` / `Ctrl+Shift+P` and search in the

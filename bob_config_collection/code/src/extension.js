@@ -95,7 +95,7 @@ function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = []) 
 <meta charset="UTF-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'nonce-${nonce}'; script-src 'nonce-${nonce}';">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Bob Config Importer</title>
+<title>Bob Config Importer (Community)</title>
 <style nonce="${nonce}">
   :root {
     --bg: var(--vscode-sideBar-background, #1e1e1e);

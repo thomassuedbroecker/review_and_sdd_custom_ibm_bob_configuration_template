@@ -39,7 +39,7 @@ customize it.
 | | 1. Out-of-the-box Bob workspace | 2. Reusable configuration repository |
 |---|---|---|
 | **What** | The ready-to-use configuration in [`.bob/`](./.bob/) (`custom_modes.yaml`, `skills/`, scripts, documentation) | The source collection in [`bob_config_collection/`](./bob_config_collection/) (`modes/<group>/*-mode.yaml`, `skills/<skill>/SKILL.md`) plus the VS Code extension in [`bob_config_collection/code/`](./bob_config_collection/code/) |
-| **Who uses it** | You, when you open this repository's root folder in IBM Bob | Any other Bob workspace that installs selected modes or skills with the **IBM Bob Config Importer** extension |
+| **Who uses it** | You, when you open this repository's root folder in IBM Bob | Any other Bob workspace that installs selected modes or skills with the **Bob Config Importer (Community)** extension |
 | **How you get it** | Create a repository from this template and open it in IBM Bob, with no install step | Install the extension and run **Bob Config: Import Modes… / Import Skills… / Import Other Configurations…**. Selections come from the public GitHub repository by default |
 | **Where you change it** | Do not edit the overlapping modes and skills directly. They are generated from the collection | Edit here. The collection is the **leading configuration** |
 
@@ -63,7 +63,9 @@ out-of-the-box workspace. Install them with the extension, or with
 change or add modes and skills in `bob_config_collection/`, push it to a public
 GitHub repository, and point the extension's `bobConfigImporter.githubRepository`
 setting at `<owner>/<name>`. You can also package your own extension build with
-your collection bundled. See the
+your collection bundled, see
+[Generate the extension (.vsix)](./bob_config_collection/code/README.md#generate-the-extension-vsix).
+For everything else, see the
 [extension documentation](./bob_config_collection/code/docs/README.md).
 
 ## What It Does

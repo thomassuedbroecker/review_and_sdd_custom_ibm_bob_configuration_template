@@ -56,7 +56,7 @@ All commands run in `bob_config_collection/code/`.
    or use **Extensions: Install from VSIX…** in VS Code or IBM Bob.
 
 6. Verify: open a scratch workspace and confirm both access paths work:
-   - **Sidebar**: the **Bob Config Importer** icon appears in the activity bar;
+   - **Sidebar**: the **Bob Config Importer (Community)** icon appears in the activity bar;
      clicking it opens the catalog panel with mode and skill cards.
    - **Command Palette**: `Cmd+Shift+P` → **Bob Config: Read Mode or Skill
      Documentation…**, then **Bob Config: Import Modes…**.
