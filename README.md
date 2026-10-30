@@ -31,6 +31,10 @@ Usage example on YouTube:
 
 📚 **[View Full Documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)**
 
+🧩 **[Generate the VS Code extension (.vsix)](./bob_config_collection/code/README.md#generate-the-extension-vsix)**: build the **Bob Config Importer (Community)** extension to install modes and skills into other Bob workspaces
+
+![](/images/custom_extension_in_bob.png)
+
 ## Two Ways to Use This Repository
 
 This repository serves two separate purposes. Keep them apart when you

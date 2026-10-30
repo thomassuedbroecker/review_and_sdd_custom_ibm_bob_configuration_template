@@ -15,6 +15,8 @@ By default it loads the collection from the public GitHub repository
 You can point it at your own repository created from that template, use the
 collection bundled with the extension (offline), or use a local folder.
 
+![](../../images/custom_extension_in_bob.png)
+
 ## Sidebar panel
 
 After installation a **Bob Config Importer** icon appears in the VS Code /
