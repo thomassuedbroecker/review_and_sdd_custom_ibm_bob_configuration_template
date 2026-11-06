@@ -1,6 +1,6 @@
 ---
 name: ai-regulatory-compliance
-description: Use when an IT service consultant wants to generate, update, or validate an AI Regulatory Compliance Provenance document describing HOW a client application was BUILT with an AI coding assistant (AI-assisted development). It does NOT assess AI features that the built application uses at runtime. Covers EU AI Act (Art. 13, 14, 16, 50) and GDPR (Art. 5, 22, 25). Requires a task-history/ folder of exported AI session JSON files. No code execution required — all evidence is derived from folder structure and consultant-confirmed facts.
+description: Use when an IT service consultant wants to generate, update, or validate an AI Regulatory Compliance Provenance document describing HOW a client application was BUILT with an AI coding assistant (AI-assisted development). It does NOT assess AI features that the built application uses at runtime. Covers EU AI Act (Art. 13, 14, 16, 50) and GDPR (Art. 5, 22, 25). Requires a task-history/ folder of exported AI session JSON files. No build tools or tests are run — evidence comes from the task-history folder structure, selected fields of the session exports, read-only inspection of project files, and consultant-confirmed facts.
 ---
 
 # AI Regulatory Compliance Provenance Skill
@@ -14,8 +14,9 @@ description: Use when an IT service consultant wants to generate, update, or val
 > - EU AI Act: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689>
 > - GDPR: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679>
 >
-> **No coding required.** This skill collects structural facts from the project
-> and consultant-confirmed answers — it never executes tests or build tools.
+> **No coding required.** This skill collects structural facts from the project,
+> selected fields of the session exports and consultant-confirmed answers — it only
+> runs read-only commands (such as `ls`, `grep`, `git log`) and never executes tests or build tools.
 
 ---
 
@@ -49,6 +50,16 @@ Rules that follow from this scope:
 5. If a prompt field still contains an unfilled template placeholder such as
    `[Client or company name]` or `[e.g. …]`, treat it as **not provided** and ask in Step 2.
 
+### Regulatory framing (state this in every output)
+
+EU AI Act Art. 13, 14 and 16 are obligations for **providers of high-risk AI
+systems**. They do not regulate the use of an AI coding assistant to build
+software. This skill uses those articles as a **voluntary transparency
+structure** for documenting AI-assisted development. The resulting document is
+**not** evidence of compliance, not a conformity assessment, and not legal
+advice. Put this statement in the *Limitations & Known Gaps* section of every
+generated document.
+
 ---
 
 ## Step 0 — Verify the Workspace Prerequisites
@@ -56,12 +67,15 @@ Rules that follow from this scope:
 Check the following before proceeding. Stop and report any missing item clearly.
 
 1. A `task-history/` folder exists in the workspace root.
-2. It contains at least one sub-folder named `<NN>-<title>/` (numbered session folders).
+2. It contains at least one sub-folder named `<NN>_<title>/` (numbered session folders; older exports may use `<NN>-<title>/`).
 3. Each sub-folder contains one `bob-task-<id>-<date>.json` file (the AI session export).
 
 If `task-history/` is missing, stop and tell the consultant:
 > `task-history/` is required. Ask the engineering team to export each Bob task session
 > as a JSON file and place them in numbered sub-folders before running this skill.
+> The export hook `.bob/hooks/export-task-history.mjs` (registered in `.bob/settings.json`)
+> creates these folders automatically. It comes from the
+> [custom IBM Bob intro workshop](https://github.com/thomassuedbroecker/custom-ibm-bob-intro-workshop-template).
 
 ---
 
@@ -72,7 +86,7 @@ If `task-history/` is missing, stop and tell the consultant:
 Use `execute_command` with:
 
 ```bash
-rtk ls task-history
+ls -la task-history/*/
 ```
 
 From the output collect:
@@ -90,22 +104,32 @@ From the output collect:
 The JSON export files are the **primary evidence source** for this skill.
 Read them to extract concrete, auditor-verifiable facts for the compliance checklist.
 
-For each session file, use `read_file` on the JSON. The Bob export JSON contains a
-`messages` array. Each message has a `role` (`user` / `assistant`) and `content`.
-Read selectively — you do not need to read every message in every file.
+For each session file, use `read_file` on the JSON. The export written by
+`.bob/hooks/export-task-history.mjs` has this shape:
+
+```text
+{ version, exportedAt, workspace,
+  tasks: [ { task: { id, title, firstMessage, status, parentId, taskType, version,
+                     gitSha, gitBranch, approvalConfig, env, costs, createdAt, updatedAt },
+             messages: [ { id, role, data, createdAt } ] } ] }
+```
+
+Each message has a `role` (`user` / `assistant`) and its content in `data` (usually `data.content`).
+Fields that Bob did not record are `null`. Read selectively — you do not need to read every message in every file.
 
 **What to extract and where it maps:**
 
 | Evidence to extract | How to find it in the JSON | Maps to |
 |---|---|---|
-| Task title / objective | First `user` message in the session | Art. 13 — intended purpose, development record |
-| AI tool and model used | `model` field at the top level of the JSON | Art. 13 — tool transparency |
-| Bob modes used | Look for mode names in early `user` or `system` messages | Art. 13 — tool transparency |
+| Task title / objective | `tasks[0].task.title`, else `firstMessage` or the first `user` message | Art. 13 — intended purpose, development record |
+| AI tool and model used | `tasks[0].task.env` (and `version`); if no model is recorded there or in the messages, mark `[consultant to confirm]` | Art. 13 — tool transparency |
+| Bob modes used | `tasks[0].task.env.modeId`, plus mode names in early `user` or `system` messages | Art. 13 — tool transparency |
 | Files created or modified | `assistant` messages calling `write_file`, `apply_diff`, `insert_content` — extract filenames only | Art. 13 — system description |
-| Human approval / review actions | Presence of `user` follow-up messages after `assistant` tool calls — shows human was in the loop | Art. 14 — human oversight |
-| Test execution evidence | `assistant` messages calling `execute_command` with `pytest`, `ruff`, `test` | Art. 16 — quality assurance |
+| Human approval / review actions | `tasks[0].task.approvalConfig`, and `user` follow-up messages after `assistant` tool calls — shows human was in the loop | Art. 14 — human oversight |
+| Test execution evidence | `assistant` messages calling `execute_command` with a test or lint command (e.g. `npm test`, `node --test`, `pytest`, `ruff`) | Art. 16 — quality assurance |
 | Data privacy mentions | Search for `personal`, `PII`, `GDPR`, `synthetic`, `upload guard` in messages | GDPR Art. 5 / 25 |
-| Session cost (Bob-coins) | `usage` or `cost` field at the top level | Metrics table |
+| Session cost and tokens | `tasks[0].task.costs` (`totalCost`, `tokensIn`, `tokensOut`) | Metrics table |
+| Git context | `tasks[0].task.gitBranch`, `gitSha` (may be `null`) | Art. 13 — development record |
 
 **Sampling strategy — do not read every file in full:**
 
@@ -156,7 +180,7 @@ If evidence is not found, record `[not found in project]` — do not ask the con
 |---|---|---|
 | Project / system name | `README.md` — title or first heading | `read_file` |
 | Intended purpose description | `README.md` — overview or objectives section | `read_file` |
-| Current version or release tag | `pyproject.toml`, `package.json`, `VERSION`, `CHANGELOG.md`, git tags | `read_file` / `execute_command rtk git tag` |
+| Current version or release tag | `pyproject.toml`, `package.json`, `VERSION`, `CHANGELOG.md`, git tags | `read_file` / `execute_command git tag` |
 | Repository URL | `README.md`, `pyproject.toml`, `AGENTS.md` | `read_file` |
 | Review period (derive from task-history dates found in Step 1) | Already collected | — |
 
@@ -181,8 +205,8 @@ If evidence is not found, record `[not found in project]` — do not ask the con
 
 | Evidence to find | Where to look | Tool |
 |---|---|---|
-| Test framework and passing tests | `pyproject.toml`, `tests/` folder existence, CI config | `glob "tests/**/*.py"` / `read_file pyproject.toml` |
-| Linter / code quality configuration | `pyproject.toml`, `ruff.toml`, `.flake8` | `read_file` |
+| Test framework and passing tests | `package.json` (`test` script), `pyproject.toml`, `test/` or `tests/` folders, CI config | `glob "**/test/**/*.js"` / `glob "tests/**/*.py"` / `read_file package.json` |
+| Linter / code quality configuration | `package.json`, `eslint.config.*`, `pyproject.toml`, `ruff.toml`, `.flake8` | `read_file` |
 | Post-deployment monitoring approach | `docs/`, `README.md`, governance dashboard references | `grep -r "monitor\|dashboard\|eval\|governance" docs/ README.md` |
 | Responsible person / contact | `README.md`, `pyproject.toml` authors field, `AGENTS.md` | `read_file` |
 
@@ -193,7 +217,7 @@ If evidence is not found, record `[not found in project]` — do not ask the con
 | Personal data handling policy | `AGENTS.md`, `docs/`, spec files | `grep -r "personal data\|PII\|GDPR\|privacy" docs/ AGENTS.md` |
 | Data minimisation measures | `AGENTS.md`, spec files, fixtures README/manifest | `grep -r "minimis\|synthetic\|anonymi\|pseudonym" docs/ AGENTS.md tests/fixtures/` |
 | Privacy-by-design measures for the development process | `docs/`, `AGENTS.md`, `.gitignore`, assistant rules (`.bob/rules*`), plan/spec constraints that limit data given to the assistant (e.g. "use synthetic fixtures only") | `grep -r "synthetic\|fixture\|do not upload\|restriction" docs/ AGENTS.md .bob/` |
-| What the assistant could read | Assistant permission settings in the session exports (`approvalConfig`), `.bobignore` / ignore files, `.gitignore` entries for input-data folders | `read_file` / `glob` |
+| What the assistant could read | Assistant permission settings in the session exports (`tasks[0].task.approvalConfig`), `.bobignore` / ignore files, `.gitignore` entries for input-data folders | `read_file` / `glob` |
 | Whether non-synthetic data was handled by the assistant | Tool calls in session exports that read or list input-data folders (paths and tool names only) | `grep` on `task-history/` |
 | Decisions about persons made by the assistant | Assistant outputs are code/docs only — confirm no session task evaluates or decides about individuals | session titles |
 
@@ -227,14 +251,17 @@ evidence collected in Steps 1, 2, and 2.5. For every item, record the
 ### EU AI Act — Art. 50 — Transparency Obligations for Providers and Deployers
 
 > **Chapter IV · Regulation (EU) 2024/1689**
-> Operative text (§1): *"Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a natural person who is reasonably well-informed, observant and circumspect."*
-> Enforcement date: **2 August 2026** — earlier than Art. 13/14/16; applies to all AI tiers
+> Operative text (§1): *"Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a natural person who is reasonably well-informed, observant and circumspect, taking into account the circumstances and the context of use."*
+> Enforcement date: **2 August 2026** — earlier than Art. 13/14/16; applies, regardless of risk class, to the AI systems named in Art. 50 (systems that interact with persons, generate synthetic content, emotion recognition / biometric categorisation, deep fakes)
 > Full text: <https://artificialintelligenceact.eu/article/50/>
 > EUR-Lex: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689>
 
-> 🔴 **Already in force.** Art. 50 has been legally binding since 2 August 2026.
+> 🔴 **Already in force.** Art. 50 has applied since 2 August 2026 to the AI systems it names.
 > If the system interacts with end users, these items are a **current legal obligation** —
 > not a future one. Inform the consultant of this before proceeding.
+> Exception: for systems that generate synthetic content and were placed on the market
+> before 2 August 2026, the Digital Omnibus on AI (Regulation (EU) 2026/1744) gives until
+> 2 December 2026 to comply with Art. 50(2). Check the consolidated text on EUR-Lex.
 
 Checklist items derived from Art. 50 §1–§2:
 
@@ -294,7 +321,7 @@ Checklist items derived from Art. 14 §1–§4:
 ### EU AI Act — Art. 16 — Obligations of Providers of High-Risk AI Systems
 
 > **Chapter III, Section 3 · Regulation (EU) 2024/1689**
-> Operative text (chapeau): *"Providers of high-risk AI systems shall: (a) ensure that their high-risk AI systems are compliant with the requirements set out in Section 2; (c) have a quality management system in place which complies with Article 17; (d) keep the documentation referred to in Article 18; (e) keep the logs automatically generated by their high-risk AI systems as referred to in Article 19."*
+> Operative text (chapeau): *"Providers of high-risk AI systems shall: (a) ensure that their high-risk AI systems are compliant with the requirements set out in Section 2; […] (c) have a quality management system in place which complies with Article 17; (d) keep the documentation referred to in Article 18; (e) when under their control, keep the logs automatically generated by their high-risk AI systems as referred to in Article 19; […]"* (excerpt: points (a), (c), (d), (e))
 > Enforcement date: 2 December 2027 (Annex III systems) · 2 August 2028 (Annex I systems)
 > Full text: <https://artificialintelligenceact.eu/article/16/>
 > EUR-Lex: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689>
@@ -312,7 +339,7 @@ Checklist items derived from Art. 16 (a), (c), (d), (e):
 ### GDPR — Art. 5 — Principles Relating to Processing of Personal Data
 
 > **Chapter II · Regulation (EU) 2016/679**
-> Operative text (§1): *"Personal data shall be: (a) processed lawfully, fairly and in a transparent manner in relation to the data subject ('lawfulness, fairness and transparency'); (b) collected for specified, explicit and legitimate purposes ('purpose limitation'); (c) adequate, relevant and limited to what is necessary ('data minimisation')."*
+> Operative text (§1): *"Personal data shall be: (a) processed lawfully, fairly and in a transparent manner in relation to the data subject ('lawfulness, fairness and transparency'); (b) collected for specified, explicit and legitimate purposes and not further processed in a manner that is incompatible with those purposes; […] ('purpose limitation'); (c) adequate, relevant and limited to what is necessary in relation to the purposes for which they are processed ('data minimisation'); […]"* (excerpt: points (a)–(c))
 > Applies: immediately; GDPR has been in force since 25 May 2018
 > Full text: <https://gdpr-info.eu/art-5-gdpr/>
 > EUR-Lex: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R0679>
@@ -476,17 +503,17 @@ verified against the live regulation text at `artificialintelligenceact.eu`:
 
 | Article | Official Title | Chapter / Section | Enforcement Date | Verified Source |
 |---|---|---|---|---|
-| **Art. 50** | Transparency Obligations for Providers and Deployers of Certain AI Systems | Chapter IV | **2 Aug 2026** — all AI tiers | <https://artificialintelligenceact.eu/article/50/> |
+| **Art. 50** | Transparency Obligations for Providers and Deployers of Certain AI Systems | Chapter IV | **2 Aug 2026** — the AI systems named in Art. 50, regardless of risk class | <https://artificialintelligenceact.eu/article/50/> |
 | **Art. 13** | Transparency and Provision of Information to Deployers | Chapter III, Section 2 | 2 Dec 2027 (Annex III) · 2 Aug 2028 (Annex I) | <https://artificialintelligenceact.eu/article/13/> |
 | **Art. 14** | Human Oversight | Chapter III, Section 2 | 2 Dec 2027 (Annex III) · 2 Aug 2028 (Annex I) | <https://artificialintelligenceact.eu/article/14/> |
 | **Art. 16** | Obligations of Providers of High-Risk AI Systems | Chapter III, Section 3 | 2 Dec 2027 (Annex III) · 2 Aug 2028 (Annex I) | <https://artificialintelligenceact.eu/article/16/> |
 
 **Operative text verified from the regulation:**
 
-- **Art. 50 §1:** *"Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a natural person who is reasonably well-informed, observant and circumspect."*
+- **Art. 50 §1:** *"Providers shall ensure that AI systems intended to interact directly with natural persons are designed and developed in such a way that the natural persons concerned are informed that they are interacting with an AI system, unless this is obvious from the point of view of a natural person who is reasonably well-informed, observant and circumspect, taking into account the circumstances and the context of use."*
 - **Art. 13 §1:** *"High-risk AI systems shall be designed and developed in such a way as to ensure that their operation is sufficiently transparent to enable deployers to interpret a system's output and use it appropriately."*
 - **Art. 14 §1:** *"High-risk AI systems shall be designed and developed in such a way, including with appropriate human-machine interface tools, that they can be effectively overseen by natural persons during the period in which they are in use."*
-- **Art. 16 (chapeau):** *"Providers of high-risk AI systems shall: (a) ensure that their high-risk AI systems are compliant with the requirements set out in Section 2; (c) have a quality management system in place which complies with Article 17; (d) keep the documentation referred to in Article 18; (e) keep the logs automatically generated by their high-risk AI systems as referred to in Article 19."*
+- **Art. 16 (chapeau):** *"Providers of high-risk AI systems shall: (a) ensure that their high-risk AI systems are compliant with the requirements set out in Section 2; […] (c) have a quality management system in place which complies with Article 17; (d) keep the documentation referred to in Article 18; (e) when under their control, keep the logs automatically generated by their high-risk AI systems as referred to in Article 19; […]"* (excerpt: points (a), (c), (d), (e))
 
 ---
 
@@ -512,7 +539,7 @@ Articles addressed in this document — verified against `gdpr-info.eu`
 
 **Operative text verified from the regulation:**
 
-- **Art. 5 §1(a):** *"Personal data shall be processed lawfully, fairly and in a transparent manner in relation to the data subject ('lawfulness, fairness and transparency')."*
+- **Art. 5 §1(a):** *"Personal data shall be: (a) processed lawfully, fairly and in a transparent manner in relation to the data subject ('lawfulness, fairness and transparency');"*
 - **Art. 22 §1:** *"The data subject shall have the right not to be subject to a decision based solely on automated processing, including profiling, which produces legal effects concerning him or her or similarly significantly affects him or her."*
 - **Art. 25 §1:** *"Taking into account the state of the art, the cost of implementation and the nature, scope, context and purposes of processing … the controller shall … implement appropriate technical and organisational measures … which are designed to implement data-protection principles, such as data minimisation, in an effective manner."*
 
@@ -533,13 +560,16 @@ Articles addressed in this document — verified against `gdpr-info.eu`
 | GDPR Art. 22 — gdpr-info.eu | Cross-check | <https://gdpr-info.eu/art-22-gdpr/> |
 | GDPR Art. 25 — gdpr-info.eu | Cross-check | <https://gdpr-info.eu/art-25-gdpr/> |
 | European AI Office | Official | <https://digital-strategy.ec.europa.eu/en/policies/european-approach-artificial-intelligence> |
-| ENISA AI security guidance | Guidance | <https://www.enisa.europa.eu/topics/artificial-intelligence> |
+| ENISA AI security guidance | Guidance | <https://www.enisa.europa.eu/topics/artificial-intelligence-and-next-gen-technologies> |
 
 ---
 
 > **Disclaimer:** This document references EU regulations for transparency purposes.
 > It does not constitute legal advice. Consult qualified legal counsel to determine
 > the full applicability of these regulations to your specific system and deployment context.
-> EU AI Act enforcement dates are derived from Article 113 of Regulation (EU) 2024/1689.
+> EU AI Act enforcement dates are derived from Article 113 of Regulation (EU) 2024/1689, as amended
+> by the Digital Omnibus on AI, Regulation (EU) 2026/1744 (in force since 27 July 2026), which moved
+> the high-risk obligations to 2 December 2027 (Annex III) and 2 August 2028 (Annex I).
+> Check the current consolidated text on EUR-Lex before relying on these dates.
 > GDPR has been fully applicable since 25 May 2018 across all EU member states.
 > Applicability of GDPR articles depends on whether personal data is processed.

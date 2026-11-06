@@ -391,7 +391,7 @@ DEBUG=app:* npm run dev
 
 - API Documentation: http://localhost:3001/api-docs (Swagger)
 - Architecture Diagrams: `docs/architecture/`
-- Team Wiki: https://wiki.company.com/ecommerce
+- Team Wiki: https://wiki.example.com/ecommerce
 ```
 
 ## Example 2: Microservices Architecture
@@ -637,11 +637,11 @@ dlv attach $(pgrep payment-service)
 
 ## Additional Resources
 
-- API Documentation: https://api-docs.company.com
+- API Documentation: https://api-docs.example.com
 - Architecture Diagrams: `docs/architecture/`
-- Runbooks: https://runbooks.company.com/payment-platform
-- Monitoring: https://grafana.company.com
-- Tracing: https://jaeger.company.com
+- Runbooks: https://runbooks.example.com/payment-platform
+- Monitoring: https://grafana.example.com
+- Tracing: https://jaeger.example.com
 ```
 
 ## Best Practices

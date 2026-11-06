@@ -104,7 +104,7 @@ repositories that you want to inspect, review, or use as nested folders under
 
 ### 1. Explore Pre-existing Configuration
 Review the available modes and skills to understand capabilities:
-- Browse the 11 specialized skills in [`SKILLS/sdd-*/`](../../skills/) — each folder contains a `SKILL.md` and a `README.md`
+- Browse the 12 specialized skills in [`SKILLS/`](../../skills/). Each folder contains a `SKILL.md`; some also contain a `README.md`
 - Study the [Architecture Review documentation](architecture-review-readme.md)
 - Review [Spec-Driven Development guide](sdd-readme.md)
 - Review the [knowledge source map](knowledge-sources.md)

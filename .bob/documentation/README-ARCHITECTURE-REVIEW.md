@@ -14,12 +14,13 @@ This `.bob` configuration provides:
   - 1 specification-driven development mode
   - 1 configuration gap detection mode
   - 1 GitHub issue generator mode
-- **11 Reusable Skills**
+- **12 Reusable Skills**
   - 7 architecture review skills
   - 1 SDLC discovery and gap-analysis skill
   - 1 requirements management skill
   - 1 requirements traceability analysis skill
   - 1 GitHub issue traceability skill
+  - 1 AI regulatory compliance provenance skill
 
 This modular approach provides:
 - ✅ **Flexibility**: Use broad orchestration or focused modes

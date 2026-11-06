@@ -85,6 +85,7 @@ standards-based guidance.
 | `sdd-maintainability-technical-debt/SKILL.md` | Review complexity, coupling, duplication, testability, and debt | Refactoring practice, code quality metrics, modularity, technical debt management, test coverage analysis | Established engineering practice |
 | `sdd-documentation-review/SKILL.md` | Review project and architecture documentation quality, license notice coverage, and content-provenance evidence | ADRs, C4 Model, UML, OpenAPI, AsyncAPI, runbooks, documentation-as-code, SPDX, CycloneDX, GitHub dependency graph/SBOM, npm registry metadata, PyPI metadata, repository-local license and provenance files | Documentation frameworks, supply-chain evidence sources, package registries, and local governance artifacts |
 | `sdd-twelve-factor-compliance/SKILL.md` | Review cloud-native 12-factor readiness | The Twelve-Factor App, cloud-native configuration, logging, process, disposability, environment parity practices | Official methodology and cloud-native practice |
+| `ai-regulatory-compliance/SKILL.md` | Document how an application was built with an AI coding assistant, as a voluntary transparency record | EU AI Act (Regulation (EU) 2024/1689, Art. 13, 14, 16, 50) as amended by the Digital Omnibus on AI (Regulation (EU) 2026/1744), GDPR (Art. 5, 22, 25), EUR-Lex, artificialintelligenceact.eu, gdpr-info.eu, ENISA AI guidance; evidence from `task-history/` exports | Official legal texts plus independent trackers; not legal advice, and not evidence of compliance |
 
 ## External Reference Register
 
@@ -98,7 +99,7 @@ configuration:
 | IBM Bob launch | [IBM announcement for Bob](https://newsroom.ibm.com/2026-04-28-introducing-ibm-bob-ai-development-partner-that-takes-enterprises-from-ai-assisted-coding-to-production-ready-software) | Public IBM positioning and production-ready SDLC framing |
 | Spec-driven development | [IBM Think: Spec-driven development](https://www.ibm.com/think/topics/spec-driven-development) | SDD framing and AI-assisted development context |
 | AI risk management | [NIST AI Risk Management Framework](https://www.nist.gov/itl/ai-risk-management-framework) | Governance, risk, and trustworthiness framing for AI-assisted workflows |
-| Generative AI risk profile | [NIST Generative AI Profile](https://www.nist.gov/itl/ai-risk-management-framework/generative-artificial-intelligence-profile) | Generative-AI-specific risk management and control considerations |
+| Generative AI risk profile | [NIST AI 600-1 Generative AI Profile](https://doi.org/10.6028/NIST.AI.600-1) | Generative-AI-specific risk management and control considerations |
 | LLM application risks | [OWASP Top 10 for Large Language Model Applications](https://owasp.org/www-project-top-10-for-large-language-model-applications/) | LLM, agent, prompt, data exposure, and generated-output risk baseline |
 | Requirements engineering | [ISO/IEC/IEEE 29148:2018](https://www.iso.org/standard/72089.html) | Requirements engineering standard |
 | Requirements practice | [IBM Requirements Management](https://www.ibm.com/think/topics/what-is-requirements-management) | Vendor guidance for requirements management |

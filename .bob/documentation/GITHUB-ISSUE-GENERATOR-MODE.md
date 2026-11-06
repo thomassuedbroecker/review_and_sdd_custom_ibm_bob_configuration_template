@@ -379,12 +379,12 @@ Created 5 issues in repository owner/repo
 1. **#123** - Implement user authentication
    - Priority: High
    - Labels: feature, backend, security
-   - Link: https://github.com/owner/repo/issues/123
+   - Link: https://github.com/<owner>/<repo>/issues/123
 
 2. **#124** - Add input validation
    - Priority: Medium
    - Labels: enhancement, security
-   - Link: https://github.com/owner/repo/issues/124
+   - Link: https://github.com/<owner>/<repo>/issues/124
 
 [... additional issues ...]
 

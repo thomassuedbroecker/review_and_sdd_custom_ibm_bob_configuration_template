@@ -2,9 +2,16 @@
 
 ## Scope
 
-The repository does not vendor third-party packages. The optional GitHub MCP
-integration in [`.bob/mcp.json`](./.bob/mcp.json) downloads
-`@modelcontextprotocol/server-github@2025.4.8` at runtime with `npx`.
+The repository does not vendor third-party packages. The only MCP server
+configured in [`.bob/mcp.json`](./.bob/mcp.json) is the optional GitHub MCP
+integration, which downloads `@modelcontextprotocol/server-github@2025.4.8` at
+runtime with `npx`.
+
+The VS Code extension in [`bob_config_collection/code/`](./bob_config_collection/code/)
+has no runtime dependencies. Its devDependencies (`@vscode/vsce`, `sharp`) are
+build tools, excluded from the `.vsix` by `.vscodeignore`, and not covered by
+the snapshot below. Generate an inventory before redistributing a build
+environment.
 
 The table below records a point-in-time license snapshot generated on
 2026-05-30 by resolving:

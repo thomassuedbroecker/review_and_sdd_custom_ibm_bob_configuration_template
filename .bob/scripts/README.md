@@ -189,7 +189,7 @@ python3 .bob/scripts/create_github_issues.py --repo owner/repo --template my-iss
 
 ```json
 {
-  "commit_url": "https://github.com/owner/repo/commit/abc123",
+  "commit_url": "https://github.com/<owner>/<repo>/commit/abc123",
   "statuses": {
     "completed": [
       {
@@ -377,7 +377,7 @@ external URLs because they require network access and may change independently.
 **sync-config.json:**
 ```json
 {
-  "commit_url": "https://github.com/myorg/myproject/commit/abc123",
+  "commit_url": "https://github.com/<owner>/<repo>/commit/abc123",
   "statuses": {
     "completed": [
       {

@@ -135,7 +135,7 @@ Every run prints a summary before bob starts — use it to verify paths are corr
 
 ```bash
 # 0. One-time setup — clone the repo you want to review
-git clone https://github.com/example/simple-kafka repos/simple_kafka_example
+git clone <repository-url> repos/simple_kafka_example
 
 # 1. Full architecture review — print to terminal
 automations/run_arch_review.sh --repo simple_kafka_example

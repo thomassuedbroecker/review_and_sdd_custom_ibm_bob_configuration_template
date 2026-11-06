@@ -6,7 +6,8 @@
 //   node src/tools/sync-workspace.js --target <workspace> [--all] [--check] [--collection <dir>]
 //
 // Default: only modes whose slug already exists in <workspace>/.bob/custom_modes.yaml
-// are replaced (overlap), together with the skills those modes reference.
+// are replaced (overlap), together with the skills those modes reference and
+// every collection skill that already exists in <workspace>/.bob/skills/.
 // --all     also add every other mode and every skill of the collection
 // --check   write nothing; exit 1 and list the files that differ
 
@@ -33,7 +34,10 @@ function planSync({ target, collection, all }) {
   const available = catalog.groups.flatMap((g) => g.modes.map((m) => m.slug));
   const existing = new Set(install.existingModeSlugs(catalog, target));
   const slugs = all ? available : available.filter((s) => existing.has(s));
-  const skills = all ? catalog.skills.map((s) => s.id) : install.skillsForModes(catalog, slugs);
+  // Overlap: skills referenced by the overlapping modes, plus every collection
+  // skill that already exists in the target, so no shared skill can drift.
+  const shared = new Set([...install.skillsForModes(catalog, slugs), ...install.existingSkillIds(catalog, target)]);
+  const skills = all ? catalog.skills.map((s) => s.id) : catalog.skills.map((s) => s.id).filter((id) => shared.has(id));
   return {
     slugs,
     skills,

@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import unquote
@@ -35,12 +36,35 @@ def heading_anchors(markdown_file: Path) -> set[str]:
     return anchors
 
 
+SKIPPED_DIRS = {".git", "node_modules", "dist", "repos"}
+
+
 def markdown_files(root: Path) -> list[Path]:
-    return sorted(
-        path
-        for path in root.rglob("*.md")
-        if ".git" not in path.parts
-    )
+    """Return the Markdown files to check.
+
+    Inside a Git work tree only tracked and untracked-but-not-ignored files are
+    checked, so dependencies, build output, and cloned review targets under
+    repos/ are skipped. Outside Git, well-known generated folders are skipped.
+    """
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z", "--", "*.md"],
+            cwd=root,
+            capture_output=True,
+            check=True,
+        )
+        files = {
+            (root / name).resolve()
+            for name in result.stdout.decode("utf-8").split("\0")
+            if name and not name.startswith("repos/")
+        }
+        return sorted(path for path in files if path.is_file())
+    except (OSError, subprocess.CalledProcessError):
+        return sorted(
+            path
+            for path in root.rglob("*.md")
+            if not SKIPPED_DIRS.intersection(path.relative_to(root).parts)
+        )
 
 
 def validate_link(source: Path, target: str) -> str | None:

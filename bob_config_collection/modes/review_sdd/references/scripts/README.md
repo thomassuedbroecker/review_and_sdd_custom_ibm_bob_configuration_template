@@ -189,7 +189,7 @@ Modes/SDD/references/scripts/run_sync_all_issues.sh --repo owner/repo --use-exam
 
 ```json
 {
-  "commit_url": "https://github.com/owner/repo/commit/abc123",
+  "commit_url": "https://github.com/<owner>/<repo>/commit/abc123",
   "statuses": {
     "completed": [
       {
@@ -377,7 +377,7 @@ Modes/SDD/references/scripts/run_update_issues.sh --repo myorg/myproject --updat
 **sync-config.json:**
 ```json
 {
-  "commit_url": "https://github.com/myorg/myproject/commit/abc123",
+  "commit_url": "https://github.com/<owner>/<repo>/commit/abc123",
   "statuses": {
     "completed": [
       {

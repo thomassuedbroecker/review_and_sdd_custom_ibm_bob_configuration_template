@@ -243,6 +243,9 @@ __marimo__/
 review-sdlc-expert-bob-configuration-public.code-workspace
 review_and_sdd_custom_ibm_bob_configuration_template.code-workspace
 images/other
+# Task exports written by .bob/hooks/export-task-history.mjs. They contain
+# complete Bob conversations (possibly client code or secrets): never commit.
+task-history/
 
 # =============================================================================
 # 3. VS Code extension (bob_config_collection/code/)

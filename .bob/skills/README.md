@@ -181,6 +181,19 @@ a dedicated integration is added.
 
 ---
 
+### 12. AI Regulatory Compliance Provenance (`ai-regulatory-compliance/SKILL.md`)
+**Purpose**: Produce a provenance document describing **how** an application was built with an AI coding assistant (sessions, permissions, data access, human review). AI features of the built application are out of scope.
+
+**Key Areas**:
+- Evidence from `task-history/` session exports (written by `.bob/hooks/export-task-history.mjs`)
+- EU AI Act Art. 13, 14, 16, 50 and GDPR Art. 5, 22, 25, used as a **voluntary transparency structure**
+- Consultant interview for facts that cannot be inferred from files
+- HTML provenance artifact plus Markdown summary with remediation actions
+
+**When to Use**: Client hand-over documentation for AI-assisted development. The output is not evidence of compliance and not legal advice. See the skill's [README](./ai-regulatory-compliance/README.md).
+
+---
+
 ## How to Use Skills
 
 ### In Architecture Review Mode

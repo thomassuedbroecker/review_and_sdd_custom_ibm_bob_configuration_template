@@ -186,7 +186,7 @@ Use these resources when a task requires stronger grounding:
 
 For the full source map, including why AI Integration and Usage was added as
 an SDLC topic, see
-[`../../documentation/KNOWLEDGE_SOURCES.md`](../../documentation/KNOWLEDGE_SOURCES.md).
+`.bob/documentation/KNOWLEDGE_SOURCES.md` in the workspace.
 
 ## Related Skills
 - requirements-management-skill.md

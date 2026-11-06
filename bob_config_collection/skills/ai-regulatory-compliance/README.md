@@ -9,6 +9,11 @@
 > application uses at runtime (agents, LLM calls, categorisation, end-user disclosures)
 > are **out of scope** and need a separate assessment. See *Scope* in `SKILL.md`.
 
+> **Regulatory framing.** EU AI Act Art. 13, 14 and 16 are obligations for providers of
+> high-risk AI systems, not for using an AI coding assistant. This skill uses them as a
+> **voluntary transparency structure**. Its output is not evidence of compliance, not a
+> conformity assessment, and not legal advice.
+
 ---
 
 ## What this skill does
@@ -16,7 +21,7 @@
 When activated, this skill guides Bob through a structured 6-step process that:
 
 1. Verifies a `task-history/` folder of exported AI session files exists
-2. Extracts structural metadata (session count, dates, file sizes) — **without reading any JSON content**
+2. Extracts structural metadata (session count, dates, file sizes) and selected fields of the session exports (title, approval settings, costs, tool calls) — **never quoting conversation text**
 3. Interviews the consultant for project and client facts
 4. Walks through a regulatory checklist covering **EU AI Act** and **GDPR** articles
 5. Generates a self-contained **HTML provenance artifact** in `.bob/artifacts/`
@@ -30,18 +35,23 @@ When activated, this skill guides Bob through a structured 6-step process that:
 
 | Article | Official Title | Enforcement Date | Status |
 |---|---|---|---|
-| **Art. 50** | Transparency Obligations for Providers and Deployers of Certain AI Systems | 2 Aug 2026 — all AI tiers | 🔴 **Already in force** |
+| **Art. 50** | Transparency Obligations for Providers and Deployers of Certain AI Systems | 2 Aug 2026 — the AI systems named in Art. 50, regardless of risk class | 🔴 **Already in force** |
 | **Art. 13** | Transparency and Provision of Information to Deployers | 2 Dec 2027 (Annex III) · 2 Aug 2028 (Annex I) | 🟡 Future obligation |
 | **Art. 14** | Human Oversight | 2 Dec 2027 (Annex III) · 2 Aug 2028 (Annex I) | 🟡 Future obligation |
 | **Art. 16** | Obligations of Providers of High-Risk AI Systems | 2 Dec 2027 (Annex III) · 2 Aug 2028 (Annex I) | 🟡 Future obligation |
 
 > ⚠️ **Art. 50 is already legally binding** (since 2 August 2026). If the system interacts
-> directly with end users, the disclosure obligation applies **today**.
+> directly with end users, the disclosure obligation applies **today**. Exception: systems
+> that generate synthetic content and were on the market before 2 August 2026 have until
+> 2 December 2026 to comply with Art. 50(2) (Regulation (EU) 2026/1744).
 >
 > Art. 13, 14, and 16 are future obligations — but preparing compliance evidence **now**
 > is the correct approach. Retroactive documentation of a completed project is far harder
 > than maintaining the audit trail during development. The `task-history/` folder is exactly
 > the kind of evidence Art. 13 will require.
+
+The dates for Art. 13, 14 and 16 follow Regulation (EU) 2026/1744 (Digital Omnibus on AI, in force
+since 27 July 2026), which postponed the high-risk obligations. Check the consolidated text on EUR-Lex.
 
 Official text: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689>
 
@@ -66,8 +76,7 @@ Official text: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32016R
 ```
 .bob/skills/ai-regulatory-compliance/
 ├── SKILL.md          ← procedural instructions Bob follows (this is the skill)
-├── README.md         ← this file
-└── SAMPLE-PROMPT.md  ← ready-to-use prompts for consultants
+└── README.md         ← this file
 ```
 
 ---
@@ -91,14 +100,16 @@ Before running the skill, the following must be in place:
 | Requirement | Details |
 |---|---|
 | `task-history/` folder | Must exist at the workspace root |
-| Numbered sub-folders | Each named `<NN>-<title>/` (e.g. `01-init-setup/`) |
+| Numbered sub-folders | Each named `<NN>_<title>/` (e.g. `01_init_setup/`) |
 | JSON export per session | Each sub-folder contains one `bob-task-<id>-<YYYY-MM-DD>.json` |
 | Consultant availability | The consultant must answer ~10 project/client questions interactively |
 
 The skill **does not** require:
 - Running tests or build tools
-- Reading source code
-- Opening any JSON file
+- Modifying source code
+
+It **does** read the session exports in `task-history/` (selected fields only) and
+project files such as `README.md`, `AGENTS.md` and `package.json`, read-only.
 
 ---
 
@@ -143,7 +154,7 @@ The document always contains these sections in order:
 
 ## Checklist items at a glance
 
-### EU AI Act Art. 50 (all AI tiers — earliest enforcement 2 Aug 2026)
+### EU AI Act Art. 50 (the AI systems named in Art. 50, regardless of risk class — applies since 2 Aug 2026)
 - End users informed they interact with an AI system
 - AI-generated content disclosed as AI-generated
 - Deep-fake / synthetic media disclosures in place (if applicable)
@@ -187,7 +198,7 @@ The document always contains these sections in order:
 
 | Constraint | Reason |
 |---|---|
-| Never read JSON content from `task-history/` | Structural metadata only — content may be confidential |
+| Never quote conversation text from `task-history/` | Only selected fields are extracted and summarised — content may be confidential |
 | Never execute build tools, tests, or linters | Skill is code-tool-free; safe for non-developer consultants |
 | Never hardcode dates | All timestamps resolved dynamically at runtime |
 | Never fabricate values | Unverified fields shown as `[consultant to confirm]` in amber |
@@ -221,27 +232,27 @@ This folder is the primary evidence source for this skill.
 
 ```
 task-history/
-├── 01-init-setup-bob/
+├── 01_init_setup_bob/
 │   └── bob-task-18fe7f75426085f1c6231844d61a65ae-2026-08-20.json
-├── 02-initial-spec-drive-dev-plan/
+├── 02_initial_spec_drive_dev_plan/
 │   └── bob-task-<id>-<date>.json
 ├── ...
-└── 61-verify-task-export/
+└── 61_verify_task_export/
     └── bob-task-9f4ffb0856d4c846b74c35799cf5debc-2026-09-30.json
 ```
 
 ### Folder naming convention
 
 ```
-<NUMBER>-<TASK-TITLE-SLUGIFIED>/
+<NUMBER>_<TASK_TITLE_SLUGIFIED>/
 ```
 
 | Part | Rule | Example |
 |---|---|---|
 | `NUMBER` | Two-digit zero-padded sequence, increment by 1 per task | `01`, `02`, … `61` |
-| `TASK-TITLE-SLUGIFIED` | Lowercase words separated by hyphens; short but recognisable | `init-setup-bob` |
+| `TASK_TITLE_SLUGIFIED` | Lowercase words separated by `_`, max. 50 characters | `init_setup_bob` |
 
-Full example: `42-task-fix-conversation-inspector-id-handling-ui-clarity/`
+Full example: `42_fix_conversation_inspector_id_handling/`
 
 The JSON file inside follows the Bob export naming convention:
 
@@ -266,23 +277,23 @@ The skill reads them in two passes:
 
 | What is read | How it is used |
 |---|---|
-| Folder names (`01-init-setup-bob/`) | Session titles and phase grouping |
+| Folder names (`01_init_setup_bob/`) | Session titles and phase grouping |
 | JSON filename date (`2026-08-20`) | First/last session date, development span |
-| JSON file size (from `rtk ls`) | Largest session proxy metric |
+| JSON file size (from `ls -la`) | Largest session proxy metric |
 | Total folder count | Total AI sessions metric |
 
 **Pass 2 — session content (targeted fields from JSON files):**
 
 | Field extracted | Maps to checklist item |
 |---|---|
-| Task title / first `user` message | Art. 13 — development record, intended purpose |
-| `model` field | Art. 13 — AI tool and model transparency |
-| Bob modes in session headers | Art. 13 — tool provenance |
+| `tasks[0].task.title` / first `user` message | Art. 13 — development record, intended purpose |
+| `tasks[0].task.env` (mode, model if recorded) | Art. 13 — AI tool and model transparency |
+| `tasks[0].task.env.modeId` and mode names in messages | Art. 13 — tool provenance |
 | Filenames from `write_file` / `apply_diff` calls | Art. 13 — system description |
-| Human follow-up messages after tool calls | Art. 14 — human oversight evidence |
-| `execute_command` calls with `pytest` / `ruff` | Art. 16 — quality assurance evidence |
+| `tasks[0].task.approvalConfig` and human follow-up messages after tool calls | Art. 14 — human oversight evidence |
+| `execute_command` calls with test or lint commands (`npm test`, `node --test`, `pytest`, `ruff`) | Art. 16 — quality assurance evidence |
 | Privacy-related terms in messages | GDPR Art. 5 / 25 — data handling evidence |
-| `usage` / `cost` field | Metrics table — total AI spend |
+| `tasks[0].task.costs` | Metrics table — total AI spend and tokens |
 
 > ⚠️ **Confidentiality:** Only the specific fields above are extracted.
 > Conversation text is never quoted verbatim — findings are summarised as
@@ -290,143 +301,38 @@ The skill reads them in two passes:
 
 ---
 
-## Current process — Manual
+## How `task-history/` is filled in this workspace
 
-Today, every entry in `task-history/` is created **manually** by the developer
-after completing a Bob task session.
+Entries can be created **automatically** (once enabled) by the lifecycle hook
+`.bob/hooks/export-task-history.mjs`, registered on the
+Bob `Stop` event in `.bob/settings.json`.
 
-**1. Finish the Bob task**
-Complete all work within the current Bob task. Confirm the task is done before exporting.
+The hook and `settings.json` are copied unchanged from the
+[custom IBM Bob intro workshop](https://github.com/thomassuedbroecker/custom-ibm-bob-intro-workshop-template)
+(Apache-2.0); see [`CONTENT_PROVENANCE.md`](../../../CONTENT_PROVENANCE.md). The hook only
+reads local Bob storage and writes files into `task-history/`. It makes no network calls.
 
-**2. Export the session from Bob**
-In the Bob IDE, use the export function to save the task session as a JSON file.
-The file is named automatically: `bob-task-<session-id>-<YYYY-MM-DD>.json`
+> 🔒 **Privacy:** the exports contain **complete conversations**, including any client code
+> or secrets that appeared in a session. In this template `task-history/` is listed in
+> `.gitignore`, so exports are not committed by accident.
 
-**3. Determine the next sequence number**
-```bash
-ls task-history/ | tail -1
-# → 61-verify-task-export/   →   next number: 62
-```
+| Step | How |
+|---|---|
+| Trigger | End of every task turn (`Stop`); later turns of the same task update the same folder |
+| Data source | `~/.bob/db/bob.db` (read with `python3`), fallback: IDE `globalStorage` |
+| Folder name | `<NN>_<slug>/`, slug from the task title or first prompt |
+| Files | `bob-task-<id>-<YYYY-MM-DD>.json`, plus `ui_messages.json` and `api_conversation_history.json` when available |
+| Requirement | Trusted workspace (hooks do not run otherwise) |
 
-**4. Create the numbered folder**
-```bash
-mkdir task-history/62-my-task-title/
-```
-
-**5. Move the exported JSON into the folder**
-```bash
-mv ~/Downloads/bob-task-<id>-<date>.json task-history/62-my-task-title/
-```
-
-**6. Commit to git**
-```bash
-git add task-history/62-my-task-title/
-git commit -m "task-history: add session 62 — my-task-title"
-```
-
----
-
-## Future automation — Bob `Stop` hook (concept)
-
-> **Status: not implemented.** All entries are currently created manually.
-> This section documents how effort could be reduced in the future.
-
-### How it would work
-
-Bob fires a `Stop` event automatically after every task loop completes.
-A hook script registered to that event could:
-
-1. Read the session ID and date from the Bob event payload
-2. Derive the next sequence number by counting existing folders
-3. Read the task title from a convention file (`.bob/current-task-title`)
-4. Create the numbered folder: `task-history/<NN>-<slug>/`
-5. Optionally stage the folder with `git add`
-
-### Bob `Stop` event payload
-
-```json
-{
-  "session_id": "task-abc123",
-  "cwd": "/path/to/workspace",
-  "hook_event_name": "Stop",
-  "last_assistant_message": "All steps completed."
-}
-```
-
-### Existing `Stop` hook in this project
-
-A `Stop` hook is already registered in `.bob/settings.json`:
-
-```json
-"Stop": [
-  {
-    "hooks": [
-      {
-        "type": "command",
-        "command": "sh .bob/hooks/rtk-stop.sh",
-        "timeout": 10
-      }
-    ]
-  }
-]
-```
-
-The existing `rtk-stop.sh` logs the stop event and runs `rtk gain`.
-It does **not** create `task-history/` folders today.
-A future implementation would add a second handler or extend this script.
-
-### Sketch of a future `task-history-stop.sh`
+Manual export (from the workspace root, optional task ID):
 
 ```bash
-#!/bin/sh
-# task-history-stop.sh — concept sketch, NOT YET IMPLEMENTED
-#
-# Limitations:
-#   - Bob does not expose the JSON export path to hooks — the user must
-#     still export from the IDE and move the file manually.
-#   - The hook runs non-interactively; the task title must come from
-#     .bob/current-task-title (written at session start via a SessionStart hook).
-
-set -eu
-
-PAYLOAD=$(cat)
-SESSION_ID=$(echo "$PAYLOAD" | python3 -c "import sys,json; print(json.load(sys.stdin).get('session_id','unknown'))")
-
-# Next sequence number
-LAST=$(ls -d task-history/[0-9]* 2>/dev/null | sort | tail -1 \
-       | grep -oE '[0-9]+$' || echo "0")
-NEXT=$(printf "%02d" $((LAST + 1)))
-
-# Task title from convention file
-TITLE_FILE=".bob/current-task-title"
-if [ -f "$TITLE_FILE" ]; then
-  TITLE=$(cat "$TITLE_FILE" | tr '[:upper:]' '[:lower:]' | tr ' _' '-' | tr -cd 'a-z0-9-')
-else
-  TITLE="session-${SESSION_ID:0:8}"
-fi
-
-mkdir -p "task-history/${NEXT}-${TITLE}"
-echo "task-history: created task-history/${NEXT}-${TITLE} — place the Bob JSON export inside"
-exit 0
+node .bob/hooks/export-task-history.mjs [taskId]
 ```
 
-### What would still be manual even with the hook
+> In the workshop, `task-history/` is listed in `.bobignore` and is **not committed**
+> (see `AGENTS.md`). Remove it from `.bobignore` before running this skill, otherwise
+> Bob cannot read the exports.
+>
+> The workshop does this in Lab 6, Step 6.5: comment the line out, run the skill, then restore it.
 
-| Step | With hook | Without hook |
-|---|---|---|
-| Folder creation | ✓ Automated | Manual |
-| Sequence numbering | ✓ Automated | Manual |
-| Task title | Read from `.bob/current-task-title` | Manual folder naming |
-| JSON export from Bob IDE | Still manual — Bob does not expose the path | Manual |
-| Moving JSON into folder | Still manual | Manual |
-| Git commit | Could be added to hook | Manual |
-| **Total effort** | ~1 min | ~5 min |
-
-### Complementary `SessionStart` hook for title capture
-
-```bash
-# At session start, write the task title into a convention file
-# so the Stop hook can read it without interaction.
-# Set CURRENT_TASK_TITLE env var before starting Bob.
-echo "${CURRENT_TASK_TITLE:-untitled}" > .bob/current-task-title
-```

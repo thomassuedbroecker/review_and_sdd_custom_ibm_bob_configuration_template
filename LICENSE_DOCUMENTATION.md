@@ -12,8 +12,8 @@ notice states otherwise.
 
 ## Third-Party Runtime Components
 
-The optional GitHub MCP integration configured in
-[`.bob/mcp.json`](./.bob/mcp.json) invokes:
+The optional GitHub MCP integration, the only MCP server configured in
+[`.bob/mcp.json`](./.bob/mcp.json), invokes:
 
 ```text
 @modelcontextprotocol/server-github@2025.4.8
@@ -38,6 +38,13 @@ Apache-2.0, and `PyYAML` latest version `6.0.3` reports MIT. Their resolved
 transitive dependency trees are not covered by the npm snapshot. Generate and
 review a Python dependency inventory before distributing a bundled Python
 environment.
+
+## Content Copied From a Related Repository
+
+The task-history export hook (`.bob/hooks/export-task-history.mjs`) and its
+registration (`.bob/settings.json`) are copied unchanged from the
+[custom IBM Bob intro workshop](https://github.com/thomassuedbroecker/custom-ibm-bob-intro-workshop-template),
+which is also licensed under Apache-2.0 and has the same maintainer.
 
 ## Content Provenance
 

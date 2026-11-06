@@ -22,7 +22,7 @@ This repository is intended to be used as a template. Create your own GitHub rep
 
 The custom SDD workflow:
 
-![](./images/custom_sdd_workflow_in_bob.jpg)
+![Custom SDD workflow in IBM Bob](./images/custom_sdd_workflow_in_bob.jpg)
 
 Usage example on YouTube:
 
@@ -33,7 +33,7 @@ Usage example on YouTube:
 
 🧩 **[Generate the VS Code extension (.vsix)](./bob_config_collection/code/README.md#generate-the-extension-vsix)**: build the **Bob Config Importer (Community)** extension to install modes and skills into other Bob workspaces
 
-![](/images/custom_extension_in_bob.png)
+![Bob Config Importer (Community) extension in IBM Bob](./images/custom_extension_in_bob.png)
 
 ## Two Ways to Use This Repository
 
@@ -48,8 +48,9 @@ customize it.
 | **Where you change it** | Do not edit the overlapping modes and skills directly. They are generated from the collection | Edit here. The collection is the **leading configuration** |
 
 **Rule:** `bob_config_collection/` leads. Every mode in `.bob/custom_modes.yaml`
-that also exists in the collection, and every skill those modes reference, is
-replaced by the collection version when you run the sync:
+that also exists in the collection, and every skill that exists in both
+`.bob/skills/` and the collection, is replaced by the collection version when
+you run the sync:
 
 ```bash
 cd bob_config_collection/code
@@ -58,10 +59,35 @@ npm run sync:check      # exit 1 if .bob/ differs from the collection
 ```
 
 Modes that exist only in `.bob/` (your own additions) are left untouched. Modes
-and skills that exist only in the collection (for example
-`license-impact-analysis` and `ai-regulatory-compliance`) are not added to the
-out-of-the-box workspace. Install them with the extension, or with
+that exist only in the collection (currently `license-impact-analysis`) are not
+added to the out-of-the-box workspace. Install them with the extension, or with
 `node src/tools/sync-workspace.js --target ../.. --all`.
+
+The sync covers modes and skills only. Guides, diagrams, and other files under
+`.bob/documentation/` are maintained by hand next to their collection copies
+under `bob_config_collection/modes/review_sdd/references/`, because their
+relative links differ between the two locations. When you change one copy,
+update the other.
+
+## What This Template Configures in Your IDE
+
+Opening this repository in IBM Bob activates the following. Nothing else is
+configured.
+
+| Item | File | What it does | Network access |
+|---|---|---|---|
+| 11 custom modes | [`.bob/custom_modes.yaml`](./.bob/custom_modes.yaml) | Adds the review, SDD, gap-detector, and issue-generator modes | None of their own |
+| 12 skills | [`.bob/skills/`](./.bob/skills/) | Methodology files that the modes read | None |
+| GitHub MCP server | [`.bob/mcp.json`](./.bob/mcp.json) | Starts `@modelcontextprotocol/server-github@2025.4.8` with `npx`; uses `GITHUB_PERSONAL_ACCESS_TOKEN` from your environment; no tool is pre-approved | npm registry (download) and GitHub API |
+| Task-history export hook | [`.bob/settings.json`](./.bob/settings.json), [`.bob/hooks/export-task-history.mjs`](./.bob/hooks/export-task-history.mjs) | On every Bob `Stop` event, reads the current task from local Bob storage (`~/.bob/db/bob.db`) and writes the full conversation to `task-history/<NN>_<title>/`. Used as evidence by the `ai-regulatory-compliance` skill. Runs only in a trusted workspace | None |
+| Bob context exclusions | [`.bobignore`](./.bobignore) | Keeps `.env` out of Bob's context | None |
+
+> 🔒 **Privacy:** `task-history/` exports contain complete conversations,
+> including any code or secrets that appeared in a session. The folder is listed
+> in [`.gitignore`](./.gitignore) so it is not committed by accident. To turn the
+> export off, delete `.bob/settings.json` or remove its `Stop` hook entry. The
+> hook is copied unchanged from the
+> [custom IBM Bob intro workshop](https://github.com/thomassuedbroecker/custom-ibm-bob-intro-workshop-template).
 
 **Build your own reusable repository:** create a repository from this template,
 change or add modes and skills in `bob_config_collection/`, push it to a public
@@ -74,8 +100,8 @@ For everything else, see the
 
 ## What It Does
 
-- **12 Custom Modes**: Including orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, GitHub issue generator, and license impact analysis
-- **11 Reusable Skills**: Comprehensive coverage of architecture review domains, SDLC discovery and gap analysis, requirements management, requirements traceability analysis, and GitHub issue traceability
+- **11 Custom Modes** in `.bob/`: orchestrator review mode, 7 focused review modes, spec-driven development mode, configuration gap detector, and GitHub issue generator. The collection adds a 12th mode, license impact analysis, which you can install with the extension
+- **12 Reusable Skills**: architecture review domains, SDLC discovery and gap analysis, requirements management, requirements traceability analysis, GitHub issue traceability, and AI regulatory compliance provenance
 - **Comprehensive Architecture Reviews**: Conduct multi-dimensional reviews using specialized skills covering security, scalability, patterns, maintainability, and more
 - **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle
 - **Adaptive Configuration**: Use the Grill Me discovery pattern to clarify SDLC intent, detect gaps, and propose new capabilities based on emerging requirements
@@ -193,7 +219,7 @@ modes, path resolution details, and troubleshooting.
 
 ### 1. Explore Pre-existing Configuration
 Review the available modes and skills to understand capabilities:
-- Browse the [11 specialized skills](./.bob/skills/README.md) for different review areas
+- Browse the [12 specialized skills](./.bob/skills/README.md) for different review areas
 - Study the [Architecture Review documentation](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)
 - Review [Spec-Driven Development guide](./.bob/documentation/SDD-README.md)
 - Review the [knowledge source map](./.bob/documentation/KNOWLEDGE_SOURCES.md)
@@ -219,10 +245,11 @@ Review the available modes and skills to understand capabilities:
 | 🔍 Configuration Gap Detector | Proposes missing capabilities when the current setup is insufficient |
 | 📋 GitHub Issue Generator | Converts todo lists and findings into GitHub issues |
 
-The configuration also includes **11 reusable skills**: seven architecture
+The configuration also includes **12 reusable skills**: seven architecture
 review skills, one SDLC discovery and gap-analysis skill, one
 requirements-management skill, one requirements-traceability analysis skill,
-and one GitHub issue traceability skill. See the
+one GitHub issue traceability skill, and one AI regulatory compliance
+provenance skill. See the
 [skills documentation](./.bob/skills/README.md) for detailed descriptions,
 usage guidance, customization options, and examples.
 
@@ -471,7 +498,7 @@ overwrites it. See [Two Ways to Use This Repository](#two-ways-to-use-this-repos
 | Document | Purpose |
 |----------|---------|
 | **README.md** | Main documentation (this file) |
-| **[agents.md](./agents.md)** | Agent routing rules and hard constraints for IBM Bob |
+| **[AGENTS.md](./AGENTS.md)** | Agent routing rules and hard constraints for IBM Bob |
 | **[bob_config_collection/code/docs/README.md](./bob_config_collection/code/docs/README.md)** | VS Code extension and template sync: usage, build, architecture |
 | **[.bob/skills/README.md](./.bob/skills/README.md)** | Skills documentation |
 | **[.bob/documentation/README-ARCHITECTURE-REVIEW.md](./.bob/documentation/README-ARCHITECTURE-REVIEW.md)** | Architecture review details |
@@ -479,15 +506,15 @@ overwrites it. See [Two Ways to Use This Repository](#two-ways-to-use-this-repos
 | **[.bob/documentation/RESOURCE_LICENSES.md](./.bob/documentation/RESOURCE_LICENSES.md)** | License and terms map for external mode resources |
 | **[.bob/documentation/guides/QUICK-START.md](./.bob/documentation/guides/QUICK-START.md)** | Quick start guide |
 | **[automations/README.md](./automations/README.md)** | CLI automation scripts for non-interactive reviews |
-| **[.bob/documentation/guides/CREATING-AGENTS-MD.md](./.bob/documentation/guides/CREATING-AGENTS-MD.md)** | Guide for creating agents.md files |
+| **[.bob/documentation/guides/CREATING-AGENTS-MD.md](./.bob/documentation/guides/CREATING-AGENTS-MD.md)** | Guide for creating AGENTS.md files |
 | **[.bob/documentation/SDD-README.md](./.bob/documentation/SDD-README.md)** | Spec-driven development |
 | **[.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md](./.bob/documentation/GITHUB-ISSUE-GENERATOR-MODE.md)** | GitHub issue generator mode |
 | **[.bob/scripts/README.md](./.bob/scripts/README.md)** | GitHub issue-management scripts |
 | **[GITHUB_MCP_SETUP.md](./.bob/documentation/GITHUB_MCP_SETUP.md)** | GitHub MCP server setup |
 
-## agents.md
+## AGENTS.md
 
-The [`agents.md`](./agents.md) file is read by IBM Bob at task start. It contains only the
+The [`AGENTS.md`](./AGENTS.md) file is read by IBM Bob at task start. It contains only the
 information the agent cannot infer from mode definitions or skill files:
 
 - **Workspace constraint** — repositories to review must be placed under `repos/`
@@ -497,7 +524,7 @@ information the agent cannot infer from mode definitions or skill files:
   2. Traceability runs through GitHub issues, Markdown, and code only
   3. Unknown domain → escalate to `config-gap-detector` before proceeding
 
-Keep `agents.md` short. Mode-specific behaviour belongs in `.bob/custom_modes.yaml`;
+Keep `AGENTS.md` short. Mode-specific behaviour belongs in `.bob/custom_modes.yaml`;
 skill-specific methodology belongs in `.bob/skills/`. Do not duplicate that content here.
 
 ## Documentation Validation
