@@ -650,8 +650,7 @@ customModes:
            • THIRD_PARTY_NOTICES.md for runtime, vendored, and generated dependency notices
            • CONTENT_PROVENANCE.md for repository assets, diagrams, templates, generated content, and AI-assisted material
            • .bob/documentation/RESOURCE_LICENSES.md for external conceptual resources used by modes and skills
-           • .bob/documentation/KNOWLEDGE_SOURCES.md for mode and skill evidence resources
-           • .bob/skills/sdd-documentation-review/references/KNOWLEDGE_SOURCES.md for skill-specific evidence source basis
+           • .bob/documentation/KNOWLEDGE_SOURCES.md for mode and skill evidence resources, including the sdd-documentation-review skill's evidence source basis
       
       3. STRUCTURE THE OUTPUT
          - Use the skill's output format

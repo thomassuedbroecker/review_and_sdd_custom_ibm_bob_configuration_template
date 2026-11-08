@@ -64,6 +64,7 @@ This modular approach provides:
 │ 9. Requirements Management                                   │
 │ 10. Requirements Traceability Analysis                       │
 │ 11. GitHub Issue Traceability                                │
+│ 12. AI Regulatory Compliance Provenance                      │
 └──────────────────────────────────────────────────────────────┘
 ```
 

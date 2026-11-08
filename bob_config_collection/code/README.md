@@ -44,7 +44,8 @@ and files with the same path are replaced after you confirm.
 
 ## Generate the extension (.vsix)
 
-Prerequisites: Node.js ≥ 18 and npm.
+Prerequisites: Node.js ≥ 22 and npm. The packaging tools (`@vscode/vsce`
+and its Azure dependencies, `sharp`) require Node.js 22.
 
 ```bash
 cd bob_config_collection/code

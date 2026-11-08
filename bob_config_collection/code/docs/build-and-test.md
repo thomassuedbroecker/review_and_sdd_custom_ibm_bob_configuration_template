@@ -4,7 +4,8 @@ All commands run in `bob_config_collection/code/`.
 
 ## Prerequisites
 
-- Node.js ≥ 18 and npm
+- Node.js ≥ 22 and npm (required by the packaging tools: `@vscode/vsce` and
+  its Azure dependencies, and `sharp`)
 - VS Code ≥ 1.85, or IBM Bob, to install the extension
 
 ## Generate the .vsix step by step

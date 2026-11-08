@@ -202,7 +202,7 @@ workspace root/
 | `❌ --repo is required` | Flag missing | Add `--repo <name>` — script lists available repos on error |
 | `❌ Repository not found: …/repos/<name>` | Repo not cloned yet | `git clone <url> repos/<name>` |
 | `❌ Invalid mode: '<x>'` | Typo in mode name | See the mode table above |
-| `Error parsing JSON: Unexpected token '<'` | MCP GitHub token is the unexpanded placeholder `${GITHUB_PERSONAL_ACCESS_TOKEN}` (BC-002) | Set a real token value in `.bob/mcp.json` — the review itself still works; only GitHub MCP tool calls fail |
+| `Error parsing JSON: Unexpected token '<'` | MCP GitHub token is the unexpanded placeholder `${GITHUB_PERSONAL_ACCESS_TOKEN}` (BC-002) | Export the token in the shell that runs the script, for example `set -a; source .env; set +a`, then rerun. Keep the `${GITHUB_PERSONAL_ACCESS_TOKEN}` placeholder in `.bob/mcp.json` and never paste a real token there (see [GitHub MCP setup](../.bob/documentation/GITHUB_MCP_SETUP.md)). The review itself still works; only GitHub MCP tool calls fail |
 | `Error executing tool read_file: ignored by configured ignore patterns` | The repo path appears in `.gitignore` | Remove or comment out the matching line in `.gitignore`; `repos/` must not be listed there |
 | Review outputs not tracked by git | `reviews/` is in `.gitignore` by design | Remove or comment out the `reviews/` line in `.gitignore` to commit review files |
 | `Error executing tool list_files: params/file_filtering_options must be object` | bob CLI v1.0.1 schema bug with `--include-directories` | Script does not use `--include-directories`; this error should not appear — if it does, check you are running from the workspace root |

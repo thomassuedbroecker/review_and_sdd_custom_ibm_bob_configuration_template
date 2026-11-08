@@ -1,5 +1,9 @@
 #!/usr/bin/env python3
-"""Check local Markdown links and heading anchors without external dependencies."""
+"""Check local Markdown links and heading anchors without external dependencies.
+
+Also checks that workspace paths referenced in `.bob/` YAML files (for example the
+skill and documentation files named in `.bob/custom_modes.yaml`) exist.
+"""
 
 from __future__ import annotations
 
@@ -13,6 +17,8 @@ from urllib.parse import unquote
 LINK_PATTERN = re.compile(r"!?\[[^\]]*\]\(([^)]+)\)")
 HEADING_PATTERN = re.compile(r"^#{1,6}\s+(.+?)\s*#*\s*$")
 EXTERNAL_PREFIXES = ("http://", "https://", "mailto:", "tel:")
+# Workspace paths such as `.bob/skills/<id>/SKILL.md` or `./.bob/documentation/X.md`.
+YAML_PATH_PATTERN = re.compile(r"(?<![\w/.-])(?:\./)?(\.bob/[\w./-]*[\w-]\.(?:md|ya?ml|json|py|sh))")
 
 
 def heading_slug(heading: str) -> str:
@@ -39,8 +45,8 @@ def heading_anchors(markdown_file: Path) -> set[str]:
 SKIPPED_DIRS = {".git", "node_modules", "dist", "repos"}
 
 
-def markdown_files(root: Path) -> list[Path]:
-    """Return the Markdown files to check.
+def tracked_files(root: Path, *patterns: str) -> list[Path]:
+    """Return files matching the Git pathspec patterns.
 
     Inside a Git work tree only tracked and untracked-but-not-ignored files are
     checked, so dependencies, build output, and cloned review targets under
@@ -48,7 +54,7 @@ def markdown_files(root: Path) -> list[Path]:
     """
     try:
         result = subprocess.run(
-            ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z", "--", "*.md"],
+            ["git", "ls-files", "--cached", "--others", "--exclude-standard", "-z", "--", *patterns],
             cwd=root,
             capture_output=True,
             check=True,
@@ -62,9 +68,18 @@ def markdown_files(root: Path) -> list[Path]:
     except (OSError, subprocess.CalledProcessError):
         return sorted(
             path
-            for path in root.rglob("*.md")
-            if not SKIPPED_DIRS.intersection(path.relative_to(root).parts)
+            for pattern in patterns
+            for path in root.glob(pattern.replace("*", "**/*", 1) if pattern.startswith("*") else pattern)
+            if path.is_file() and not SKIPPED_DIRS.intersection(path.relative_to(root).parts)
         )
+
+
+def markdown_files(root: Path) -> list[Path]:
+    return tracked_files(root, "*.md")
+
+
+def yaml_files(root: Path) -> list[Path]:
+    return tracked_files(root, ".bob/*.yaml", ".bob/*.yml")
 
 
 def validate_link(source: Path, target: str) -> str | None:
@@ -100,13 +115,25 @@ def main() -> int:
                     relative_path = markdown_file.relative_to(root)
                     failures.append(f"{relative_path}:{line_number}: {failure}")
 
+    for yaml_file in yaml_files(root):
+        for line_number, line in enumerate(
+            yaml_file.read_text(encoding="utf-8").splitlines(), start=1
+        ):
+            for target in YAML_PATH_PATTERN.findall(line):
+                if not (root / target).exists():
+                    relative_path = yaml_file.relative_to(root)
+                    failures.append(f"{relative_path}:{line_number}: missing path reference: {target}")
+
     if failures:
         print("Markdown link check failed:")
         for failure in failures:
             print(f"- {failure}")
         return 1
 
-    print(f"Markdown link check passed for {len(markdown_files(root))} files.")
+    print(
+        f"Markdown link check passed for {len(markdown_files(root))} Markdown files "
+        f"and {len(yaml_files(root))} .bob YAML files."
+    )
     return 0
 
 

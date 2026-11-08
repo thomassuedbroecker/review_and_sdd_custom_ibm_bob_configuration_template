@@ -496,9 +496,14 @@ requirement links, implementation references, and test validation links.
 
 **Definition**: Capabilities from watsonx.governance and watsonx.ai that support **model validation**, **guardrails**, and **governance workflows**.
 
+> **About the scores in this section:** The star ratings and percentages below are the
+> authors' qualitative self-assessment. They do not come from a defined scoring method,
+> a benchmark, or measured review results, and they are not an IBM assessment or
+> certification. Treat them as an indicative opinion, not as evidence of capability.
+
 ### Alignment Assessment
 
-#### ✅ Strong Alignment Areas (4/5 Stars - 80%)
+#### ✅ Strong Alignment Areas (self-assessed)
 
 **1. Model Validation Capabilities** ⭐⭐⭐⭐☆
 
@@ -549,9 +554,9 @@ Enhancements:
 - Real-time monitoring integration
 - Input/output validation rules
 
-### Trusted AI Fit Score: ⭐⭐⭐⭐☆ (4/5 Stars - 80%)
+### Trusted AI Fit Score (self-assessed, indicative): ⭐⭐⭐⭐☆ (4/5)
 
-**Detailed Scoring**:
+**Detailed Scoring** (qualitative self-assessment, see the note at the start of this section):
 
 | Trusted AI Capability | Current | Enhancement Potential | Final |
 |----------------------|---------|----------------------|-------|
@@ -747,7 +752,7 @@ Bob will:
 
 ## Conclusion
 
-This custom modes configuration provides a **robust, modular framework** for architecture reviews with **strong alignment (80%) to IBM's Trusted AI building block**. The skill-based approach ensures consistency, reusability, and extensibility, while the Configuration Gap Detector enables continuous adaptation to emerging requirements.
+This custom modes configuration provides a **robust, modular framework** for architecture reviews with a **self-assessed, indicative alignment to IBM's Trusted AI building block** (not a measured score; see [Trusted AI Alignment Analysis](#trusted-ai-alignment-analysis)). The skill-based approach ensures consistency, reusability, and extensibility, while the Configuration Gap Detector enables continuous adaptation to emerging requirements.
 
 **For AI/ML Systems**: The current configuration provides excellent governance, documentation, security, and performance support. With targeted enhancements for AI-specific validation capabilities (bias, fairness, explainability) and integration with watsonx.governance, this framework can become a **comprehensive Trusted AI review system**.
 
@@ -764,4 +769,4 @@ This custom modes configuration provides a **robust, modular framework** for arc
 **Last Updated**: 2026-05-31
 **Modes Documented**: 11
 **Skills Referenced**: 9
-**Trusted AI Alignment**: ⭐⭐⭐⭐☆ (4/5 Stars - 80%)
+**Trusted AI Alignment**: ⭐⭐⭐⭐☆ (4/5, self-assessed, not a measured score)
