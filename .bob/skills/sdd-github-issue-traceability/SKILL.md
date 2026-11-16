@@ -13,6 +13,23 @@ Enable complete SDLC traceability from business goals through requirements, GitH
 - Test-to-requirement linking
 - Traceability validation and auditing
 
+## Back-Questioning (Grill Me)
+
+Issue generation depends on decisions only the user can make: the target
+repository, whether issues may actually be created or should stay drafts,
+label and milestone conventions, and how deep the Epic → Feature → Task → Test
+hierarchy should go. Never guess these. Apply the Grill Me pattern from
+`.bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md` at any point in this
+skill's workflow — not only at the start:
+
+1. **Pause and ask** three to five targeted back-questions covering only the
+   blocking unknowns (target repository, requirement sources and IDs,
+   hierarchy depth, labels and milestones, create now or draft first).
+2. **State safe assumptions explicitly** when an answer is not available, and
+   record each one in the issue draft so it can be challenged before creation.
+3. **Resume issue generation** only when every blocking unknown is answered or
+   covered by a documented assumption.
+
 ## Traceability Chain
 
 The complete traceability chain this skill supports:

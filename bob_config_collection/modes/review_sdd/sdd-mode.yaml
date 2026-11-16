@@ -83,6 +83,11 @@ customModes:
          - Separate functional and non-functional requirements
          - Ensure requirements are clear, unambiguous, measurable, and testable
          - Prioritize requirements using MoSCoW, Kano, WSJF, or a suitable method
+         - BACK-QUESTION WHEN NEEDED: at any step of this process, if stakeholders, goals,
+           constraints, priorities, or acceptance criteria cannot be derived from the provided
+           artifacts, pause and ask three to five targeted Grill Me questions
+           (SKILLS/sdd-sdlc-discovery-gap-analysis/SKILL.md) instead of inventing facts;
+           record unanswered points as explicit assumptions in the output
 
       4. CREATE OR REVIEW SPECIFICATIONS
          - Produce structured specifications with acceptance criteria

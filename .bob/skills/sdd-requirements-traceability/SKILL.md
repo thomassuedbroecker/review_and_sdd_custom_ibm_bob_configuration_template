@@ -66,6 +66,23 @@ ability matrix
    - All traceability checks pass
    - PR merged with traceability intact
 
+## Back-Questioning (Grill Me)
+
+Traceability analysis depends on facts only the user may know: which artifacts
+are the source of truth, which requirement-ID convention applies, which
+repositories and test suites are in scope, and how strict coverage must be.
+Never invent these. Apply the Grill Me pattern from
+`.bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md` at any point in the
+workflows above — not only at the start:
+
+1. **Pause and ask** three to five targeted back-questions covering only the
+   blocking unknowns (source artifacts, ID conventions, audit scope, coverage
+   expectations, expected output format).
+2. **State safe assumptions explicitly** when an answer is not available, and
+   record each one in the traceability report so it can be challenged.
+3. **Resume the analysis** only when every blocking unknown is answered or
+   covered by a documented assumption.
+
 ## Key Questions This Skill Answers
 
 1. **Are all requirements implemented?**

@@ -15,6 +15,27 @@ Elicit, document, analyze, and validate software requirements to ensure they are
 - Non-functional requirements specification
 - Requirements validation and verification
 
+## Back-Questioning (Grill Me)
+
+Requirements work regularly hits facts only the user can supply: unnamed
+stakeholders, unstated business goals, unmeasured quality targets, undefined
+priorities, or unclear scope. Never invent these. Apply the Grill Me pattern
+from `.bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md` at any point in
+this skill's workflow — not only at the start:
+
+1. **Pause and ask** three to five targeted back-questions covering only the
+   blocking unknowns (goal and outcome, stakeholders, lifecycle phase, source
+   artifacts, constraints, expected output).
+2. **State safe assumptions explicitly** when an answer is not available, and
+   record each one in the Assumptions and Dependencies section of the output
+   so stakeholders can challenge it.
+3. **Resume the workflow** only when every blocking unknown is answered or
+   covered by a documented assumption.
+
+Typical triggers in this skill: stakeholder analysis without named
+stakeholders, NFRs without measurable targets, prioritization without a
+business-value signal, and validation without an identified approver.
+
 ## Review Process
 
 ### 1. Stakeholder Analysis

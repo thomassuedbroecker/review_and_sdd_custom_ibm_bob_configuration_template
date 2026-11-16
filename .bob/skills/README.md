@@ -210,7 +210,7 @@ When using the 🏛️ Architecture Review mode, Bob will automatically:
 
 When using the 🧭 Spec-Driven Development mode, Bob will automatically:
 
-1. **Use the Grill Me discovery pattern** when the SDLC phase, artifacts, constraints, or desired output are unclear
+1. **Use the Grill Me discovery pattern** when the SDLC phase, artifacts, constraints, or desired output are unclear — and back-question the user mid-task whenever required facts (stakeholders, goals, priorities, acceptance criteria) are missing, instead of inventing them
 2. **Read the requirements-management skill** when requirements expertise is needed
 3. **Apply requirements elicitation, prioritization, validation, and traceability guidance**
 4. **Help structure specifications and prompts**

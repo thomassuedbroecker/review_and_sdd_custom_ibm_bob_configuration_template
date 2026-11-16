@@ -31,7 +31,7 @@ Usage example on YouTube:
 - **12 Reusable Skills** (located in [`SKILLS/`](../../skills/)): Comprehensive coverage of architecture review domains, SDLC discovery and gap analysis, requirements management, requirements traceability analysis, GitHub issue traceability, and AI regulatory compliance provenance
 - **Comprehensive Architecture Reviews**: Conduct multi-dimensional reviews using specialized skills covering security, scalability, patterns, maintainability, and more
 - **Spec-Driven Development**: Manage requirements, craft prompts, and maintain traceability throughout the development lifecycle
-- **Adaptive Configuration**: Use the Grill Me discovery pattern to clarify SDLC intent, detect gaps, and propose new capabilities based on emerging requirements
+- **Adaptive Configuration**: Use the Grill Me discovery pattern to clarify SDLC intent, detect gaps, and propose new capabilities based on emerging requirements; back-question the user mid-task whenever required facts (stakeholders, goals, priorities, acceptance criteria) are missing, instead of inventing them
 - **Modular Skills**: Use individual skills independently or combine them for comprehensive reviews
 
 ## Traceability Boundary
