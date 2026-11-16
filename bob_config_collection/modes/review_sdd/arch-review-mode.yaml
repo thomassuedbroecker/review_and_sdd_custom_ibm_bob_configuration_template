@@ -51,8 +51,12 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Review Process:
       

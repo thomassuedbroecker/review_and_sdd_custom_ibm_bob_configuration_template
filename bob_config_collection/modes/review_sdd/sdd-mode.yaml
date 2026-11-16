@@ -52,8 +52,12 @@ customModes:
     groups:
       - read
       - edit
-      - command
+      - execute
       - mcp
+      - skill
+      - mode
+      - subtask
+      - subagent
     customInstructions: >-
       Spec-Driven Development Process:
 

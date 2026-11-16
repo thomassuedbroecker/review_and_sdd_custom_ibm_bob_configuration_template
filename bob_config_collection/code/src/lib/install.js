@@ -124,6 +124,31 @@ function mergeMcp(existingText, incomingText) {
   return JSON.stringify(merged, null, 2) + '\n';
 }
 
+// --- hook registration merge ----------------------------------------------------
+
+// Merges hook registrations into the workspace settings JSON (.bob/settings.json).
+// Per event, a registration is matched by its command: an existing matching
+// entry is updated in place (extra keys the user added are kept), anything
+// else in the file — other settings, the user's own hooks — stays untouched.
+function mergeHookSettings(existingText, hooks) {
+  const settings = existingText && existingText.trim() ? JSON.parse(existingText) : {};
+  if (settings.hooks !== undefined && (typeof settings.hooks !== 'object' || Array.isArray(settings.hooks))) {
+    throw new Error('settings file: top-level "hooks" is not an object');
+  }
+  settings.hooks = settings.hooks || {};
+  for (const hook of hooks) {
+    for (const event of hook.events) {
+      const entries = (settings.hooks[event] = settings.hooks[event] || []);
+      const registered = entries
+        .flatMap((e) => (Array.isArray(e.hooks) ? e.hooks : []))
+        .find((r) => r.command === hook.registration.command);
+      if (registered) Object.assign(registered, hook.registration);
+      else entries.push({ hooks: [{ ...hook.registration }] });
+    }
+  }
+  return JSON.stringify(settings, null, 2) + '\n';
+}
+
 // --- planning -------------------------------------------------------------------
 
 function readIfExists(file) {
@@ -157,6 +182,12 @@ function existingSkillIds(catalog, targetRoot) {
     .filter((id) => fs.existsSync(path.join(targetRoot, catalog.layout.skills.target, id, 'SKILL.md')));
 }
 
+function existingHookIds(catalog, targetRoot) {
+  return catalog.hooks
+    .filter((h) => fs.existsSync(path.join(targetRoot, catalog.layout.hooks.target, h.file)))
+    .map((h) => h.id);
+}
+
 function planModes(catalog, targetRoot, slugs) {
   if (!slugs.length) return [];
   const dest = catalog.layout.modesFile;
@@ -177,6 +208,25 @@ function planSkills(catalog, targetRoot, ids) {
     return skill.files.map((f) =>
       withStatus(targetRoot, `${catalog.layout.skills.target}${id}/${f}`, fs.readFileSync(path.join(skill.dir, f)), `skill ${id}`));
   });
+}
+
+// Hook install: the script file plus one merged settings-file write that
+// registers every selected hook on its events.
+function planHooks(catalog, targetRoot, ids) {
+  if (!ids.length) return [];
+  const hooks = ids.map((id) => {
+    const hook = catalog.hookById.get(id);
+    if (!hook) throw new Error(`hook "${id}" not found in collection`);
+    return hook;
+  });
+  const plan = hooks.map((h) =>
+    withStatus(targetRoot, `${catalog.layout.hooks.target}${h.file}`, fs.readFileSync(path.join(h.dir, h.file)), `hook ${h.id}`));
+  const dest = catalog.layout.hooks.settingsFile;
+  const current = readIfExists(path.join(targetRoot, dest));
+  plan.push(withStatus(targetRoot, dest,
+    mergeHookSettings(current && current.toString('utf8'), hooks),
+    `hook registration (merged into ${dest})`));
+  return plan;
 }
 
 // Support entries of a group (scripts, MCP, guides, ...) with their files.
@@ -231,10 +281,13 @@ module.exports = {
   splitModes,
   upsertModes,
   mergeMcp,
+  mergeHookSettings,
   existingModeSlugs,
   existingSkillIds,
+  existingHookIds,
   planModes,
   planSkills,
+  planHooks,
   planSupport,
   supportEntries,
   skillsForModes,

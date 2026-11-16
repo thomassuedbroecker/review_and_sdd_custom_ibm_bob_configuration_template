@@ -55,7 +55,7 @@
     "commands": [
       {
         "command": "bobConfigImporter.browseDocs",
-        "title": "Read Mode or Skill Documentation…",
+        "title": "Read Mode, Skill, or Hook Documentation…",
         "category": "Bob Config"
       },
       {
@@ -66,6 +66,11 @@
       {
         "command": "bobConfigImporter.importSkills",
         "title": "Import Skills…",
+        "category": "Bob Config"
+      },
+      {
+        "command": "bobConfigImporter.importHooks",
+        "title": "Import Hooks…",
         "category": "Bob Config"
       },
       {

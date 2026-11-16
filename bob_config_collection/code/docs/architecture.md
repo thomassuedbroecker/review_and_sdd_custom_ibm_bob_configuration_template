@@ -7,12 +7,14 @@ bob_config_collection/
 ├── modes/<group>/*-mode.yaml        leading mode definitions (one mode per file)
 ├── modes/<group>/references/...     supporting files of a mode group
 ├── skills/<skill>/SKILL.md          leading skills (+ README.md, references/)
+├── hooks/hooks.json                 leading lifecycle hooks: manifest (id, file, events, registration)
+├── hooks/*.mjs                      hook scripts
 └── code/
     ├── src/extension.js             VS Code UI: activity bar webview panel, commands, pickers, confirmation
-    ├── src/lib/catalog.js           scans a collection folder → modes, skills, support files
-    ├── src/lib/install.js           plans file writes: path rewrite, mode upsert, MCP merge
+    ├── src/lib/catalog.js           scans a collection folder → modes, skills, hooks, support files
+    ├── src/lib/install.js           plans file writes: path rewrite, mode upsert, MCP merge, hook-settings merge
     ├── src/lib/github.js            downloads a collection from a public GitHub repository
-    ├── src/lib/docs.js              builds the Markdown documentation of a mode or skill (preview before install)
+    ├── src/lib/docs.js              builds the Markdown documentation of a mode, skill, or hook (preview before install)
     ├── src/config/install-layout.json   collection path → workspace path mapping
     ├── src/tools/build.js           validates and bundles the collection for packaging
     └── src/tools/sync-workspace.js  CLI: updates a workspace .bob/ (template sync)
@@ -32,12 +34,14 @@ configured source, reads the installed mode slugs from `.bob/custom_modes.yaml`,
 and calls `buildWebviewHtml` to render the panel. The HTML contains:
 
 - A **toolbar** of secondary buttons (Docs, Full Group, Other, Source, Refresh).
-- A **summary bar** showing the total mode and skill counts.
+- A **summary bar** showing the total mode, skill, and hook counts.
 - A collapsible **Modes** section: one nested `<details>` per group, each
   containing mode cards with a bold name, truncated description, coloured tag
   pills (group name + Installed/Custom Mode), and an **Install** / **Update**
   button.
 - A collapsible **Skills** section with skill cards and Install buttons.
+- A collapsible **Hooks** section (only when the collection declares hooks in
+  `hooks/hooks.json`) with hook cards showing the events they run on.
 
 Every button carries a `data-cmd` attribute. The inline script calls
 `acquireVsCodeApi().postMessage({ command, slug? })` on click. The provider's
@@ -89,6 +93,18 @@ A collection in another repository can ship its own
 `code/src/config/install-layout.json`, which takes precedence over the bundled
 one.
 
+## Hook install
+
+Hooks are collection-level (not part of a mode group). `hooks/hooks.json`
+declares each hook: `id`, `file` (the script, copied byte for byte to the
+layout's `hooks.target`, default `.bob/hooks/`), `events`, and `registration`.
+`install.planHooks` copies the script and merges the registration into the
+layout's `hooks.settingsFile` (default `.bob/settings.json`):
+`install.mergeHookSettings` matches an existing entry per event by its
+`command` and updates it in place (keys the user added, such as `env`, are
+kept); everything else in the settings file stays untouched, so the merge is
+idempotent. Layouts without a `hooks` entry get this default.
+
 ## custom_modes.yaml upsert
 
 `install.upsertModes` edits the YAML as text so that formatting, comments, and
@@ -103,7 +119,9 @@ the folded (`>-`) blocks of other modes stay exactly as they are:
 
 - **Leading side:** `bob_config_collection/`.
 - **Scope (default):** modes that exist in both places, plus every skill those
-  modes reference. Modes that exist only in `.bob/` are not touched.
+  modes reference and every collection hook whose script already exists in
+  `.bob/hooks/` (including its registration in `.bob/settings.json`). Modes
+  that exist only in `.bob/` are not touched.
 - **Enforcement:** `test/template-sync.test.js` and `npm run sync:check` fail
   while `.bob/` differs from the collection.
 

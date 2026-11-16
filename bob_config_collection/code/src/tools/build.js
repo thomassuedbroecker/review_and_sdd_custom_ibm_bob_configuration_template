@@ -2,8 +2,8 @@
 'use strict';
 
 // Prepares bob_config_collection/code for `vsce package`:
-//   - copies ../modes, ../skills and the install layout into dist/collection/
-//     (the offline "bundled" source of the extension)
+//   - copies ../modes, ../skills, ../hooks and the install layout into
+//     dist/collection/ (the offline "bundled" source of the extension)
 //   - copies the repository LICENSE next to package.json (required by vsce)
 // Fails if the collection does not load cleanly.
 
@@ -22,6 +22,7 @@ for (const g of catalog.groups) for (const m of g.modes) {
   for (const s of m.missingSkills) problems.push(`mode ${m.slug} references missing skill ${s}`);
 }
 for (const s of catalog.skills) if (!s.hasSkillFile) problems.push(`skill ${s.id} has no SKILL.md`);
+for (const h of catalog.hooks) if (!h.hasFile) problems.push(`hook ${h.id} references missing file ${h.file}`);
 if (problems.length) {
   console.error(`Collection is not consistent:\n  ${problems.join('\n  ')}`);
   process.exit(1);
@@ -29,7 +30,8 @@ if (problems.length) {
 
 fs.rmSync(distCollection, { recursive: true, force: true });
 const filter = (src) => !SKIP.has(path.basename(src));
-for (const dir of ['modes', 'skills']) {
+for (const dir of ['modes', 'skills', 'hooks']) {
+  if (!fs.existsSync(path.join(collectionDir, dir))) continue;
   fs.cpSync(path.join(collectionDir, dir), path.join(distCollection, dir), { recursive: true, filter });
 }
 const layoutDest = path.join(distCollection, ...LAYOUT_PATH.split('/'));
@@ -44,4 +46,4 @@ if (!fs.existsSync(license)) {
 fs.copyFileSync(license, path.join(codeDir, 'LICENSE'));
 
 const modeCount = catalog.groups.reduce((n, g) => n + g.modes.length, 0);
-console.log(`Bundled ${modeCount} modes in ${catalog.groups.length} group(s) and ${catalog.skills.length} skills into ${path.relative(codeDir, distCollection)}/`);
+console.log(`Bundled ${modeCount} modes in ${catalog.groups.length} group(s), ${catalog.skills.length} skills, and ${catalog.hooks.length} hook(s) into ${path.relative(codeDir, distCollection)}/`);

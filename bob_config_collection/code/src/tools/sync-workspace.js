@@ -6,9 +6,10 @@
 //   node src/tools/sync-workspace.js --target <workspace> [--all] [--check] [--collection <dir>]
 //
 // Default: only modes whose slug already exists in <workspace>/.bob/custom_modes.yaml
-// are replaced (overlap), together with the skills those modes reference and
-// every collection skill that already exists in <workspace>/.bob/skills/.
-// --all     also add every other mode and every skill of the collection
+// are replaced (overlap), together with the skills those modes reference,
+// every collection skill that already exists in <workspace>/.bob/skills/, and
+// every collection hook whose script already exists in <workspace>/.bob/hooks/.
+// --all     also add every other mode, skill, and hook of the collection
 // --check   write nothing; exit 1 and list the files that differ
 
 const path = require('path');
@@ -38,20 +39,27 @@ function planSync({ target, collection, all }) {
   // skill that already exists in the target, so no shared skill can drift.
   const shared = new Set([...install.skillsForModes(catalog, slugs), ...install.existingSkillIds(catalog, target)]);
   const skills = all ? catalog.skills.map((s) => s.id) : catalog.skills.map((s) => s.id).filter((id) => shared.has(id));
+  const hooks = all ? catalog.hooks.map((h) => h.id) : install.existingHookIds(catalog, target);
   return {
     slugs,
     skills,
-    plan: [...install.planModes(catalog, target, slugs), ...install.planSkills(catalog, target, skills)],
+    hooks,
+    plan: [
+      ...install.planModes(catalog, target, slugs),
+      ...install.planSkills(catalog, target, skills),
+      ...install.planHooks(catalog, target, hooks),
+    ],
   };
 }
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const { slugs, skills, plan } = planSync(args);
+  const { slugs, skills, hooks, plan } = planSync(args);
   const drift = plan.filter((p) => p.status !== 'unchanged');
   console.log(`Collection: ${args.collection}\nTarget:     ${args.target}`);
   console.log(`Modes (${slugs.length}): ${slugs.join(', ') || '-'}`);
   console.log(`Skills (${skills.length}): ${skills.join(', ') || '-'}`);
+  console.log(`Hooks (${hooks.length}): ${hooks.join(', ') || '-'}`);
   for (const p of drift) console.log(`  ${p.status.padEnd(7)} ${p.dest}`);
   if (args.check) {
     console.log(drift.length ? `${drift.length} file(s) differ from the collection.` : 'In sync with the collection.');

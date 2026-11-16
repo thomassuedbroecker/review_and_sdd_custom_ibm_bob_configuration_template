@@ -3,7 +3,7 @@
 **Purpose**: Identify security gaps, potential attack vectors, and provide security recommendations.
 
 **Key Areas**:
-- OWASP Top 10 vulnerabilities
+- OWASP Top 10 (2025 edition) vulnerabilities
 - STRIDE threat modeling
 - Authentication/authorization
 - Data protection and encryption

@@ -166,22 +166,26 @@ Use these resources when a task requires stronger grounding:
 
 - ISO/IEC/IEEE 29148: Requirements engineering and requirements specification
   guidance.
-- SWEBOK Guide: Software engineering knowledge areas and lifecycle framing.
+- SWEBOK Guide v4.0 (2024): Software engineering knowledge areas and lifecycle
+  framing, including the Software Architecture, Software Security, and
+  Software Engineering Operations knowledge areas added in v4.
 - IREB CPRE: Requirements engineering terminology and practice.
 - C4 Model: Architecture communication across context, container, component,
   and code views.
 - arc42: Practical architecture documentation template.
 - Architecture Decision Records (ADRs): Lightweight architecture decision
   capture.
-- OWASP ASVS and OWASP Top 10: Application security requirements and review.
+- OWASP ASVS (current edition 5.0, 2025) and OWASP Top 10 (current edition
+  2025): Application security requirements and review.
 - NIST Secure Software Development Framework (SSDF): Secure development
   practices.
 - IBM Bob documentation and IBM spec-driven development guidance: product and
   SDD framing for AI-assisted lifecycle work.
 - NIST AI Risk Management Framework and NIST Generative AI Profile: AI
   governance, trustworthiness, human oversight, and validation framing.
-- OWASP Top 10 for Large Language Model Applications: LLM, agent, prompt,
-  data exposure, and generated-output risk baseline.
+- OWASP GenAI Security Project — Top 10 for LLM Applications (2026 edition)
+  and Top 10 for Agentic Applications (2026): LLM, agent, prompt, data
+  exposure, and generated-output risk baseline.
 - The Twelve-Factor App: Cloud-native operational design principles.
 
 For the full source map, including why AI Integration and Usage was added as

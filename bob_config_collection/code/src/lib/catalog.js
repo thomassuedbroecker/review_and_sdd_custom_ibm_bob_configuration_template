@@ -1,7 +1,8 @@
 'use strict';
 
-// Scans a bob_config_collection folder (modes/<group>/*-mode.yaml and
-// skills/<skill>/) and describes what can be installed into a Bob workspace.
+// Scans a bob_config_collection folder (modes/<group>/*-mode.yaml,
+// skills/<skill>/, and hooks/ with its hooks.json manifest) and describes
+// what can be installed into a Bob workspace.
 
 const fs = require('fs');
 const path = require('path');
@@ -10,6 +11,7 @@ const MODE_SUFFIX = '-mode.yaml';
 const IGNORED_NAMES = new Set(['__pycache__', '.DS_Store', 'node_modules']);
 
 const LAYOUT_PATH = 'code/src/config/install-layout.json';
+const HOOKS_MANIFEST = 'hooks.json';
 
 // A collection may ship its own layout (a reusable repository created from the
 // template); otherwise the layout bundled with this code is used.
@@ -17,6 +19,27 @@ function loadLayout(collectionDir) {
   const own = collectionDir && path.join(collectionDir, LAYOUT_PATH);
   const file = own && fs.existsSync(own) ? own : path.join(__dirname, '..', 'config', 'install-layout.json');
   return JSON.parse(fs.readFileSync(file, 'utf8'));
+}
+
+// Older collection layouts have no hooks entry; this default matches the
+// template's hooks/ folder and .bob/ workspace layout.
+function defaultHooksLayout() {
+  return { collectionDir: 'hooks', target: '.bob/hooks/', settingsFile: '.bob/settings.json' };
+}
+
+// Hooks are declared in <hooks dir>/hooks.json: id, file, events, and the
+// registration object that is merged into the workspace settings file.
+function loadHooks(collectionDir, layout) {
+  const hooksDir = path.join(collectionDir, layout.hooks.collectionDir);
+  const manifest = path.join(hooksDir, HOOKS_MANIFEST);
+  if (!fs.existsSync(manifest)) return [];
+  const entries = JSON.parse(fs.readFileSync(manifest, 'utf8')).hooks || [];
+  return entries.map((h) => {
+    if (!h.id || !h.file || !Array.isArray(h.events) || !h.events.length || !h.registration?.command) {
+      throw new Error(`${layout.hooks.collectionDir}/${HOOKS_MANIFEST}: every hook needs id, file, events, and registration.command`);
+    }
+    return { ...h, dir: hooksDir, hasFile: fs.existsSync(path.join(hooksDir, h.file)) };
+  });
 }
 
 // Groups without a layout entry: no path rewriting, files go to documentation.
@@ -107,6 +130,7 @@ function describeSkill(text) {
 }
 
 function loadCatalog(collectionDir, layout = loadLayout(collectionDir)) {
+  layout.hooks = layout.hooks || defaultHooksLayout();
   const examples = new Set(layout.exampleSkills || []);
   const skillsDir = path.join(collectionDir, layout.skills.collectionDir);
   const skills = listDirs(skillsDir).map((id) => {
@@ -147,7 +171,10 @@ function loadCatalog(collectionDir, layout = loadLayout(collectionDir)) {
     return { id, dir, label: groupLayout.label, layout: groupLayout, modes, supportFiles };
   });
 
-  return { collectionDir, layout, groups, skills, skillById };
+  const hooks = loadHooks(collectionDir, layout);
+  const hookById = new Map(hooks.map((h) => [h.id, h]));
+
+  return { collectionDir, layout, groups, skills, skillById, hooks, hookById };
 }
 
-module.exports = { LAYOUT_PATH, loadLayout, loadCatalog, listFiles, parseModeFile, findSkillRefs, describeSkill, MODE_SUFFIX };
+module.exports = { LAYOUT_PATH, HOOKS_MANIFEST, loadLayout, loadCatalog, listFiles, parseModeFile, findSkillRefs, describeSkill, MODE_SUFFIX };

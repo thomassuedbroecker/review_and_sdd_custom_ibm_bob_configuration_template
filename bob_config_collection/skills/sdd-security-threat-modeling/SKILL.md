@@ -4,7 +4,7 @@
 Identify security gaps, potential attack vectors, and provide actionable security recommendations.
 
 ## Expertise Areas
-- OWASP Top 10 vulnerabilities
+- OWASP Top 10 (2025 edition) vulnerabilities
 - STRIDE threat modeling (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege)
 - Authentication and authorization mechanisms
 - Data protection and encryption
@@ -74,18 +74,21 @@ Analyze each threat category:
 - Are there privilege escalation vulnerabilities?
 - Is the principle of least privilege enforced?
 
-### 5. OWASP Top 10 Assessment
+### 5. OWASP Top 10 Assessment (2025 Edition)
 Check for:
-1. **Broken Access Control**: Unauthorized access to resources
-2. **Cryptographic Failures**: Weak encryption, exposed secrets
-3. **Injection**: SQL, NoSQL, OS command injection
-4. **Insecure Design**: Missing security controls in design
-5. **Security Misconfiguration**: Default configs, unnecessary features
-6. **Vulnerable Components**: Outdated dependencies
-7. **Authentication Failures**: Weak authentication mechanisms
-8. **Software and Data Integrity**: Unsigned code, insecure CI/CD
-9. **Logging and Monitoring Failures**: Insufficient logging
-10. **Server-Side Request Forgery (SSRF)**: Unvalidated URLs
+1. **A01 Broken Access Control**: Unauthorized access to resources; now also covers SSRF (unvalidated server-side request targets, CWE-918)
+2. **A02 Security Misconfiguration**: Default configs, unnecessary features, missing hardening
+3. **A03 Software Supply Chain Failures**: Vulnerable or compromised dependencies, build tools, and update/distribution channels (expands the former "Vulnerable Components")
+4. **A04 Cryptographic Failures**: Weak encryption, exposed secrets
+5. **A05 Injection**: SQL, NoSQL, OS command injection
+6. **A06 Insecure Design**: Missing security controls in design
+7. **A07 Authentication Failures**: Weak authentication mechanisms
+8. **A08 Software or Data Integrity Failures**: Unsigned code, insecure CI/CD
+9. **A09 Security Logging and Alerting Failures**: Insufficient logging and missing alerting
+10. **A10 Mishandling of Exceptional Conditions**: Improper error and exception handling, fail-open behavior, crash-driven vulnerabilities (new in 2025)
+
+Reference: OWASP Top 10:2025 — <https://top10.owasp.org/2025>. SSRF is no
+longer a standalone category; it is mapped under A01 Broken Access Control.
 
 ### 6. Compliance Requirements
 Assess compliance with:
@@ -163,6 +166,10 @@ For each security issue:
 - [ ] Security headers configured
 - [ ] CORS properly configured
 - [ ] Dependency vulnerability scanning
+- [ ] Dependency versions pinned via lock files
+- [ ] SBOM available for releases (SPDX or CycloneDX)
+- [ ] Build and CI/CD pipeline integrity protected (signed artifacts, least-privilege tokens)
+- [ ] Error and exception handling fails securely (no fail-open paths, no sensitive data in error output)
 - [ ] Regular security testing
 - [ ] Incident response plan
 - [ ] Security training for developers

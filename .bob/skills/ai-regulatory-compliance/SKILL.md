@@ -50,16 +50,6 @@ Rules that follow from this scope:
 5. If a prompt field still contains an unfilled template placeholder such as
    `[Client or company name]` or `[e.g. …]`, treat it as **not provided** and ask in Step 2.
 
-### Regulatory framing (state this in every output)
-
-EU AI Act Art. 13, 14 and 16 are obligations for **providers of high-risk AI
-systems**. They do not regulate the use of an AI coding assistant to build
-software. This skill uses those articles as a **voluntary transparency
-structure** for documenting AI-assisted development. The resulting document is
-**not** evidence of compliance, not a conformity assessment, and not legal
-advice. Put this statement in the *Limitations & Known Gaps* section of every
-generated document.
-
 ---
 
 ## Step 0 — Verify the Workspace Prerequisites
@@ -73,9 +63,6 @@ Check the following before proceeding. Stop and report any missing item clearly.
 If `task-history/` is missing, stop and tell the consultant:
 > `task-history/` is required. Ask the engineering team to export each Bob task session
 > as a JSON file and place them in numbered sub-folders before running this skill.
-> The export hook `.bob/hooks/export-task-history.mjs` (registered in `.bob/settings.json`)
-> creates these folders automatically. It comes from the
-> [custom IBM Bob intro workshop](https://github.com/thomassuedbroecker/custom-ibm-bob-intro-workshop-template).
 
 ---
 
@@ -256,12 +243,9 @@ evidence collected in Steps 1, 2, and 2.5. For every item, record the
 > Full text: <https://artificialintelligenceact.eu/article/50/>
 > EUR-Lex: <https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32024R1689>
 
-> 🔴 **Already in force.** Art. 50 has applied since 2 August 2026 to the AI systems it names.
+> 🔴 **Already in force.** Art. 50 has been legally binding since 2 August 2026.
 > If the system interacts with end users, these items are a **current legal obligation** —
 > not a future one. Inform the consultant of this before proceeding.
-> Exception: for systems that generate synthetic content and were placed on the market
-> before 2 August 2026, the Digital Omnibus on AI (Regulation (EU) 2026/1744) gives until
-> 2 December 2026 to comply with Art. 50(2). Check the consolidated text on EUR-Lex.
 
 Checklist items derived from Art. 50 §1–§2:
 

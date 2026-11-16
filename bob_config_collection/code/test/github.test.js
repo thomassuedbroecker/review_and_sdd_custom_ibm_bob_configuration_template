@@ -37,17 +37,20 @@ test('downloads only installable collection files and caches the source', async 
   const files = {
     'bob_config_collection/modes/demo/demo-mode.yaml': MODE,
     'bob_config_collection/skills/sdd-demo/SKILL.md': '# Demo\n\n## Purpose\nDemo skill.\n',
+    'bob_config_collection/hooks/hooks.json': JSON.stringify({ hooks: [{ id: 'h', file: 'h.mjs', events: ['Stop'], registration: { type: 'command', command: 'node .bob/hooks/h.mjs' } }] }),
+    'bob_config_collection/hooks/h.mjs': 'export {};\n',
     'bob_config_collection/code/src/extension.js': 'ignored',
     'README.md': 'ignored',
   };
   const meta = await downloadCollection({ repository: 'owner/repo', ref: 'main', destDir: dest, fetchImpl: fakeFetch(files, calls) });
-  assert.equal(meta.files, 2);
+  assert.equal(meta.files, 4);
   assert.ok(!calls.some((u) => u.includes('extension.js') || u.endsWith('README.md')));
   assert.ok(readCachedSource(dest, { repository: 'owner/repo', ref: 'main', collectionPath: 'bob_config_collection' }));
   assert.equal(readCachedSource(dest, { repository: 'other/repo', ref: 'main', collectionPath: 'bob_config_collection' }), undefined);
 
   const catalog = loadCatalog(dest);
   assert.deepEqual(catalog.groups[0].modes[0].skills, ['sdd-demo']);
+  assert.deepEqual(catalog.hooks.map((h) => h.id), ['h'], 'downloaded hooks are in the catalog');
   fs.rmSync(path.dirname(dest), { recursive: true, force: true });
 });
 

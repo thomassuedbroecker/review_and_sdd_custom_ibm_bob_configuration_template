@@ -6,9 +6,11 @@
 > by IBM, and not supported by IBM. IBM Bob is a trademark of IBM Corporation.
 > Use this extension at your own risk.
 
-VS Code extension that installs custom **modes**, **skills**, and **other
-configurations** (scripts, MCP configuration, guides) from a
+VS Code extension that installs custom **modes**, **skills**, **hooks**, and
+**other configurations** (scripts, MCP configuration, guides) from a
 `bob_config_collection` into the `.bob/` folder of an IBM Bob workspace.
+Hooks are also registered: their entries from the collection's
+`hooks/hooks.json` are merged into the workspace's `.bob/settings.json`.
 
 By default it loads the collection from the public GitHub repository
 [thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template](https://github.com/thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template).
@@ -21,23 +23,24 @@ collection bundled with the extension (offline), or use a local folder.
 
 After installation a **Bob Config Importer** icon appears in the VS Code /
 IBM Bob activity bar (left-hand icon strip). Click it to open the catalog panel,
-which shows all available modes and skills as cards — grouped, with tag pills and
-an **Install** button per item — plus a toolbar for the remaining commands. No
-Command Palette required.
+which shows all available modes, skills, and hooks as cards — grouped, with tag
+pills and an **Install** button per item — plus a toolbar for the remaining
+commands. No Command Palette required.
 
 ## Commands
 
 All actions are also reachable via the Command Palette (category **Bob Config**):
 
-- **Read Mode or Skill Documentation…**: read any mode or skill without installing it
+- **Read Mode, Skill, or Hook Documentation…**: read any mode, skill, or hook without installing it
 - **Import Modes…**: pick modes; the skills they reference can be installed too
 - **Import Skills…**: pick skills
+- **Import Hooks…**: pick lifecycle hooks; the script goes to `.bob/hooks/` and its registration is merged into `.bob/settings.json`
 - **Import Other Configurations…**: scripts, MCP servers, guides, diagrams, images
 - **Import Complete Mode Group…**: everything of one mode group
 - **Select Collection Source…** / **Refresh Collection**
 
-In the mode and skill pickers, select the **book icon** next to an entry to
-read its documentation in a Markdown preview before you install it.
+In the mode, skill, and hook pickers, select the **book icon** next to an entry
+to read its documentation in a Markdown preview before you install it.
 
 The collection is the leading configuration. Existing modes with the same slug
 and files with the same path are replaced after you confirm.

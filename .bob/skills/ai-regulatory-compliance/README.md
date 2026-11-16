@@ -9,11 +9,6 @@
 > application uses at runtime (agents, LLM calls, categorisation, end-user disclosures)
 > are **out of scope** and need a separate assessment. See *Scope* in `SKILL.md`.
 
-> **Regulatory framing.** EU AI Act Art. 13, 14 and 16 are obligations for providers of
-> high-risk AI systems, not for using an AI coding assistant. This skill uses them as a
-> **voluntary transparency structure**. Its output is not evidence of compliance, not a
-> conformity assessment, and not legal advice.
-
 ---
 
 ## What this skill does
@@ -41,9 +36,7 @@ When activated, this skill guides Bob through a structured 6-step process that:
 | **Art. 16** | Obligations of Providers of High-Risk AI Systems | 2 Dec 2027 (Annex III) · 2 Aug 2028 (Annex I) | 🟡 Future obligation |
 
 > ⚠️ **Art. 50 is already legally binding** (since 2 August 2026). If the system interacts
-> directly with end users, the disclosure obligation applies **today**. Exception: systems
-> that generate synthetic content and were on the market before 2 August 2026 have until
-> 2 December 2026 to comply with Art. 50(2) (Regulation (EU) 2026/1744).
+> directly with end users, the disclosure obligation applies **today**.
 >
 > Art. 13, 14, and 16 are future obligations — but preparing compliance evidence **now**
 > is the correct approach. Retroactive documentation of a completed project is far harder
@@ -154,7 +147,7 @@ The document always contains these sections in order:
 
 ## Checklist items at a glance
 
-### EU AI Act Art. 50 (the AI systems named in Art. 50, regardless of risk class — applies since 2 Aug 2026)
+### EU AI Act Art. 50 (all AI tiers — earliest enforcement 2 Aug 2026)
 - End users informed they interact with an AI system
 - AI-generated content disclosed as AI-generated
 - Deep-fake / synthetic media disclosures in place (if applicable)
@@ -304,17 +297,8 @@ The skill reads them in two passes:
 ## How `task-history/` is filled in this workspace
 
 Entries can be created **automatically** (once enabled) by the lifecycle hook
-`.bob/hooks/export-task-history.mjs`, registered on the
-Bob `Stop` event in `.bob/settings.json`.
-
-The hook and `settings.json` are copied unchanged from the
-[custom IBM Bob intro workshop](https://github.com/thomassuedbroecker/custom-ibm-bob-intro-workshop-template)
-(Apache-2.0); see [`CONTENT_PROVENANCE.md`](../../../CONTENT_PROVENANCE.md). The hook only
-reads local Bob storage and writes files into `task-history/`. It makes no network calls.
-
-> 🔒 **Privacy:** the exports contain **complete conversations**, including any client code
-> or secrets that appeared in a session. In this template `task-history/` is listed in
-> `.gitignore`, so exports are not committed by accident.
+[`.bob/hooks/export-task-history.mjs`](../../hooks/export-task-history.mjs), registered on the
+Bob `Stop` event in [`.bob/settings.json`](../../settings.json).
 
 | Step | How |
 |---|---|

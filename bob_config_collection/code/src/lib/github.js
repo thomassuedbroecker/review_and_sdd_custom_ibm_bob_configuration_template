@@ -1,7 +1,8 @@
 'use strict';
 
 // Downloads the installable part of a bob_config_collection (modes/, skills/,
-// and the collection's own install layout) from a public GitHub repository.
+// hooks/, and the collection's own install layout) from a public GitHub
+// repository.
 
 const fs = require('fs');
 const path = require('path');
@@ -21,7 +22,7 @@ function validate({ repository, ref, collectionPath }) {
 }
 
 function isInstallable(rel) {
-  return rel.startsWith('modes/') || rel.startsWith('skills/') || rel === LAYOUT_PATH;
+  return rel.startsWith('modes/') || rel.startsWith('skills/') || rel.startsWith('hooks/') || rel === LAYOUT_PATH;
 }
 
 function encodePath(p) {

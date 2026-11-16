@@ -1,7 +1,7 @@
 'use strict';
 
-// Builds the Markdown documentation shown for a mode or skill before it is
-// installed. Pure functions: no VS Code dependency.
+// Builds the Markdown documentation shown for a mode, skill, or hook before
+// it is installed. Pure functions: no VS Code dependency.
 
 const fs = require('fs');
 const path = require('path');
@@ -146,4 +146,27 @@ function skillDocumentation(catalog, skill) {
   return out.join('\n');
 }
 
-module.exports = { modeDocumentation, skillDocumentation, modeDocuments, DOC_KIND_LABEL, readValue, readList };
+function hookDocumentation(catalog, hook) {
+  const layout = catalog.layout.hooks;
+  const out = [
+    `# Hook: ${hook.id}`,
+    '',
+    `Installs \`${layout.target}${hook.file}\` · runs on ${hook.events.map((e) => `\`${e}\``).join(', ')}`,
+    '',
+  ];
+  if (hook.description) out.push(`> ${hook.description}`, '');
+  out.push(
+    '## Registration as installed',
+    '',
+    `Merged into \`${layout.settingsFile}\`: an existing entry with the same command is updated; your other settings and hooks are kept.`,
+    '',
+    '```json',
+    JSON.stringify({ hooks: Object.fromEntries(hook.events.map((e) => [e, [{ hooks: [hook.registration] }]])) }, null, 2),
+    '```',
+    '');
+  const readme = readIfExists(path.join(hook.dir, 'README.md'));
+  if (readme) out.push('## Hooks README.md', '', readme.trim(), '');
+  return out.join('\n');
+}
+
+module.exports = { modeDocumentation, skillDocumentation, hookDocumentation, modeDocuments, DOC_KIND_LABEL, readValue, readList };

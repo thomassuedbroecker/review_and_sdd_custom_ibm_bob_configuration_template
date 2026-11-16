@@ -7,13 +7,13 @@ const vscode = require('vscode');
 const { loadCatalog } = require('./lib/catalog');
 const install = require('./lib/install');
 const { downloadCollection, readCachedSource } = require('./lib/github');
-const { modeDocumentation, skillDocumentation, modeDocuments, DOC_KIND_LABEL } = require('./lib/docs');
+const { modeDocumentation, skillDocumentation, hookDocumentation, modeDocuments, DOC_KIND_LABEL } = require('./lib/docs');
 
 // --- sidebar webview ------------------------------------------------------------
 
 // Builds the full HTML catalog panel (groups → mode cards with tag pills and
-// Install buttons, plus Skills and Other Configurations sections).
-function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = []) {
+// Install buttons, plus Skills, Hooks, and Other Configurations sections).
+function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = [], installedHooks = []) {
   const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
   // tag pill colours (group label → hue)
@@ -87,7 +87,34 @@ function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = []) 
     </div>`;
   }).join('');
 
+  const hookCards = catalog.hooks.map((h) => {
+    const desc = h.description || '';
+    const truncated = desc.length > 110 ? desc.slice(0, 107) + '…' : desc;
+    const installed = installedHooks.includes(h.id);
+    return `
+    <div class="card">
+      <div class="card-body">
+        <div class="card-name"><a class="doc-link" href="#" title="Read documentation" data-cmd="bobConfigImporter.showHookDoc" data-slug="${esc(h.id)}">${esc(h.id)}</a></div>
+        <div class="card-desc">${esc(truncated)}</div>
+        <div class="card-footer">
+          <div class="pills">${pill(installed ? 'Installed' : 'Hook', installed ? 120 : 30)}${h.events.map((e) => pill(e, 200)).join('')}</div>
+          <div class="actions">
+            <button class="btn-docs" data-cmd="bobConfigImporter.showHookDoc" data-slug="${esc(h.id)}">Docs</button>
+            <button class="btn-install" data-cmd="bobConfigImporter.installHook" data-slug="${esc(h.id)}" title="Installs the hook script and registers it in ${esc(catalog.layout.hooks.settingsFile)}">${installed ? 'Update' : 'Install'}</button>
+          </div>
+        </div>
+      </div>
+    </div>`;
+  }).join('');
+
+  const hooksSection = catalog.hooks.length ? `
+<details>
+  <summary><span class="group-icon">⚓</span>Hooks<span class="group-count">${catalog.hooks.length}</span></summary>
+  ${hookCards}
+</details>` : '';
+
   const totalSkills = catalog.skills.length;
+  const hooksSummary = catalog.hooks.length ? ` · ${catalog.hooks.length} hooks` : '';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -199,7 +226,7 @@ function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = []) 
   <button data-cmd="bobConfigImporter.selectSource">⚙ Source</button>
   <button data-cmd="bobConfigImporter.refreshCollection">↺ Refresh</button>
 </div>
-<div class="summary-bar">${modeCount} modes · ${totalSkills} skills</div>
+<div class="summary-bar">${modeCount} modes · ${totalSkills} skills${hooksSummary}</div>
 <details open>
   <summary><span class="group-icon">≡</span>Modes<span class="group-count">${modeCount}</span></summary>
   ${groupSections}
@@ -207,7 +234,7 @@ function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = []) 
 <details>
   <summary><span class="group-icon">📚</span>Skills<span class="group-count">${totalSkills}</span></summary>
   ${skillCards}
-</details>
+</details>${hooksSection}
 <script nonce="${nonce}">
   const vscode = acquireVsCodeApi();
   document.addEventListener('click', (e) => {
@@ -265,7 +292,8 @@ class BobConfigWebviewProvider {
       const targetRoot = folders[0]?.uri.fsPath ?? '';
       const installedSlugs = targetRoot ? install.existingModeSlugs(catalog, targetRoot) : [];
       const installedSkills = targetRoot ? install.existingSkillIds(catalog, targetRoot) : [];
-      this._view.webview.html = buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills);
+      const installedHooks = targetRoot ? install.existingHookIds(catalog, targetRoot) : [];
+      this._view.webview.html = buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills, installedHooks);
     } catch (err) {
       if (this._disposed || !this._view) return;
       this._view.webview.html = `<body style="padding:12px;font-family:sans-serif;color:#c00">Error loading collection:<br>${err.message}</body>`;
@@ -307,6 +335,7 @@ function showDocs(catalog, item) {
     const mode = catalog.groups.flatMap((g) => g.modes).find((m) => m.slug === item.slug);
     return docProvider.show(`mode-${mode.slug}`, modeDocumentation(catalog, mode));
   }
+  if (item.hook) return docProvider.show(`hook-${item.hook}`, hookDocumentation(catalog, catalog.hookById.get(item.hook)));
   return docProvider.show(`skill-${item.id}`, skillDocumentation(catalog, catalog.skillById.get(item.id)));
 }
 
@@ -488,6 +517,16 @@ async function pickSkills(catalog, sourceLabel, preselect = []) {
   return picks?.map((p) => p.id);
 }
 
+function hookItems(catalog, preselect = []) {
+  return catalog.hooks.map((h) => ({
+    label: h.id,
+    description: h.events.join(', '),
+    detail: h.description,
+    picked: preselect.includes(h.id),
+    hook: h.id,
+  }));
+}
+
 async function pickGroup(catalog) {
   if (catalog.groups.length === 1) return catalog.groups[0];
   const pick = await vscode.window.showQuickPick(
@@ -536,6 +575,19 @@ async function importSkills(catalog, sourceLabel, targetRoot) {
   const ids = await pickSkills(catalog, sourceLabel);
   if (!ids?.length) return;
   await confirmAndApply(targetRoot, install.planSkills(catalog, targetRoot, ids), 'Import skills');
+}
+
+async function importHooks(catalog, sourceLabel, targetRoot) {
+  if (!catalog.hooks.length) {
+    vscode.window.showInformationMessage('This collection has no hooks.');
+    return;
+  }
+  const picks = await pickWithDocs(catalog, {
+    title: `Import Bob hooks — source: ${sourceLabel}`, items: hookItems(catalog, install.existingHookIds(catalog, targetRoot)),
+  });
+  const ids = picks?.map((p) => p.hook);
+  if (!ids?.length) return;
+  await confirmAndApply(targetRoot, install.planHooks(catalog, targetRoot, ids), 'Import hooks');
 }
 
 async function importOther(catalog, sourceLabel, targetRoot) {
@@ -598,15 +650,22 @@ async function installSkill(catalog, targetRoot, id) {
   await confirmAndApply(targetRoot, install.planSkills(catalog, targetRoot, [id]), `Skill ${id}`, NO_CONFIRM);
 }
 
+async function installHook(catalog, targetRoot, id) {
+  await confirmAndApply(targetRoot, install.planHooks(catalog, targetRoot, [id]), `Hook ${id}`, NO_CONFIRM);
+}
+
 async function installGroup(catalog, targetRoot) {
-  const plan = catalog.groups.flatMap((group) => {
-    const slugs = group.modes.map((m) => m.slug);
-    return [
-      ...install.planModes(catalog, targetRoot, slugs),
-      ...install.planSkills(catalog, targetRoot, install.skillsForModes(catalog, slugs)),
-      ...install.planSupport(catalog, targetRoot, group.id, install.supportEntries(catalog, group.id).map((e) => e.id)),
-    ];
-  });
+  const plan = [
+    ...catalog.groups.flatMap((group) => {
+      const slugs = group.modes.map((m) => m.slug);
+      return [
+        ...install.planModes(catalog, targetRoot, slugs),
+        ...install.planSkills(catalog, targetRoot, install.skillsForModes(catalog, slugs)),
+        ...install.planSupport(catalog, targetRoot, group.id, install.supportEntries(catalog, group.id).map((e) => e.id)),
+      ];
+    }),
+    ...install.planHooks(catalog, targetRoot, catalog.hooks.map((h) => h.id)),
+  ];
   await confirmAndApply(targetRoot, plan, 'Full group', NO_CONFIRM);
 }
 
@@ -626,6 +685,7 @@ async function browseDocs(context) {
       ...modeItems(catalog),
       { label: 'Skills', kind: vscode.QuickPickItemKind.Separator },
       ...skillItems(catalog),
+      ...(catalog.hooks.length ? [{ label: 'Hooks', kind: vscode.QuickPickItemKind.Separator }, ...hookItems(catalog)] : []),
     ];
     const picks = await pickWithDocs(catalog, {
       title: `Bob documentation — source: ${sourceLabel}`, items, canPickMany: false,
@@ -636,12 +696,12 @@ async function browseDocs(context) {
   }
 }
 
-// Opens the documentation of one mode or skill directly (used by the sidebar webview).
+// Opens the documentation of one mode, skill, or hook directly (used by the sidebar webview).
 async function openDoc(context, kind, key) {
   try {
     const loaded = await getCatalog(context);
     if (!loaded) return;
-    const item = kind === 'mode' ? { slug: key } : { id: key };
+    const item = kind === 'mode' ? { slug: key } : kind === 'hook' ? { hook: key } : { id: key };
     await showDocs(loaded.catalog, item);
   } catch (err) {
     vscode.window.showErrorMessage(`Bob Config Importer: ${err.message}`);
@@ -698,6 +758,7 @@ function activate(context) {
   register('browseDocs', () => browseDocs(context));
   register('showModeDoc', (slug) => openDoc(context, 'mode', slug));
   register('showSkillDoc', (id) => openDoc(context, 'skill', id));
+  register('showHookDoc', (id) => openDoc(context, 'hook', id));
   register('openDocFile', (groupId, rel) => openDocFile(context, groupId, rel));
   register('importModes', command(context, async (catalog, sourceLabel, targetRoot, preselectedSlug) => {
     await importModes(catalog, sourceLabel, targetRoot, preselectedSlug);
@@ -707,8 +768,13 @@ function activate(context) {
     await importSkills(catalog, sourceLabel, targetRoot);
     webviewProvider.refresh();
   }));
+  register('importHooks', command(context, async (catalog, sourceLabel, targetRoot) => {
+    await importHooks(catalog, sourceLabel, targetRoot);
+    webviewProvider.refresh();
+  }));
   register('installMode', directCommand(context, webviewProvider, installMode));
   register('installSkill', directCommand(context, webviewProvider, installSkill));
+  register('installHook', directCommand(context, webviewProvider, installHook));
   register('installGroup', directCommand(context, webviewProvider, installGroup));
   register('installOther', directCommand(context, webviewProvider, installOther));
   register('importOther', command(context, importOther));

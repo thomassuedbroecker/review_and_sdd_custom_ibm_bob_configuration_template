@@ -1,0 +1,16 @@
+{
+  "$comment": "Installable IBM Bob lifecycle hooks of this collection. The Bob Config Importer extension and sync-workspace.js copy each hook's file into the workspace hooks folder and merge 'registration' into .bob/settings.json under hooks.<event> (matched by command).",
+  "hooks": [
+    {
+      "id": "export-task-history",
+      "file": "export-task-history.mjs",
+      "description": "Exports the Bob task conversation to task-history/ in the workspace root — the evidence input for the ai-regulatory-compliance skill. The export contains the complete conversation; run it only in a trusted workspace.",
+      "events": ["Stop"],
+      "registration": {
+        "type": "command",
+        "command": "node .bob/hooks/export-task-history.mjs",
+        "timeout": 15
+      }
+    }
+  ]
+}

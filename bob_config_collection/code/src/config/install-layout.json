@@ -6,6 +6,11 @@
     "collectionDir": "skills",
     "target": ".bob/skills/"
   },
+  "hooks": {
+    "collectionDir": "hooks",
+    "target": ".bob/hooks/",
+    "settingsFile": ".bob/settings.json"
+  },
   "exampleSkills": ["sdd-custom-compliance"],
   "groups": {
     "review_sdd": {
