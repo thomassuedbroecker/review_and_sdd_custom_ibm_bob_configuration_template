@@ -144,7 +144,7 @@
     "sync:check": "node src/tools/sync-workspace.js --target ../.. --check"
   },
   "devDependencies": {
-    "@vscode/vsce": "^3.2.1",
+    "@vscode/vsce": "^4.1.1",
     "sharp": "^0.35.5"
   }
 }

@@ -9,6 +9,9 @@ const path = require('path');
 const { LAYOUT_PATH } = require('./catalog');
 
 const SOURCE_FILE = '.source.json';
+// Bump when the set of downloaded folders changes so older caches are re-downloaded.
+// 2: hooks/ is downloaded.
+const CACHE_VERSION = 2;
 const CONCURRENCY = 8;
 
 function validate({ repository, ref, collectionPath }) {
@@ -33,7 +36,7 @@ function encodePath(p) {
 function readCachedSource(destDir, { repository, ref, collectionPath }) {
   try {
     const meta = JSON.parse(fs.readFileSync(path.join(destDir, SOURCE_FILE), 'utf8'));
-    if (meta.repository === repository && meta.ref === ref && meta.collectionPath === collectionPath) return meta;
+    if (meta.cacheVersion === CACHE_VERSION && meta.repository === repository && meta.ref === ref && meta.collectionPath === collectionPath) return meta;
   } catch {
     // no or unreadable cache
   }
@@ -74,7 +77,7 @@ async function downloadCollection({ repository, ref = 'main', collectionPath = '
       }
     };
     await Promise.all(Array.from({ length: Math.min(CONCURRENCY, files.length) }, worker));
-    const meta = { repository, ref, collectionPath, downloadedAt: new Date().toISOString(), files: files.length };
+    const meta = { cacheVersion: CACHE_VERSION, repository, ref, collectionPath, downloadedAt: new Date().toISOString(), files: files.length };
     fs.writeFileSync(path.join(staging, SOURCE_FILE), JSON.stringify(meta, null, 2) + '\n');
     fs.rmSync(destDir, { recursive: true, force: true });
     fs.mkdirSync(path.dirname(destDir), { recursive: true });

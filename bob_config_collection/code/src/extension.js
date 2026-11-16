@@ -107,14 +107,15 @@ function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = [], 
     </div>`;
   }).join('');
 
-  const hooksSection = catalog.hooks.length ? `
-<details>
+  const noHooksHint = `<div class="card"><div class="card-body"><div class="card-desc">No hooks in the loaded collection source. Click ↺ Refresh to reload it, or switch the source with ⚙ Source.</div></div></div>`;
+  const hooksSection = `
+<details open>
   <summary><span class="group-icon">⚓</span>Hooks<span class="group-count">${catalog.hooks.length}</span></summary>
-  ${hookCards}
-</details>` : '';
+  ${catalog.hooks.length ? hookCards : noHooksHint}
+</details>`;
 
   const totalSkills = catalog.skills.length;
-  const hooksSummary = catalog.hooks.length ? ` · ${catalog.hooks.length} hooks` : '';
+  const hooksSummary = ` · ${catalog.hooks.length} hooks`;
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -221,6 +222,7 @@ function buildWebviewHtml(catalog, installedSlugs, nonce, installedSkills = [], 
 <body>
 <div class="toolbar">
   <button data-cmd="bobConfigImporter.browseDocs">📖 Docs</button>
+  <button data-cmd="bobConfigImporter.importHooks">⚓ Hooks</button>
   <button data-cmd="bobConfigImporter.installGroup">⊞ Full Group</button>
   <button data-cmd="bobConfigImporter.installOther">📦 Other</button>
   <button data-cmd="bobConfigImporter.selectSource">⚙ Source</button>
