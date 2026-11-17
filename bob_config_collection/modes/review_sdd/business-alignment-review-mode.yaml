@@ -74,6 +74,12 @@ customModes:
          - Provide business impact assessments
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
       
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read SKILLS/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
+      
       CONFIGURATION GAP DETECTION:
       If the business alignment review requires specialized knowledge not covered by existing capabilities
       (e.g., industry-specific compliance, regulatory frameworks, domain-specific quality attributes),

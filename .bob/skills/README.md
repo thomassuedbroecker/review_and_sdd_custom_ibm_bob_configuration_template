@@ -205,7 +205,7 @@ a dedicated integration is added.
 - Accessibility (`accTitle`/`accDescr`, color never the only signal)
 - AI/agent architecture specifics: control vs. data flow, trust boundaries, agent loops
 
-**When to Use**: Diagram readability reviews, refactoring diagrams in architecture or AI system docs, authoring new Mermaid diagrams, as a deep-dive companion to Documentation Review
+**When to Use**: Diagram readability reviews, refactoring diagrams in architecture or AI system docs, authoring new Mermaid diagrams, as a deep-dive companion to Documentation Review. All other review modes, SDD, and Configuration Gap Detector read it automatically when they create or modify Mermaid diagrams
 
 ---
 

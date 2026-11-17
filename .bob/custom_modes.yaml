@@ -102,6 +102,12 @@ customModes:
       State the selected SDLC phase, review scope, and skill set before producing
       substantial findings.
       
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
+      
       CONFIGURATION GAP DETECTION:
       If you encounter a situation where:
       - The task requires domain knowledge not covered by existing skills
@@ -256,6 +262,12 @@ customModes:
       - "Prepare these requirements for GitHub issue generation"
       - "Create a requirements specification ready for issue tracking"
 
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
+      
       CONFIGURATION GAP DETECTION:
       If you encounter a situation where:
       - The task requires domain knowledge not covered by existing skills
@@ -344,6 +356,12 @@ customModes:
          - Include specific remediation steps
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
       
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
+      
       CONFIGURATION GAP DETECTION:
       If the security review requires specialized knowledge not covered by existing capabilities
       (e.g., quantum-resistant cryptography, zero-trust architecture, blockchain security),
@@ -423,6 +441,12 @@ customModes:
          - Provide performance metrics and benchmarks
          - Include specific optimization recommendations
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
+      
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
       
       CONFIGURATION GAP DETECTION:
       If the performance review requires specialized knowledge not covered by existing capabilities
@@ -504,6 +528,12 @@ customModes:
          - Provide pattern implementation examples
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
       
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
+      
       CONFIGURATION GAP DETECTION:
       If the pattern review requires specialized knowledge not covered by existing capabilities
       (e.g., ML/AI architecture patterns, IoT device patterns, blockchain consensus patterns),
@@ -583,6 +613,12 @@ customModes:
          - Prioritize debt by impact
          - Provide specific refactoring strategies
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
+      
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
       
       CONFIGURATION GAP DETECTION:
       If the maintainability review requires specialized knowledge not covered by existing capabilities
@@ -759,6 +795,12 @@ customModes:
          - Prioritize factors by cloud-readiness impact
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
       
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
+      
       CONFIGURATION GAP DETECTION:
       If the 12-factor review requires specialized knowledge not covered by existing capabilities
       (e.g., serverless-specific factors, edge computing deployment patterns),
@@ -838,6 +880,12 @@ customModes:
          - Recommend alignment improvements
          - Provide business impact assessments
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
+      
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
       
       CONFIGURATION GAP DETECTION:
       If the business alignment review requires specialized knowledge not covered by existing capabilities
@@ -990,6 +1038,12 @@ customModes:
       Include a "Research Summary" section with key findings and sources.
       Do not generate code unless explicitly asked.
       End with a short summary explaining how this improves the current configuration.
+      
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read .bob/skills/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
       
       CONSTRAINTS:
       - Evidence-based gap identification only

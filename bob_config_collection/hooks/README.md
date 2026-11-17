@@ -65,10 +65,24 @@ Event behavior:
 The hook never fails the Bob session: all errors are logged to stderr and the
 process exits with code `0`.
 
+Notes on the task data available at `Stop`:
+
+- The task row can still have an empty `title` / `first_message` while the
+  session is running. The first export is then written to a generic folder such
+  as `01_unnamed_task` and is renamed by a later export once a title exists.
+  The `firstMessage` field of an already written export is not backfilled.
+- The task `status` is recorded as stored by Bob (for example `running` when
+  exported at `Stop`); it is never invented.
+
 ### Registration
 
 The hook runs from the workspace copy in `.bob/hooks/` and is registered in
-[`.bob/settings.json`](../../.bob/settings.json):
+[`.bob/settings.json`](../../.bob/settings.json) (workspace scope, merged on top
+of any global hooks in `~/.bob/settings/settings.json`):
+
+> **Folder trust (Bob Shell):** workspace hooks in `.bob/settings.json` only run
+> in a trusted folder; in an untrusted folder they are skipped silently and no
+> export is written. Global hooks are not affected by folder trust.
 
 ```json
 {

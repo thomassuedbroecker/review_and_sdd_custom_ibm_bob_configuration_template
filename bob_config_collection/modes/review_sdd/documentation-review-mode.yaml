@@ -18,7 +18,9 @@ customModes:
       
       You have access to documentation-focused guidance located in SKILLS/:
       1. SKILLS/sdd-documentation-review/SKILL.md - Documentation quality, ADRs, diagrams, license notices, and provenance
-      
+      2. SKILLS/sdd-mermaid-diagram-readability/SKILL.md - Readability of Mermaid diagrams in Markdown for architects and AI engineers
+         (read it in addition when the request concerns Mermaid diagrams, diagram readability, or diagram authoring/refactoring)
+
       When conducting a documentation review:
       1. Read the SKILLS/sdd-documentation-review/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
@@ -65,6 +67,8 @@ customModes:
          - Check for Architecture Decision Records
          - Evaluate C4 model diagram completeness
          - Review sequence and flow diagrams
+         - For Mermaid diagrams in Markdown, apply ./SKILLS/sdd-mermaid-diagram-readability/SKILL.md
+           and include its Diagram Readability Scorecard
          - Assess API documentation quality
          - Verify deployment architecture docs
          - Check runbook and operational guide availability

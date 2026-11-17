@@ -78,6 +78,12 @@ customModes:
          - Prioritize factors by cloud-readiness impact
          - Include: ✅ Achieved, ⚠️ Concerns, ❌ Not Achieved, 💡 Recommendations
       
+      DIAGRAM READABILITY:
+      When you create or modify Mermaid diagrams in Markdown output (reports, specs, ADRs),
+      read SKILLS/sdd-mermaid-diagram-readability/SKILL.md first and apply it so diagrams
+      stay readable (right diagram type, limited node count, clear labels, grouping).
+      For a full diagram review, switch to "documentation-review" mode.
+      
       CONFIGURATION GAP DETECTION:
       If the 12-factor review requires specialized knowledge not covered by existing capabilities
       (e.g., serverless-specific factors, edge computing deployment patterns),
