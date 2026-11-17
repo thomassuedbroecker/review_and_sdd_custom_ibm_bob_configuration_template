@@ -9,14 +9,16 @@ supporting assets. The Draw.io source file has not yet been added.
 The diagram should provide a concise visual overview of:
 
 - The **Spec-Driven Development** mode as a dedicated requirements and specification-focused mode
-- The relationship between the main mode and the **Requirements Management** skill
+- The relationship between the main mode and its three supporting skills:
+  **SDLC Discovery & Gap Analysis** (Grill Me back-questioning),
+  **Requirements Management**, and **Requirements Traceability**
 - The supporting guidance documents used to onboard and assist users
 - The workflow from requirements discovery to implementation handoff
 - The integration points between SDD and other Bob modes
 
 ## Target Audience
 
-**Primary Users:** Developers, solution architects, product owners, and maintainers who work with [`.bob/custom_modes.yaml`](../../custom_modes.yaml) and the related SDD guidance files.
+**Primary Users:** AI Engineers, Architects, product owners, and maintainers who work with [`.bob/custom_modes.yaml`](../../custom_modes.yaml) and the related SDD guidance files.
 
 **Use Cases:**
 - Understanding what the SDD mode is responsible for
@@ -65,13 +67,26 @@ Spec-Driven Development mode in [`.bob/custom_modes.yaml`](../../custom_modes.ya
    - Reduce ambiguity during delivery
    - Support better validation and stakeholder alignment
 
-### Supporting Skill
+### Supporting Skills
+
+**SDLC Discovery & Gap Analysis Skill (Grill Me)**
+- Implemented in [`skills/sdd-sdlc-discovery-gap-analysis/SKILL.md`](../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
+- Consulted first whenever the intent, SDLC phase, source artifacts, or
+  expected output format are unclear
+- Supplies the Grill Me back-questioning pattern: three to five targeted
+  questions asked before requirements or specifications are drafted, with
+  unanswered points recorded as explicit assumptions
 
 **Requirements Management Skill**
 - Implemented in [`skills/sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)
 - Provides deeper requirements engineering guidance
 - Covers elicitation, prioritization, traceability, validation, and change management
 - Acts as the specialist skill underpinning the SDD mode
+
+**Requirements Traceability Skill**
+- Implemented in [`skills/sdd-requirements-traceability/SKILL.md`](../../skills/sdd-requirements-traceability/SKILL.md)
+- Adds forward, backward, and bidirectional traceability analysis and matrices
+- Keeps requirements linked to GitHub issues, Markdown documents, and code
 
 ### Supporting Documentation
 
@@ -134,7 +149,8 @@ on guidance in [`documentation/SDD-README.md`](../SDD-README.md):
 
 A compact workflow section in the diagram should show:
 
-1. Stakeholder and context discovery
+1. Stakeholder and context discovery, including Grill Me back-questioning
+   when intent, SDLC phase, or source artifacts are unclear
 2. Requirements elicitation and documentation
 3. Specification creation and refinement
 4. Prompt crafting and validation
@@ -158,7 +174,9 @@ When updating the SDD ecosystem:
 ## Related Files
 
 - Main Mode: [`.bob/custom_modes.yaml`](../../custom_modes.yaml)
+- Discovery Skill (Grill Me): [`skills/sdd-sdlc-discovery-gap-analysis/SKILL.md`](../../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md)
 - Requirements Skill: [`skills/sdd-requirements-management/SKILL.md`](../../skills/sdd-requirements-management/SKILL.md)
+- Traceability Skill: [`skills/sdd-requirements-traceability/SKILL.md`](../../skills/sdd-requirements-traceability/SKILL.md)
 - Guide: [`documentation/SDD-README.md`](../SDD-README.md)
 - Quick Start: [`documentation/guides/SDD-QUICK-START.md`](../guides/SDD-QUICK-START.md)
 - Summary: [`documentation/guides/SDD-SUMMARY.md`](../guides/SDD-SUMMARY.md)

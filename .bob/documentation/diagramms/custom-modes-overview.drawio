@@ -10,6 +10,15 @@
         <mxCell id="main-mode" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#4A90E2;strokeColor=#2E5C8A;strokeWidth=4;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="Architecture Review&#xa;(arch-review)&#xa;Main Orchestrator" vertex="1">
           <mxGeometry height="100" width="280" x="595" y="90" as="geometry" />
         </mxCell>
+        <mxCell id="discovery-skill" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#50C878;strokeColor=#2F7C4F;strokeWidth=2;fontSize=16;fontStyle=1;fontColor=#FFFFFF" value="sdd-sdlc-discovery-gap-analysis/SKILL.md&#xa;(Grill Me scope clarification)" vertex="1">
+          <mxGeometry height="80" width="340" x="990" y="100" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-main-discovery" edge="1" parent="1" source="main-mode" style="endArrow=classic;html=1;rounded=0;strokeWidth=2;fontSize=14;strokeColor=#2F7C4F;dashed=1;dashPattern=5 5;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" target="discovery-skill" value="uses first when scope is unclear">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="875" y="140" as="sourcePoint" />
+            <mxPoint x="990" y="140" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="specialized-container" parent="1" style="swimlane;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=16;fontStyle=1;startSize=50" value="Specialized Review Modes" vertex="1">
           <mxGeometry height="700" width="1410" x="30" y="240" as="geometry" />
         </mxCell>

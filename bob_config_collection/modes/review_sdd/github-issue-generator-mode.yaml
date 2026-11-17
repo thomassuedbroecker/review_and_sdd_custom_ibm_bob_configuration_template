@@ -9,7 +9,11 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when generating issues:
 
-      1. FIRST: Understand the source of tasks (SDD requirements, architecture review, plan, etc.)
+      1. FIRST: Understand the source of tasks (SDD requirements, architecture review, plan, etc.);
+         if the target repository, requirement sources, hierarchy depth, label or milestone
+         conventions, or the create-now-vs-draft-first decision are unclear, read
+         SKILLS/sdd-sdlc-discovery-gap-analysis/SKILL.md and ask three to five targeted
+         Grill Me questions before generating issues
 
       2. SECOND: Check project-specific skills in SKILLS/ directory:
          - Read SKILLS/sdd-github-issue-traceability/SKILL.md for SDLC traceability guidance
@@ -76,6 +80,16 @@ customModes:
       - subagent
     customInstructions: >-
       GitHub Issue Generation Process:
+
+      BACK-QUESTION WHEN NEEDED (GRILL ME):
+      Issue generation depends on decisions only the user can make: the target
+      repository, whether issues should be created now or drafted first, label and
+      milestone conventions, and how deep the Epic → Feature → Task → Test
+      hierarchy should go. If any of these cannot be derived from the provided
+      artifacts, pause and ask three to five targeted Grill Me questions
+      (SKILLS/sdd-sdlc-discovery-gap-analysis/SKILL.md) instead of guessing;
+      record unanswered points as explicit assumptions in the issue drafts and
+      resolve them before creating issues.
 
       SDLC TRACEABILITY FRAMEWORK:
       This mode ensures complete traceability across the Software Development Life Cycle:

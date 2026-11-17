@@ -608,7 +608,9 @@ customModes:
       
       You have access to documentation-focused guidance located in .bob/skills/:
       1. .bob/skills/sdd-documentation-review/SKILL.md - Documentation quality, ADRs, diagrams, license notices, and provenance
-      
+      2. .bob/skills/sdd-mermaid-diagram-readability/SKILL.md - Readability of Mermaid diagrams in Markdown for architects and AI engineers
+         (read it in addition when the request concerns Mermaid diagrams, diagram readability, or diagram authoring/refactoring)
+
       When conducting a documentation review:
       1. Read the .bob/skills/sdd-documentation-review/SKILL.md file to understand the review methodology
       2. Apply the skill's review process to the codebase
@@ -655,6 +657,8 @@ customModes:
          - Check for Architecture Decision Records
          - Evaluate C4 model diagram completeness
          - Review sequence and flow diagrams
+         - For Mermaid diagrams in Markdown, apply ./.bob/skills/sdd-mermaid-diagram-readability/SKILL.md
+           and include its Diagram Readability Scorecard
          - Assess API documentation quality
          - Verify deployment architecture docs
          - Check runbook and operational guide availability
@@ -1004,7 +1008,11 @@ customModes:
       Skills Integration Priority:
       CRITICAL: You MUST follow this priority order when generating issues:
 
-      1. FIRST: Understand the source of tasks (SDD requirements, architecture review, plan, etc.)
+      1. FIRST: Understand the source of tasks (SDD requirements, architecture review, plan, etc.);
+         if the target repository, requirement sources, hierarchy depth, label or milestone
+         conventions, or the create-now-vs-draft-first decision are unclear, read
+         .bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md and ask three to five targeted
+         Grill Me questions before generating issues
 
       2. SECOND: Check project-specific skills in .bob/skills/ directory:
          - Read .bob/skills/sdd-github-issue-traceability/SKILL.md for SDLC traceability guidance
@@ -1071,6 +1079,16 @@ customModes:
       - subagent
     customInstructions: >-
       GitHub Issue Generation Process:
+
+      BACK-QUESTION WHEN NEEDED (GRILL ME):
+      Issue generation depends on decisions only the user can make: the target
+      repository, whether issues should be created now or drafted first, label and
+      milestone conventions, and how deep the Epic → Feature → Task → Test
+      hierarchy should go. If any of these cannot be derived from the provided
+      artifacts, pause and ask three to five targeted Grill Me questions
+      (.bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md) instead of guessing;
+      record unanswered points as explicit assumptions in the issue drafts and
+      resolve them before creating issues.
 
       SDLC TRACEABILITY FRAMEWORK:
       This mode ensures complete traceability across the Software Development Life Cycle:

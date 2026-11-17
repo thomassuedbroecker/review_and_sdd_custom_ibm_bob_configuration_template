@@ -5,7 +5,7 @@ Evaluate how well the architecture supports organizational goals, quality attrib
 
 ## Expertise Areas
 - Strategic technology planning
-- Quality attribute requirements (performance, security, availability, scalability, maintainability)
+- Quality attribute requirements aligned with the ISO/IEC 25010:2023 product quality model
 - Stakeholder analysis and management
 - Cost-benefit analysis and ROI evaluation
 - Risk assessment and mitigation strategies
@@ -28,14 +28,17 @@ Evaluate how well the architecture supports organizational goals, quality attrib
 - How does the architecture support business agility?
 
 ### 3. Evaluate Quality Attribute Requirements
-Assess each quality attribute:
-- **Performance**: Response time, throughput, latency requirements
+Assess each quality attribute, aligned with the nine product quality
+characteristics of ISO/IEC 25010:2023:
+- **Functional Suitability**: Completeness and correctness of the required business functionality
+- **Performance Efficiency**: Response time, throughput, latency, resource utilization
+- **Compatibility**: Co-existence and interoperability with other systems
+- **Interaction Capability** (2023 successor of Usability): User experience, accessibility, range of users and interaction models
+- **Reliability**: Availability and uptime requirements, fault tolerance, recoverability, error rates, data consistency, disaster recovery objectives
 - **Security**: Data protection, compliance, access control needs
-- **Availability**: Uptime requirements, disaster recovery objectives
-- **Scalability**: Growth projections, peak load handling
-- **Maintainability**: Change frequency, team structure, skill requirements
-- **Usability**: User experience requirements, accessibility needs
-- **Reliability**: Error rates, fault tolerance, data consistency
+- **Maintainability**: Change frequency, team structure, skill requirements, modularity, testability
+- **Flexibility** (2023 successor of Portability): Adaptability, scalability, growth projections, peak load handling, installability
+- **Safety** (new in the 2023 revision): Avoidance of harm to people, property, or the environment in the intended context of use
 
 ### 4. Assess Stakeholder Concerns
 - Who are the key stakeholders?

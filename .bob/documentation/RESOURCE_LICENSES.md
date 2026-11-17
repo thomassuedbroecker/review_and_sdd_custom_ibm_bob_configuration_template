@@ -57,6 +57,9 @@ This is a repository-maintenance aid and not legal advice.
 | CycloneDX specifications | Documentation Review and license/provenance review | CycloneDX is an OWASP project; specification and site terms should be verified for the exact page/version | Link and cite. Use as an SBOM evidence model and avoid embedding long specification text. |
 | npm registry/package metadata | Documentation Review, GitHub Issue Generator runtime dependency review | npm package metadata and registry terms apply; package license fields are package-provided evidence, not legal determinations | Use direct metadata as point-in-time evidence. Regenerate snapshots before release or bundling. |
 | PyPI project metadata | Documentation Review and Python runtime dependency review | PyPI project metadata and package license fields are package-provided evidence, not legal determinations | Use direct metadata as point-in-time evidence. Regenerate exact-version dependency inventories before bundling Python environments. |
+| Mermaid documentation | Mermaid Diagram Readability skill | Mermaid project and docs are MIT-licensed; verify the current repository license before copying examples | Link and cite. Skill examples are original; attribute if adapting documentation examples. |
+| GitHub "Creating diagrams" documentation | Mermaid Diagram Readability skill | GitHub Docs content repository documents CC BY 4.0 for documentation/content folders, with GitHub terms also applying | Link and cite. Verify current rendering behavior before release claims. |
+| WCAG 2.2 | Mermaid Diagram Readability skill | W3C Document License applies | Cite success criteria by number; do not reproduce normative text at length. |
 | GitHub MCP server | GitHub Issue Generator and MCP setup | Runtime package license is documented separately in `THIRD_PARTY_NOTICES.md` | Do not vendor without regenerating notices and preserving license text. |
 
 ## High-Risk Resource Handling

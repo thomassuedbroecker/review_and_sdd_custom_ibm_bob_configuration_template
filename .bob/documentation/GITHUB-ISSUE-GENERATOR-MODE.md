@@ -83,6 +83,17 @@ This mode bridges the gap between planning/review activities and issue tracking 
 
 ## Key Features
 
+### Back-Questioning (Grill Me)
+
+Before generating issues, the mode checks decisions only the user can make: the
+target repository, create-now vs. draft-first, label and milestone conventions,
+and the Epic → Feature → Task → Test hierarchy depth. If any of these cannot be
+derived from the provided artifacts, it asks three to five targeted Grill Me
+questions (see
+[`.bob/skills/sdd-sdlc-discovery-gap-analysis/SKILL.md`](../skills/sdd-sdlc-discovery-gap-analysis/SKILL.md))
+and records unanswered points as explicit assumptions in the issue drafts before
+anything is created.
+
 ### Method 1: GitHub MCP Server
 
 #### 1. Intelligent Todo List Analysis

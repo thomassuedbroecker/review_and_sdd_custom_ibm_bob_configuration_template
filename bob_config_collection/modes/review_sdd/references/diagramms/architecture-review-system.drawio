@@ -13,6 +13,15 @@
         <mxCell id="mode" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1f5ff;strokeColor=#0288d1;strokeWidth=3;fontSize=16;fontStyle=1" value="Architecture Review Mode &lt;br&gt;(Orchestrator)" vertex="1">
           <mxGeometry height="80" width="200" x="220" y="380" as="geometry" />
         </mxCell>
+        <mxCell id="discovery" parent="1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ede7f6;strokeColor=#5e35b1;strokeWidth=2;fontSize=16;fontStyle=1" value="SDLC Discovery&#xa;&amp;amp; Gap Analysis&#xa;(Grill Me)" vertex="1">
+          <mxGeometry height="90" width="200" x="220" y="230" as="geometry" />
+        </mxCell>
+        <mxCell id="arrow-discovery" edge="1" parent="1" source="mode" style="endArrow=classic;startArrow=classic;html=1;rounded=0;strokeWidth=2;fontSize=12;strokeColor=#5e35b1;dashed=1;dashPattern=5 5;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" target="discovery" value="Clarifies scope first">
+          <mxGeometry height="50" relative="1" width="50" as="geometry">
+            <mxPoint x="320" y="380" as="sourcePoint" />
+            <mxPoint x="320" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
         <mxCell id="arrow1" edge="1" parent="1" source="user" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;strokeWidth=2;fontSize=12" target="mode" value="Request Review">
           <mxGeometry height="50" relative="1" width="50" as="geometry">
             <mxPoint x="380" y="640" as="sourcePoint" />

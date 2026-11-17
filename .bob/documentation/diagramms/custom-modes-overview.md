@@ -10,12 +10,12 @@ The diagram provides a comprehensive visual representation of:
 - The main Architecture Review mode (orchestrator)
 - All 7 specialized review modes
 - The 7 focused review skill files they utilize
-- The SDLC discovery and gap-analysis skill used before reviews when scope or lifecycle phase is unclear
+- The SDLC discovery and gap-analysis skill (Grill Me back-questioning), which the orchestrator consults first when scope or lifecycle phase is unclear
 - The relationships between modes and skills
 
 ## Target Audience
 
-**Primary Users:** Developers and programmers who maintain the [`.bob/custom_modes.yaml`](../../custom_modes.yaml) file
+**Primary Users:** AI Engineers and Architects who run reviews with these modes, and maintainers of the [`.bob/custom_modes.yaml`](../../custom_modes.yaml) file. A *mode* is a configured Bob persona (role, instructions, tool groups); a *skill* is the reusable methodology file a mode reads before producing findings.
 
 **Use Cases:**
 - Understanding the architecture-review mode subset
@@ -30,8 +30,10 @@ The diagram provides a comprehensive visual representation of:
 
 **Architecture Review (arch-review)**
 - Central orchestrator that can use all 7 focused review skills
-- Uses SDLC discovery and gap analysis before the review when the user intent,
-  lifecycle phase, source artifacts, or output expectations are unclear
+- Uses the SDLC discovery and gap-analysis skill (Grill Me back-questioning)
+  before the review when the user intent, lifecycle phase, source artifacts,
+  or output expectations are unclear — shown in the diagram as a dashed
+  "uses first when scope is unclear" arrow to the discovery skill box
 - Conducts comprehensive reviews across all areas
 - Supports focused reviews using specific skills
 - Enables iterative reviews, one skill at a time
@@ -103,6 +105,8 @@ The architecture-review subset uses these skills from the
 
 - **Solid arrows**: Direct orchestration relationship
 - **Dashed arrows**: "uses" relationship between modes and skills
+- **Dashed arrow from the orchestrator to the discovery skill**: Grill Me scope
+  clarification that happens before any review work starts
 
 ## Mode Capabilities
 

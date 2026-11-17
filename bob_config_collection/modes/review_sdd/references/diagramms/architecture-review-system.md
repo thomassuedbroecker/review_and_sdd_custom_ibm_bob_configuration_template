@@ -272,12 +272,14 @@ graph TD
 │   │   ├── ☁️ sdd-twelve-factor-compliance/SKILL.md
 │   │   ├── 🧭 sdd-requirements-management/SKILL.md
 │   │   ├── 🔗 sdd-requirements-traceability/SKILL.md
-│   │   └── 📋 sdd-github-issue-traceability/SKILL.md
-│   └── 📁 references/
-│       ├── 📄 architecture-review-readme.md
-│       ├── 📄 sdd-readme.md
+│   │   ├── 📋 sdd-github-issue-traceability/SKILL.md
+│   │   └── ⚖️ ai-regulatory-compliance/SKILL.md
+│   └── 📁 documentation/
+│       ├── 📄 README-ARCHITECTURE-REVIEW.md
+│       ├── 📄 SDD-README.md
 │       ├── 📄 KNOWLEDGE_SOURCES.md
 │       ├── 📄 RESOURCE_LICENSES.md
+│       ├── 📁 diagramms/              # Draw.io and Mermaid diagram sources
 │       └── 📁 guides/
 │           ├── 📄 architecture-review-template.md
 │           └── 📄 architecture-review-guide.md
@@ -344,7 +346,8 @@ graph TD
 
 ---
 
-**Diagram Version**: 1.0  
+**Diagram Version**: 1.1  
 **Created**: 2026-04-01  
+**Updated**: 2026-11-17 (Grill Me discovery step, 12th skill `ai-regulatory-compliance`, diagram folder)  
 **Format**: Mermaid (Markdown)  
 **Compatible With**: GitHub, GitLab, VS Code, Obsidian, and other Mermaid-supporting platforms

@@ -14,7 +14,7 @@ The diagram provides a visual explanation of:
 
 ## Target Audience
 
-**Primary Users:** Maintainers and advanced users working with the custom mode system, especially those extending [`.bob/custom_modes.yaml`](../../custom_modes.yaml) and the related skill assets.
+**Primary Users:** AI Engineers and Architects working with the custom mode system, especially those extending [`.bob/custom_modes.yaml`](../../custom_modes.yaml) and the related skill assets.
 
 **Use Cases:**
 - Understanding when the Configuration Gap Detector should be used

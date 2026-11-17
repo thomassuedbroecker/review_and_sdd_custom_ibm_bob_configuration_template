@@ -194,6 +194,21 @@ a dedicated integration is added.
 
 ---
 
+### 13. Mermaid Diagram Readability (`sdd-mermaid-diagram-readability/SKILL.md`)
+**Purpose**: Review and improve Mermaid diagrams embedded in Markdown files so architects and AI engineers can understand structure, flow, and responsibilities quickly and correctly.
+
+**Key Areas**:
+- Diagram-type fit (flowchart, sequence, state, ER, C4) and one question per diagram
+- Complexity limits, layout direction, subgraph grouping
+- Role-based labels, labeled edges, consistent visual semantics
+- Rendering portability (GitHub, IDE previews), light/dark theme neutrality
+- Accessibility (`accTitle`/`accDescr`, color never the only signal)
+- AI/agent architecture specifics: control vs. data flow, trust boundaries, agent loops
+
+**When to Use**: Diagram readability reviews, refactoring diagrams in architecture or AI system docs, authoring new Mermaid diagrams, as a deep-dive companion to Documentation Review
+
+---
+
 ## How to Use Skills
 
 ### In Architecture Review Mode
@@ -348,4 +363,4 @@ Keep skills up-to-date:
 
 **Last Updated**: 2026-05-31
 **Version**: 1.3
-**Skills Count**: 11
+**Skills Count**: 13
