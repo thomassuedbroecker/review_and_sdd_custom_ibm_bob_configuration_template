@@ -63,6 +63,7 @@ Identify the strongest SDLC phase signal:
 | --- | --- | --- |
 | Planning | vision, business goal, roadmap, feasibility, stakeholders | SDD, Business Alignment |
 | Requirements | requirements, user stories, acceptance criteria, scope | SDD, Requirements Management |
+| Sprint Planning (agile) | sprint, iteration, backlog, velocity, sprint goal, increment, Scrum | SDD, Requirements Management (Agile Sprint Planning), GitHub Issue Traceability |
 | Analysis | gaps, constraints, risks, domain rules, trade-offs | SDD, Requirements Traceability |
 | Architecture / Design | architecture, patterns, APIs, data flow, ADRs, diagrams | Architecture Review, Architecture Patterns, Documentation Review |
 | Implementation | prompt for coding, task breakdown, files to change | SDD, GitHub Issue Generator |
@@ -110,6 +111,15 @@ Use these question groups:
   compliance, cost, timeline, maintainability, or operations?
 - Are there domain-specific standards, regulations, or architecture principles
   Bob must apply?
+
+**Delivery Model (Agile / Sprints)**
+- Is the team working in sprints or iterations? If so, what are the sprint
+  length, the capacity or velocity, and the number of sprints or the release date?
+- Should requirements be delivered as one specification, or split into sprint
+  sections (ranked backlog, sprint goals, stories per sprint)?
+- Offer the sprint split when the scope is large (roughly more than 15
+  requirements or more than two epics), even when the user does not mention
+  agile.
 
 **Expected Output**
 - Should the output be a specification, prioritized findings, a gap report,

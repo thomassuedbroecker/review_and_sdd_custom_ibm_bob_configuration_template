@@ -14,6 +14,7 @@ Elicit, document, analyze, and validate software requirements to ensure they are
 - Use case modeling
 - Non-functional requirements specification
 - Requirements validation and verification
+- Agile backlog refinement, story splitting, and sprint planning (Scrum, iterative delivery)
 
 ## Context Efficiency & Task Handoff
 
@@ -71,6 +72,9 @@ this skill's workflow — not only at the start:
 Typical triggers in this skill: stakeholder analysis without named
 stakeholders, NFRs without measurable targets, prioritization without a
 business-value signal, and validation without an identified approver.
+In an agile context, also ask about whatever is missing among: sprint length,
+team capacity or velocity, the number of sprints or the target release date,
+the estimation unit, and the team's Definition of Ready and Definition of Done.
 
 ## Review Process
 
@@ -351,6 +355,87 @@ for implementation, commit, and test references.
 | CR-001 | FR-005 | Add export feature | Medium | Approved | Product Owner |
 | CR-002 | NFR-003 | Increase capacity | High | Pending | Architecture |
 
+### 10. Agile Sprint Planning (Sprint-Sectioned Output)
+
+Use sprint-sectioned output when the user works in an agile context (Scrum,
+sprints, iterations, increments, backlog), or when the specification is too
+large to handle in one piece (roughly more than 15 requirements or more than
+two epics). In the second case, offer the sprint split and do not impose it.
+The requirements stay the single source of truth. Sprints are a delivery view
+on top of them and do not replace REQ/NFR IDs.
+
+**Planning parameters (ask before planning, or record them as assumptions):**
+- Sprint length (default assumption: 2 weeks)
+- Team capacity or velocity per sprint in the chosen estimation unit (story
+  points or ideal days). Without a known velocity, state an assumed value and
+  mark it as an assumption.
+- Capacity buffer for unplanned work and bugs (default assumption: 20%)
+- Number of sprints or the target release date
+- Whether a Sprint 0 is needed (setup, architecture spike, CI/CD, environments)
+- The team's Definition of Ready (DoR) and Definition of Done (DoD)
+
+**Step 1: Build the product backlog.**
+- Derive one or more user stories (`US-XXX`) from every REQ/NFR and keep the
+  link: each story names the REQ/NFR IDs it implements.
+- Check every story against INVEST (Independent, Negotiable, Valuable,
+  Estimable, Small, Testable).
+- Split any story that is larger than about half of one sprint's capacity.
+  Split by workflow step, business rule, data variation, CRUD operation,
+  happy path before error paths, or interface (API before UI). Do not split
+  by technical layer.
+- When uncertainty blocks estimation, add a time-boxed spike (`SPIKE-XXX`).
+- Express an NFR as acceptance criteria on the affected stories. When it needs
+  its own work (for example monitoring or load-test setup), express it as an
+  enabler story (`EN-XXX`).
+
+**Step 2: Estimate and order.**
+- Estimate each story. Order the backlog by dependencies first, then by
+  priority (MoSCoW or WSJF), and pull risky items and spikes forward.
+- Sprint 1 (or Sprint 0) should deliver a walking skeleton: a thin end-to-end
+  slice that proves the architecture.
+
+**Step 3: Allocate stories to sprints.**
+- Fill each sprint up to capacity minus the buffer. Never plan above capacity.
+- Give each sprint one sprint goal that describes a usable, demonstrable
+  increment. The goal states an outcome, not a list of stories.
+- A story must not depend on a story in a later sprint. If it does, move the
+  dependency earlier or move the story later.
+- Keep everything beyond the planned horizon in the unscheduled backlog. Plan
+  roughly 2–4 sprints in detail. Plan later sprints only at goal level, because
+  their contents will change.
+
+**Step 4: Re-plan after each sprint.**
+- Record the sprint review outcome, the actual velocity, and any carry-over
+  stories in that sprint's section.
+- Feed changed requirements through Change Management (section 9), then
+  re-order the backlog and re-plan the remaining sprints.
+
+**Handling many requirements (context efficiency):**
+- Split the output into files: `<spec-dir>/backlog.md` holds the planning
+  parameters, the ranked backlog, the sprint roadmap, and the assumptions, and
+  `<spec-dir>/sprints/sprint-NN.md` holds one file per sprint. The
+  requirements specification stays in its own file. When the user has given
+  no `<spec-dir>`, propose `specs/<project>/`.
+- Allocation (Steps 1–3) runs once over the whole backlog, because sprints
+  depend on each other. After the roadmap is fixed, detail each sprint
+  separately. Independent sprints can be detailed as parallel subtasks, one
+  sprint file per subtask.
+- Generate sprint by sprint. When the context gets tight, write
+  `task-handoff.md` with the last completed sprint and the next sprint to
+  detail.
+
+**Traceability in sprints (within the carrier boundary):**
+- Each sprint becomes a GitHub milestone named `Sprint NN – <sprint goal>`,
+  with the sprint end date as the due date. Each story, task, and test issue
+  also gets a `sprint:NN` label.
+- An epic may span several sprints. Its features and stories carry the
+  milestone of the sprint they are delivered in.
+- A carry-over story moves to the next milestone, and the sprint file records
+  why it was carried over.
+- Sprint, story, and REQ links live only in GitHub issues, Markdown, and code
+  references. Never reference Jira sprints, Azure Boards iterations, or
+  similar external trackers as the source of truth.
+
 ## Output Format
 
 ### Requirements Document Structure
@@ -503,6 +588,83 @@ for implementation, commit, and test references.
 [Diagrams and models]
 ```
 
+### Sprint-Sectioned Delivery Plan Structure (Agile)
+
+Use this structure together with the requirements specification when section 10
+applies. For large backlogs, split it into `backlog.md` (everything before the
+first sprint section, plus the unscheduled backlog and the assumptions) and one
+`sprints/sprint-NN.md` file per sprint section.
+
+```markdown
+# Sprint Plan: [Project Name]
+
+## Planning Parameters
+- **Sprint length**: 2 weeks
+- **Capacity**: 30 SP per sprint (assumed velocity), 20% buffer → 24 SP plannable
+- **Horizon**: Sprints 0–3 in detail; Sprints 4+ at goal level
+- **Estimation unit**: Story points (Fibonacci)
+- **Definition of Ready**: story linked to REQ/NFR, acceptance criteria written, estimated, dependencies known
+- **Definition of Done**: code reviewed, tests passing, acceptance criteria verified, docs updated, REQ IDs in code/tests
+
+## Product Backlog (ranked)
+| Rank | ID | Title | Implements | Priority | Estimate | Depends on | Sprint |
+|------|----|-------|-----------|----------|----------|------------|--------|
+| 1 | SPIKE-001 | Evaluate OAuth provider | REQ-AUTH-001 | Must | 3 | – | 0 |
+| 2 | US-001 | Log in with OAuth | REQ-AUTH-001, NFR-002 | Must | 8 | SPIKE-001 | 1 |
+| 3 | EN-001 | Auth latency monitoring | NFR-001 | Should | 3 | US-001 | 1 |
+
+## Sprint Roadmap
+| Sprint | Dates | Sprint Goal | Stories | Planned SP | Key REQs | Milestone |
+|--------|-------|-------------|---------|------------|----------|-----------|
+| 0 | YYYY-MM-DD – YYYY-MM-DD | Team can build, test, and deploy a skeleton | SPIKE-001, EN-000 | 8 | – | Sprint 00 – Walking skeleton |
+| 1 | … | Users can log in with OAuth | US-001, EN-001 | 11 | REQ-AUTH-001 | Sprint 01 – OAuth login |
+
+## Sprint 01 — [Sprint Goal]
+
+### Sprint Goal
+[One outcome sentence: what users or stakeholders can do at the end of the sprint]
+
+### Committed Stories
+#### US-001: Log in with OAuth (REQ-AUTH-001, NFR-002) — 8 SP
+As a registered user
+I want to log in with my company account
+So that I do not manage a separate password
+
+**Acceptance Criteria:**
+- Given a valid company account, when I log in, then I reach the dashboard
+- Given a revoked account, when I log in, then access is denied with a clear message
+- NFR-002: Tokens are validated on every request
+
+### Enablers and Spikes
+- EN-001: Auth latency monitoring (NFR-001) — 3 SP
+
+### Dependencies and Risks
+- Depends on: SPIKE-001 (Sprint 00)
+- Risk: provider sandbox availability → mitigation: mock provider in CI
+
+### Sprint Definition of Done (additions to the team DoD)
+- OAuth flow covered by an integration test
+
+### Traceability
+| Story | Implements | Milestone | Issue | Test |
+|-------|-----------|-----------|-------|------|
+| US-001 | REQ-AUTH-001, NFR-002 | Sprint 01 | #TBD | #TBD |
+
+### Sprint Review and Carry-over (fill in after the sprint)
+- Delivered: …
+- Actual velocity: … SP
+- Carry-over: [story → Sprint NN, reason]
+
+## Sprint 02 — [Sprint Goal]
+…
+
+## Unscheduled Backlog
+[Ranked stories beyond the planning horizon, with Implements and Estimate]
+
+## Assumptions
+[Every assumed planning parameter, such as velocity, capacity, or dates]
+```
+
 ## Key Questions This Skill Answers
 
 1. **What needs to be built?**
@@ -534,6 +696,11 @@ for implementation, commit, and test references.
    - Acceptance criteria
    - Test cases
    - Definition of Done
+
+7. **What is delivered in which sprint?**
+   - Sprint goals and increments
+   - Story-to-requirement mapping per sprint
+   - Capacity fit and carry-over
 
 ## Best Practices
 
@@ -590,6 +757,10 @@ Acceptance Criteria:
 ❌ **Bad**: Everything is "critical" or "must have"
 ✅ **Good**: Clear prioritization using MoSCoW or similar method
 
+### Pitfall 6: Sprints as a Dumping Ground
+❌ **Bad**: Distributing all requirements evenly across sprints with no sprint goal, capacity check, or dependency order
+✅ **Good**: Each sprint has one outcome goal, is planned below capacity, respects dependencies, and every story links back to a REQ/NFR ID
+
 ## Integration with Other Skills
 
 - **Architecture Patterns**: Validate that requirements align with architectural decisions
@@ -621,6 +792,12 @@ Acceptance Criteria:
 - WSJF (Weighted Shortest Job First)
 - Value vs. Effort Matrix
 
+### Agile Planning References
+- The Scrum Guide (2020) — sprint goal, sprint planning, Definition of Done (https://scrumguides.org)
+- INVEST criteria for user stories (Bill Wake)
+- Story-splitting patterns (Richard Lawrence, Humanizing Work)
+- User Story Mapping (Jeff Patton) for release and sprint slicing
+
 ### Validation Techniques
 - Requirements Reviews
 - Prototyping
@@ -636,9 +813,11 @@ Track requirements management effectiveness:
 - **Stakeholder Satisfaction**: Feedback on requirements quality
 - **Time to Clarity**: Average time to get clear, approved requirements
 - **Rework Rate**: % of work redone due to unclear requirements
+- **Sprint Goal Achievement** (agile): % of sprints that met their sprint goal
+- **Planning Accuracy** (agile): planned vs. delivered story points per sprint
 
 ---
 
-**Skill Version**: 1.0  
-**Last Updated**: 2026-05-26  
+**Skill Version**: 1.1  
+**Last Updated**: 2026-11-19  
 **Maintained By**: Requirements Engineering Team

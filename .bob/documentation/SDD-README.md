@@ -231,6 +231,36 @@ Continue the requirements specification from task-handoff.md and finish the
 open NFRs.
 ```
 
+### Workflow 5: Agile Sprint Planning (Sprint-Sectioned Output)
+
+For agile teams, or whenever a specification has many requirements, SDD mode
+splits delivery into sprint sections. The requirements stay the source of truth:
+
+1. **Clarify planning parameters**: sprint length, capacity or velocity, buffer,
+   horizon, Sprint 0, and DoR/DoD. Bob asks Grill Me questions and records any
+   missing value as an assumption.
+2. **Build the backlog**: each `REQ-XXX`/`NFR-XXX` becomes INVEST-checked
+   stories (`US-XXX`), enablers (`EN-XXX`), or spikes (`SPIKE-XXX`) that name
+   the requirement IDs they implement.
+3. **Allocate to sprints**: Bob allocates stories in dependency and priority
+   order, below capacity, with one outcome-based sprint goal per sprint. It plans
+   2–4 sprints in detail and keeps the rest in the unscheduled backlog.
+4. **Split the files**: `backlog.md` plus one `sprints/sprint-NN.md` per sprint,
+   so each sprint can be detailed, reviewed, or handed off on its own.
+5. **Track in GitHub**: each sprint becomes a milestone `Sprint NN – <goal>`
+   with a `sprint:NN` label, and GitHub Issue Generator mode creates issues
+   sprint by sprint.
+
+See [Agile Sprint Planning](../skills/sdd-requirements-management/SKILL.md#10-agile-sprint-planning-sprint-sectioned-output)
+for the method and the sprint plan template.
+
+**Example Prompt**:
+```
+Split the requirements in specs/shop/requirements.md into 2-week sprints for a
+team with a velocity of about 30 story points. Plan Sprints 0–3 in detail and
+write backlog.md plus one file per sprint.
+```
+
 ## SDLC Integration
 
 SDD mode integrates with all SDLC phases:
@@ -537,7 +567,9 @@ See [Requirements Prioritization](../skills/sdd-requirements-management/SKILL.md
 
 ### Q: Can I use SDD mode with Agile?
 
-**A**: Absolutely! SDD complements Agile:
+**A**: Yes. SDD mode has built-in sprint planning (see
+[Workflow 5](#workflow-5-agile-sprint-planning-sprint-sectioned-output)):
+- Split many requirements into sprint sections with sprint goals and stories per sprint
 - Use SDD for sprint planning and backlog refinement
 - Create user stories with clear acceptance criteria
 - Maintain a living specification that evolves
@@ -562,6 +594,7 @@ To improve SDD mode:
 | Version | Date | Changes |
 |---------|------|---------|
 | 1.0 | 2026-05-26 | Initial release with core SDD mode, requirements skill, and interactive guide |
+| 1.1 | 2026-11-19 | Agile sprint planning: sprint-sectioned output, sprint milestones, sprint-level traceability |
 
 ---
 

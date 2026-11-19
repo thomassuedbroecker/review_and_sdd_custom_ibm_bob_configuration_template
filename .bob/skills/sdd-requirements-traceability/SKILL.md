@@ -156,6 +156,35 @@ workflows above — not only at the start:
    - What is the recommended action plan?
    - What is the expected impact?
 
+8. **Is the sprint plan traceable? (agile)**
+   - Is every story, enabler, and spike linked to a REQ/NFR ID?
+   - Is every in-scope requirement scheduled in a sprint or listed in the unscheduled backlog?
+   - Does any story depend on a story in a later sprint?
+   - Do the sprint milestones and `sprint:NN` labels on GitHub issues match the sprint files?
+   - Which requirements were carried over, and how often?
+
+## Sprint-Level Traceability (Agile)
+
+When requirements are delivered in sprints (see the Agile Sprint Planning section
+of `.bob/skills/sdd-requirements-management/SKILL.md`), extend the chain with a
+sprint link:
+
+```
+REQUIREMENT → STORY (US/EN/SPIKE) → SPRINT (GitHub milestone) → ISSUE → COMMIT → CODE → TEST
+```
+
+Report sprint coverage as a Markdown table per sprint, so a large backlog can
+be audited one sprint at a time:
+
+| Sprint | Milestone | REQs covered | Stories | Done | Carry-over | Unlinked stories |
+|--------|-----------|--------------|---------|------|------------|------------------|
+| 01 | Sprint 01 – OAuth login | REQ-AUTH-001, NFR-002 | 2 | 2 | 0 | 0 |
+| 02 | Sprint 02 – MFA | REQ-AUTH-003 | 3 | 2 | 1 (US-007) | 0 |
+
+The sprint dimension is realized only through GitHub milestones, `sprint:NN`
+labels, and sprint Markdown files. External sprint trackers are not sources
+of truth.
+
 ## Constraints and Requirements
 
 ### Hard Constraints
@@ -211,8 +240,8 @@ Instead of IBM DOORS, Jama, or commercial ALM platforms, use:
 
 ---
 
-**Skill Version**: 1.0  
-**Last Updated**: 2026-05-31  
+**Skill Version**: 1.1  
+**Last Updated**: 2026-11-19  
 **Maintained By**: Requirements Engineering Team  
 **Related Skills**: requirements-management-skill.md  
 **Industry Standards**: IEEE 830, ISO/IEC/IEEE 29148, CMMI REQM

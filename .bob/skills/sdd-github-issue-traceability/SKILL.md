@@ -459,6 +459,7 @@ class TestJWTValidator:
 - [ ] Tests reference requirements they validate
 - [ ] All acceptance criteria are testable
 - [ ] Traceability chain is complete and bidirectional
+- [ ] (Agile) Every story and task issue has a sprint milestone or is labelled `backlog`
 
 ### Traceability Matrix Example
 
@@ -520,6 +521,35 @@ Improve user authentication security and support modern authentication methods.
 - Database schema updates (internal)
 ```
 
+## Sprint Mapping (Agile)
+
+When the SDD output is sprint-sectioned (a `backlog.md` plus `sprints/sprint-NN.md`
+files, or `## Sprint NN` sections), map it to GitHub like this:
+
+| Sprint plan element | GitHub carrier |
+|---------------------|----------------|
+| Sprint NN + sprint goal | Milestone `Sprint NN – <sprint goal>`, due date = sprint end, goal in the description |
+| Story `US-XXX`, enabler `EN-XXX`, spike `SPIKE-XXX` | Feature or Task issue with the REQ/NFR IDs in the title or the Traceability section |
+| Sprint membership | Milestone, plus a `sprint:NN` label on stories, tasks, and tests |
+| Epic spanning several sprints | Epic issue without a milestone; its children carry the sprint milestones |
+| Unscheduled backlog | Issues without a milestone, labelled `backlog` |
+| Carry-over | Move the issue to the next milestone and comment with the reason |
+
+Add a **Sprint** line to the Traceability section of feature, task, and test
+issues:
+
+```markdown
+## Traceability
+- **Requirement ID**: REQ-AUTH-002
+- **Story ID**: US-001
+- **Sprint**: Sprint 01 – OAuth login (milestone)
+```
+
+Generate issues one sprint at a time when the backlog is large. Create the
+milestones first, then the issues of the current sprint (and the next one if
+the user wants it), and leave later sprints as drafts. Record the last created
+sprint in `task-handoff.md`.
+
 ## Best Practices
 
 ### DO:
@@ -567,8 +597,8 @@ Track traceability effectiveness:
 
 ---
 
-**Skill Version**: 1.0  
-**Last Updated**: 2026-06-03  
+**Skill Version**: 1.1  
+**Last Updated**: 2026-11-19  
 **Maintained By**: Requirements Engineering Team  
 **Related Skills**: requirements-management-skill.md, requirements-traceability-skill.md  
 **Related Modes**: sdd, github-issue-generator

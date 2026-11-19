@@ -317,6 +317,13 @@ customModes:
          - Note dependencies in issue descriptions
          - Create parent/child relationships for complex tasks
          - Group issues by milestone or epic when appropriate
+         - SPRINT-SECTIONED INPUT (agile): when the source is a sprint plan (backlog.md plus
+           sprints/sprint-NN.md, or "## Sprint NN" sections), first create one milestone per
+           sprint ("Sprint NN – <sprint goal>", due date = sprint end). Then assign every story,
+           task, and test issue to its sprint milestone and add the label sprint:NN. Unscheduled
+           items get no milestone and the label backlog. Epics that span sprints get no milestone.
+           For large plans, create issues one sprint at a time and record progress in task-handoff.md.
+           Follow the "Sprint Mapping" section of SKILLS/sdd-github-issue-traceability/SKILL.md
 
       6. PROVIDE SUMMARY
          - List all created issues with their numbers and titles
