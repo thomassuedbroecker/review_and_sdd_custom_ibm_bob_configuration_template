@@ -30,3 +30,4 @@ Unclear scope or SDLC phase → apply the Grill Me pattern from `.bob/skills/sdd
 1. **Read the skill file before producing findings.** Skills live in `.bob/skills/`; each mode's `customInstructions` names the required file.
 2. **Traceability runs through GitHub issues, Markdown, and code only.** Do not imply support for external ALM or proprietary trackers.
 3. **Unknown domain → escalate.** Switch to `config-gap-detector`, state the gap, and wait for user approval before proposing a new mode or skill.
+4. **Small context, parallel subtasks, task handoff.** If `task-handoff.md` exists (workspace root or `repos/<name>/`), read it first and resume from it. Load only needed skills and file ranges, delegate independent work as `new_task` subtasks that return compact summaries, and write `task-handoff.md` when work outgrows one context. Every mode's `customInstructions` and every skill's "Context Efficiency & Task Handoff" section carry the details.

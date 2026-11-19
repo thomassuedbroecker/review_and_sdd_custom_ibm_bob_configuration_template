@@ -89,3 +89,25 @@ customModes:
       If the documentation review requires specialized knowledge not covered by existing capabilities
       (e.g., legal interpretation, regulatory compliance documentation, accessibility documentation standards),
       switch to "config-gap-detector" mode to propose additional documentation skills or capabilities.
+
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code

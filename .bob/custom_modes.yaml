@@ -122,6 +122,29 @@ customModes:
       Example: "This task requires IoT architecture expertise which is not covered by existing skills.
       Switching to Configuration Gap Detector mode to propose an IoT architecture review skill."
 
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. FAN OUT REVIEW AREAS AS PARALLEL SUBTASKS
+         - For multi-area reviews, dispatch one subtask per selected skill with new_task instead of loading every skill into this context
+         - Give each subtask a self-contained brief: SDLC phase, scope, the single .bob/skills/sdd-[slug]/SKILL.md to read, output file, and return format
+         - Ask each subtask to return only a compact summary (assessment, top findings with severity and path:line evidence, recommendations)
+         - Synthesize the final report from those summaries; do not re-read the subtasks' evidence
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
+
   - slug: sdd
     name: 🧭 Spec-Driven Development
     description: Requirements management, specification creation, and prompt engineering across the SDLC
@@ -281,6 +304,28 @@ customModes:
 
       Example: "This task requires regulated medical-device requirements expertise which is not covered by existing skills.
       Switching to Configuration Gap Detector mode to propose an additional requirements skill."
+
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
   - slug: security-review
     name: 🔒 Security & Threat Modeling
     description: Security architecture and threat analysis
@@ -366,6 +411,28 @@ customModes:
       If the security review requires specialized knowledge not covered by existing capabilities
       (e.g., quantum-resistant cryptography, zero-trust architecture, blockchain security),
       switch to "config-gap-detector" mode to propose additional security skills or capabilities.
+
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
 
   - slug: scalability-review
     name: 📈 Scalability & Performance
@@ -453,6 +520,28 @@ customModes:
       (e.g., edge computing optimization, real-time streaming performance, GPU acceleration),
       switch to "config-gap-detector" mode to propose additional performance skills or capabilities.
 
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
+
   - slug: patterns-review
     name: 🎨 Architecture Patterns
     description: Architecture patterns and best practices
@@ -539,6 +628,28 @@ customModes:
       (e.g., ML/AI architecture patterns, IoT device patterns, blockchain consensus patterns),
       switch to "config-gap-detector" mode to propose additional pattern skills or capabilities.
 
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
+
   - slug: maintainability-review
     name: 🔧 Maintainability & Technical Debt
     description: Code maintainability and technical debt
@@ -624,6 +735,28 @@ customModes:
       If the maintainability review requires specialized knowledge not covered by existing capabilities
       (e.g., legacy system modernization, monolith-to-microservices migration patterns),
       switch to "config-gap-detector" mode to propose additional maintainability skills or capabilities.
+
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
 
   - slug: documentation-review
     name: 📚 Documentation Review
@@ -716,6 +849,28 @@ customModes:
       (e.g., legal interpretation, regulatory compliance documentation, accessibility documentation standards),
       switch to "config-gap-detector" mode to propose additional documentation skills or capabilities.
 
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
+
   - slug: twelve-factor-review
     name: ☁️ 12-Factor Compliance
     description: Cloud-native 12-factor app compliance
@@ -806,6 +961,28 @@ customModes:
       (e.g., serverless-specific factors, edge computing deployment patterns),
       switch to "config-gap-detector" mode to propose additional cloud-native skills or capabilities.
 
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
+
   - slug: business-alignment-review
     name: 🎯 Business Alignment
     description: Business goals and quality attributes
@@ -891,6 +1068,28 @@ customModes:
       If the business alignment review requires specialized knowledge not covered by existing capabilities
       (e.g., industry-specific compliance, regulatory frameworks, domain-specific quality attributes),
       switch to "config-gap-detector" mode to propose additional business alignment skills or capabilities.
+
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
   - slug: config-gap-detector
     name: 🔍 Configuration Gap Detector
     description: Detect configuration gaps and propose new Modes or Skills
@@ -1052,6 +1251,28 @@ customModes:
       - User approval required before implementation
       - Maintain modular architecture principles
       - Cite sources for all recommendations
+
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code
   - slug: github-issue-generator
     name: 📋 GitHub Issue Generator
     description: Convert todo lists into GitHub issues
@@ -1503,3 +1724,25 @@ customModes:
        • Priorities and assignees
        • Milestones and relationships
       - See .bob/scripts/README.md for complete documentation and examples
+
+      CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF:
+
+      1. RESUME FROM A HANDOFF
+         - Before starting, check for task-handoff.md in the workspace root and in the target repository under repos/
+         - If it exists, read it first, continue from its "Next steps", and do not repeat work listed under "Done"
+
+      2. KEEP THE CONTEXT SMALL
+         - Read each required skill file once; do not paste skill content into outputs
+         - Search before reading; read only relevant file ranges
+         - Skip generated or vendored content (dist/, node_modules/, lock files, binaries, large logs) unless it is in scope
+         - Cite evidence as path:line with a one-line excerpt instead of quoting files or command output
+
+      3. PARALLELIZE INDEPENDENT WORK
+         - Split independent parts (components, repositories, features, or review areas) into subtasks with new_task
+         - Give each subtask a self-contained brief: scope, skill file to read, output file, and return format
+         - Ask subtasks to return a short summary of findings, not raw evidence; merge only those summaries
+
+      4. HAND OFF INSTEAD OF OVERFLOWING
+         - When the task is too large for one context, is split into subtasks, or ends unfinished, create or update task-handoff.md
+         - Use the format from the "Context Efficiency & Task Handoff" section of the skill file: goal and scope; SDLC phase, mode, skills; done (output files, evidence refs); open items and blockers; decisions and assumptions; ordered next steps
+         - Keep it under ~60 lines; writing it is allowed in read-only reviews, but never edit the reviewed code

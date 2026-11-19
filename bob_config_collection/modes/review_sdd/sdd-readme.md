@@ -210,6 +210,27 @@ graph TD
 
 ---
 
+### Workflow 4: Large Specifications (Parallel Subtasks & Task Handoff)
+
+The SDD mode and its skills keep each task within a small context:
+
+1. **Resume**: if `task-handoff.md` exists in the workspace root or in
+   `repos/<name>/`, Bob reads it first and continues from its "Next steps"
+   instead of re-eliciting finished requirements.
+2. **Parallelize**: independent parts (separate features, epics, or source
+   documents) are split into subtasks (`new_task`) with a self-contained brief;
+   only their summaries (for example new `REQ-XXX` IDs and open questions) are
+   merged.
+3. **Hand off**: when the specification does not fit into one task, Bob writes
+   a short `task-handoff.md` (goal and scope; SDLC phase, mode, skills; done;
+   open items; decisions and assumptions; next steps).
+
+**Example Prompt**:
+```
+Continue the requirements specification from task-handoff.md and finish the
+open NFRs.
+```
+
 ## SDLC Integration
 
 SDD mode integrates with all SDLC phases:

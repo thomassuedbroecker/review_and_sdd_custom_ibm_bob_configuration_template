@@ -415,6 +415,59 @@ Output: List of created GitHub issues with numbers and links
 
 ---
 
+## 🧠 Context Efficiency, Parallel Subtasks & Task Handoff
+
+Large reviews and specifications can exceed what fits into one AI context
+window. Every mode and every skill therefore follows the same working rules, so
+Bob stays focused, works in parallel where possible, and can continue
+unfinished work in a new task without repeating it.
+
+| Rule | What Bob does | What you gain |
+|---|---|---|
+| **Resume from a handoff** | If `task-handoff.md` exists in the workspace root or in `repos/<name>/`, Bob reads it first, continues from its "Next steps", and skips everything listed under "Done" | Long tasks continue across sessions without repeated work |
+| **Load only what is needed** | Reads each skill file once, searches before reading, reads only the relevant file ranges, and skips generated or vendored content (`dist/`, `node_modules/`, lock files, binaries, large logs) unless it is in scope | Lower token usage and fewer context overflows |
+| **Compact evidence** | Cites findings as `path:line` with a one-line excerpt instead of quoting whole files or command output | Shorter reports that you can still verify |
+| **Parallel subtasks** | Splits independent parts (components, repositories, features, review areas) into subtasks (`new_task`) with a self-contained brief: scope, skill file, output file, and return format. Only the returned summaries are merged. **Architecture Review** dispatches one subtask per selected review skill | Each area gets a fresh, focused context; the orchestrating task stays small |
+| **Hand off instead of overflowing** | When the work is too large for one context, is split into subtasks, or ends unfinished, Bob creates or updates `task-handoff.md` (under ~60 lines) | The next task starts from a short summary instead of the full chat history |
+
+Writing `task-handoff.md` is allowed in read-only reviews. Bob still never
+edits the reviewed code.
+
+### Task Handoff File Format
+
+```markdown
+# Task Handoff
+- Goal and scope:
+- SDLC phase, mode, skills:
+- Done (output files, evidence refs):
+- Open items and blockers:
+- Decisions and assumptions:
+- Next steps (ordered):
+```
+
+### Example Prompts
+
+```
+"Run a complete architecture review of repos/shop-api. Use one subtask per
+ review area and write repos/shop-api/task-handoff.md if the review cannot be
+ finished in one task."
+```
+
+```
+"Continue the review from repos/shop-api/task-handoff.md."
+```
+
+### Where the Rules Are Defined
+
+- Skills: the `## Context Efficiency & Task Handoff` section in every
+  `.bob/skills/<skill>/SKILL.md`
+- Modes: the `CONTEXT EFFICIENCY, PARALLEL SUBTASKS & TASK HANDOFF` block at the
+  end of every mode's `customInstructions` in `.bob/custom_modes.yaml`; hard rule 4 in [`AGENTS.md`](./AGENTS.md) summarizes them
+- Keep the section when you customize a skill or create a new one (see the
+  Skill Structure Template below).
+
+---
+
 ## 🔧 Customization
 
 ### Adding Organization-Specific Requirements
@@ -469,6 +522,11 @@ overwrites it. See [Two Ways to Use This Repository](#two-ways-to-use-this-repos
 ## Expertise Areas
 - [Area 1]
 - [Area 2]
+
+## Context Efficiency & Task Handoff
+[Copy this section unchanged from an existing skill: resume from
+task-handoff.md, load only what is needed, parallelize independent work,
+hand off instead of overflowing]
 
 ## Review Process
 ### 1. [Step Name]

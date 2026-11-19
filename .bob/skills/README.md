@@ -294,6 +294,36 @@ Critical questions the skill answers
 ### 6. Best Practices
 Guidelines and common pitfalls
 
+### 7. Context Efficiency & Task Handoff
+Shared working rules, identical in every skill (placed before the main process
+section):
+- **Resume from a handoff**: if `task-handoff.md` exists in the workspace root
+  or in `repos/<name>/`, read it first, continue from its "Next steps", and do
+  not redo work listed under "Done"
+- **Load only what is needed**: read the skill once, search before reading,
+  read only relevant file ranges, skip generated or vendored content
+- **Compact evidence**: cite `path:line` with a one-line excerpt
+- **Parallelize independent work**: split independent parts into subtasks with
+  self-contained briefs and merge only their summaries
+- **Hand off instead of overflowing**: when work is too large for one context,
+  split, or unfinished, write a short `task-handoff.md` (under ~60 lines)
+
+The handoff file uses this format:
+
+```markdown
+# Task Handoff
+- Goal and scope:
+- SDLC phase, mode, skills:
+- Done (output files, evidence refs):
+- Open items and blockers:
+- Decisions and assumptions:
+- Next steps (ordered):
+```
+
+Writing `task-handoff.md` is allowed in read-only reviews; the reviewed code is
+never edited. Example: *"Continue the review from
+repos/shop-api/task-handoff.md."*
+
 ## Customizing Skills
 
 Skills can be customized for your organization:
@@ -336,8 +366,10 @@ To create a new skill:
 3. **Create the review process** with checklists
 4. **Define the output format** with examples
 5. **Add key questions** and best practices
-6. **Test the skill** on a real project
-7. **Update this README** with the new skill
+6. **Keep the `## Context Efficiency & Task Handoff` section** unchanged from
+   the copied skill
+7. **Test the skill** on a real project
+8. **Update this README** with the new skill
 
 ## Skill Maintenance
 
@@ -361,6 +393,6 @@ Keep skills up-to-date:
 
 ---
 
-**Last Updated**: 2026-05-31
+**Last Updated**: 2026-11-19
 **Version**: 1.3
 **Skills Count**: 13

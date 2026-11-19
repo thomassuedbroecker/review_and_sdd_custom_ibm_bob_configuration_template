@@ -171,6 +171,21 @@ automations/run_arch_review.sh --repo simple_kafka_example \
 | `0` | Review completed successfully |
 | `1` | bob not found / repo not found / invalid mode / token budget exceeded |
 
+#### Long reviews and task handoff
+
+All modes keep the context small, run independent review areas as parallel
+subtasks, and write `repos/<name>/task-handoff.md` (or `task-handoff.md` in the
+workspace root) when a review does not fit into one task. Continue such a
+review with a custom prompt:
+
+```bash
+automations/run_arch_review.sh --repo simple_kafka_example \
+  "Continue the review from repos/simple_kafka_example/task-handoff.md"
+```
+
+If a run is aborted by `--max-coins` before Bob writes the handoff file, no
+handoff exists; rerun with a narrower scope or a higher budget.
+
 ---
 
 ## Folder layout

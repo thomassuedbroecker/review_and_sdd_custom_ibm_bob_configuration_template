@@ -18,6 +18,42 @@ artifacts, constraints, or expected output are unclear.
 - Missing capability and resource detection
 - Handoff to Configuration Gap Detector
 
+## Context Efficiency & Task Handoff
+
+Apply these rules whenever you use this skill, so the task stays within a small,
+focused context:
+
+- **Resume from a handoff first.** If `task-handoff.md` exists in the workspace
+  root or in the target repository (`repos/<name>/`), read it before anything
+  else, continue from its "Next steps", and do not redo work listed under "Done".
+- **Load only what you need.** Read this skill once per task and do not copy it
+  into outputs. Search before reading, read only the relevant file ranges, and
+  skip generated or vendored content (`dist/`, `node_modules/`, lock files,
+  binaries, large logs) unless it is the subject of the task.
+- **Keep evidence compact.** Cite findings as `path:line` with a one-line
+  excerpt instead of quoting whole files, diffs, or command output.
+- **Parallelize independent work.** When the scope splits into independent
+  parts (components, repositories, features, or review areas), delegate them as
+  parallel subtasks where the tool supports it. Give each subtask a
+  self-contained brief: scope, skill file to read, output file, and return
+  format (a short summary of findings, not raw evidence). Merge only the
+  returned summaries.
+- **Hand off instead of overflowing.** When the work is too large for one
+  context, is split into subtasks, or ends unfinished, create or update
+  `task-handoff.md` (keep it under ~60 lines; it replaces conversation history
+  for the next task). Writing the handoff file is allowed in read-only reviews;
+  never edit the reviewed code.
+
+```markdown
+# Task Handoff
+- Goal and scope:
+- SDLC phase, mode, skills:
+- Done (output files, evidence refs):
+- Open items and blockers:
+- Decisions and assumptions:
+- Next steps (ordered):
+```
+
 ## Grill Me Discovery Pattern
 
 ### 1. Classify the User Request

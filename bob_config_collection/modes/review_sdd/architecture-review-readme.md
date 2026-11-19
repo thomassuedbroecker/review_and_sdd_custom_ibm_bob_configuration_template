@@ -296,6 +296,29 @@ Specific next actions, priorities, and improvements
 - ✅ **Quality assurance** with structured checklists
 - ✅ **Continuous improvement** through modular updates
 
+## 🧠 Context Efficiency, Parallel Subtasks & Task Handoff
+
+All modes and skills share the same working rules for large reviews:
+
+- **Resume**: if `task-handoff.md` exists in the workspace root or in
+  `repos/<name>/`, Bob reads it first and continues from its "Next steps".
+- **Small context**: each skill file is read once; files are searched before
+  they are read, only relevant ranges are loaded, and evidence is cited as
+  `path:line`.
+- **Parallel subtasks**: the Architecture Review mode dispatches one subtask
+  (`new_task`) per selected review skill. Each subtask reads only its own
+  skill and returns a compact summary (assessment, top findings with severity
+  and `path:line` evidence, recommendations). The final report is synthesized
+  from those summaries.
+- **Handoff**: when a review is too large for one task or ends unfinished, Bob
+  writes a short `task-handoff.md` (goal and scope; SDLC phase, mode, skills;
+  done; open items; decisions; next steps). Writing it is allowed in read-only
+  reviews.
+
+Example: *"Run a complete architecture review of repos/shop-api with one
+subtask per area"*, later followed by *"Continue the review from
+repos/shop-api/task-handoff.md."*
+
 ## 🔧 Customization
 
 ### 1. Modify Existing Skills
