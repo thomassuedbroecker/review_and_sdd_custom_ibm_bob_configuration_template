@@ -109,10 +109,13 @@ test('one-click mode install writes the mode and its skills, and existingSkillId
   const catalog = loadCatalog(COLLECTION);
   const ws = tmpWorkspace();
   const slug = 'security-review';
-  const plan = [...install.planModes(catalog, ws, [slug]), ...install.planSkills(catalog, ws, install.skillsForModes(catalog, [slug]))];
+  // security-review references its methodology skill and the Mermaid readability skill.
+  const skills = ['sdd-mermaid-diagram-readability', 'sdd-security-threat-modeling'];
+  assert.deepEqual(install.skillsForModes(catalog, [slug]), skills);
+  const plan = [...install.planModes(catalog, ws, [slug]), ...install.planSkills(catalog, ws, skills)];
   install.applyPlan(ws, plan);
   assert.deepEqual(install.existingModeSlugs(catalog, ws), [slug]);
-  assert.deepEqual(install.existingSkillIds(catalog, ws), ['sdd-security-threat-modeling']);
-  const again = [...install.planModes(catalog, ws, [slug]), ...install.planSkills(catalog, ws, ['sdd-security-threat-modeling'])];
+  assert.deepEqual(install.existingSkillIds(catalog, ws), skills);
+  const again = [...install.planModes(catalog, ws, [slug]), ...install.planSkills(catalog, ws, skills)];
   assert.ok(again.every((p) => p.status === 'unchanged'), 'second install is a no-op');
 });

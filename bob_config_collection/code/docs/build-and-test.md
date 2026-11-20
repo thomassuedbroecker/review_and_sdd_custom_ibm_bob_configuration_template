@@ -76,6 +76,7 @@ increase `version` in `package.json` first.
 | `npm run package` | `build`, then `vsce package` → `dist/bob-config-importer-<version>.vsix` |
 | `npm run sync:check` | Exits 1 if the template's `.bob/` differs from the collection |
 | `npm run sync:template` | Updates the template's `.bob/` from the collection |
+| `npm run release` | Builds the `.vsix`, its `.sha256`, and the release notes; uploads to GitHub only with `-- --publish` (see [Publish a release](#publish-a-release)) |
 
 `build` fails if a mode references a skill that does not exist, or a skill
 folder has no `SKILL.md`.
@@ -125,3 +126,53 @@ immediately.
 2. `npm test` and `npm run sync:check` pass.
 3. `npm run package`, then install the `.vsix` and run **Import Modes…** in a
    scratch workspace.
+4. Publish it with `src/tools/release-vsix.sh` (next section).
+
+## Publish a release
+
+[`src/tools/release-vsix.sh`](../src/tools/release-vsix.sh) builds the `.vsix`,
+writes `dist/<name>-<version>.vsix.sha256`, renders the release notes, and
+attaches both files to a GitHub Release.
+
+**1. Configure the release** in [`docs/release/release.conf`](release/release.conf):
+
+| Setting | Meaning |
+|---|---|
+| `RELEASE_VERSION` | Release number without `v`, for example `2.5.0`. The tag is `v2.5.0` |
+| `RELEASE_TITLE` | Title on the GitHub Release page |
+| `RELEASE_CHANGES` | Release comment (Markdown), inserted at `{{CHANGES}}` |
+| `RELEASE_CHANGES_FILE` | Optional Markdown file used instead of `RELEASE_CHANGES` |
+| `RELEASE_NOTES_TEMPLATE` | Template with the disclaimer, install steps, and changelog link: [`release-notes-template.md`](release/release-notes-template.md) |
+| `PREVIOUS_TAG` | Tag for the changelog link; empty means the previous tag is detected |
+| `UPDATE_EXISTING_NOTES` | `true` also replaces title and notes of an existing release |
+
+**2. Set the same version in `package.json`**, then commit and push:
+
+```bash
+npm version 2.5.0 --no-git-tag-version
+git commit -am "chore(release): 2.5.0" && git push
+```
+
+**3. Dry run** (builds and prepares everything, uploads nothing):
+
+```bash
+src/tools/release-vsix.sh            # or: npm run release
+```
+
+Check `dist/release-notes-<version>.md`.
+
+**4. Publish** (asks for confirmation):
+
+```bash
+src/tools/release-vsix.sh --publish
+```
+
+If the release already exists, the files are uploaded to it and assets with
+the same name are replaced; its notes are kept unless you pass
+`--update-notes`. Otherwise the release and tag `v<version>` are created on
+the pushed `HEAD`.
+
+Options override the config file: `-v 2.5.0`, `-t "Title"`,
+`-n notes.md` (release comment file), `--skip-tests`, `-y` (no prompt),
+`--allow-tag-mismatch` (publish to an existing tag that is not on `HEAD`).
+All options: `src/tools/release-vsix.sh --help`.

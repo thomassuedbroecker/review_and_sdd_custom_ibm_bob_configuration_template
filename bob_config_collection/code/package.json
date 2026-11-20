@@ -141,7 +141,8 @@
     "test": "node --test test/*.test.js",
     "package": "npm run build && vsce package --out dist/",
     "sync:template": "node src/tools/sync-workspace.js --target ../..",
-    "sync:check": "node src/tools/sync-workspace.js --target ../.. --check"
+    "sync:check": "node src/tools/sync-workspace.js --target ../.. --check",
+    "release": "bash src/tools/release-vsix.sh"
   },
   "devDependencies": {
     "@vscode/vsce": "^4.1.1",
