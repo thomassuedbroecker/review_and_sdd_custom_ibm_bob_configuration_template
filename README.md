@@ -33,6 +33,8 @@ Usage example on YouTube:
 
 🧩 **[Generate the VS Code extension (.vsix)](./bob_config_collection/code/README.md#generate-the-extension-vsix)**: build the **Bob Config Importer (Community)** extension to install modes and skills into other Bob workspaces
 
+⬇️ **[Download a prebuilt .vsix](./bob_config_collection/code/README.md#download-a-prebuilt-version)** from the [GitHub Releases](https://github.com/thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template/releases). Use at your own risk: it is provided "AS IS" under the Apache License 2.0, and imported hooks and scripts run code on your machine. See [Disclaimer and license](./bob_config_collection/code/README.md#disclaimer-and-license).
+
 ![Bob Config Importer (Community) extension in IBM Bob](./images/custom_extension_in_bob.png)
 
 ## Two Ways to Use This Repository

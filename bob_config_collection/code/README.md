@@ -45,6 +45,34 @@ to read its documentation in a Markdown preview before you install it.
 The collection is the leading configuration. Existing modes with the same slug
 and files with the same path are replaced after you confirm.
 
+## Download a prebuilt version
+
+> Use at your own risk. Read [Disclaimer and license](#disclaimer-and-license)
+> before installing.
+
+Prebuilt `.vsix` files are attached to the
+[GitHub Releases](https://github.com/thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template/releases)
+of this repository. The Releases page is also the version history: every
+release keeps its own `.vsix` file.
+
+1. Download `bob-config-importer-<version>.vsix` and
+   `bob-config-importer-<version>.vsix.sha256` from a release.
+2. Verify the file:
+
+   ```bash
+   shasum -a 256 -c bob-config-importer-<version>.vsix.sha256
+   ```
+
+3. Install it with **Extensions: Install from VSIX…** from the Command Palette,
+   or run:
+
+   ```bash
+   code --install-extension bob-config-importer-<version>.vsix
+   ```
+
+The `.vsix` is not code-signed and not published on the VS Code Marketplace,
+so VS Code does not update it automatically. Download a newer release to update.
+
 ## Generate the extension (.vsix)
 
 Prerequisites: Node.js ≥ 22 and npm. The packaging tools (`@vscode/vsce`
@@ -72,3 +100,28 @@ collection from GitHub. Details: [docs/build-and-test.md](docs/build-and-test.md
 | `src/` | Extension and tooling code (`extension.js`, `lib/`, `config/`, `tools/`) |
 | `docs/` | Documentation: [usage](docs/usage.md), [build and test](docs/build-and-test.md), [architecture](docs/architecture.md) |
 | `test/` | Unit and integration tests (`npm test`) |
+
+## Disclaimer and license
+
+This extension is licensed under the [Apache License 2.0](LICENSE). It is
+provided "AS IS", WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND (section 7 of
+the license), and the authors are not liable for damages arising from its use
+(section 8), to the extent permitted by applicable law. You use the extension,
+whether built from source or downloaded as a prebuilt `.vsix`, at your own risk.
+
+What the extension does on your system:
+
+- **Writes files** into your workspace's `.bob/` folder. Existing modes with
+  the same slug and files with the same path are replaced after you confirm.
+- **Merges hook entries** into `.bob/settings.json`. **Imported hooks and
+  scripts run code on your machine.** Read them with **Read Mode, Skill, or
+  Hook Documentation…** before you install them.
+- **Downloads content from GitHub** when the source is `github` (the default).
+  If you point `bobConfigImporter.githubRepository` at another repository, you
+  trust that repository's content.
+
+No support, maintenance, or updates are guaranteed. Report problems through
+[GitHub Issues](https://github.com/thomassuedbroecker/review_and_sdd_custom_ibm_bob_configuration_template/issues).
+
+This is a community project. It is not affiliated with, endorsed by, or
+supported by IBM. IBM Bob is a trademark of IBM Corporation.
