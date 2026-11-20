@@ -2,7 +2,7 @@
   "name": "bob-config-importer",
   "displayName": "Bob Config Importer (Community)",
   "description": "Unofficial community importer: browse, preview, and install curated Bob modes, skills, and MCP configurations from any bob_config_collection (GitHub, bundled, or local) into your workspace's .bob/ folder. Not affiliated with or supported by IBM.",
-  "version": "0.1.0",
+  "version": "2.4.1",
   "publisher": "thomassuedbroecker",
   "license": "Apache-2.0",
   "icon": "images/icon-color.png",
