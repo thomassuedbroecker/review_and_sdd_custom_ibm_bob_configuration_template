@@ -4,8 +4,7 @@ description: >-
   Create or fix Mermaid diagrams in Markdown (.md) files so they are human
   readable on GitHub and in print (PDF, A4/Letter, black-and-white). Use this
   whenever the user asks for a diagram, architecture view, sequence, flow, ER
-  or state diagram, or edits a ```mermaid block in any .md file, including
-  docs/m4-new-product-onboarding.md. Also use it when a diagram is "too small",
+  or state diagram, or edits a ```mermaid block in any .md file. Also use it when a diagram is "too small",
   "unreadable", "too wide", "too crowded", or "does not print well". Applies
   to every Mermaid block Bob writes, even when the user does not mention
   readability.
@@ -20,10 +19,6 @@ defines one repeatable recipe so diagrams look the same everywhere.
 
 This skill is about *diagram authoring*. It does not replace
 `sdd-documentation-review` (which reviews completeness of documentation).
-The Mermaid diagrams in
-[`docs/m4-new-product-onboarding.md`](../../../docs/m4-new-product-onboarding.md)
-and [`docs/rules-and-agents.md`](../../../docs/rules-and-agents.md) are the
-reference examples in this repository.
 
 ## When to Use
 - Adding a new diagram to any `.md` file.
