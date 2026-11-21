@@ -185,5 +185,3 @@ When delivering a diagram, respond with:
   https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams
 - WCAG 2.2, 1.4.1 Use of Color (colour not the only means of conveying
   information): https://www.w3.org/TR/WCAG22/#use-of-color
-- Reference implementation in this repo:
-  [`docs/m4-new-product-onboarding.md`](../../../docs/m4-new-product-onboarding.md)
